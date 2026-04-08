@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── DESIGN TOKENS ─────────────────────────────────────────────────── */
 :root {
   --bg:    #0A0B0D;
   --bg2:   #111318;
@@ -16,17 +15,28 @@
   --green: #2ECC71;
 }
 
-/* ─── BASE ───────────────────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:var(--font-barlow),sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-barlow),sans-serif;
+  font-size:clamp(16px,2vw,18px);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
 
-/* ─── TICKER ─────────────────────────────────────────────────────────── */
+/* ─── GLOBAL HEADING SIZES ───────────────────────────────────────────── */
+/* These apply to any h2.sec-title or section heading pattern.
+   Components still set inline but these serve as baseline. */
+h1 { font-size: clamp(3rem, 8vw, 6rem); }
+h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h3 { font-size: clamp(1.1rem, 3vw, 1.4rem); }
+
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .ticker-track{display:flex;gap:0;animation:ticker 30s linear infinite;white-space:nowrap;}
 .ticker-track:hover{animation-play-state:paused;}
 
-/* ─── GRID BACKGROUND ────────────────────────────────────────────────── */
 .grid-bg{
   background-image:
     repeating-linear-gradient(0deg,transparent,transparent 39px,var(--bdr) 39px,var(--bdr) 40px),
@@ -34,7 +44,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-barlow),sans-
   background-size:40px 40px;
 }
 
-/* ─── RESPONSIVE LAYOUT GRIDS ────────────────────────────────────────── */
+/* ─── LAYOUT GRIDS ───────────────────────────────────────────────────── */
 .grid-hero         { display:grid; grid-template-columns:1fr 1fr; min-height:88vh; border-bottom:1px solid var(--bdr); }
 .grid-data-bar     { display:grid; grid-template-columns:repeat(5,1fr); }
 .grid-nbhd         { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--bdr); }
@@ -48,14 +58,11 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-barlow),sans-
 .grid-cta-form     { display:grid; grid-template-columns:1fr 420px; gap:4rem; align-items:center; }
 .grid-calculator   { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
 
-/* ─── NAV ────────────────────────────────────────────────────────────── */
 .nav-links-desktop { display:flex; gap:2rem; list-style:none; }
-
-/* ─── SECTION PADDING ────────────────────────────────────────────────── */
-.section-pad { padding:5rem 3rem; border-bottom:1px solid var(--bdr); }
+.section-pad       { padding:5rem 3rem; border-bottom:1px solid var(--bdr); }
 
 /* ─── UTILITIES ──────────────────────────────────────────────────────── */
-.mono-badge{font-family:var(--font-space-mono),monospace;font-size:.68rem;letter-spacing:.08em;padding:.2rem .5rem;text-transform:uppercase;}
+.mono-badge{font-family:var(--font-space-mono),monospace;font-size:.72rem;letter-spacing:.08em;padding:.2rem .55rem;text-transform:uppercase;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .blink{animation:blink 1.4s ease-in-out infinite;}
 
@@ -82,44 +89,25 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-barlow),sans-
 .calc-result-animate{animation:resultPop .25s ease-out;}
 
 /* ─── MOBILE STICKY CTA ──────────────────────────────────────────────── */
-.mobile-cta-bar {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 200;
-  background: var(--amber);
-  padding: 0;
-}
-.mobile-cta-bar a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  width: 100%;
-  padding: 1.1rem 2rem;
-  color: #000;
-  font-family: var(--font-barlow-cond), sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
+.mobile-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--amber);}
+.mobile-cta-bar a{
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  width:100%;padding:1.1rem 2rem;
+  color:#000;font-family:var(--font-barlow-cond),sans-serif;
+  font-weight:700;font-size:1.05rem;letter-spacing:.12em;
+  text-transform:uppercase;text-decoration:none;
 }
 
-/* ─── MOBILE BREAKPOINTS ─────────────────────────────────────────────── */
+/* ─── BREAKPOINTS ────────────────────────────────────────────────────── */
 @media(max-width:1024px){
   .grid-hero            {grid-template-columns:1fr;min-height:auto;}
-  /* Form comes first on mobile — visually most important */
-  .grid-hero > *:first-child { order: 2; }
-  .grid-hero > *:last-child  { order: 1; }
+  .grid-hero > *:first-child {order:2;}
+  .grid-hero > *:last-child  {order:1;}
   .grid-nbhd-hero       {grid-template-columns:1fr;}
   .grid-cta-form        {grid-template-columns:1fr;}
   .grid-calculator      {grid-template-columns:1fr;}
   .mobile-cta-bar       {display:block;}
-  /* Add bottom padding so sticky bar doesn't cover content */
-  body { padding-bottom: 64px; }
+  body                  {padding-bottom:64px;}
 }
 @media(max-width:900px){
   .grid-data-bar        {grid-template-columns:repeat(2,1fr);}
@@ -138,7 +126,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-barlow),sans-
   .grid-nbhd-data       {grid-template-columns:1fr;}
   .grid-footer-top      {grid-template-columns:1fr;}
   .grid-nearby          {grid-template-columns:repeat(2,1fr);}
-  .section-pad          {padding:3rem 1rem;}
+  .section-pad          {padding:3rem 1.2rem;}
   .hero-stats-row       {flex-wrap:wrap;gap:1rem;}
-  table                 {font-size:.85rem;}
+  table                 {font-size:.88rem;}
 }
