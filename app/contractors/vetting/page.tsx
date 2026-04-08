@@ -44,6 +44,7 @@ export default function VettingPage() {
     <>
       <Nav />
       <PageHero
+        imageUrl="/images/hero-vetting.jpeg"
         breadcrumb={[{label:'Home',href:'/'},{label:'For Contractors',href:'/contractors/apply'},{label:'Our Vetting Process'}]}
         eyebrow="Our Standard"
         title={<>THE 47-POINT<br/><span style={{color:'#F5A623'}}>VETTING PROCESS</span></>}

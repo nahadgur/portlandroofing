@@ -5,6 +5,7 @@ import Link   from 'next/link'
 import Nav     from '@/components/Nav'
 import Footer  from '@/components/Footer'
 import PageHero from '@/components/PageHero'
+import { getBlogImage } from '@/lib/neighborhoodImages'
 import { posts, getPostBySlug, getStaticPostPaths, postCategoryLabels, postCategoryColors } from '@/lib/posts'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema } from '@/lib/schema'
@@ -38,6 +39,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([{name:'Home',url:SITE.baseUrl},{name:'Blog',url:`${SITE.baseUrl}/blog`},{name:p.title,url:`${SITE.baseUrl}/blog/${p.slug}`}]))}</Script>
       <Nav />
       <PageHero
+        imageUrl={getBlogImage(p.slug)}
         breadcrumb={[{label:'Home',href:'/'},{label:'Blog',href:'/blog'},{label:p.title}]}
         eyebrow={`${postCategoryLabels[p.category]} · ${formatDate(p.published)} · ${p.readTime} min read`}
         title={p.title.toUpperCase()}

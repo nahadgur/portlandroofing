@@ -17,6 +17,7 @@ export default function CostIndexPage() {
     <>
       <Nav />
       <PageHero
+        imageUrl="/images/hero-cost-index.jpeg"
         breadcrumb={[{label:'Home',href:'/'},{label:'PDX Cost Index'}]}
         eyebrow="2026 Data · Updated Quarterly"
         title={<>PDX ROOFING<br/><span style={{color:'#F5A623'}}>COST INDEX</span></>}

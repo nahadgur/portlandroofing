@@ -23,6 +23,7 @@ export default function BlogPage() {
     <>
       <Nav />
       <PageHero
+        imageUrl="/images/hero-blog-hub.jpeg"
         breadcrumb={[{label:'Home',href:'/'},{label:'Blog'}]}
         eyebrow="Portland Roofings"
         title={<>FROM THE<br/><span style={{color:'#F5A623'}}>BLOG</span></>}

@@ -15,7 +15,7 @@
   --muted:     #6B6860;
   --bdr:       #DDD9D2;
   --nav-bg:    #0A0B0D;       /* nav + footer always dark                */
-  --hero-img:  url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1600&q=80');
+  --hero-img: url('/images/hero-homepage.jpeg');
 }
 
 /* ─── RESET ──────────────────────────────────────────────────────────── */
@@ -180,19 +180,3 @@ img, video { display: block; max-width: 100%; }
   .section-pad       { padding: 3rem 1.2rem; }
   table              { font-size: .88rem; }
 }
-
-/* ─── HAMBURGER BUTTON ───────────────────────────────────────────────── */
-/* Hidden on desktop, visible on mobile */
-.hamburger-btn { display: none; }
-
-@media (max-width: 768px) {
-  .hamburger-btn { display: flex !important; }
-}
-
-/* ─── HERO MOBILE — form above text ─────────────────────────────────── */
-/* On mobile, show the form FIRST so "Get Quotes" scrolls directly to it */
-@media (max-width: 1024px) {
-  .hero-content > div:first-child { order: 2; }  /* text goes below */
-  .hero-content > div:last-child  { order: 1; }  /* form goes above  */
-}
-

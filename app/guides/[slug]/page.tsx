@@ -5,6 +5,7 @@ import Link   from 'next/link'
 import Nav     from '@/components/Nav'
 import Footer  from '@/components/Footer'
 import PageHero from '@/components/PageHero'
+import { getGuideImage } from '@/lib/neighborhoodImages'
 import { guides, getGuideBySlug, getStaticGuidePaths, categoryLabels } from '@/lib/guides'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
@@ -37,6 +38,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
       <Script id="s3" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(g.faqs))}</Script>
       <Nav />
       <PageHero
+        imageUrl={getGuideImage(g.slug)}
         breadcrumb={[{label:'Home',href:'/'},{label:'Guides',href:'/guides'},{label:g.headline}]}
         eyebrow={`${categoryLabels[g.category]} · ${g.readTime} min read`}
         title={g.title.toUpperCase()}

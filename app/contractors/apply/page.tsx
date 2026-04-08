@@ -22,6 +22,7 @@ export default function ContractorsApplyPage() {
     <>
       <Nav />
       <PageHero
+        imageUrl="/images/hero-apply.jpeg"
         breadcrumb={[{label:'Home',href:'/'},{label:'For Contractors'},{label:'Apply'}]}
         eyebrow="For Oregon CCB-Licensed Contractors"
         title={<>JOIN THE<br/><span style={{color:'#F5A623'}}>NETWORK</span></>}

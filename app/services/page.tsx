@@ -24,6 +24,7 @@ export default function ServicesPage() {
     <>
       <Nav />
       <PageHero
+        imageUrl="/images/hero-services-hub.jpeg"
         breadcrumb={[{label:'Home',href:'/'},{label:'Services'}]}
         eyebrow="Portland Metro"
         title={<>PORTLAND ROOFING<br/><span style={{color:'#F5A623'}}>SERVICES</span></>}

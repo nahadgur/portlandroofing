@@ -6,6 +6,7 @@ import Nav     from '@/components/Nav'
 import Footer  from '@/components/Footer'
 import LeadForm from '@/components/LeadForm'
 import PageHero from '@/components/PageHero'
+import { getNeighborhoodImage } from '@/lib/neighborhoodImages'
 import { neighborhoods, getNeighborhoodBySlug, getStaticNeighborhoodPaths, permitLabels } from '@/lib/neighborhoods'
 import { services } from '@/lib/services'
 import { SITE }  from '@/lib/config'
@@ -50,6 +51,7 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
 
       <PageHero
         tall
+        imageUrl={getNeighborhoodImage(n.slug)}
         breadcrumb={[{label:'Home',href:'/'},{label:'Neighborhoods',href:'/#neighborhoods'},{label:n.name}]}
         eyebrow={`${n.zip} · ${n.area}`}
         title={<>{n.name.toUpperCase()}<br/><span style={{color:'#F5A623'}}>ROOFING</span></>}

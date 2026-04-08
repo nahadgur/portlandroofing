@@ -22,6 +22,7 @@ export default function ContactPage() {
       <Script id="schema" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({'@context':'https://schema.org','@type':'LocalBusiness',name:SITE.name,url:SITE.baseUrl,telephone:SITE.phone,email:SITE.email,address:{'@type':'PostalAddress',addressLocality:'Portland',addressRegion:'OR',addressCountry:'US'}})}</Script>
       <Nav />
       <PageHero
+        imageUrl="/images/hero-contact.jpeg"
         breadcrumb={[{label:'Home',href:'/'},{label:'Contact'}]}
         eyebrow="Portland Roofings"
         title={<>GET IN<br/><span style={{color:'#F5A623'}}>TOUCH</span></>}

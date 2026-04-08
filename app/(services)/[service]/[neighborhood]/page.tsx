@@ -6,6 +6,7 @@ import Nav     from '@/components/Nav'
 import Footer  from '@/components/Footer'
 import LeadForm from '@/components/LeadForm'
 import PageHero from '@/components/PageHero'
+import { getServiceImage } from '@/lib/neighborhoodImages'
 import NeighborhoodSwitcher from '@/components/NeighborhoodSwitcher'
 import { services, getServiceBySlug } from '@/lib/services'
 import { neighborhoods, getNeighborhoodBySlug, permitLabels } from '@/lib/neighborhoods'
@@ -68,6 +69,7 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
 
       <PageHero
         tall
+        imageUrl={getServiceImage(s.slug)}
         breadcrumb={[{label:'Home',href:'/'},{label:'Services',href:'/services'},{label:n.name,href:`/portland/${n.slug}`},{label:s.name}]}
         eyebrow={`${n.zip} · ${n.area}`}
         title={<>{s.headline.toUpperCase()}<br/><span style={{color:'#F5A623'}}>IN {n.name.toUpperCase()}</span></>}

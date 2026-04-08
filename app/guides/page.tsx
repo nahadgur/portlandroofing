@@ -20,6 +20,7 @@ export default function GuidesPage() {
     <>
       <Nav />
       <PageHero
+        imageUrl="/images/hero-guides-hub.jpeg"
         breadcrumb={[{label:'Home',href:'/'},{label:'Guides'}]}
         eyebrow="Portland Roofing Authority"
         title={<>ROOFING<br/><span style={{color:'#F5A623'}}>GUIDES</span></>}
