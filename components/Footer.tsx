@@ -12,11 +12,12 @@ const cols = {
     { label: 'All 50 Areas →',    href: '/#neighborhoods' },
   ],
   Resources: [
-    { label: 'PDX Cost Index',          href: '/pdx-cost-index' },
-    { label: 'Metal vs. Asphalt',       href: '/guides/metal-vs-asphalt-portland' },
-    { label: 'Storm Damage Guide',      href: '/guides/storm-damage-roofing-portland' },
-    { label: 'Permits Guide',           href: '/guides/portland-roofing-permits-guide' },
-    { label: 'All Guides →',            href: '/guides' },
+    { label: 'PDX Cost Index',              href: '/pdx-cost-index' },
+    { label: 'Local vs National Roofers',   href: '/compare/local-vs-national-roofing-companies' },
+    { label: 'Metal vs. Asphalt',           href: '/guides/metal-vs-asphalt-portland' },
+    { label: 'Storm Damage Guide',          href: '/guides/storm-damage-roofing-portland' },
+    { label: 'Permits Guide',               href: '/guides/portland-roofing-permits-guide' },
+    { label: 'All Guides →',               href: '/guides' },
   ],
   'For Contractors': [
     { label: 'Join the Network', href: '/contractors/apply' },

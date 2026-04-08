@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 
 const links = [
   { label: 'Cost Index',    href: '/pdx-cost-index' },
+  { label: 'Storm Tracker', href: '/storm-tracker/pdx-active-warnings' },
   { label: 'Neighborhoods', href: '/#neighborhoods' },
   { label: 'Services',      href: '/services' },
   { label: 'Guides',        href: '/guides' },
