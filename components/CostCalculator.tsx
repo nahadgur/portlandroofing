@@ -1,269 +1,220 @@
-'use client'
+"use client";
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useMemo } from "react";
 
-/* ─── DATA ───────────────────────────────────────────────────────────── */
-const materials = [
-  { id: 'asphalt-arch',  label: 'Asphalt Architectural', lowPsf: 4.5,  highPsf: 7.0,  life: '25–30 yrs', tag: 'MOST POPULAR' },
-  { id: 'asphalt-3tab',  label: 'Asphalt 3-Tab',         lowPsf: 3.5,  highPsf: 5.0,  life: '20–25 yrs', tag: 'BUDGET'       },
-  { id: 'asphalt-c4',    label: 'Asphalt Class 4',        lowPsf: 5.5,  highPsf: 8.5,  life: '30–40 yrs', tag: 'STORM-RATED'  },
-  { id: 'cedar',         label: 'Cedar Shake',            lowPsf: 7.0,  highPsf: 11.0, life: '25–30 yrs', tag: 'HISTORIC'     },
-  { id: 'metal-panel',   label: 'Metal Corrugated',       lowPsf: 6.0,  highPsf: 10.0, life: '40–50 yrs', tag: null           },
-  { id: 'metal-seam',    label: 'Metal Standing Seam',    lowPsf: 9.0,  highPsf: 15.0, life: '50+ yrs',   tag: 'BEST ROI'     },
-  { id: 'flat-tpo',      label: 'Flat / TPO',             lowPsf: 3.5,  highPsf: 6.5,  life: '15–25 yrs', tag: null           },
-]
+// Rates updated April 2026 to reflect confirmed 5–8% manufacturer increases
+const MATERIALS = [
+  { label: "Asphalt Shingles", value: "asphalt", baseLow: 375, baseHigh: 535, hiked: true },
+  { label: "Metal Roofing",    value: "metal",   baseLow: 700, baseHigh: 1200, hiked: false },
+  { label: "Cedar Shake",      value: "cedar",   baseLow: 600, baseHigh: 900,  hiked: false },
+  { label: "Flat (TPO/EPDM)", value: "flat",    baseLow: 350, baseHigh: 700,  hiked: false },
+] as const;
 
-const pitches = [
-  { id: 'flat',     label: 'Flat',          sub: '0–2/12',  multiplier: 1.00 },
-  { id: 'low',      label: 'Low',           sub: '3–4/12',  multiplier: 1.05 },
-  { id: 'moderate', label: 'Moderate',      sub: '5–7/12',  multiplier: 1.15 },
-  { id: 'steep',    label: 'Steep',         sub: '8–12/12', multiplier: 1.30 },
-  { id: 'vsteep',   label: 'Very Steep',    sub: '12+/12',  multiplier: 1.50 },
-]
+const PITCH_MULTIPLIERS: Record<string, number> = {
+  low:    1.0,
+  medium: 1.15,
+  steep:  1.35,
+};
 
-/* ─── CALC ───────────────────────────────────────────────────────────── */
-function calcCost(
-  sqft:     number,
-  matId:    string,
-  pitchId:  string,
-  tearOff:  boolean,
-): { low: number; high: number } {
-  const mat   = materials.find(m => m.id === matId)   ?? materials[0]
-  const pitch = pitches.find(p => p.id === pitchId)   ?? pitches[2]
-  const tearOffCost = tearOff ? 1.25 : 0
-  const low  = Math.round(sqft * (mat.lowPsf  + tearOffCost) * pitch.multiplier / 100) * 100
-  const high = Math.round(sqft * (mat.highPsf + tearOffCost) * pitch.multiplier / 100) * 100
-  return { low, high }
-}
+const STORY_MULTIPLIERS: Record<string, number> = {
+  "1": 1.0,
+  "2": 1.1,
+  "3": 1.25,
+};
+
+type MaterialValue = (typeof MATERIALS)[number]["value"];
 
 function fmt(n: number) {
-  return '$' + n.toLocaleString('en-US')
+  return "$" + n.toLocaleString();
 }
 
-/* ─── COMPONENT ──────────────────────────────────────────────────────── */
 export default function CostCalculator() {
-  const [sqft,    setSqft]    = useState(2000)
-  const [matId,   setMatId]   = useState('asphalt-arch')
-  const [pitchId, setPitchId] = useState('moderate')
-  const [tearOff, setTearOff] = useState(true)
-  const [result,  setResult]  = useState({ low: 0, high: 0 })
-  const [animKey, setAnimKey] = useState(0)
+  const [sqft,     setSqft]     = useState(2000);
+  const [material, setMaterial] = useState<MaterialValue>("asphalt");
+  const [pitch,    setPitch]    = useState("medium");
+  const [stories,  setStories]  = useState("1");
 
-  const recalc = useCallback(() => {
-    setResult(calcCost(sqft, matId, pitchId, tearOff))
-    setAnimKey(k => k + 1)
-  }, [sqft, matId, pitchId, tearOff])
+  const result = useMemo(() => {
+    const mat      = MATERIALS.find((m) => m.value === material)!;
+    const squares  = sqft / 100;
+    const pitchM   = PITCH_MULTIPLIERS[pitch];
+    const storyM   = STORY_MULTIPLIERS[stories];
+    const low      = Math.round(squares * mat.baseLow  * pitchM * storyM);
+    const high     = Math.round(squares * mat.baseHigh * pitchM * storyM);
+    return { low, high, hiked: mat.hiked };
+  }, [sqft, material, pitch, stories]);
 
-  useEffect(() => { recalc() }, [recalc])
-
-  const selMat   = materials.find(m => m.id === matId)   ?? materials[0]
-  const selPitch = pitches.find(p => p.id === pitchId)   ?? pitches[2]
-
-  const btnBase: React.CSSProperties = {
-    padding: '0.6rem 0.5rem',
-    background: 'var(--bg3)',
-    border: '1px solid var(--bdr)',
-    color: 'var(--muted)',
-    fontFamily: 'var(--font-barlow-cond)',
-    fontSize: '0.78rem',
-    letterSpacing: '0.04em',
-    cursor: 'pointer',
-    textAlign: 'left' as const,
-    transition: 'all 0.15s',
-  }
-  const btnSel: React.CSSProperties = {
-    ...btnBase,
-    borderColor: 'var(--amber)',
-    background: 'rgba(245,166,35,0.07)',
-    color: 'var(--amber)',
-  }
+  const selectedMat = MATERIALS.find((m) => m.value === material)!;
 
   return (
-    <div style={{ background: 'var(--bg2)', border: '1px solid var(--bdr)' }}>
+    <div className="rounded-lg border border-[var(--bdr)] bg-white overflow-hidden">
+      <div className="h-1" style={{ background: "#0066CC" }} />
 
-      {/* Header */}
-      <div style={{ padding: '1.8rem 2rem', borderBottom: '1px solid var(--bdr)' }}>
-        <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.65rem', color: 'var(--amber)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-          ▸ PDX Roof Cost Calculator
-        </div>
-        <h3 style={{ fontFamily: 'var(--font-bebas)', fontSize: '1.6rem', color: 'var(--text)', lineHeight: 1 }}>
-          ESTIMATE YOUR COST
-        </h3>
-      </div>
+      <div className="p-6 sm:p-8">
+        <div className="grid md:grid-cols-2 gap-8">
 
-      <div className="grid-calculator" style={{ padding: '2rem' }}>
+          {/* ── Inputs ── */}
+          <div className="space-y-6">
 
-        {/* ── LEFT: Controls ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.8rem' }}>
-
-          {/* Square footage slider */}
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.8rem' }}>
-              <label style={{ fontFamily: 'var(--font-barlow-cond)', fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)' }}>
-                Roof Area (sq ft)
-              </label>
-              <span style={{ fontFamily: 'var(--font-bebas)', fontSize: '1.6rem', color: 'var(--amber)', lineHeight: 1 }}>
-                {sqft.toLocaleString()}
-              </span>
-            </div>
-            <input
-              type="range"
-              min={800}
-              max={4500}
-              step={50}
-              value={sqft}
-              onChange={e => setSqft(Number(e.target.value))}
-              className="calc-slider"
-            />
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.4rem' }}>
-              <span style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem', color: 'var(--muted)' }}>800 sq ft</span>
-              <span style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem', color: 'var(--muted)' }}>Typical PDX: 1,800–2,200</span>
-              <span style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem', color: 'var(--muted)' }}>4,500 sq ft</span>
-            </div>
-          </div>
-
-          {/* Material */}
-          <div>
-            <label style={{ display: 'block', fontFamily: 'var(--font-barlow-cond)', fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '0.7rem' }}>
-              Material
-            </label>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
-              {materials.map(m => (
-                <button
-                  key={m.id}
-                  onClick={() => setMatId(m.id)}
-                  style={matId === m.id ? btnSel : btnBase}
-                >
-                  <span style={{ display: 'block', fontWeight: 600, marginBottom: '0.1rem' }}>{m.label}</span>
-                  <span style={{ display: 'block', fontSize: '0.65rem', color: matId === m.id ? 'rgba(245,166,35,0.7)' : 'var(--muted)' }}>
-                    {m.life}{m.tag ? ` · ${m.tag}` : ''}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Pitch */}
-          <div>
-            <label style={{ display: 'block', fontFamily: 'var(--font-barlow-cond)', fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--muted)', marginBottom: '0.7rem' }}>
-              Roof Pitch
-            </label>
-            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-              {pitches.map(p => (
-                <button
-                  key={p.id}
-                  onClick={() => setPitchId(p.id)}
-                  style={{
-                    ...(pitchId === p.id ? btnSel : btnBase),
-                    flex: '1 1 auto',
-                    textAlign: 'center' as const,
-                    padding: '0.5rem 0.3rem',
-                  }}
-                >
-                  <span style={{ display: 'block', fontWeight: 600, fontSize: '0.8rem' }}>{p.label}</span>
-                  <span style={{ display: 'block', fontSize: '0.65rem', color: pitchId === p.id ? 'rgba(245,166,35,0.7)' : 'var(--muted)' }}>{p.sub}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Tear-off toggle */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0.9rem 1rem', background: 'var(--bg3)', border: '1px solid var(--bdr)' }}>
+            {/* Roof Size */}
             <div>
-              <div style={{ fontFamily: 'var(--font-barlow-cond)', fontSize: '0.85rem', fontWeight: 600, color: 'var(--text)' }}>Include tear-off of existing roof</div>
-              <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.65rem', color: 'var(--muted)', marginTop: '0.2rem' }}>+$1.00–$1.50 per sq ft</div>
+              <label
+                htmlFor="calc-sqft"
+                className="flex items-center justify-between text-sm font-semibold mb-2"
+                style={{ color: "#0F172A" }}
+              >
+                <span>Roof Size</span>
+                <span style={{ color: "#0066CC" }}>{sqft.toLocaleString()} sq ft</span>
+              </label>
+              <input
+                id="calc-sqft"
+                type="range"
+                min={1000} max={5000} step={100}
+                value={sqft}
+                onChange={(e) => setSqft(Number(e.target.value))}
+                className="w-full h-2 rounded-lg appearance-none cursor-pointer"
+                style={{
+                  background: `linear-gradient(to right, #0066CC ${((sqft - 1000) / 4000) * 100}%, #E2E8F0 ${((sqft - 1000) / 4000) * 100}%)`,
+                  accentColor: "#0066CC",
+                }}
+              />
+              <div className="flex justify-between text-xs mt-1" style={{ color: "#94A3B8" }}>
+                <span>1,000 sq ft</span>
+                <span>5,000 sq ft</span>
+              </div>
             </div>
-            <button
-              onClick={() => setTearOff(t => !t)}
-              style={{
-                width: 44, height: 24,
-                background: tearOff ? 'var(--amber)' : 'var(--bdr)',
-                border: 'none', cursor: 'pointer',
-                position: 'relative', transition: 'background 0.2s',
-                flexShrink: 0,
-              }}
-              aria-label="Toggle tear-off"
+
+            {/* Material */}
+            <div>
+              <label
+                htmlFor="calc-material"
+                className="block text-sm font-semibold mb-2"
+                style={{ color: "#0F172A" }}
+              >
+                Material
+              </label>
+              <select
+                id="calc-material"
+                value={material}
+                onChange={(e) => setMaterial(e.target.value as MaterialValue)}
+                className="w-full rounded-md border px-4 py-3 text-sm"
+                style={{ borderColor: "#E2E8F0", color: "#0F172A", background: "#FFFFFF" }}
+              >
+                {MATERIALS.map((m) => (
+                  <option key={m.value} value={m.value}>{m.label}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Pitch */}
+            <div>
+              <span className="block text-sm font-semibold mb-2" style={{ color: "#0F172A" }}>
+                Roof Pitch
+              </span>
+              <div className="grid grid-cols-3 gap-2">
+                {(["low", "medium", "steep"] as const).map((p) => (
+                  <button
+                    key={p} type="button" onClick={() => setPitch(p)}
+                    className="rounded-md border px-3 py-2.5 text-sm font-medium capitalize"
+                    style={{
+                      background:   pitch === p ? "#0066CC" : "#FFFFFF",
+                      color:        pitch === p ? "#FFFFFF" : "#475569",
+                      borderColor:  pitch === p ? "#0066CC" : "#E2E8F0",
+                    }}
+                  >
+                    {p}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Stories */}
+            <div>
+              <span className="block text-sm font-semibold mb-2" style={{ color: "#0F172A" }}>
+                Stories
+              </span>
+              <div className="grid grid-cols-3 gap-2">
+                {(["1", "2", "3"] as const).map((s) => (
+                  <button
+                    key={s} type="button" onClick={() => setStories(s)}
+                    className="rounded-md border px-3 py-2.5 text-sm font-medium"
+                    style={{
+                      background:  stories === s ? "#0066CC" : "#FFFFFF",
+                      color:       stories === s ? "#FFFFFF" : "#475569",
+                      borderColor: stories === s ? "#0066CC" : "#E2E8F0",
+                    }}
+                  >
+                    {s} Story
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ── Result ── */}
+          <div className="flex flex-col justify-center gap-4">
+
+            {/* Price range */}
+            <div
+              className="rounded-lg p-6 text-center"
+              style={{ background: "#EFF6FF", border: "1px solid #DBEAFE" }}
             >
-              <span style={{
-                position: 'absolute',
-                top: 4, left: tearOff ? 24 : 4,
-                width: 16, height: 16,
-                background: '#000',
-                transition: 'left 0.2s',
-                display: 'block',
-              }} />
-            </button>
-          </div>
-        </div>
-
-        {/* ── RIGHT: Result ── */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-
-          {/* Main result */}
-          <div key={animKey} className="calc-result-animate" style={{ background: 'var(--bg)', border: '1px solid var(--bdr)', padding: '2rem' }}>
-            <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.65rem', color: 'var(--muted)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-              Estimated project cost (Portland metro)
-            </div>
-            <div style={{ fontFamily: 'var(--font-bebas)', fontSize: 'clamp(2rem,4vw,3.2rem)', color: 'var(--amber)', lineHeight: 1, marginBottom: '0.3rem' }}>
-              {fmt(result.low)} – {fmt(result.high)}
-            </div>
-            <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.7rem', color: 'var(--muted)' }}>
-              {sqft.toLocaleString()} sq ft · {selMat.label} · {selPitch.label} pitch{tearOff ? ' · incl. tear-off' : ''}
-            </div>
-          </div>
-
-          {/* Breakdown */}
-          <div style={{ background: 'var(--bg)', border: '1px solid var(--bdr)', padding: '1.2rem 1.5rem' }}>
-            <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem', color: 'var(--amber)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.8rem' }}>Breakdown</div>
-            {[
-              { label: 'Material cost',  low: Math.round(sqft * selMat.lowPsf * 0.5), high: Math.round(sqft * selMat.highPsf * 0.5) },
-              { label: 'Labour & install', low: Math.round(sqft * selMat.lowPsf * 0.5 * selPitch.multiplier), high: Math.round(sqft * selMat.highPsf * 0.5 * selPitch.multiplier) },
-              ...(tearOff ? [{ label: 'Tear-off & disposal', low: Math.round(sqft * 1.0), high: Math.round(sqft * 1.5) }] : []),
-            ].map(row => (
-              <div key={row.label} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.45rem 0', borderBottom: '1px solid var(--bdr)' }}>
-                <span style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.82rem', color: 'var(--muted)' }}>{row.label}</span>
-                <span style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.75rem', color: 'var(--text)' }}>{fmt(row.low)}–{fmt(row.high)}</span>
+              <div
+                className="text-xs font-bold tracking-wider mb-3"
+                style={{ color: "#94A3B8" }}
+              >
+                ESTIMATED COST RANGE
               </div>
-            ))}
-          </div>
-
-          {/* Pitch impact note */}
-          {selPitch.multiplier > 1 && (
-            <div style={{ padding: '0.8rem 1rem', background: 'rgba(245,166,35,0.05)', border: '1px solid rgba(245,166,35,0.15)' }}>
-              <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.65rem', color: 'var(--amber)', marginBottom: '0.2rem' }}>▸ PITCH PREMIUM</div>
-              <div style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.78rem', color: 'var(--muted)' }}>
-                {selPitch.label} pitch adds a {Math.round((selPitch.multiplier - 1) * 100)}% labour premium due to safety rigging and slower installation speed.
+              <div
+                className="text-3xl sm:text-4xl font-extrabold mb-1"
+                style={{ color: "#0066CC" }}
+              >
+                {fmt(result.low)} – {fmt(result.high)}
               </div>
+              <div className="text-sm mt-1" style={{ color: "#475569" }}>
+                {sqft.toLocaleString()} sq ft · {selectedMat.label} · {pitch} pitch · {stories}-storey
+              </div>
+
+              {/* April 2026 price alert — only for asphalt */}
+              {result.hiked && (
+                <div
+                  className="mt-4 rounded-md px-3 py-2 text-xs text-left"
+                  style={{ background: "#FEF3C7", color: "#92400E", border: "1px solid #FDE68A" }}
+                >
+                  ⚠ Asphalt shingle material costs increased 5–8% on April 15, 2026. These estimates reflect current post-hike pricing.
+                </div>
+              )}
             </div>
-          )}
 
-          {/* Material lifespan note */}
-          <div style={{ padding: '0.8rem 1rem', background: 'var(--bg3)', border: '1px solid var(--bdr)' }}>
-            <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.65rem', color: 'var(--muted)', marginBottom: '0.2rem' }}>MATERIAL LIFESPAN</div>
-            <div style={{ fontFamily: 'var(--font-bebas)', fontSize: '1.2rem', color: 'var(--text)' }}>{selMat.life}</div>
-            <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.65rem', color: 'var(--muted)', marginTop: '0.2rem' }}>
-              Annual cost: {fmt(Math.round(result.low / parseInt(selMat.life.split('–')[0])))}–{fmt(Math.round(result.high / parseInt(selMat.life.split('–')[0])))} / yr
-            </div>
+            {/* Financing note — replaces the misleading monthly calc */}
+            <p className="text-xs" style={{ color: "#94A3B8", lineHeight: 1.6 }}>
+              Most Oregon roofing contractors offer financing options. Ask your contractor about payment plans — terms and rates vary by lender and credit profile.
+            </p>
+
+            {/* CTA */}
+            <a
+              href="/contact"
+              style={{
+                display: "block",
+                textAlign: "center",
+                background: "#0066CC",
+                color: "#fff",
+                fontSize: "0.875rem",
+                fontWeight: 700,
+                padding: "0.75rem 1.5rem",
+                borderRadius: "0.5rem",
+                textDecoration: "none",
+              }}
+            >
+              Get Free Quotes Within This Range →
+            </a>
+
+            <p className="text-xs text-center" style={{ color: "#94A3B8" }}>
+              Estimates are approximate and may vary based on roof condition, access, and local contractor pricing.
+            </p>
           </div>
-
-          {/* Disclaimer */}
-          <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem', color: 'var(--muted)', lineHeight: 1.6, padding: '0 0.2rem' }}>
-            Estimates based on Portland metro contractor data, Q2 2026. Actual costs vary by site conditions, decking state, and contractor. Get 3 quotes before committing.
-          </div>
-
-          {/* CTA */}
-          <a href="/#quote" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openModal')) }} style={{
-            display: 'block',
-            width: '100%', padding: '1rem',
-            background: 'var(--amber)', color: '#000',
-            fontFamily: 'var(--font-barlow-cond)', fontWeight: 700,
-            fontSize: '0.95rem', letterSpacing: '0.1em', textTransform: 'uppercase',
-            textDecoration: 'none', textAlign: 'center',
-          }}>
-            GET REAL QUOTES FOR YOUR ROOF →
-          </a>
         </div>
       </div>
     </div>
-  )
+  );
 }

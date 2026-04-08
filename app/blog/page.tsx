@@ -1,50 +1,72 @@
-import type { Metadata } from 'next'
-import Link    from 'next/link'
-import Nav     from '@/components/Nav'
-import Footer  from '@/components/Footer'
-import PageHero from '@/components/PageHero'
-import { posts, postCategoryLabels, postCategoryColors } from '@/lib/posts'
-import { SITE } from '@/lib/config'
+import type { Metadata } from "next";
+import Link from "next/link";
+import { posts } from "@/lib/posts";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title:`Portland Roofings Blog — Local Roofing News & Data | ${SITE.name}`,
-  description:'Portland roofing news, pricing data, storm damage updates, and contractor market reports.',
-  alternates:{canonical:`${SITE.baseUrl}/blog`},
-}
-
-function formatDate(iso:string){return new Date(iso).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
+  title: "Blog | Oregon Roofing",
+  description:
+    "Oregon roofing tips, material comparisons, and homeowner advice from local roofing professionals.",
+};
 
 export default function BlogPage() {
-  const f={fontFamily:'var(--font-barlow)'}as const
-  const m={fontFamily:'var(--font-space-mono)'}as const
-  const c={fontFamily:'var(--font-barlow-cond)'}as const
-  const sorted=[...posts].sort((a,b)=>new Date(b.published).getTime()-new Date(a.published).getTime())
-  return(
+  return (
     <>
-      <Nav />
       <PageHero
-        imageUrl="/images/hero-blog-hub.jpeg"
-        breadcrumb={[{label:'Home',href:'/'},{label:'Blog'}]}
-        eyebrow="Portland Roofings"
-        title={<>FROM THE<br/><span style={{color:'#F5A623'}}>BLOG</span></>}
-        subtitle="Portland roofing news, pricing data, storm updates, and contractor market reports."
+        breadcrumb={[
+          { label: "Home", href: "/" },
+          { label: "Blog", href: "/blog" },
+        ]}
+        eyebrow="BLOG"
+        title={
+          <>
+            Oregon Roofing <span style={{ color: "#0066CC" }}>Blog</span>
+          </>
+        }
+        subtitle="Expert roofing insights, material comparisons, and practical advice for Oregon homeowners."
       />
-      <section className="section-pad" style={{background:'#fff'}}>
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'1px',background:'var(--bdr)'}}>
-          {sorted.map(p=>(
-            <Link key={p.slug} href={`/blog/${p.slug}`} className="nbhd-card-hover" style={{background:'var(--bg2)',padding:'2rem',textDecoration:'none',display:'flex',flexDirection:'column',gap:'0.7rem'}}>
-              <div style={{display:'inline-block',...m,fontSize:'0.6rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.15rem 0.45rem',background:`${postCategoryColors[p.category]}15`,color:postCategoryColors[p.category],border:`1px solid ${postCategoryColors[p.category]}33`,width:'fit-content'}}>{postCategoryLabels[p.category]}</div>
-              <div style={{...c,fontSize:'1.05rem',fontWeight:700,color:'var(--text)',lineHeight:1.25}}>{p.title}</div>
-              <div style={{...f,fontSize:'0.85rem',color:'var(--muted)',lineHeight:1.6,flex:1,fontWeight:300}}>{p.excerpt.slice(0,120)}…</div>
-              <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
-                <span style={{...m,fontSize:'0.62rem',color:'var(--muted)'}}>{formatDate(p.published)}</span>
-                <span style={{...c,fontSize:'0.82rem',color:'var(--amber)'}}>Read →</span>
-              </div>
-            </Link>
-          ))}
+
+      <section className="section-pad">
+        <div className="content-wrap">
+          <div className="space-y-5">
+            {posts.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="block rounded-lg border p-5 transition-colors hover:border-[#0066CC] hover:bg-[#F8FAFC]"
+                style={{ borderColor: "#E2E8F0" }}
+              >
+                <div
+                  className="flex flex-wrap items-center gap-3 text-xs font-medium mb-2"
+                  style={{ color: "#94A3B8" }}
+                >
+                  <span>{post.date}</span>
+                  <span aria-hidden="true">|</span>
+                  <span>{post.readTime}</span>
+                </div>
+                <h2
+                  className="h-card mb-2"
+                  style={{ color: "#0F172A" }}
+                >
+                  {post.title}
+                </h2>
+                <p
+                  className="body-sm"
+                  style={{ color: "#475569" }}
+                >
+                  {post.description}
+                </p>
+                <span
+                  className="inline-block mt-3 text-sm font-semibold"
+                  style={{ color: "#0066CC" }}
+                >
+                  Read Article
+                </span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
-      <Footer />
     </>
-  )
+  );
 }

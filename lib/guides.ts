@@ -1,6 +1,5 @@
 export interface GuideSection {
   title: string;
-  heading?: string;
   body: string;
 }
 
@@ -9,37 +8,18 @@ export interface GuideFaq {
   answer: string;
 }
 
-export type GuideCategory = 'hiring' | 'maintenance' | 'costs' | 'damage' | 'commercial'
-
 export interface Guide {
   slug: string;
   title: string;
-  headline: string;
   description: string;
   heroDescription: string;
-  category: GuideCategory;
-  featured?: boolean;
-  published: string;
-  readTime: number;
   sections: GuideSection[];
   faqs: GuideFaq[];
-}
-
-export const categoryLabels: Record<GuideCategory, string> = {
-  hiring:      'Hiring',
-  maintenance: 'Maintenance',
-  costs:       'Costs',
-  damage:      'Storm Damage',
-  commercial:  'Commercial',
 }
 
 export const guides: Guide[] = [
   {
     slug: "how-to-choose-roofing-contractor-oregon",
-    category: "hiring" as const,
-    headline: "How to Choose a Roofing Contractor",
-    published: "2024-03-01",
-    readTime: 9,
     title: "How to Choose a Roofing Contractor in Oregon",
     description:
       "Learn what to look for when hiring a roofing contractor in Oregon, from CCB licensing and insurance verification to evaluating bids, reading reviews, and avoiding common scams.",
@@ -105,10 +85,6 @@ export const guides: Guide[] = [
   },
   {
     slug: "oregon-roof-maintenance-guide",
-    category: "maintenance" as const,
-    headline: "Oregon Roof Maintenance Guide",
-    published: "2024-04-01",
-    readTime: 10,
     title: "Oregon Roof Maintenance Guide",
     description:
       "A comprehensive seasonal maintenance guide for Oregon homeowners covering gutter cleaning, moss prevention, inspection schedules, and proactive steps to extend your roof's lifespan.",
@@ -178,10 +154,6 @@ export const guides: Guide[] = [
   },
   {
     slug: "understanding-oregon-roofing-costs",
-    category: "costs" as const,
-    headline: "Understanding Oregon Roofing Costs",
-    published: "2024-04-15",
-    readTime: 11,
     title: "Understanding Oregon Roofing Costs",
     description:
       "A detailed breakdown of roofing costs in Oregon, including material prices, labor rates, regional pricing differences, and factors that influence your total project cost.",
@@ -250,209 +222,232 @@ export const guides: Guide[] = [
     ],
   },
   {
-    slug: "oregon-moss-removal-roof-guide",
-    category: "maintenance" as const,
-    headline: "Moss Removal & Prevention for Oregon Roofs",
-    published: "2024-05-01",
-    readTime: 10,
-    title: "Moss Removal & Prevention for Oregon Roofs",
-    description:
-      "A complete guide to identifying, removing, and preventing moss and algae on Oregon roofs. Covers safe removal methods, zinc and copper treatments, and city-by-city risk levels across the state.",
-    heroDescription:
-      "Oregon's damp climate makes moss the single most common threat to residential roofs in the state. Left unchecked, moss roots lift shingle edges, trap moisture against the deck, and can shorten a roof's lifespan by a decade or more. This guide covers every step of identification, safe removal, and long-term prevention — whether you are in Portland, Astoria, or Bend.",
+    slug: "oregon-regional-roofing-guide",
+    title: "Oregon Regional Roofing Guide: Coast vs Valley vs Desert",
+    description: "Oregon has five distinct roofing climates. What works in Portland fails on the coast, and what is specified in Bend would be over-engineered in Eugene. This guide maps the right materials and maintenance approach to each Oregon region.",
+    heroDescription: "Oregon is not one climate — it is five. The same roof specification that performs well in the Willamette Valley will fail prematurely on the coast and be over-specified for Eastern Oregon. This guide breaks down exactly what each Oregon region demands from a roofing system, and what homeowners in each area need to know before hiring a contractor.",
     sections: [
       {
-        title: "Why Oregon Roofs Are Especially Vulnerable",
-        body: "Oregon's Willamette Valley averages over 43 inches of rain annually, with the Coast Range exceeding 70 inches. Mild winters that rarely drop below freezing mean moisture persists on roof surfaces for months at a time without the freeze-thaw cycles that naturally slow moss growth in colder climates. Add the dense canopy of Douglas fir, Western red cedar, and big-leaf maple that shades roofs throughout much of western Oregon, and you have near-perfect conditions for moss, algae, and lichen. North and west-facing roof slopes are highest risk, as they receive the least direct sun and stay wet the longest. Coastal cities like Astoria, Seaside, and Newport see the most aggressive growth, while eastern Oregon cities like Bend and Pendleton have significantly lower moss risk due to their drier climates.",
+        title: "The Oregon Coast: Salt, Wind, and Maximum Moisture",
+        body: "Coastal Oregon from Astoria south to Coos Bay is the most demanding roofing environment in the state. Annual rainfall exceeds 60 inches in most coastal communities and reaches 80 inches in the northern coast around Astoria. That rainfall arrives alongside consistent onshore winds — sustained winds of 40 to 60 miles per hour during winter storms are common, with gusts exceeding 80 miles per hour during major events. Salt-laden air accelerates corrosion on standard roofing fasteners and flashings, turning a 30-year specification into a 15-year failure when the wrong materials are used. Roofing on the Oregon coast demands wind-rated shingles certified to 130 miles per hour or higher, stainless steel or hot-dipped galvanised fasteners rather than standard zinc-coated nails, a self-adhering underlayment rather than felt, and marine-grade specifications on any metal components. Standing seam metal roofing in marine-grade aluminium or Galvalume steel is the highest-performing choice in coastal communities — it eliminates the fastener corrosion problem entirely and handles wind uplift far better than any shingle system. Expect to replace standard asphalt shingles every 18 to 22 years on the coast even with maintenance; metal installed to coastal specifications should last 40 to 50 years.",
       },
       {
-        title: "Identifying Moss vs. Algae vs. Lichen",
-        body: "Accurate identification matters because each organism requires a different treatment approach. Moss appears as a thick, green, carpet-like growth that stands up from the shingle surface. It actively roots into the granule layer and can lift shingle tabs when growth is significant. Algae presents as black or dark gray streaking — often mistaken for dirt or weathering — and is caused by Gloeocapsa magma bacteria feeding on the limestone filler in asphalt shingles. It does not root as deeply as moss but discolors the roof and can retain moisture. Lichen is the hardest to remove: a symbiotic organism combining algae and fungi that bonds to the shingle surface with root-like structures called rhizines. Lichen removal requires more aggressive treatment and longer dwell times than moss or algae.",
+        title: "Portland Metro: Rain, Shade, and Biological Growth",
+        body: "The Portland metropolitan area — Portland, Beaverton, Hillsboro, Gresham, Lake Oswego, Tigard, and surrounding communities — receives 37 inches of annual rainfall over more than 150 days of measurable precipitation. The challenge is not the volume but the persistence: continuous dampness keeps roofing surfaces wet far more days per year than the total rainfall suggests, and Portland's famous tree canopy adds shade that dramatically accelerates moss and algae growth. Architectural asphalt shingles with algae-resistant granules and a Class 4 impact rating are the baseline specification for the Portland market. The impact rating matters not just for hail but for the debris and branch strikes that Portland's tree canopy makes common during windstorms. Attic ventilation is the single most underspecified element in Portland roofing: inadequate ridge-to-soffit ventilation ratios cause condensation during the moisture-heavy wet season, leading to deck rot that can add $3,000 to $7,000 to replacement costs. Moss prevention through zinc or copper ridge strips and biannual treatment is not optional in shaded Portland locations — it is part of the maintenance cost of any asphalt installation in the metro area.",
       },
       {
-        title: "Safe DIY Removal Methods",
-        body: "If growth is caught early, homeowners can address moss and algae without professional intervention. The safest method is a low-pressure spray of a purpose-formulated roof cleaning solution — either a sodium hypochlorite blend at a 50:50 dilution with water or a commercially available oxygen bleach product. Apply on a cool, overcast day to prevent rapid evaporation, spray from the ridge down to avoid lifting shingles, and allow the solution to dwell for 20 to 30 minutes before rinsing with a garden hose at low pressure. Never use a pressure washer on asphalt shingles: the high-pressure stream strips protective granules, voids manufacturer warranties, and can force water under the shingle layer. For heavy moss, a soft bristle brush can be used to gently dislodge growth after the cleaning solution has done its work — always brush down the slope, never against the shingle direction.",
+        title: "Willamette Valley: Moderate but Wet",
+        body: "The Willamette Valley corridor from Portland south through Salem, Corvallis, Eugene, and Springfield shares many characteristics with the Portland Metro but with lower average costs and slightly less extreme conditions. Annual rainfall ranges from 40 to 50 inches, with Eugene typically at the wetter end and the mid-valley slightly drier. The valley sits in rain shadow relative to the Coast Range and is sheltered from the most severe coastal winds, reducing wind load requirements compared to coastal specifications. The dominant material throughout the valley is architectural asphalt shingles — they provide strong cost-to-performance for the climate — with cedar shake remaining popular in Eugene's historically eco-conscious market. Moss is the primary maintenance concern throughout the valley, particularly on north-facing slopes and under tree canopy. Wine country areas in the Chehalem Mountains and around McMinnville and Newberg offer more sun exposure and somewhat lower moss pressure than the valley floor. The Willamette Valley's mild freezing temperatures mean ice damming is rare and thermal cycling stress is low, which contributes to asphalt shingles achieving the upper end of their warranty life in valley locations with proper maintenance.",
       },
       {
-        title: "When to Call a Professional",
-        body: "Professional roof cleaning is the right call when moss or lichen covers more than 30 percent of the roof surface, when the roof is older than 15 years, or when the slope is steep enough to make safe DIY access impossible. Licensed Oregon roofing contractors use commercial-grade low-pressure soft wash systems that apply treatments more evenly than DIY methods and can treat hard-to-reach valleys and ridge areas safely. Professional cleaning typically costs $250 to $600 for a standard Oregon home, depending on roof size and growth severity. Combine cleaning with a treatment application during the same visit for maximum efficiency. Ask contractors whether they carry a surety bond and general liability insurance before any work begins.",
+        title: "Central Oregon High Desert: UV, Snow, and Fire",
+        body: "The eastern slope of the Cascades produces a dramatically different roofing environment. Bend, Sisters, Redmond, and the surrounding communities sit at 3,600 feet elevation or higher, receiving only 11 to 12 inches of precipitation annually but facing conditions that challenge roofing in entirely different ways. UV intensity at elevation is significantly higher than at sea level, accelerating asphalt degradation and shortening effective shingle life. Snow loads are a structural concern that must be specified at installation — local engineers set the design snow load, and roofing materials and deck systems must be rated accordingly. Wildfire risk is the third factor: Central Oregon has seen significant fire activity, and Class A fire-rated materials are increasingly required by local jurisdictions and insurance carriers. Metal roofing is the most rational choice for Central Oregon on multiple grounds simultaneously: it handles thermal expansion and contraction between cold nights and warm sunny days without cracking; it reflects radiant heat reducing summer cooling loads; and it carries a Class A fire rating as standard without additional treatment. Asphalt shingles remain common in Bend and Redmond due to lower upfront cost, but should be specified with UV-stabilised formulations and high-wind ratings for the plateau's exposed sites.",
       },
       {
-        title: "Zinc and Copper Prevention Strips",
-        body: "The most effective long-term prevention method is the installation of zinc or copper strip along the ridge line. When rain falls on the metal strip, it carries dissolved zinc or copper ions down the roof surface. These metal ions are toxic to moss, algae, and lichen at very low concentrations. Zinc is the more cost-effective option at $1.50 to $3.00 per linear foot installed, while copper is more durable and aesthetically neutral on dark roofs. The strips work best on slopes where the treated water can flow the full length of the roof without interruption. For complex roof designs with multiple hips, valleys, and dormers, additional strip sections placed below each ridge segment improve coverage. Expect noticeable results within one to two full rainy seasons as residual growth dies back and new growth is inhibited.",
-      },
-      {
-        title: "Granular Zinc Sulfate Treatments",
-        body: "For homeowners seeking a seasonal maintenance product without permanent hardware installation, granular zinc sulfate is available at most Oregon hardware stores and garden centers. Apply at a rate of approximately three pounds per 600 square feet of roof area by broadcasting granules along the ridge and upper third of each slope. Fall application before the rainy season begins is the most effective timing. Rain dissolves the granules slowly, carrying zinc sulfate down the slope throughout the wet months. A spring application provides additional protection as growth accelerates with warming temperatures. Granular treatments are not a substitute for cleaning an already heavily affected roof but are an excellent preventive tool when used on a clean surface. Keep product away from gutters that drain to vegetable gardens or water features, as zinc can be harmful to aquatic life in concentrated runoff.",
-      },
-      {
-        title: "Maintenance Schedule for Oregon Homeowners",
-        body: "A consistent annual schedule is the lowest-cost way to manage moss in Oregon. In early October, before the rainy season begins, perform a visual inspection from ground level and apply granular zinc sulfate treatment to the ridge and upper slopes. In late March or April, after the bulk of rain has passed, inspect for new growth and assess whether spot treatment or professional cleaning is warranted. Every three to five years, budget for a professional soft wash to reset the roof surface and follow immediately with a ridge strip installation or granular treatment. Homes in Portland, Corvallis, Eugene, and coastal communities should be on the shorter three-year cycle. Homes in Bend, Medford, and eastern Oregon communities can typically extend to a five-year professional cleaning interval given their lower annual rainfall.",
+        title: "Southern Oregon and Eastern Oregon: Heat, Fire, and Extremes",
+        body: "Southern Oregon — the Medford-Ashland corridor, Grants Pass, Roseburg, and Klamath Falls — combines the wildfire risk of Central Oregon with the humidity of western Oregon during the wet season, creating a demanding dual-season challenge. Fire-rated specifications are not optional in Southern Oregon WUI zones: Jackson and Josephine counties require Class A roofing assemblies for properties in designated wildfire risk areas, and insurance carriers are increasingly declining coverage on non-compliant properties regardless of local code. Metal roofing, concrete tile, and Class A-rated asphalt shingles are the appropriate choices. Eastern Oregon — Pendleton, La Grande, Baker City — presents the state's most extreme thermal cycling, with summer highs above 100 degrees Fahrenheit and winter lows that regularly drop below zero. Low annual rainfall of 7 to 12 inches means biological growth is minimal, but the temperature range stresses roofing materials through expansion and contraction cycles that crack and cup lower-specification products within 5 to 7 years. High-specification architectural shingles with flexibility ratings for extreme temperatures, or standing seam metal roofing, are the appropriate choices for Eastern Oregon's continental climate.",
       },
     ],
     faqs: [
       {
-        question: "Is moss on my roof actually damaging it?",
-        answer:
-          "Yes. Moss roots penetrate the granule layer of asphalt shingles and grow beneath shingle tabs, lifting and separating them from the roof deck. This allows water to infiltrate under the shingles, leading to deck rot, interior leaks, and mold growth in the attic. In advanced cases, moss-damaged roofs may need full replacement years ahead of their expected lifespan. Early removal and consistent prevention are far less expensive than the repairs that moss damage causes.",
+        question: "Does my Oregon region affect what roofing material I should choose?",
+        answer: "Yes, significantly. Coastal Oregon requires marine-grade specifications and wind-rated materials that would be unnecessary in the Willamette Valley. Central and Southern Oregon prioritise fire ratings and UV resistance. Eastern Oregon's extreme temperature range demands materials with high flexibility ratings. The right material for your home depends on your specific location and microclimate, not just the state average.",
       },
       {
-        question: "Can I use bleach to kill moss on my roof?",
-        answer:
-          "A diluted sodium hypochlorite solution is effective at killing moss and algae and is widely used by professional roof cleaners. Mix one part household bleach with one part water, apply with a low-pressure sprayer, allow to dwell for 20 to 30 minutes, and rinse thoroughly. Protect landscaping below gutters during application and rinse the surrounding area with clean water afterward. Avoid full-strength bleach, which can accelerate granule loss on asphalt shingles.",
+        question: "Is moss a problem everywhere in Oregon?",
+        answer: "Moss is a serious concern west of the Cascades — the Portland Metro, Willamette Valley, and Oregon Coast all have the sustained moisture and shade conditions that promote moss growth. East of the Cascades in Central, Southern, and Eastern Oregon, the drier climate significantly reduces moss pressure. Bend, Pendleton, and Medford homeowners rarely deal with the moss maintenance cycles that are standard in Portland or Eugene.",
       },
       {
-        question: "How often should I treat my Oregon roof for moss?",
-        answer:
-          "In western Oregon, annual preventive treatment is recommended for most homes. Apply granular zinc sulfate in early fall and again in spring. Professional cleaning every three to five years resets the surface and removes accumulated growth that preventive treatments cannot address. Homes in Portland, Corvallis, and coastal areas should treat more frequently than homes in drier eastern Oregon cities.",
-      },
-      {
-        question: "Will a zinc strip prevent moss on my entire roof?",
-        answer:
-          "Zinc strips installed at the ridge are highly effective for the upper half to two-thirds of a roof slope on a typical single-story home. On longer slopes or complex roof designs, the zinc concentration diminishes before reaching the lower sections of the roof. For full coverage, install additional strips below dormers and along lower ridges, or supplement with granular zinc sulfate treatments on lower roof sections.",
-      },
-      {
-        question: "What is the difference between moss removal and moss prevention?",
-        answer:
-          "Removal addresses existing growth that is already on the roof, using cleaning solutions and soft brushing to eliminate live and dead organisms. Prevention stops new growth from establishing on a clean or recently treated surface, using zinc strips or granular treatments that release metal ions in rainwater. Both are necessary: removal without follow-up prevention results in regrowth within one to two seasons in Oregon's climate.",
+        question: "Should I choose metal roofing for my Oregon home?",
+        answer: "Metal roofing is the strongest long-term choice in several Oregon contexts: coastal communities where salt air demands marine-grade specifications, Central and Southern Oregon where wildfire risk makes Class A fire ratings a priority, and heavily shaded western Oregon locations where asphalt requires ongoing moss management. For most Willamette Valley homeowners on a standard budget, quality architectural asphalt shingles remain the most practical choice and perform well with appropriate maintenance.",
       },
     ],
   },
   {
-    slug: "storm-damage-roof-insurance-oregon",
-    category: "damage" as const,
-    headline: "Storm Damage & Insurance Claims",
-    published: "2024-05-15",
-    readTime: 12,
-    title: "Storm Damage & Insurance Claims for Oregon Roofs",
-    description:
-      "Step-by-step guidance for Oregon homeowners on documenting storm damage, navigating insurance claims, understanding coverage limits, and hiring the right contractor for repairs.",
-    heroDescription:
-      "Oregon's weather events — from Willamette Valley windstorms to Cascades snowload and coastal gales — can damage roofs with little warning. The decisions you make in the first 24 to 72 hours after a storm directly affect your insurance settlement and the quality of repairs you receive. This guide walks you through every stage, from initial documentation to final contractor sign-off.",
+    slug: "oregon-roofing-contractor-checklist",
+    title: "Oregon Roofing Contractor Checklist: 10 Questions to Ask Before Hiring",
+    description: "Ten specific questions that Oregon homeowners should ask every roofing contractor before signing a contract, with explanation of what good and bad answers look like.",
+    heroDescription: "Hiring a roofing contractor is one of the largest home improvement decisions most Oregon homeowners make. These ten questions — and what to listen for in the answers — will help you identify qualified, trustworthy contractors and avoid the ones who will cause problems.",
     sections: [
       {
-        title: "Immediate Steps After a Storm",
-        body: "Your first priority is safety. Do not access the roof while it is wet, icy, or while wind is still active. From ground level, photograph the exterior of your home from all four corners using a phone camera with location data enabled — the timestamp and geolocation strengthen your insurance documentation. Look for obvious visible damage: missing shingles, displaced ridge cap, damaged gutters, fallen branches on the roof surface, and any debris. Inside the home, inspect the attic with a flashlight for daylight penetrating through the deck, water staining on the sheathing, or active drips. Place buckets as needed and photograph all interior water infiltration with a timestamp. If the roof has a large breach from a fallen tree or structural damage, contact your insurer immediately to ask about emergency tarping coverage before nightfall.",
+        title: "Question 1: What is Your Current CCB Number?",
+        body: "This is your first and most important question. Every contractor performing roofing work in Oregon must hold an active Construction Contractors Board licence. A legitimate contractor will provide their CCB number without hesitation. Once you have it, verify the status yourself at oregon.gov/ccb — check that the licence is current and active, that it has not been suspended or allowed to lapse, and that the category covers the type of work you need. Also review the complaint history section: a contractor with multiple unresolved complaints is a contractor to avoid regardless of how competitive their bid appears. If a contractor cannot provide a CCB number or is evasive about it, stop the conversation and move on. There is no legitimate reason a licensed contractor would be reluctant to share this information.",
       },
       {
-        title: "Documenting Damage for Your Claim",
-        body: "Thorough documentation is the single most important factor in a successful insurance claim. Photograph every area of visible damage in close-up and contextual shots. Shoot from multiple angles so adjusters can understand the scope without requiring an immediate site visit. If it is safe to do so and you have a drone or can access a second-floor window, capture aerial or elevated shots of the roof surface. Create a written log with the date and time of the storm, a description of weather conditions (reference NOAA storm records or local weather service data for your zip code), a room-by-room inventory of interior damage, and the estimated age of any damaged items. Keep all receipts for emergency materials like tarps, buckets, or temporary plywood sheathing. These emergency mitigation costs are typically reimbursable under your homeowner's policy.",
+        title: "Question 2: Can You Provide a Certificate of Insurance?",
+        body: "Oregon CCB licencing requires contractors to carry both general liability insurance and workers compensation coverage. A certificate of insurance is a one-page document from the insurance carrier that confirms the policy is current, lists the coverage amounts, and names you as a certificate holder if you request it. Ask for this document and verify it directly with the carrier listed — it takes one phone call and confirms the policy has not lapsed since the certificate was issued. The minimum you should accept is $1 million per occurrence on general liability. Workers compensation coverage must cover all employees working on your property. A contractor who subcontracts labour must ensure subcontractors also carry their own coverage — ask specifically whether any subcontractors will be used and whether they are insured.",
       },
       {
-        title: "Understanding Your Oregon Homeowner's Policy",
-        body: "Most standard Oregon homeowner's policies cover storm damage from wind and hail under the dwelling coverage section, subject to your deductible. Policies differ significantly on two critical points: actual cash value versus replacement cost value, and how your deductible is calculated. An actual cash value policy pays the depreciated value of damaged materials — a 15-year-old shingle roof may receive significantly less than replacement cost. A replacement cost value policy pays what it actually costs to replace the damaged portion with materials of like kind and quality. In high-wind areas of Oregon, some insurers apply a separate wind or named-storm deductible that is a percentage of your dwelling coverage rather than a flat dollar amount. Review your declarations page carefully before filing a claim. If you do not understand your coverage, an independent insurance agent can review it with you at no cost.",
+        title: "Question 3: Will You Pull the Permit?",
+        body: "Oregon requires permits for full roof replacements in virtually all jurisdictions. The permit should be pulled in the contractor's name, not yours. When the permit is in the contractor's name, they are accountable to the building department for the quality of the installation — it creates a professional obligation that protects you. A contractor who suggests pulling the permit in your name, or who proposes skipping the permit to save money, is transferring liability to you and removing one of your most important protections. The permit cost, typically $150 to $400 for a residential replacement in Oregon, should be included in the contractor's estimate and handled by them as part of the project scope. Ask which jurisdiction the permit will be filed with and what the expected processing time is — this affects project scheduling.",
       },
       {
-        title: "Filing the Claim: Step by Step",
-        body: "Contact your insurer as soon as possible after the storm — most policies require prompt notification and may deny claims for damage reported long after the event. When you call, have your policy number, the date and nature of the event, and your preliminary documentation ready. The insurer will assign a claim number and schedule an adjuster inspection, typically within five to ten business days for standard claims and within 24 to 48 hours for major declared weather events. You have the right to have your own licensed roofing contractor present during the adjuster inspection. This is strongly recommended, as contractors can identify damage that adjusters miss, particularly on complex roofs or when hail damage is subtle. Once the adjuster issues a scope of loss and settlement estimate, review it carefully against a contractor estimate before accepting.",
+        title: "Question 4: What Materials Will You Use and From Which Manufacturer?",
+        body: "A professional estimate specifies the exact materials to be installed — not just 'architectural shingles' but the manufacturer, product line, and colour. This specificity matters for several reasons: warranty claims require the specific product to be documented; the quality difference between budget shingles and premium products is real and affects lifespan; and it allows you to compare estimates accurately when multiple contractors are using different specifications. Ask for the specific product data sheet, which lists the wind rating, fire rating, and warranty terms. If a contractor is evasive about the specific materials — using language like 'a quality shingle' without specifics — ask directly until you get a manufacturer and product name. Any hesitation to provide material specifics is a red flag.",
       },
       {
-        title: "Working With a Roofing Contractor on an Insurance Claim",
-        body: "Choose your roofing contractor independently rather than accepting unsolicited offers from contractors who appear door-to-door after a storm. Storm chasers follow weather events across the country and typically leave the area before warranty claims can be addressed. Select a contractor from our CCB-verified network who can provide local references, a physical Oregon business address, and documentation of active general liability and workers' compensation insurance. A reputable contractor will provide a detailed written estimate that matches the scope of the insurance settlement or documents additional damage not captured in the adjuster's assessment. They should never ask you to sign an assignment of benefits form that transfers control of your insurance proceeds to the contractor. Payment is typically structured as an initial draw when materials are delivered, with the balance due upon satisfactory completion.",
+        title: "Question 5: What Warranty Do You Offer on Your Workmanship?",
+        body: "Material warranties from manufacturers cover defective products, not installation errors. The workmanship warranty from your contractor covers labour-related failures — improper flashing, incorrect nailing patterns, missed penetrations. Workmanship warranty terms in the Oregon market range from one year for budget operators to ten or fifteen years for established contractors with certified installer programmes. Manufacturer-certified installers, such as GAF Master Elite or CertainTeed ShingleMaster contractors, can offer enhanced warranties that combine material and labour coverage. Ask for the workmanship warranty in writing before signing the contract. A contractor who does not offer a written workmanship warranty is not standing behind their installation.",
       },
       {
-        title: "Supplementing a Low Insurance Settlement",
-        body: "If the adjuster's settlement appears lower than the actual cost of repair, you have options. First, obtain a detailed written estimate from a licensed contractor that itemizes all necessary work. Present this to your insurer as a formal supplement request, identifying specific line items where the adjuster's estimate is insufficient. Insurers routinely issue supplements when presented with documented evidence of undervalued or overlooked damage. If the gap is significant and supplementing does not resolve it, most Oregon homeowner's policies include an appraisal clause that allows each party to hire an independent appraiser, with disputes resolved by an agreed umpire. As a last resort, the Oregon Division of Financial Regulation handles complaints against insurance companies and can intervene in bad-faith claim handling situations.",
+        title: "Question 6: Who Will Be On-Site Managing the Crew?",
+        body: "Understand who will actually be present and responsible during your roof installation. Large contracting companies sometimes win the job and then subcontract the installation to a different crew, with minimal oversight from the estimator you met. This is not inherently problematic — skilled subcontractors can do excellent work — but you deserve to know who will be on your property and whether a supervisor from the company will be present. Ask directly: will the crew performing the work be your employees or subcontractors? Who will be on-site as the project supervisor? Will the estimator or a manager be available to address questions during the installation? A contractor who commits a senior person to be on-site for at least the critical phases — underlayment inspection, flashing installation — is demonstrating quality control commitment.",
       },
       {
-        title: "Preventing Future Storm Damage",
-        body: "The most effective protection against storm damage is a well-maintained roof with intact flashing, sealed penetrations, and no pre-existing vulnerabilities that storms can exploit. After completing repairs, ask your contractor to inspect all flashing at chimneys, skylights, vents, and valleys for early signs of failure. In high-wind coastal areas like Astoria, Newport, and Lincoln City, consider impact-resistant shingles rated Class 4 for hail and Class F for wind when replacing damaged sections. In the Cascades and higher-elevation communities like Sisters and Hood River, ensure attic insulation and ventilation meet current standards to prevent ice dam formation during freeze-thaw cycles. Keep trees trimmed to prevent branch contact with the roof surface, and install gutter guards to prevent debris accumulation that causes water backup during heavy rainfall events.",
+        title: "Question 7: How Do You Handle Unexpected Deck Damage?",
+        body: "When shingles are removed, the contractor may find rotted or damaged deck boards that need replacement before the new roofing is installed. How a contractor handles this scenario tells you a great deal about their integrity. The right answer is: they stop and show you the damage, explain the extent and cause, provide a written change order for the additional cost, and obtain your approval before proceeding. The wrong answer is: they replace it and tell you about it afterwards, presenting a surprise bill. Ask this question directly before work begins and get the process documented in writing: what triggers a change order, how will you be notified, and how will additional work be priced. A common pricing method is a per-sheet rate for additional decking, typically $70 to $150 per sheet installed in Oregon's current market.",
+      },
+      {
+        title: "Question 8: What Is the Payment Schedule?",
+        body: "Oregon law and industry standards support a specific payment structure: a deposit of no more than one-third of the total contract price at signing, a progress payment at a defined project milestone such as materials delivered and underlayment installed, and the final payment upon completion and your inspection and approval. Be cautious of contractors who request more than one-third upfront — this creates a cash flow imbalance that gives them leverage and reduces yours. Never pay in full before the job is complete and you have inspected the work. Cash-only payment requests are a serious red flag. Payment by cheque or card creates a paper trail; cash payments do not, which becomes important if a dispute arises later.",
+      },
+      {
+        title: "Question 9: What Is the Cleanup and Disposal Plan?",
+        body: "A full roof replacement generates significant waste — old shingles, underlayment, fasteners, and debris. Ask specifically what the disposal plan is and whether waste removal is included in the price. In Oregon, roofing materials must be disposed of in accordance with DEQ regulations — dumping old shingles in an unauthorised location is an environmental violation, and some contractors pass this cost to homeowners through surprise charges after the fact. Verify that daily cleanup is included: shingles and fasteners falling into garden beds, gutters, and driveways are both a safety issue and a source of post-project frustration. Ask whether a magnetic roller will be used on driveways and lawn areas to collect fallen fasteners — this is a standard practice for conscientious contractors and an easy quality signal to check.",
+      },
+      {
+        title: "Question 10: Can You Provide References From Similar Projects?",
+        body: "Ask for three references from projects similar to yours in scope, material, and recency — within the past two years is ideal. When you call those references, ask specifically about communication during the project, how surprises or changes were handled, whether the timeline was met, how the site was left at the end of each day, and whether they would hire the contractor again. The last question is the most important: homeowners who have had a bad experience almost never say they would hire the contractor again, even if they give diplomatic answers to everything else. Also ask whether the contractor completed a final walkthrough with them after the job was done. Contractors who do a completion inspection demonstrate that they stand behind their work and are willing to be accountable for what was installed.",
       },
     ],
     faqs: [
       {
-        question: "Does homeowner's insurance cover moss and algae damage in Oregon?",
-        answer:
-          "No. Insurance policies cover sudden and accidental damage from storm events, not gradual deterioration from moss, algae, or lack of maintenance. If an adjuster determines that pre-existing moss damage contributed to a storm claim, they may reduce or deny that portion of the claim on the basis of maintenance neglect. Keeping your roof clean and treated is not just good practice — it protects your coverage.",
+        question: "How many estimates should I get for a roof replacement?",
+        answer: "Get at least three written estimates from different contractors. This gives you a baseline for what the market price is, allows you to compare material specifications, and helps identify outliers — both unusually high bids and suspiciously low ones. If one bid is 40 percent lower than the others, ask the contractor to explain specifically where they are saving money.",
       },
       {
-        question: "How long do I have to file a roof damage claim in Oregon?",
-        answer:
-          "Oregon law gives homeowners one year from the date of loss to file a claim under most standard homeowner's policies, but individual policies may have shorter notification requirements. File as soon as you identify storm damage — delays can result in claim denial and make it harder to document that damage is storm-related rather than from wear over time. When in doubt, call your insurer to ask about notification requirements before deciding whether to file.",
+        question: "Should I be concerned if a contractor has any CCB complaints?",
+        answer: "One or two resolved complaints over many years of operation is not necessarily disqualifying — contractors who do enough volume will occasionally have disputes. What to look for are unresolved complaints, disciplinary actions from the CCB, patterns of the same type of complaint, and recent complaints within the last two years. Multiple unresolved complaints are a serious warning sign.",
       },
       {
-        question: "Should I get a contractor estimate before calling my insurer?",
-        answer:
-          "It is helpful to have a rough contractor assessment before calling, but do not wait to notify your insurer while waiting for estimates. Notify the insurer first to establish the claim date, then schedule your contractor assessment before or during the adjuster inspection. Having a contractor present during the adjuster visit is generally the most effective approach for ensuring all damage is captured in the initial settlement.",
-      },
-      {
-        question: "What is an assignment of benefits form and should I sign one?",
-        answer:
-          "An assignment of benefits (AOB) form transfers your rights to the insurance proceeds directly to the contractor, removing you from the claims process. Oregon has seen significant fraud associated with AOB arrangements. Avoid signing them. A legitimate contractor will provide their services and be paid after the work is completed and you are satisfied, not through a transfer of your insurance rights. If a contractor insists on an AOB before starting work, find a different contractor.",
-      },
-      {
-        question: "How do I know if I have hail damage on my roof?",
-        answer:
-          "Hail damage on asphalt shingles presents as random circular impact marks that remove the protective granule layer, exposing the dark asphalt substrate beneath. Unlike wear-related granule loss which appears uniform across the slope, hail impacts are scattered randomly across the surface. Check metal surfaces — gutters, downspouts, fascia, and AC units — for fresh dents, which confirm hail was present. Soft metal flashing dents easily and is a reliable hail indicator. If you see these signs after a storm, contact a licensed contractor for an inspection before contacting your insurer.",
+        question: "What happens if I hire an unlicensed contractor in Oregon?",
+        answer: "Hiring an unlicensed contractor removes all of the legal protections the CCB system provides: there is no bond to claim against, no licence to file a complaint against, and typically no insurance for damage caused. Unpermitted work done by unlicensed contractors can also create problems at resale, void homeowner's insurance, and result in stop-work orders from building departments.",
       },
     ],
   },
   {
-    slug: "commercial-flat-roof-maintenance-oregon",
-    category: "commercial" as const,
-    headline: "Commercial & Flat Roof Maintenance",
-    published: "2024-06-01",
-    readTime: 13,
-    title: "Commercial & Flat Roof Maintenance in Oregon",
-    description:
-      "A practical maintenance guide for Oregon commercial property owners and facility managers covering TPO, EPDM, and modified bitumen flat roofing systems, inspection schedules, drainage management, and finding qualified Oregon contractors.",
-    heroDescription:
-      "Flat and low-slope roofs are the most common commercial roofing system in Oregon, and they require a fundamentally different maintenance approach than residential sloped roofs. Without the natural drainage of a pitched surface, flat roofs depend entirely on proper membrane integrity, functioning drains, and regular inspection to prevent water infiltration. This guide gives Oregon commercial property owners and facility managers the knowledge to maintain their roofing systems cost-effectively.",
+    slug: "oregon-roof-insurance-claims-guide",
+    title: "Oregon Homeowner's Guide to Roof Insurance Claims",
+    description: "What Oregon homeowners need to know about filing a roof insurance claim: what damage is covered, how the claims process works, how to document damage, and how to avoid common mistakes that reduce or deny your payout.",
+    heroDescription: "A roof insurance claim in Oregon is one of the largest single claims most homeowners file. The difference between a fully paid claim and a denied or underpaid one often comes down to documentation, timing, and knowing what your policy actually covers. This guide walks you through the process from first damage to final settlement.",
     sections: [
       {
-        title: "Understanding Flat Roof Systems Used in Oregon",
-        body: "Commercial flat roofing in Oregon is dominated by three primary membrane systems, each with distinct maintenance requirements. TPO (thermoplastic polyolefin) is the most widely installed new commercial membrane in Oregon due to its energy efficiency, heat-welded seams, and relatively low installed cost of $5 to $8 per square foot. It performs well in Oregon's wet climate but can be vulnerable to UV degradation over time if the reflective surface is not kept clean. EPDM (ethylene propylene diene terpolymer), commonly called rubber roofing, is the incumbent system on most commercial buildings installed before 2000. EPDM is highly durable, typically lasting 25 to 30 years with proper maintenance, but its adhesive seams and flashing details require regular inspection as the adhesive ages. Modified bitumen is an asphalt-based system applied in layers and is often found on older Oregon commercial and multi-family buildings. It is repairable with compatible materials and tolerant of ponding water but requires more frequent professional inspection than TPO or EPDM.",
+        title: "What Roof Damage Oregon Home Insurance Typically Covers",
+        body: "Standard homeowner's insurance policies in Oregon cover roof damage caused by sudden, accidental events — wind, hail, falling trees, ice damming, and fire. The key word is sudden: insurance is designed to cover events, not gradual deterioration. Wind damage from a named storm event is typically covered; wear and tear on shingles from years of exposure is not. This distinction matters for moss damage, which is considered maintenance neglect in most policy language, and for shingles that are curling or failing due to age. Oregon's most common covered roof claims are storm-related: wind damage from winter storms that remove shingles or damage flashing, hail damage particularly in the Portland Metro and Willamette Valley during spring convective events, and damage from falling trees or large branches. The Oregon coast sees significant wind claims during winter storm season. Wildfire damage in Southern and Central Oregon is covered under most policies, though premiums and available coverage in high-risk WUI zones have become a significant issue as carriers have reduced their Oregon exposure.",
       },
       {
-        title: "Bi-Annual Inspection Schedule",
-        body: "Commercial flat roofs in Oregon should receive a formal inspection twice per year: once in spring after the rainy season to assess winter damage, and once in fall before the rains begin to address any vulnerabilities before months of sustained moisture exposure. Spring inspections focus on identifying membrane damage caused by debris, hail, or wind-lifted flashings over winter. Fall inspections prioritize drain clearing, seam integrity, and flashing condition to ensure the system can handle six months of continuous rain. Each inspection should be documented with photographs and a written condition report, which creates a maintenance record that is essential for insurance claims and future roof assessments. For facilities with rooftop HVAC units, restaurant exhaust, or heavy foot traffic from maintenance personnel, quarterly spot inspections of high-traffic areas are advisable.",
+        title: "How to Document Damage Before Calling Your Insurer",
+        body: "Documentation is the foundation of a successful roof insurance claim. Before you call your insurance company, gather as much evidence of the damage as you can — both of the event that caused it and the resulting condition of the roof. For storm damage, screenshot and save weather records showing wind speeds, hail reports, or storm severity for your ZIP code on the date of the event. The National Weather Service maintains historical records, and services like Weather Underground provide hyperlocal station data that can document the severity of a storm at your specific address. Photograph the damage from the ground and, if safe, from the roof itself — capture wide shots showing the roof area and close shots showing specific damage points. Photograph the interior as well: water stains on ceilings, damaged insulation in the attic, and any standing water. Date-stamp all photographs. Save any pieces of roofing that have blown off — these can serve as evidence. If the damage occurred during a storm and you have neighbours with similar damage, their claims can corroborate your timeline.",
       },
       {
-        title: "Drainage: The Most Critical Maintenance Factor",
-        body: "Flat roofs do not drain by gravity the way pitched roofs do. Oregon's high annual rainfall means standing water — ponding — is a constant risk on any flat roof where drains are partially blocked or where the roof surface has settled unevenly. Ponding water adds significant structural load: a one-inch deep pool of water across a 5,000 square foot roof adds over 25,000 pounds of weight. More critically, standing water degrades membrane seams and adhesives over time and provides an ideal environment for vegetation growth that roots into the membrane. Clear all internal roof drains and scuppers before each rainy season. Inspect drain screens quarterly and remove debris after major storms. If ponding water persists for more than 48 hours after rain stops in areas away from drains, the roof may need tapered insulation installed to correct the slope and improve drainage.",
+        title: "The Oregon Claims Process: What to Expect",
+        body: "After you file a claim, your insurance company will assign an adjuster to assess the damage. In Oregon, adjusters have a statutory obligation to respond to claims within a reasonable timeframe, and insurers must accept or deny coverage within a defined period under the Oregon Insurance Code. The adjuster's visit is the critical step: they will inspect the roof, document what they find, and prepare an estimate for the covered repair or replacement cost. Be present for this inspection if at all possible. You have the right to have your own contractor present, and for significant claims, having a CCB-licensed contractor who has already assessed the damage on-site alongside the adjuster can significantly affect the scope of what is documented. If the adjuster's estimate seems low or misses damage that your contractor identified, you can request a re-inspection or supplement the claim with your contractor's written assessment. Oregon homeowners also have the right to hire a public adjuster — an independent adjuster who represents your interests rather than the insurance company's.",
       },
       {
-        title: "Seam and Flashing Inspection",
-        body: "The vast majority of flat roof leaks in Oregon originate at seams and flashings rather than through the field of the membrane. For TPO roofs, inspect all heat-welded seams for separation, lifting edges, or punctures. Probe seams gently with a dull tool — any seam that opens under light pressure needs immediate repair. For EPDM, inspect adhesive lap seams for edge lifting and check all pitch pockets and curb flashings around rooftop equipment penetrations. Modified bitumen flashings at parapet walls are a common failure point: inspect the termination bar where the flashing is mechanically fastened to the wall and ensure sealant at the termination edge is continuous and not cracking. All penetrations — pipes, conduit, HVAC curbs, and skylights — should be individually inspected each season, as differential movement between the building structure and rooftop equipment causes flashing stress that leads to leaks.",
+        title: "Understanding Actual Cash Value vs Replacement Cost Value",
+        body: "The single most impactful coverage distinction in a roof insurance claim is whether your policy pays Actual Cash Value or Replacement Cost Value. Replacement Cost Value policies pay the full cost of replacing your damaged roof with a new equivalent system at current material and labour prices — this is what most homeowners expect when they file a claim. Actual Cash Value policies deduct depreciation from the replacement cost, based on the age and condition of your existing roof. A 20-year-old roof might be depreciated by 60 to 70 percent, meaning the insurer pays only 30 to 40 cents on the dollar of the replacement cost. If you are not sure which coverage you have, check your declarations page or call your agent now rather than when you are filing a claim. Many policies that pay ACV on initial settlement will release the depreciation holdback once the replacement is complete and you submit receipts — this is called recoverable depreciation, and failing to claim it is one of the most common and costly mistakes Oregon homeowners make.",
       },
       {
-        title: "Preventive Repairs vs. Full Replacement",
-        body: "Oregon's wet climate means that deferred maintenance on a commercial flat roof compounds quickly. Small seam separations that might be stable in a dry climate become active leaks within a single rainy season here. As a general rule, a flat roof membrane in good overall condition with isolated damage affecting less than 25 percent of its surface area is a good candidate for targeted repair. When damage is widespread, when the membrane has reached the end of its expected service life (typically 15 to 20 years for TPO, 25 to 30 years for EPDM), or when repair costs in a single year exceed 25 percent of replacement cost, full or sectional replacement is the better investment. Before committing to replacement, have an infrared moisture scan conducted by a qualified contractor. Infrared scanning identifies wet insulation beneath the membrane that cannot be detected visually, allowing you to determine whether the existing substrate can be retained as a base for a recover system, which costs 20 to 40 percent less than a full tear-off replacement.",
-      },
-      {
-        title: "Rooftop Equipment and Foot Traffic Management",
-        body: "Rooftop HVAC units, solar panel arrays, and communication equipment are significant contributors to flat roof deterioration in Oregon. Maintenance personnel accessing rooftop equipment are a leading cause of punctures, scuff marks, and displaced ballast on membrane systems. Install designated walk pads — rubber or TPO-coated walkway boards — on all regular maintenance paths between roof access points and rooftop equipment. Ensure all HVAC condensate lines drain away from the membrane and do not pool. Inspect equipment curb flashings every time the rooftop is accessed for maintenance. Coordinate with HVAC contractors and other service vendors to ensure they understand the membrane system they are working around and that they report any damage they observe during service visits. A simple photo log submitted after each rooftop service call creates accountability and catches membrane damage before it becomes a leak.",
-      },
-      {
-        title: "Hiring a Qualified Oregon Commercial Roofing Contractor",
-        body: "Commercial roofing requires specialized skills and licensing beyond what standard residential contractors possess. In Oregon, verify that any commercial roofing contractor holds an active CCB license with a commercial endorsement and carries commercial general liability coverage of at least $1 million per occurrence, plus workers' compensation for all employees and subcontractors. Request evidence that their technicians are trained and certified on the specific membrane system on your building — TPO and EPDM manufacturers offer certification programs for installers, and certified installers are typically required to issue manufacturer-backed warranties. Ask for a project list of similar commercial properties in Oregon with references you can contact. For buildings over 10,000 square feet or with complex roof assemblies, request that the contractor provide a written maintenance plan with each inspection, not just a verbal summary. Documented maintenance plans are increasingly required by commercial property insurers and create a clear record for property transactions.",
+        title: "Common Mistakes That Reduce or Deny Oregon Roof Claims",
+        body: "Several patterns consistently lead to reduced or denied roof insurance claims in Oregon. Filing too late is the first: most Oregon policies require claims to be filed within a reasonable time of the damage occurring, and some specify a maximum period. If you discover storm damage weeks or months after a major weather event, the insurer may argue that delay prevented them from assessing the original damage and that subsequent weather changes complicate the cause-of-loss determination. Making repairs before the adjuster inspects is another common mistake: emergency tarping and temporary repairs are appropriate and expected, but major repairs completed before the adjuster's visit remove evidence and can complicate coverage. Deferred maintenance is a claim denial trigger — if the adjuster finds a roof with significant pre-existing deterioration, the insurer can deny the claim on the grounds that the damage resulted from maintenance neglect rather than the storm event. Finally, working with contractors who directly bill insurers and discourage homeowner involvement can result in settlements that benefit the contractor rather than ensuring the homeowner's property is properly restored.",
       },
     ],
     faqs: [
       {
-        question: "How often should a commercial flat roof in Oregon be professionally inspected?",
-        answer:
-          "At minimum, twice per year — once in spring and once in fall. Buildings with heavy rooftop equipment, active drainage issues, or membranes older than 15 years should add a summer inspection to stay ahead of developing problems. Oregon's long rainy season makes fall the most critical inspection, as any unaddressed vulnerability will be tested by six months of continuous rainfall.",
+        question: "Will my insurance rates go up if I file a roof claim?",
+        answer: "Filing a claim can affect your future premiums, but the impact varies significantly by insurer and claims history. In Oregon, insurers cannot non-renew a policy solely because you filed one weather-related claim. However, multiple claims within a short period, or a claims history that makes you a higher risk, can lead to premium increases or non-renewal at the end of your policy term. Weigh the claim benefit against your deductible and potential premium impact for smaller damage amounts.",
       },
       {
-        question: "What is the best flat roofing system for Oregon's climate?",
-        answer:
-          "TPO is the most widely recommended new installation for Oregon commercial buildings due to its heat-welded seams, which are more watertight than the adhesive seams of EPDM, and its resistance to the biological growth that thrives in Oregon's damp climate. EPDM remains an excellent performer when its seams are properly maintained. The best system for your specific building depends on roof slope, rooftop equipment loads, and budget — a licensed commercial roofing contractor can assess your current system and recommend the most appropriate solution.",
+        question: "Can I choose my own roofing contractor for an insurance claim?",
+        answer: "Yes. Oregon homeowners have the right to choose their own CCB-licensed contractor for insurance repair work. Your insurer may have a preferred contractor network, but you are not required to use it. The insurer pays the contractor's invoice up to the approved claim amount. If your chosen contractor's estimate exceeds the insurer's approved amount, you and your contractor can work together to supplement the claim with additional documentation.",
       },
       {
-        question: "What causes most flat roof leaks in Oregon?",
-        answer:
-          "The majority of flat roof leaks in Oregon originate at seams, flashings, and penetrations rather than through the body of the membrane. Flashing failures at parapet walls, HVAC curbs, and pipe penetrations are the most common source. Debris accumulation at drains causes ponding water that stresses seams over time. Regular inspection of these specific areas catches the vast majority of developing leaks before they cause interior damage.",
+        question: "What is an insurance deductible and how does it affect my claim?",
+        answer: "Your deductible is the amount you pay out of pocket before insurance pays the remainder. If your roof replacement costs $14,000 and your deductible is $2,500, the insurer pays $11,500. Oregon law prohibits contractors from waiving or paying your deductible on your behalf — a contractor who offers to cover your deductible is engaging in insurance fraud, and homeowners who participate can face legal exposure. Pay your deductible directly and keep documentation.",
+      },
+    ],
+  },
+  {
+    slug: "solar-ready-roofing-oregon",
+    title: "Solar-Ready Roofing in Oregon: What to Spec Before You Install Panels",
+    description: "If you plan to add solar within the next 10 years, your roofing decisions today matter significantly. This guide covers what to specify, what to avoid, and how Oregon's new HB 4029 solar consumer protection law affects homeowners who are re-roofing ahead of a solar installation.",
+    heroDescription: "Re-roofing and solar installation are increasingly planned together in Oregon. The decisions you make on your roof today — material, pitch orientation, penetration placement, structural load — directly affect what your solar installation will cost and how well it will perform. This guide covers what to get right the first time.",
+    sections: [
+      {
+        title: "Why Re-Roofing Before Solar Makes Sense",
+        body: "Most solar installers require the roof they are mounting on to have at least 10 to 15 years of remaining useful life. Panels that are installed on a roof approaching end-of-life will need to be removed and reinstalled when the roof is replaced — a process that typically costs $3,000 to $8,000 in Oregon's current labour market, depending on the system size, in addition to the roof replacement cost. Homeowners who plan their roofing and solar projects together avoid this cost entirely and can coordinate both systems for optimal performance. The roof replacement becomes an investment in the solar system's foundation rather than a standalone expense. Oregon's mild climate and relatively strong solar resource — particularly east of the Cascades and in the southern part of the state — make solar economically viable for a wide range of homeowners, and the planning horizon for solar has shortened as panel costs have fallen and Oregon incentive programmes have expanded through the Energy Trust of Oregon.",
       },
       {
-        question: "Can I coat my existing flat roof instead of replacing it?",
-        answer:
-          "Fluid-applied coatings can extend the life of a sound flat roof membrane by five to ten years and are a cost-effective alternative to full replacement when the existing membrane is structurally intact but showing surface wear. Coatings are not appropriate over wet or delaminated insulation, failed seams, or membranes with widespread damage. An infrared moisture scan before coating is essential to confirm the substrate is dry. Silicone coatings perform best in Oregon due to their resistance to ponding water, while acrylic coatings are not recommended for western Oregon's wet climate.",
+        title: "Material Choices That Work Best With Solar",
+        body: "Not all roofing materials accommodate solar panel installation equally. Standing seam metal roofing is the most solar-compatible material available: clamp-based solar mounting systems attach directly to the seams without any penetrations into the roof surface, eliminating leak risk entirely and simplifying installation. This mounting advantage, combined with metal's 40 to 70 year lifespan, makes it the optimal substrate for homeowners planning solar. Architectural asphalt shingles are compatible with standard rail-and-bracket mounting systems and work well for most residential solar installations — they are the most common substrate for rooftop solar in Oregon. Specify asphalt shingles with a lifespan that extends well beyond your planned solar installation period: if you plan to install solar in 5 years, a 30-year shingle installed today gives you 25 years of life after installation, comfortably above the 10-year minimum most solar installers require. Cedar shake is problematic for solar: the material's texture makes sealing penetrations difficult, and the additional weight of racking on older shake can exceed load limits. Concrete and clay tile require specialised mounting equipment that increases installation cost. If you have tile and are planning solar, discuss the mounting approach with your solar installer before re-roofing.",
       },
       {
-        question: "Does Oregon require permits for commercial roofing work?",
-        answer:
-          "Yes. Oregon requires building permits for commercial roofing replacements in all jurisdictions. Some jurisdictions also require permits for re-covering an existing membrane. Permit requirements vary by city and county, but your licensed commercial roofing contractor should handle all permit applications, inspections, and final approvals as part of the project scope. Confirm this responsibility is clearly stated in your contract before work begins.",
+        title: "Structural and Orientation Considerations",
+        body: "Solar panels add load to your roof structure — typically 3 to 5 pounds per square foot for a standard panel array. Most Oregon homes built to current code have adequate structural capacity for a standard residential solar system, but older homes with undersized rafters or deteriorated framing may require reinforcement before panels can be added. When re-roofing an older home you plan to install solar on, ask your roofing contractor to assess the attic framing and note any areas where rafters are damaged, undersized, or inadequately supported. Addressing structural issues during the re-roofing project is significantly less expensive than doing it separately when the solar installer identifies them. Panel orientation is largely determined by roof geometry, but if you have any flexibility during a re-roofing project — such as adding a new dormer, changing a pitch, or rebuilding a flat section — a south-facing orientation between 15 and 35 degrees from horizontal produces the highest annual energy output for most Oregon locations. West-facing orientations are increasingly specified in Oregon as utilities shift more generation to the morning, making afternoon production from west-facing panels more valuable.",
+      },
+      {
+        title: "What HB 4029 Means for Your Re-Roofing and Solar Plan",
+        body: "Oregon's House Bill 4029, signed March 5, 2026, and effective June 5, 2026, is the state's first solar consumer protection law. It requires solar contractors to provide a written plain-language disclosure before any contract is signed — the disclosure must itemise all costs, financing terms, estimated energy production, and all conditions of any lease or power purchase agreement. For homeowners planning a roofing and solar project together, HB 4029 has several practical implications. First, it means your solar contractor must be able to provide the full financial picture of your solar system before you commit — this allows you to coordinate the total cost of both projects accurately. Second, it strengthens the licensing requirements for solar contractors, which means the pool of compliant installers is being clarified as the law takes effect. Third, the law does not cover situations where contractors fail to respond after installation — a limitation that emphasises the importance of verifying CCB licence status and checking complaint history before signing with any contractor. Ask your roofing contractor whether they work with or can recommend solar installers who are already operating in compliance with HB 4029 requirements.",
+      },
+      {
+        title: "Planning the Conduit and Wiring Route During Re-Roofing",
+        body: "One of the most cost-effective solar-ready preparations you can make during a re-roofing project is planning the electrical conduit route. Solar installations require conduit runs from the panels on the roof down to the inverter, which is typically installed near the electrical panel — often in a garage or utility room. If the conduit path runs through finished interior spaces, retrofitting it after the fact can require cutting and patching drywall, which adds $500 to $2,000 to the solar installation cost. During re-roofing, your contractor has access to the attic and roof penetration points, making it straightforward to install a sleeve or conduit pathway for future wiring at minimal cost — typically $100 to $300 added to the roofing contract. Similarly, confirm with your roofing contractor that penetrations for future conduit runs will be flashed and sealed correctly. Solar conduit penetrations that are not properly flashed are a leading cause of water intrusion complaints after solar installation. Discuss specifically which roof areas are planned for panels and which side of the roof the conduit will exit — your roofing contractor can pre-stage the flashing for minimum disruption when the solar installation occurs.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How long does a roof need to last before solar can be installed?",
+        answer: "Most Oregon solar installers require at least 10 to 15 years of remaining roof life before they will mount panels. Some installers will work with 8 to 10 years for homeowners who understand the removal cost risk. If your roof is approaching 15 years old or showing significant wear, replacing it before installing solar eliminates the risk of a costly panel removal mid-system life.",
+      },
+      {
+        question: "Does the type of roofing material affect my solar system cost?",
+        answer: "Yes. Standing seam metal roofing reduces solar installation cost because clamp-based mounting requires no penetrations. Standard asphalt shingles are straightforward and most solar installers work with them routinely. Cedar shake, concrete tile, and clay tile all require specialised mounting that increases installation cost. If you are re-roofing specifically to prepare for solar, the material choice is worth discussing with your solar installer before you commit.",
+      },
+      {
+        question: "What does HB 4029 require my solar contractor to give me?",
+        answer: "From June 5, 2026, Oregon solar contractors must provide a written plain-language disclosure before any contract is signed. This disclosure must include all costs, financing terms including the full interest cost of any loan, estimated annual energy production, and all terms of any lease or power purchase agreement. If your contractor cannot or will not provide this disclosure before asking you to sign, they are in violation of Oregon law.",
+      },
+    ],
+  },
+  {
+    slug: "oregon-roofing-building-codes",
+    title: "Oregon Building Codes for Roofing: State vs Local Requirements",
+    description: "Oregon roofing is governed by state code, but local jurisdictions layer their own requirements on top. This guide explains what the Oregon Residential Specialty Code requires, how local amendments work, and what to check before starting any roofing project.",
+    heroDescription: "Oregon has a statewide residential building code, but it is not the whole picture. Local jurisdictions can and do amend it — sometimes significantly. Understanding which rules apply to your property determines what materials are required, what permits are needed, and what inspectors will check. This guide covers both layers.",
+    sections: [
+      {
+        title: "The Oregon Residential Specialty Code",
+        body: "Oregon's primary residential building code is the Oregon Residential Specialty Code, which adopts and modifies the International Residential Code for statewide use. The ORSC establishes minimum standards for roofing construction throughout the state, including requirements for underlayment, flashing, ventilation, fastening patterns, and material ratings. Key roofing provisions include: a minimum Class C fire rating for roofing assemblies in most areas, with Class A required in designated wildfire interface zones; a minimum one-quarter inch per foot slope for asphalt shingles; specific ice and water shield underlayment requirements at eaves and valleys in areas with potential for ice dam formation; and ventilation ratios for attic spaces based on the ceiling and roof geometry. The ORSC is adopted and enforced by local building departments, which have the authority to adopt additional local amendments — meaning the ORSC is a floor, not a ceiling, and local requirements can be more stringent.",
+      },
+      {
+        title: "How Local Amendments Work in Oregon",
+        body: "Oregon building code law allows local jurisdictions to adopt amendments to the ORSC that address local conditions, provided those amendments are at least as protective as the state minimum. In practice, this means several categories of local amendments are common in Oregon. Wildfire interface requirements: communities in Josephine, Jackson, Klamath, and Deschutes counties often require Class A fire-rated assemblies in WUI zones where the state code requires only Class C. Wind load requirements: coastal communities from Astoria to Coos Bay frequently adopt enhanced wind resistance standards, requiring higher-rated shingle products and more frequent fastening patterns than the state baseline. Historic district requirements: cities including Jacksonville, Astoria, and portions of Portland require design review for roofing projects in historic districts, which can restrict material choices, colours, and profile. Energy code amendments: some jurisdictions have adopted enhanced insulation and ventilation requirements beyond the ORSC baseline, affecting attic assembly design.",
+      },
+      {
+        title: "What Oregon Permits Require for Roofing",
+        body: "Oregon requires building permits for all full roof replacements throughout the state — this is a statewide requirement with no local opt-out. Permits are also required for structural repairs to the roof deck, adding penetrations such as skylights or vents, and reroofing over an existing layer where local code limits layers. Minor repairs — replacing a few shingles, resealing flashings, patching small areas — generally do not require permits, though the threshold varies by jurisdiction. The permit application process requires the property address, a description of the work, the roofing materials being installed including manufacturer and product, the CCB licence number of the contractor, and the estimated project value. Some jurisdictions require a simple plan showing the roof geometry. Permit fees are calculated as a percentage of project value in most Oregon cities, typically resulting in fees of $150 to $500 for a standard residential replacement. Processing times range from same-day for online applications in larger cities to two weeks in smaller jurisdictions with limited staffing.",
+      },
+      {
+        title: "Inspection Requirements by Jurisdiction Type",
+        body: "Oregon roofing inspections verify code compliance at the installation level. What inspectors look for varies by jurisdiction but consistently includes: proper underlayment installation with specified laps and ice and water shield at valleys and eaves; correct fastening pattern for the material and wind zone; flashing installation at all penetrations, valleys, walls, and transitions; ventilation compliance including ridge vent and soffit vent area; and starter strip and ridge cap installation. Most residential roof replacements require a single final inspection after installation is complete. Some jurisdictions — particularly those with enhanced wind or fire requirements — may require a mid-project inspection of the underlayment before finish materials are applied. Portland specifically inspects attic ventilation as part of roofing inspections, which can result in required ventilation upgrades as a condition of permit approval on older homes with inadequate ridge-to-soffit ratios. Failure to schedule required inspections can result in the permit being declared inactive and the work being considered unpermitted.",
+      },
+      {
+        title: "Special Code Requirements by Oregon Region",
+        body: "Beyond the standard ORSC provisions, Oregon's diverse geography creates regionally specific code environments. Coastal communities from Astoria to Coos Bay apply enhanced wind design requirements: shingles must be rated for higher wind speeds, fastening patterns require more nails per shingle, and ridge cap specifications are tightened. The Oregon Building Codes Division publishes the wind speed maps used for coastal design, which contractors and engineers use to specify appropriate products. Central Oregon communities including Bend, Redmond, and Sisters require compliance with snow load design standards set by structural engineering analysis for each county and sub-region — roof decks must be sized to carry the specified design snow load, which affects deck thickness requirements and rafter spacing. Southern Oregon WUI jurisdictions require Class A fire-rated roofing assemblies for properties in mapped wildfire interface zones, with compliance verified at permit inspection. Historic district requirements in cities including Jacksonville, Astoria, and Portland's Irvington and Ladd's Addition neighbourhoods require design review approval that may mandate specific materials, colours, or profiles to match the district's historic character.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How do I find out what codes apply to my Oregon property?",
+        answer: "Contact your local building department with your property address. Ask specifically whether the property is in a wildfire interface zone, a historic district, a coastal high-wind zone, or a snow country zone, and what roofing-specific requirements apply to each designation. Many Oregon cities and counties publish their local amendments to the state code online, though the building department is the authoritative source.",
+      },
+      {
+        question: "Can I reroof without pulling a permit in Oregon?",
+        answer: "No. Oregon requires permits for full roof replacements statewide. Unpermitted work creates problems at resale, can void homeowner's insurance coverage for roof-related claims, and may require the work to be exposed for inspection if discovered. The permit process also provides legal protection: if permitted work fails inspection, the contractor is responsible for correction at no additional cost to the homeowner.",
+      },
+      {
+        question: "What happens if I disagree with an inspector's finding?",
+        answer: "Oregon homeowners and contractors have the right to appeal an inspector's decision through the building department's formal appeals process. The Oregon Building Codes Division also has an appeals board for state code interpretations. In practice, most inspection disagreements are resolved through conversation with the inspector or the building official — identifying the specific code section at issue and either correcting the installation or demonstrating code compliance resolves most disputes without formal appeal.",
       },
     ],
   },
@@ -460,8 +455,4 @@ export const guides: Guide[] = [
 
 export function getGuideBySlug(slug: string): Guide | undefined {
   return guides.find((g) => g.slug === slug);
-}
-
-export function getStaticGuidePaths() {
-  return guides.map((g) => ({ slug: g.slug }));
 }

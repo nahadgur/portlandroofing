@@ -1,181 +1,140 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
 
-const links = [
-  { label: 'Cost Index',    href: '/pdx-cost-index' },
-  { label: 'Storm Tracker', href: '/storm-tracker/pdx-active-warnings' },
-  { label: 'Neighborhoods', href: '/#neighborhoods' },
-  { label: 'Services',      href: '/services' },
-  { label: 'Guides',        href: '/guides' },
-  { label: 'Blog',          href: '/blog' },
-  { label: 'Contact',       href: '/contact' },
-]
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+const NAV_LINKS: NavLink[] = [
+  { label: "Cost Index", href: "/or-cost-index" },
+  { label: "Cities",     href: "/oregon" },
+  { label: "Services",   href: "/services" },
+  { label: "Guides",     href: "/guides" },
+  { label: "Blog",       href: "/blog" },
+  { label: "Contact",    href: "/contact" },
+];
 
 export default function Nav() {
-  const [open, setOpen] = useState(false)
-  const pathname = usePathname()
+  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
 
-  // Close on route change
-  useEffect(() => { setOpen(false) }, [pathname])
-
-  // Lock body scroll when menu open
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [open])
-
-  const linkStyle = {
-    fontFamily: 'var(--font-barlow-cond)',
-    fontSize: '0.78rem',
-    letterSpacing: '0.1em',
-    textTransform: 'uppercase' as const,
-    color: 'rgba(255,255,255,0.55)',
-    textDecoration: 'none',
-    whiteSpace: 'nowrap' as const,
-  }
+  const closeMobile = () => setMobileOpen(false);
 
   return (
-    <>
-      {/* ── NAV BAR ── */}
-      <nav style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '0 1.5rem', height: '60px',
-        background: '#0A0B0D',
-        position: 'sticky', top: 0, zIndex: 200,
-        borderBottom: '1px solid rgba(255,255,255,0.06)',
-      }}>
-        {/* Logo */}
-        <Link href="/" onClick={() => setOpen(false)} style={{
-          fontFamily: 'var(--font-bebas)',
-          fontSize: 'clamp(1.1rem, 4vw, 1.55rem)',
-          letterSpacing: '0.06em',
-          color: '#fff', textDecoration: 'none',
-          whiteSpace: 'nowrap', flexShrink: 0,
-        }}>
-          PORTLAND <span style={{ color: '#F5A623' }}>ROOFINGS</span>
+    <header className="sticky top-0 z-50 bg-[#0F172A] border-b border-slate-800">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+
+        {/* Brand */}
+        <Link href="/" className="flex items-center gap-1 text-xl font-bold">
+          <span className="text-[#0066CC]">Oregon</span>
+          <span className="text-white">Roofing</span>
         </Link>
 
         {/* Desktop links */}
-        <ul className="nav-links-desktop" style={{ listStyle: 'none', display: 'flex', gap: '2rem', flexShrink: 0 }}>
-          {links.map(({ label, href }) => (
-            <li key={href}>
-              <Link href={href} style={linkStyle}>{label}</Link>
+        <ul className="hidden md:flex items-center gap-6">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} className="nav-link">
+                {link.label}
+              </Link>
             </li>
           ))}
         </ul>
 
-        {/* Right side: CTA + hamburger */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
-          <Link href="/#lead-form" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openModal')) }} style={{
-            background: '#F5A623', color: '#000',
-            fontFamily: 'var(--font-barlow-cond)', fontWeight: 700,
-            fontSize: 'clamp(0.68rem, 2vw, 0.8rem)',
-            letterSpacing: '0.08em', textTransform: 'uppercase',
-            padding: '0.5rem 1rem', textDecoration: 'none', whiteSpace: 'nowrap',
-          }}>
-            Get Quotes →
-          </Link>
+        {/* Desktop CTA */}
+        <Link
+          href="/contact"
+          className="hidden md:inline-flex items-center gap-2 rounded-md bg-[#0066CC] px-4 py-2 text-sm font-semibold text-white"
+          style={{ transition: "background 0.2s, transform 0.2s, box-shadow 0.2s" }}
+          onMouseEnter={e => {
+            (e.currentTarget as HTMLElement).style.background = "#0052a3";
+            (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
+            (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(0,102,204,0.3)";
+          }}
+          onMouseLeave={e => {
+            (e.currentTarget as HTMLElement).style.background = "#0066CC";
+            (e.currentTarget as HTMLElement).style.transform = "";
+            (e.currentTarget as HTMLElement).style.boxShadow = "";
+          }}
+        >
+          Get Free Quote
+        </Link>
 
-          {/* Hamburger — mobile only */}
-          <button
-            onClick={() => setOpen(o => !o)}
-            aria-label="Menu"
-            className="hamburger-btn"
-            style={{
-              background: 'transparent', border: '1px solid rgba(255,255,255,0.2)',
-              color: '#fff', cursor: 'pointer',
-              width: 40, height: 40,
-              display: 'flex', flexDirection: 'column',
-              alignItems: 'center', justifyContent: 'center', gap: '5px',
-              padding: 0, flexShrink: 0,
-            }}
-          >
-            <span style={{ display: 'block', width: 18, height: 2, background: open ? '#F5A623' : '#fff', transition: 'all 0.2s', transform: open ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
-            <span style={{ display: 'block', width: 18, height: 2, background: '#fff', opacity: open ? 0 : 1, transition: 'opacity 0.2s' }} />
-            <span style={{ display: 'block', width: 18, height: 2, background: open ? '#F5A623' : '#fff', transition: 'all 0.2s', transform: open ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
-          </button>
-        </div>
+        {/* Mobile hamburger */}
+        <button
+          type="button"
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="flex md:hidden items-center justify-center rounded-md p-2 text-slate-300 hover:text-white"
+          style={{ transition: "color 0.2s" }}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+        >
+          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
       </nav>
 
-      {/* ── MOBILE DRAWER ── */}
-      {/* Backdrop */}
-      {open && (
+      {/* Mobile overlay */}
+      {mobileOpen && (
         <div
-          onClick={() => setOpen(false)}
-          style={{
-            position: 'fixed', inset: 0, zIndex: 190,
-            background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(2px)',
-          }}
+          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+          style={{ animation: "fadeIn 0.2s both" }}
+          onClick={closeMobile}
+          aria-hidden="true"
         />
       )}
 
-      {/* Drawer panel */}
-      <div style={{
-        position: 'fixed', top: '60px', right: 0, bottom: 0,
-        width: 'min(300px, 80vw)',
-        background: '#0A0B0D',
-        borderLeft: '1px solid rgba(255,255,255,0.08)',
-        zIndex: 195,
-        transform: open ? 'translateX(0)' : 'translateX(100%)',
-        transition: 'transform 0.28s cubic-bezier(0.4,0,0.2,1)',
-        display: 'flex', flexDirection: 'column',
-        overflowY: 'auto',
-      }}>
-        {/* Nav links */}
-        <div style={{ padding: '1rem 0' }}>
-          {links.map(({ label, href }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={() => setOpen(false)}
-              style={{
-                display: 'block',
-                padding: '1rem 1.5rem',
-                fontFamily: 'var(--font-barlow-cond)',
-                fontSize: '1rem',
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.7)',
-                textDecoration: 'none',
-                borderBottom: '1px solid rgba(255,255,255,0.06)',
-              }}
-            >
-              {label}
-            </Link>
-          ))}
+      {/* Mobile drawer */}
+      <div
+        className={`fixed top-0 right-0 z-50 h-full w-72 bg-[#0F172A] shadow-2xl md:hidden`}
+        style={{
+          transition: "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          transform: mobileOpen ? "translateX(0)" : "translateX(100%)",
+        }}
+      >
+        <div className="flex items-center justify-between border-b border-slate-800 px-4 py-3">
+          <Link href="/" className="text-lg font-bold" onClick={closeMobile}>
+            <span className="text-[#0066CC]">Oregon</span>{" "}
+            <span className="text-white">Roofing</span>
+          </Link>
+          <button
+            type="button"
+            onClick={closeMobile}
+            className="rounded-md p-2 text-slate-300 hover:text-white"
+            style={{ transition: "color 0.2s" }}
+            aria-label="Close menu"
+          >
+            <X className="h-6 w-6" />
+          </button>
         </div>
 
-        {/* CTA inside drawer */}
-        <div style={{ padding: '1.5rem' }}>
+        <ul className="flex flex-col gap-1 px-4 py-6">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                onClick={closeMobile}
+                className="block rounded-md px-3 py-3 text-base font-medium text-slate-300 hover:bg-slate-800 hover:text-white"
+                style={{ transition: "background 0.2s, color 0.2s" }}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <div className="border-t border-slate-800 px-4 py-4">
           <Link
-            href="/#lead-form"
-            onClick={(e) => { e.preventDefault(); setOpen(false); window.dispatchEvent(new CustomEvent('openModal')) }}
-            style={{
-              display: 'block', textAlign: 'center',
-              background: '#F5A623', color: '#000',
-              fontFamily: 'var(--font-barlow-cond)', fontWeight: 700,
-              fontSize: '1rem', letterSpacing: '0.12em',
-              textTransform: 'uppercase', padding: '1rem',
-              textDecoration: 'none',
-            }}
+            href="/contact"
+            onClick={closeMobile}
+            className="flex items-center justify-center gap-2 rounded-md bg-[#0066CC] px-4 py-3 text-sm font-semibold text-white"
+            style={{ transition: "background 0.2s" }}
           >
-            Get Free Quotes →
+            Get Free Quote
           </Link>
         </div>
-
-        {/* Footer note */}
-        <div style={{ padding: '1rem 1.5rem', marginTop: 'auto' }}>
-          <p style={{
-            fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem',
-            color: 'rgba(255,255,255,0.25)', lineHeight: 1.6,
-          }}>
-            Not a contractor. Lead referral platform serving 50+ Portland neighborhoods.
-          </p>
-        </div>
       </div>
-    </>
-  )
+    </header>
+  );
 }
