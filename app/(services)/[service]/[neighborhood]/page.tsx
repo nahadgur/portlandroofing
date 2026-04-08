@@ -218,15 +218,10 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
             const localLow  = Math.round(s.avgLow  * (nb.indexPct / 71))
             const localHigh = Math.round(s.avgHigh * (nb.indexPct / 71))
             return (
-              <a key={nb.slug} href={`/${s.slug}/${nb.slug}`} style={{
+              <a key={nb.slug} href={`/${s.slug}/${nb.slug}`} className="svc-area-link" style={{
                 display:'block', padding:'1.2rem 1.4rem',
-                background:'rgba(255,255,255,0.03)',
                 textDecoration:'none',
-                transition:'background 0.15s',
-              }}
-              onMouseEnter={e=>(e.currentTarget.style.background='rgba(255,255,255,0.07)')}
-              onMouseLeave={e=>(e.currentTarget.style.background='rgba(255,255,255,0.03)')}
-              >
+              }}>
                 <div style={{...m,fontSize:'0.6rem',color:'rgba(255,255,255,0.3)',letterSpacing:'0.1em',textTransform:'uppercase',marginBottom:'0.35rem'}}>{nb.zip} · {nb.area}</div>
                 <div style={{...c,fontSize:'0.95rem',fontWeight:700,color:'#fff',marginBottom:'0.3rem'}}>{nb.name}</div>
                 <div style={{...m,fontSize:'0.68rem',color:'#F5A623'}}>

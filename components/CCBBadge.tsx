@@ -1,3 +1,5 @@
+'use client'
+
 import { ccbVerifyUrl } from '@/lib/contractors'
 
 interface Props {
