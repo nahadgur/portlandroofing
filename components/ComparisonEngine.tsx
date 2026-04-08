@@ -188,7 +188,7 @@ export default function ComparisonEngine({ defaultTab = 'asphalt', neighborhood,
                     {row.winner === col && (
                       <span style={{ ...m, fontSize:'0.55rem', color:'var(--amber)', marginRight:'0.35rem', letterSpacing:'0.08em' }}>▲</span>
                     )}
-                    {(row as Record<string, string>)[col]}
+                    {(row as unknown as Record<string, string>)[col]}
                   </td>
                 ))}
               </tr>
