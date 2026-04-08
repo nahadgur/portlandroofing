@@ -49,15 +49,19 @@ export function neighborhoodSchema(n: Neighborhood) {
   }
 }
 
-export function faqSchema(faqs: { q: string; a: string }[]) {
+export function faqSchema(faqs: ({ q: string; a: string } | { question: string; answer: string })[]) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map(({ q, a }) => ({
-      '@type': 'Question',
-      name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
-    })),
+    mainEntity: faqs.map((item) => {
+      const q = 'q' in item ? item.q : item.question
+      const a = 'a' in item ? item.a : item.answer
+      return {
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      }
+    }),
   }
 }
 

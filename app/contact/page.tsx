@@ -14,28 +14,28 @@ export const metadata: Metadata = {
 
 const CONTACT_FAQS = [
   {
-    q: "How quickly will I hear back after submitting a quote request?",
-    a:
+    question: "How quickly will I hear back after submitting a quote request?",
+    answer:
       "Most homeowners hear back within 1-2 business hours during normal business hours. We connect you with local, CCB-licensed contractors who are ready to help.",
   },
   {
-    q: "Is the quote really free with no obligation?",
-    a:
+    question: "Is the quote really free with no obligation?",
+    answer:
       "Yes. Every quote through Oregon Roofing is completely free with zero obligation. You are never pressured to commit, and your information is only shared with verified contractors in your area.",
   },
   {
-    q: "What areas does Oregon Roofing serve?",
-    a:
+    question: "What areas does Oregon Roofing serve?",
+    answer:
       "Oregon Roofing connects homeowners with contractors across 40 cities statewide, from Portland and Eugene to Bend, Medford, Astoria, and everywhere in between.",
   },
   {
-    q: "How do I know the contractors are legitimate?",
-    a:
+    question: "How do I know the contractors are legitimate?",
+    answer:
       "Every contractor in our network is verified through our 47-point vetting process. This includes CCB license verification, insurance validation, reference checks, and ongoing performance monitoring.",
   },
   {
-    q: "Can I request a specific type of roofing material?",
-    a:
+    question: "Can I request a specific type of roofing material?",
+    answer:
       "Absolutely. When you submit your quote request, you can specify your preferred material -- whether that is asphalt shingles, metal roofing, cedar shake, or flat roofing. Your matched contractor will provide pricing for your chosen material.",
   },
 ];
