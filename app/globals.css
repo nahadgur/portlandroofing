@@ -2,17 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── LIGHT THEME TOKENS ─────────────────────────────────────────────── */
 :root {
-  --bg:    #0A0B0D;
-  --bg2:   #111318;
-  --bg3:   #181C23;
-  --amber: #F5A623;
-  --amber2:#FFD166;
-  --red:   #E63946;
-  --text:  #EDEAE2;
-  --muted: #B0BAC8;
-  --bdr:   #242830;
-  --green: #2ECC71;
+  --bg:    #FFFFFF;
+  --bg2:   #F5F4F0;
+  --bg3:   #ECEAE4;
+  --amber: #C47D0A;       /* darkened for readability on white */
+  --amber-btn: #F5A623;   /* original for button backgrounds */
+  --amber2:#E8920C;
+  --red:   #C8202C;
+  --text:  #1A1A17;
+  --muted: #6B6860;
+  --bdr:   #D8D5CE;
+  --green: #1A8A45;
+  /* hero section always stays dark */
+  --hero-bg: #0A0B0D;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -34,10 +38,12 @@ h3{font-size:clamp(1.1rem,3vw,1.4rem);}
 .ticker-track{display:flex;gap:0;animation:ticker 30s linear infinite;white-space:nowrap;}
 .ticker-track:hover{animation-play-state:paused;}
 
+/* Hero grid — dark lines on dark bg */
 .grid-bg{
+  background-color: var(--hero-bg);
   background-image:
-    repeating-linear-gradient(0deg,transparent,transparent 39px,var(--bdr) 39px,var(--bdr) 40px),
-    repeating-linear-gradient(90deg,transparent,transparent 39px,var(--bdr) 39px,var(--bdr) 40px);
+    repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,0.05) 39px,rgba(255,255,255,0.05) 40px),
+    repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,0.05) 39px,rgba(255,255,255,0.05) 40px);
   background-size:40px 40px;
 }
 
@@ -47,32 +53,17 @@ h3{font-size:clamp(1.1rem,3vw,1.4rem);}
 .grid-nbhd         { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--bdr); }
 .grid-contractors  { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--bdr); }
 .grid-footer-top   { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
-
-/* grid-faq: centered, not left-anchored */
 .grid-faq          { display:grid; grid-template-columns:1fr 1fr; gap:2rem; width:100%; }
-
-/* grid-index-stats: centered */
 .grid-index-stats  { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--bdr); margin-top:3rem; width:100%; }
-
 .grid-nbhd-hero    { display:grid; grid-template-columns:1fr 420px; gap:4rem; align-items:start; }
 .grid-nearby       { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--bdr); }
 .grid-nbhd-data    { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--bdr); margin-bottom:2.5rem; }
 .grid-cta-form     { display:grid; grid-template-columns:1fr 420px; gap:4rem; align-items:center; }
 .grid-calculator   { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
 
-/* ─── CENTERING UTILITY ──────────────────────────────────────────────── */
-/* Use this on any text content block with a max-width — ensures centering */
-.content-wrap {
-  max-width: 900px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.content-wrap-wide {
-  max-width: 1100px;
-  margin: 0 auto;
-  width: 100%;
-}
+/* ─── CONTENT CENTERING ──────────────────────────────────────────────── */
+.content-wrap      { max-width:900px; margin:0 auto; width:100%; }
+.content-wrap-wide { max-width:1100px; margin:0 auto; width:100%; }
 
 /* ─── NAV ────────────────────────────────────────────────────────────── */
 .nav-links-desktop { display:flex; gap:2rem; list-style:none; }
@@ -85,10 +76,10 @@ h3{font-size:clamp(1.1rem,3vw,1.4rem);}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .blink{animation:blink 1.4s ease-in-out infinite;}
 
-.badge-vetting{background:rgba(245,166,35,.08);color:var(--amber);border:1px solid rgba(245,166,35,.3);}
+.badge-vetting{background:rgba(196,125,10,.08);color:var(--amber);border:1px solid rgba(196,125,10,.3);}
 .badge-coming {background:transparent;color:var(--muted);border:1px solid var(--bdr);}
-.badge-hot    {background:rgba(230,57,70,.12);color:var(--red);border:1px solid rgba(230,57,70,.25);}
-.badge-new    {background:rgba(46,204,113,.1);color:var(--green);border:1px solid rgba(46,204,113,.25);}
+.badge-hot    {background:rgba(200,32,44,.08);color:var(--red);border:1px solid rgba(200,32,44,.2);}
+.badge-new    {background:rgba(26,138,69,.08);color:var(--green);border:1px solid rgba(26,138,69,.2);}
 
 .pi-bar      {height:4px;background:var(--bdr);}
 .pi-bar-fill {height:100%;background:var(--amber);}
@@ -98,27 +89,24 @@ h3{font-size:clamp(1.1rem,3vw,1.4rem);}
 
 .form-option{transition:border-color .18s,background .18s,color .18s;}
 .form-option:hover{border-color:var(--amber);color:var(--text);}
-.form-option.selected{border-color:var(--amber);background:rgba(245,166,35,.07);color:var(--amber);}
+.form-option.selected{border-color:var(--amber);background:rgba(196,125,10,.06);color:var(--amber);}
 
 /* ─── CALCULATOR ─────────────────────────────────────────────────────── */
 .calc-slider{-webkit-appearance:none;width:100%;height:4px;background:var(--bdr);outline:none;cursor:pointer;}
-.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:var(--amber);cursor:pointer;border-radius:0;}
-.calc-slider::-moz-range-thumb{width:20px;height:20px;background:var(--amber);cursor:pointer;border-radius:0;border:none;}
+.calc-slider::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;background:var(--amber-btn);cursor:pointer;border-radius:0;}
+.calc-slider::-moz-range-thumb{width:20px;height:20px;background:var(--amber-btn);cursor:pointer;border-radius:0;border:none;}
 @keyframes resultPop{0%{opacity:.4;transform:scale(.97)}100%{opacity:1;transform:scale(1)}}
 .calc-result-animate{animation:resultPop .25s ease-out;}
 
-
 /* ─── STICKY MODAL CTA ───────────────────────────────────────────────── */
-/* Mobile bar: visible on mobile, hidden on desktop */
 .mobile-sticky-cta  { display:flex; }
 .desktop-sticky-cta { display:none; }
 
 @media(min-width:768px){
   .mobile-sticky-cta  { display:none; }
   .desktop-sticky-cta { display:flex !important; }
-  body { padding-bottom: 0; }
+  body                { padding-bottom:0; }
 }
-
 
 /* ─── BREAKPOINTS ────────────────────────────────────────────────────── */
 @media(max-width:1024px){
@@ -128,7 +116,7 @@ h3{font-size:clamp(1.1rem,3vw,1.4rem);}
   .grid-nbhd-hero       {grid-template-columns:1fr;}
   .grid-cta-form        {grid-template-columns:1fr;}
   .grid-calculator      {grid-template-columns:1fr;}
-  .mobile-cta-bar       {display:block;}
+  .mobile-sticky-cta    {display:flex;}
   body                  {padding-bottom:64px;}
 }
 @media(max-width:900px){
