@@ -11,20 +11,54 @@ const links = [
 
 export default function Nav() {
   return (
-    <nav style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'0 1.5rem', height:'56px', borderBottom:'1px solid var(--bdr)', background:'rgba(10,11,13,0.97)', backdropFilter:'blur(8px)', position:'sticky', top:0, zIndex:100, gap:'1rem' }}>
-      <Link href="/" style={{ fontFamily:'var(--font-bebas)', fontSize:'clamp(1.1rem,4vw,1.6rem)', letterSpacing:'0.04em', color:'var(--text)', textDecoration:'none', whiteSpace:'nowrap', flexShrink:0 }}>
-        PORTLAND <span style={{ color:'var(--amber)' }}>ROOFINGS</span>
+    <nav style={{
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      padding: '0 2.5rem', height: '60px',
+      background: '#0A0B0D',
+      position: 'sticky', top: 0, zIndex: 100,
+    }}>
+      {/* Logo */}
+      <Link href="/" style={{
+        fontFamily: 'var(--font-bebas)',
+        fontSize: 'clamp(1.1rem, 3vw, 1.55rem)',
+        letterSpacing: '0.06em',
+        color: '#fff',
+        textDecoration: 'none',
+        whiteSpace: 'nowrap',
+        flexShrink: 0,
+      }}>
+        PORTLAND <span style={{ color: '#F5A623' }}>ROOFINGS</span>
       </Link>
-      <ul className="nav-links-desktop" style={{ flexShrink:0 }}>
+
+      {/* Links */}
+      <ul className="nav-links-desktop" style={{ flexShrink: 0 }}>
         {links.map(({ label, href }) => (
           <li key={href}>
-            <Link href={href} style={{ fontFamily:'var(--font-barlow-cond)', fontSize:'0.78rem', letterSpacing:'0.1em', textTransform:'uppercase', color:'var(--muted)', textDecoration:'none', whiteSpace:'nowrap' }}>
+            <Link href={href} style={{
+              fontFamily: 'var(--font-barlow-cond)',
+              fontSize: '0.78rem',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.55)',
+              textDecoration: 'none',
+              whiteSpace: 'nowrap',
+              transition: 'color 0.15s',
+            }}>
               {label}
             </Link>
           </li>
         ))}
       </ul>
-      <Link href="/#quote" style={{ background:'var(--amber)', color:'#000', fontFamily:'var(--font-barlow-cond)', fontWeight:700, fontSize:'clamp(0.68rem,2vw,0.8rem)', letterSpacing:'0.08em', textTransform:'uppercase', padding:'0.5rem 0.9rem', textDecoration:'none', whiteSpace:'nowrap', flexShrink:0 }}>
+
+      {/* CTA */}
+      <Link href="/#quote" style={{
+        background: '#F5A623', color: '#000',
+        fontFamily: 'var(--font-barlow-cond)', fontWeight: 700,
+        fontSize: 'clamp(0.68rem, 2vw, 0.8rem)',
+        letterSpacing: '0.08em', textTransform: 'uppercase',
+        padding: '0.5rem 1.1rem',
+        textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0,
+      }}>
         Get Quotes →
       </Link>
     </nav>
