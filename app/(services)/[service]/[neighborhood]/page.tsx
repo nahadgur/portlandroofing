@@ -8,6 +8,7 @@ import LeadForm from '@/components/LeadForm'
 import PageHero from '@/components/PageHero'
 import { getServiceImage } from '@/lib/neighborhoodImages'
 import NeighborhoodSwitcher from '@/components/NeighborhoodSwitcher'
+import ComparisonEngine      from '@/components/ComparisonEngine'
 import { services, getServiceBySlug } from '@/lib/services'
 import { neighborhoods, getNeighborhoodBySlug, permitLabels } from '@/lib/neighborhoods'
 import { SITE } from '@/lib/config'
@@ -37,6 +38,15 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
   if (!s||!n) notFound()
 
   const permit   = permitLabels[n.permitScore]
+
+  const tabMap: Record<string, 'asphalt' | 'metal' | 'cedar' | 'flat'> = {
+    'roof-replacement':    'asphalt',
+    'roof-repair':         'asphalt',
+    'metal-roofing':       'metal',
+    'cedar-shake-roofing': 'cedar',
+    'flat-roofing':        'flat',
+  }
+  const defaultTab = tabMap[s.slug] ?? 'asphalt'
   const url      = `${SITE.baseUrl}/${s.slug}/${n.slug}`
   const localLow  = Math.round(s.avgLow  * (n.indexPct / 71))
   const localHigh = Math.round(s.avgHigh * (n.indexPct / 71))
@@ -123,6 +133,25 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+
+      {/* Material Comparison */}
+      <section className="section-pad" style={{background:'#fff'}}>
+        <div className="content-wrap-wide">
+          <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Material Comparison ]</div>
+          <h2 style={{...d,fontSize:'clamp(1.6rem,3vw,2.5rem)',color:'var(--text)',lineHeight:1,marginBottom:'0.5rem'}}>
+            HOW {s.name.toUpperCase()} COMPARES
+          </h2>
+          <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',maxWidth:'600px',lineHeight:1.7,fontWeight:300,marginBottom:'2rem'}}>
+            Portland-specific cost, lifespan, and maintenance data across all four roofing materials.{s.slug === 'metal-roofing' ? ' Select the Metal tab to see break-even vs asphalt for ' + n.name + '.' : ' Switch tabs to compare.'}
+          </p>
+          <ComparisonEngine
+            defaultTab={defaultTab}
+            neighborhood={n.name}
+            avgCost={n.avgCost}
+          />
         </div>
       </section>
 
