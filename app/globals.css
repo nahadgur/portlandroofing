@@ -10,8 +10,8 @@
   --amber: #F5A623;
   --amber2:#FFD166;
   --red:   #E63946;
-  --text:  #E8E6E0;
-  --muted: #7A7F8E;
+  --text:  #EDEAE2;
+  --muted: #B0BAC8;
   --bdr:   #242830;
   --green: #2ECC71;
 }
@@ -19,7 +19,7 @@
 /* ─── BASE ───────────────────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:var(--font-barlow),sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-barlow),sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
 
 /* ─── TICKER ─────────────────────────────────────────────────────────── */
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -55,7 +55,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-barlow),sans-
 .section-pad { padding:5rem 3rem; border-bottom:1px solid var(--bdr); }
 
 /* ─── UTILITIES ──────────────────────────────────────────────────────── */
-.mono-badge{font-family:var(--font-space-mono),monospace;font-size:.65rem;letter-spacing:.08em;padding:.2rem .5rem;text-transform:uppercase;}
+.mono-badge{font-family:var(--font-space-mono),monospace;font-size:.68rem;letter-spacing:.08em;padding:.2rem .5rem;text-transform:uppercase;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .blink{animation:blink 1.4s ease-in-out infinite;}
 
@@ -81,12 +81,45 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-barlow),sans-
 @keyframes resultPop{0%{opacity:.4;transform:scale(.97)}100%{opacity:1;transform:scale(1)}}
 .calc-result-animate{animation:resultPop .25s ease-out;}
 
-/* ─── MOBILE ─────────────────────────────────────────────────────────── */
+/* ─── MOBILE STICKY CTA ──────────────────────────────────────────────── */
+.mobile-cta-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: var(--amber);
+  padding: 0;
+}
+.mobile-cta-bar a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 1.1rem 2rem;
+  color: #000;
+  font-family: var(--font-barlow-cond), sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+/* ─── MOBILE BREAKPOINTS ─────────────────────────────────────────────── */
 @media(max-width:1024px){
   .grid-hero            {grid-template-columns:1fr;min-height:auto;}
+  /* Form comes first on mobile — visually most important */
+  .grid-hero > *:first-child { order: 2; }
+  .grid-hero > *:last-child  { order: 1; }
   .grid-nbhd-hero       {grid-template-columns:1fr;}
   .grid-cta-form        {grid-template-columns:1fr;}
   .grid-calculator      {grid-template-columns:1fr;}
+  .mobile-cta-bar       {display:block;}
+  /* Add bottom padding so sticky bar doesn't cover content */
+  body { padding-bottom: 64px; }
 }
 @media(max-width:900px){
   .grid-data-bar        {grid-template-columns:repeat(2,1fr);}
@@ -107,5 +140,5 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-barlow),sans-
   .grid-nearby          {grid-template-columns:repeat(2,1fr);}
   .section-pad          {padding:3rem 1rem;}
   .hero-stats-row       {flex-wrap:wrap;gap:1rem;}
-  table                 {font-size:.82rem;}
+  table                 {font-size:.85rem;}
 }

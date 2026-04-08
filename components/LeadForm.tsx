@@ -75,11 +75,11 @@ export default function LeadForm() {
         <div style={{ textAlign: 'center' }}>
           <div style={{ fontFamily: 'var(--font-bebas)', fontSize: '3rem', color: 'var(--green)', marginBottom: '0.5rem' }}>✓ SENT</div>
           <div style={{ fontFamily: 'var(--font-barlow-cond)', fontSize: '1.2rem', color: 'var(--text)', marginBottom: '1rem' }}>We've Got Your Request</div>
-          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.9rem', color: 'var(--muted)', lineHeight: 1.6 }}>
+          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.9rem', color: 'var(--text)', opacity: 0.75, lineHeight: 1.6 }}>
             Matched contractors for <strong style={{ color: 'var(--amber)' }}>{data.zip}</strong> will reach out within 48 hours.
           </p>
           <div style={{ marginTop: '2rem', padding: '1rem', background: 'var(--bg3)', border: '1px solid var(--bdr)' }}>
-            <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.7rem', color: 'var(--muted)' }}>Your job summary</div>
+            <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.7rem', color: 'var(--text)', opacity: 0.75 }}>Your job summary</div>
             <div style={{ fontFamily: 'var(--font-barlow-cond)', fontSize: '0.9rem', color: 'var(--text)', marginTop: '0.5rem' }}>
               {data.material} · {data.zip} · {data.urgency}
             </div>
@@ -99,8 +99,8 @@ export default function LeadForm() {
   const labelStyle: React.CSSProperties = {
     display: 'block',
     fontFamily: 'var(--font-barlow-cond)',
-    fontSize: '0.78rem', letterSpacing: '0.12em', textTransform: 'uppercase',
-    color: 'var(--muted)', marginBottom: '0.6rem',
+    fontSize: "0.88rem", letterSpacing: '0.12em', textTransform: 'uppercase',
+    color: 'var(--text)', opacity: 0.75, marginBottom: '0.6rem',
   }
 
   return (
@@ -111,7 +111,7 @@ export default function LeadForm() {
         <div style={{ fontFamily: 'var(--font-bebas)', fontSize: '1.8rem', letterSpacing: '0.04em', marginBottom: '0.3rem' }}>
           GET YOUR QUOTE
         </div>
-        <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.85rem', color: 'var(--muted)' }}>
+        <p style={{ fontFamily: 'var(--font-barlow)', fontSize: "0.95rem", color: 'var(--text)', opacity: 0.75 }}>
           3 quick questions. Matched with verified Portland contractors.
         </p>
       </div>
@@ -170,7 +170,7 @@ export default function LeadForm() {
                   className={`form-option${data.material === m.label ? ' selected' : ''}`}
                   style={{
                     padding: '0.9rem', background: 'var(--bg3)', border: '1px solid var(--bdr)',
-                    color: 'var(--muted)', fontFamily: 'var(--font-barlow-cond)', fontSize: '0.85rem',
+                    color: 'var(--text)', opacity: 0.75, fontFamily: 'var(--font-barlow-cond)', fontSize: "0.95rem",
                     letterSpacing: '0.06em', cursor: 'pointer', textAlign: 'left',
                   }}
                 >
@@ -181,7 +181,7 @@ export default function LeadForm() {
             </div>
           </div>
           <div style={{ display: 'flex', gap: '0.75rem' }}>
-            <button onClick={() => setStep(1)} style={{ flex: '0 0 auto', padding: '1rem 1.5rem', background: 'transparent', border: '1px solid var(--bdr)', color: 'var(--muted)', fontFamily: 'var(--font-barlow-cond)', fontSize: '0.85rem', cursor: 'pointer' }}>← Back</button>
+            <button onClick={() => setStep(1)} style={{ flex: '0 0 auto', padding: '1rem 1.5rem', background: 'transparent', border: '1px solid var(--bdr)', color: 'var(--text)', opacity: 0.75, fontFamily: 'var(--font-barlow-cond)', fontSize: "0.95rem", cursor: 'pointer' }}>← Back</button>
             <button
               onClick={() => data.material && setStep(3)}
               disabled={!data.material}
@@ -212,19 +212,19 @@ export default function LeadForm() {
                   className={`form-option${data.urgency === u.label ? ' selected' : ''}`}
                   style={{
                     padding: '0.9rem', background: 'var(--bg3)', border: '1px solid var(--bdr)',
-                    color: 'var(--muted)', fontFamily: 'var(--font-barlow-cond)',
-                    fontSize: '0.82rem', letterSpacing: '0.04em', cursor: 'pointer', textAlign: 'left',
+                    color: 'var(--text)', opacity: 0.75, fontFamily: 'var(--font-barlow-cond)',
+                    fontSize: "0.9rem", letterSpacing: '0.04em', cursor: 'pointer', textAlign: 'left',
                   }}
                 >
                   <span style={{ display: 'block', fontSize: '1.1rem', marginBottom: '0.2rem' }}>{u.icon}</span>
                   <span style={{ display: 'block', fontWeight: 700 }}>{u.label}</span>
-                  <span style={{ display: 'block', fontSize: '0.72rem', color: 'var(--muted)', marginTop: '0.1rem' }}>{u.sub}</span>
+                  <span style={{ display: 'block', fontSize: '0.72rem', color: 'var(--text)', opacity: 0.75, marginTop: '0.1rem' }}>{u.sub}</span>
                 </button>
               ))}
             </div>
           </div>
           <div style={{ display: 'flex', gap: '0.75rem' }}>
-            <button onClick={() => setStep(2)} style={{ flex: '0 0 auto', padding: '1rem 1.5rem', background: 'transparent', border: '1px solid var(--bdr)', color: 'var(--muted)', fontFamily: 'var(--font-barlow-cond)', fontSize: '0.85rem', cursor: 'pointer' }}>← Back</button>
+            <button onClick={() => setStep(2)} style={{ flex: '0 0 auto', padding: '1rem 1.5rem', background: 'transparent', border: '1px solid var(--bdr)', color: 'var(--text)', opacity: 0.75, fontFamily: 'var(--font-barlow-cond)', fontSize: "0.95rem", cursor: 'pointer' }}>← Back</button>
             <button
               onClick={() => data.urgency && setStep(4)}
               disabled={!data.urgency}
@@ -259,10 +259,10 @@ export default function LeadForm() {
             ))}
           </div>
           {error && (
-            <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.82rem', color: 'var(--red)', marginBottom: '0.75rem' }}>{error}</p>
+            <p style={{ fontFamily: 'var(--font-barlow)', fontSize: "0.9rem", color: 'var(--red)', marginBottom: '0.75rem' }}>{error}</p>
           )}
           <div style={{ display: 'flex', gap: '0.75rem' }}>
-            <button onClick={() => setStep(3)} style={{ flex: '0 0 auto', padding: '1rem 1.5rem', background: 'transparent', border: '1px solid var(--bdr)', color: 'var(--muted)', fontFamily: 'var(--font-barlow-cond)', fontSize: '0.85rem', cursor: 'pointer' }}>← Back</button>
+            <button onClick={() => setStep(3)} style={{ flex: '0 0 auto', padding: '1rem 1.5rem', background: 'transparent', border: '1px solid var(--bdr)', color: 'var(--text)', opacity: 0.75, fontFamily: 'var(--font-barlow-cond)', fontSize: "0.95rem", cursor: 'pointer' }}>← Back</button>
             <button
               onClick={submit}
               disabled={submitting || !data.name || !data.phone}
@@ -280,7 +280,7 @@ export default function LeadForm() {
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '1rem' }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--green)', display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.75rem', color: 'var(--muted)' }}>
+            <span style={{ fontFamily: 'var(--font-barlow)', fontSize: "0.85rem", color: 'var(--text)', opacity: 0.75 }}>
               256-bit encrypted · No spam · Free service
             </span>
           </div>
