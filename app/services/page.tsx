@@ -1,104 +1,64 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { services } from "@/lib/services";
-import PageHero from "@/components/PageHero";
-import ServiceLocationSelect from "@/components/ServiceLocationSelect";
+import type { Metadata } from 'next'
+import Nav     from '@/components/Nav'
+import Footer  from '@/components/Footer'
+import PageHero from '@/components/PageHero'
+import ServiceLocationSelect from '@/components/ServiceLocationSelect'
+import { services } from '@/lib/services'
+import { neighborhoods } from '@/lib/neighborhoods'
+import { SITE } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title: "Roofing Services | Oregon Roofing",
-  description:
-    "Professional roofing services across Oregon including roof replacement, repair, metal roofing, cedar shake, and flat roofing. Get free quotes from CCB-licensed contractors.",
-};
+  title:`Portland Roofing Services — Replacement, Repair, Metal, Cedar & Flat | ${SITE.name}`,
+  description:'All Portland roofing services. Vetted contractors across 50 neighborhoods.',
+  alternates:{canonical:`${SITE.baseUrl}/services`},
+}
+
+const featured = neighborhoods.filter(n=>n.avgCost>10000).slice(0,5)
 
 export default function ServicesPage() {
+  const f = { fontFamily:'var(--font-barlow)' } as const
+  const m = { fontFamily:'var(--font-space-mono)' } as const
+  const c = { fontFamily:'var(--font-barlow-cond)' } as const
+  const d = { fontFamily:'var(--font-bebas)' } as const
   return (
     <>
+      <Nav />
       <PageHero
-        breadcrumb={[
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-        ]}
-        eyebrow="OUR SERVICES"
-        title={
-          <>
-            Professional Roofing{" "}
-            <span style={{ color: "#0066CC" }}>Services</span> Across Oregon
-          </>
-        }
-        subtitle="Compare Oregon roofing services, estimated costs, and materials. Select a service below to learn more or pick a city to get local quotes."
+        imageUrl="/images/hero-services-hub.jpeg"
+        breadcrumb={[{label:'Home',href:'/'},{label:'Services'}]}
+        eyebrow="Portland Metro"
+        title={<>PORTLAND ROOFING<br/><span style={{color:'#F5A623'}}>SERVICES</span></>}
+        subtitle="Five roofing service types across 50 Portland neighborhoods. Select a service, choose your location, see local pricing and available contractors."
+        stats={[{label:'Service Types',value:'5'},{label:'Neighborhoods',value:'50'},{label:'Avg. Response',value:'48h'}]}
       />
-
-      <section className="section-pad">
-        <div className="content-wrap-wide">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <div
-                key={service.slug}
-                className="rounded-lg border overflow-hidden flex flex-col"
-                style={{ borderColor: "#E2E8F0", background: "#fff" }}
-              >
-                <div
-                  className="h-1"
-                  style={{ background: "#0066CC" }}
-                />
-                <div className="p-5 flex flex-col flex-1">
-                  <h2
-                    className="h-card mb-2"
-                    style={{ color: "#0F172A" }}
-                  >
-                    {service.name}
-                  </h2>
-                  <p
-                    className="body-sm mb-4 flex-1"
-                    style={{ color: "#475569" }}
-                  >
-                    {service.intro}
-                  </p>
-                  <div
-                    className="rounded-md p-3 mb-4"
-                    style={{ background: "#F8FAFC" }}
-                  >
-                    <div
-                      className="text-xs font-semibold mb-1"
-                      style={{ color: "#94A3B8" }}
-                    >
-                      ESTIMATED PRICE RANGE
-                    </div>
-                    <div
-                      className="h-card"
-                      style={{ color: "#0066CC" }}
-                    >
-                      ${service.avgLow.toLocaleString()} &ndash; $
-                      {service.avgHigh.toLocaleString()}
-                    </div>
-                    <div
-                      className="text-xs mt-0.5"
-                      style={{ color: "#94A3B8" }}
-                    >
-                      {service.unit}
-                    </div>
-                  </div>
-                  <div className="mb-3">
-                    <label
-                      className="block text-xs font-semibold mb-1.5"
-                      style={{ color: "#475569" }}
-                    >
-                      Get quotes in your city
-                    </label>
-                    <ServiceLocationSelect serviceSlug={service.slug} />
-                  </div>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="btn-primary text-center block mt-auto"
-                  >
-                    Get Quotes
-                  </Link>
+      <section className="section-pad" style={{background:'#fff'}}>
+        <div style={{display:'flex',flexDirection:'column',gap:'1px',background:'var(--bdr)'}}>
+          {services.map((s,i)=>(
+            <div key={s.slug} id={s.slug} style={{background:i%2===0?'#fff':'var(--bg2)',padding:'2.5rem 3rem'}}>
+              <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',flexWrap:'wrap',gap:'1rem',marginBottom:'1rem'}}>
+                <div>
+                  <div style={{...m,fontSize:'0.65rem',color:'var(--amber)',letterSpacing:'0.12em',textTransform:'uppercase',marginBottom:'0.5rem'}}>${s.avgLow.toLocaleString()} – ${s.avgHigh.toLocaleString()} · {s.unit}</div>
+                  <h2 style={{...d,fontSize:'clamp(1.6rem,3vw,2.4rem)',color:'var(--text)',lineHeight:1}}>{s.name}</h2>
+                </div>
+                {s.urgency==='high'&&<span style={{...m,fontSize:'0.65rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.3rem 0.7rem',background:'rgba(200,32,44,0.08)',color:'var(--red)',border:'1px solid rgba(200,32,44,0.2)'}}>Emergency Available</span>}
+              </div>
+              <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.7,fontWeight:300,maxWidth:'680px',marginBottom:'1.8rem'}}>
+                {s.intro.replace(/\{neighborhood\}/g,'Portland').replace(/\{zip\}/g,'').replace(/\{avgMid\}/g,s.avgMid.toLocaleString())}
+              </p>
+              <ServiceLocationSelect serviceSlug={s.slug} serviceName={s.name} />
+              <div style={{marginTop:'1.2rem'}}>
+                <div style={{...m,fontSize:'0.62rem',color:'var(--muted)',letterSpacing:'0.08em',textTransform:'uppercase',marginBottom:'0.6rem'}}>Popular areas</div>
+                <div style={{display:'flex',gap:'0.4rem',flexWrap:'wrap'}}>
+                  {featured.map(n=>(
+                    <a key={n.slug} href={`/${s.slug}/${n.slug}`} style={{...c,fontSize:'0.8rem',letterSpacing:'0.04em',color:'var(--amber)',padding:'0.35rem 0.8rem',border:'1px solid var(--bdr)',textDecoration:'none',background:i%2===0?'var(--bg2)':'#fff',whiteSpace:'nowrap'}}>{n.name}</a>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
+      <Footer />
     </>
-  );
+  )
 }

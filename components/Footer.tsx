@@ -1,120 +1,100 @@
-import Link from "next/link";
-import { SITE } from "@/lib/config";
+'use client'
 
-interface FooterLink {
-  label: string;
-  href: string;
-}
+import Link from 'next/link'
+import { SITE } from '@/lib/config'
 
-const COMPANY_LINKS: FooterLink[] = [
-  { label: "Contact",      href: "/contact" },
-  { label: "Cost Index",   href: "/or-cost-index" },
-  { label: "Blog",         href: "/blog" },
-  { label: "Guides",       href: "/guides" },
-  { label: "All Cities",   href: "/oregon" },
-  { label: "All Services", href: "/services" },
-];
-
-const SERVICE_LINKS: FooterLink[] = [
-  { label: "Roof Replacement",    href: "/services/roof-replacement" },
-  { label: "Roof Repair",         href: "/services/roof-repair" },
-  { label: "Metal Roofing",       href: "/services/metal-roofing" },
-  { label: "Cedar Shake Roofing", href: "/services/cedar-shake-roofing" },
-  { label: "Flat Roofing",        href: "/services/flat-roofing" },
-];
-
-const RESOURCE_LINKS: FooterLink[] = [
-  { label: "How to Choose a Contractor",  href: "/guides/how-to-choose-roofing-contractor-oregon" },
-  { label: "Oregon Roof Maintenance",     href: "/guides/oregon-roof-maintenance-guide" },
-  { label: "Understanding Roofing Costs", href: "/guides/understanding-oregon-roofing-costs" },
-  { label: "Best Materials for Oregon",   href: "/blog/best-roofing-materials-oregon-climate" },
-  { label: "When to Replace Your Roof",   href: "/blog/when-to-replace-your-roof-warning-signs" },
-  { label: "Oregon Roofing Permits",      href: "/blog/oregon-roofing-permits-what-homeowners-need-to-know" },
-  { label: "HB 4029 Solar Guide",         href: "/blog/oregon-hb4029-solar-roofing-guide" },
-];
-
-const CITY_LINKS: FooterLink[] = [
-  { label: "Portland",  href: "/oregon/portland" },
-  { label: "Eugene",    href: "/oregon/eugene" },
-  { label: "Salem",     href: "/oregon/salem" },
-  { label: "Bend",      href: "/oregon/bend" },
-  { label: "Medford",   href: "/oregon/medford" },
-  { label: "Beaverton", href: "/oregon/beaverton" },
-  { label: "Hillsboro", href: "/oregon/hillsboro" },
-  { label: "Gresham",   href: "/oregon/gresham" },
-];
-
-function FooterColumn({
-  title,
-  links,
-  extra,
-}: {
-  title: string;
-  links: FooterLink[];
-  extra?: React.ReactNode;
-}) {
-  return (
-    <div>
-      <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#0066CC]">
-        {title}
-      </h3>
-      <ul className="space-y-2">
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              className="footer-link text-sm text-[#64748B]"
-            >
-              {link.label}
-            </Link>
-          </li>
-        ))}
-        {extra && <li>{extra}</li>}
-      </ul>
-    </div>
-  );
+const cols = {
+  Neighborhoods: [
+    { label: 'Pearl District',    href: '/portland/pearl-district' },
+    { label: 'Lake Oswego',       href: '/portland/lake-oswego' },
+    { label: 'Irvington',         href: '/portland/irvington' },
+    { label: 'West Hills',        href: '/portland/west-hills' },
+    { label: 'All 50 Areas →',    href: '/#neighborhoods' },
+  ],
+  Resources: [
+    { label: 'PDX Cost Index',              href: '/pdx-cost-index' },
+    { label: 'Local vs National Roofers',   href: '/compare/local-vs-national-roofing-companies' },
+    { label: 'Metal vs. Asphalt',           href: '/guides/metal-vs-asphalt-portland' },
+    { label: 'Storm Damage Guide',          href: '/guides/storm-damage-roofing-portland' },
+    { label: 'Permits Guide',               href: '/guides/portland-roofing-permits-guide' },
+    { label: 'All Guides →',               href: '/guides' },
+  ],
+  'For Contractors': [
+    { label: 'Join the Network', href: '/contractors/apply' },
+    { label: 'Vetting Process',  href: '/contractors/vetting' },
+    { label: 'Contact Us',       href: '/contact' },
+  ],
 }
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-[#0F172A] border-t border-slate-800">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        {/* 4-column grid */}
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          <FooterColumn title="Company" links={COMPANY_LINKS} />
-          <FooterColumn title="Services" links={SERVICE_LINKS} />
-          <FooterColumn title="Guides &amp; Blog" links={RESOURCE_LINKS} />
-          <FooterColumn
-            title="Cities"
-            links={CITY_LINKS}
-            extra={
-              <Link
-                href="/oregon"
-                className="text-sm font-medium text-[#0066CC] transition-colors hover:text-white"
-              >
-                View All Cities
-              </Link>
-            }
-          />
+    <footer style={{ background: '#0A0B0D', padding: '3.5rem 3rem 2.5rem' }}>
+      <div className="grid-footer-top">
+
+        {/* Brand */}
+        <div>
+          <Link href="/" style={{
+            fontFamily: 'var(--font-bebas)', fontSize: '1.7rem',
+            letterSpacing: '0.04em', color: '#fff',
+            textDecoration: 'none', display: 'block', marginBottom: '0.8rem',
+          }}>
+            PORTLAND <span style={{ color: '#F5A623' }}>ROOFINGS</span>
+          </Link>
+          <p style={{
+            fontFamily: 'var(--font-barlow)', fontSize: '0.85rem',
+            color: 'rgba(255,255,255,0.4)', lineHeight: 1.7,
+            fontWeight: 300, maxWidth: '300px',
+          }}>
+            The Portland metro's definitive roofing platform. Connecting homeowners with vetted contractors. Not a contractor — a marketplace.
+          </p>
+          <a href={`tel:${SITE.phone.replace(/\D/g, '')}`} style={{
+            display: 'block', marginTop: '1.2rem',
+            fontFamily: 'var(--font-space-mono)', fontSize: '0.8rem',
+            color: '#F5A623', textDecoration: 'none',
+          }}>
+            {SITE.phone}
+          </a>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 border-t border-slate-800 pt-8">
-          <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
-            <p className="text-sm text-[#64748B]">
-              &copy; {currentYear} {SITE.name}. All rights reserved.
-            </p>
-            <Link
-              href="/contact"
-              className="footer-link text-sm text-[#64748B]"
-            >
-              Contact Us →
-            </Link>
+        {/* Link columns */}
+        {Object.entries(cols).map(([heading, links]) => (
+          <div key={heading}>
+            <h4 style={{
+              fontFamily: 'var(--font-space-mono)', fontSize: '0.6rem',
+              color: '#F5A623', letterSpacing: '0.14em',
+              textTransform: 'uppercase', marginBottom: '1rem',
+            }}>
+              {heading}
+            </h4>
+            <ul style={{ listStyle: 'none' }}>
+              {links.map(({ label, href }) => (
+                <li key={href} style={{ marginBottom: '0.55rem' }}>
+                  <Link href={href} style={{
+                    fontFamily: 'var(--font-barlow)', fontSize: '0.85rem',
+                    color: 'rgba(255,255,255,0.45)', textDecoration: 'none',
+                  }}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
+        ))}
+      </div>
+
+      {/* Bottom bar */}
+      <div style={{
+        paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.08)',
+        display: 'flex', justifyContent: 'space-between',
+        flexWrap: 'wrap', gap: '0.5rem',
+      }}>
+        <p style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem', color: 'rgba(255,255,255,0.25)' }}>
+          © {new Date().getFullYear()} {SITE.name} · {SITE.domain} · All rights reserved.
+        </p>
+        <p style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem', color: 'rgba(255,255,255,0.25)' }}>
+          Not a licensed contractor. Lead generation &amp; referral platform.
+        </p>
       </div>
     </footer>
-  );
+  )
 }
