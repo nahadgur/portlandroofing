@@ -26,12 +26,9 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* ─── GLOBAL HEADING SIZES ───────────────────────────────────────────── */
-/* These apply to any h2.sec-title or section heading pattern.
-   Components still set inline but these serve as baseline. */
-h1 { font-size: clamp(3rem, 8vw, 6rem); }
-h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
-h3 { font-size: clamp(1.1rem, 3vw, 1.4rem); }
+h1{font-size:clamp(3rem,8vw,6rem);}
+h2{font-size:clamp(2rem,5vw,3.5rem);}
+h3{font-size:clamp(1.1rem,3vw,1.4rem);}
 
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .ticker-track{display:flex;gap:0;animation:ticker 30s linear infinite;white-space:nowrap;}
@@ -50,16 +47,38 @@ h3 { font-size: clamp(1.1rem, 3vw, 1.4rem); }
 .grid-nbhd         { display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--bdr); }
 .grid-contractors  { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--bdr); }
 .grid-footer-top   { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
-.grid-faq          { display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:1100px; }
-.grid-index-stats  { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--bdr); margin-top:3rem; }
+
+/* grid-faq: centered, not left-anchored */
+.grid-faq          { display:grid; grid-template-columns:1fr 1fr; gap:2rem; width:100%; }
+
+/* grid-index-stats: centered */
+.grid-index-stats  { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--bdr); margin-top:3rem; width:100%; }
+
 .grid-nbhd-hero    { display:grid; grid-template-columns:1fr 420px; gap:4rem; align-items:start; }
 .grid-nearby       { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--bdr); }
 .grid-nbhd-data    { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--bdr); margin-bottom:2.5rem; }
 .grid-cta-form     { display:grid; grid-template-columns:1fr 420px; gap:4rem; align-items:center; }
 .grid-calculator   { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
 
+/* ─── CENTERING UTILITY ──────────────────────────────────────────────── */
+/* Use this on any text content block with a max-width — ensures centering */
+.content-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content-wrap-wide {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ─── NAV ────────────────────────────────────────────────────────────── */
 .nav-links-desktop { display:flex; gap:2rem; list-style:none; }
-.section-pad       { padding:5rem 3rem; border-bottom:1px solid var(--bdr); }
+
+/* ─── SECTION PADDING ────────────────────────────────────────────────── */
+.section-pad { padding:5rem 3rem; border-bottom:1px solid var(--bdr); }
 
 /* ─── UTILITIES ──────────────────────────────────────────────────────── */
 .mono-badge{font-family:var(--font-space-mono),monospace;font-size:.72rem;letter-spacing:.08em;padding:.2rem .55rem;text-transform:uppercase;}

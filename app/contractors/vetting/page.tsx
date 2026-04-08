@@ -124,7 +124,7 @@ export default function ContractorVettingPage() {
       {/* Checkpoints */}
       {checkpoints.map((cat, ci) => (
         <section key={cat.category} className="section-pad" style={{ background: ci % 2 === 0 ? 'var(--bg)' : 'var(--bg2)' }}>
-          <div style={{ maxWidth: '820px' }}>
+          <div className="content-wrap-wide">
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
               <div style={{ height: '3px', width: '40px', background: cat.color, flexShrink: 0 }} />
               <h2 style={{ fontFamily: 'var(--font-bebas)', fontSize: 'clamp(1.4rem,3vw,2rem)', color: 'var(--text)', lineHeight: 1 }}>{cat.category}</h2>
