@@ -27,11 +27,11 @@ export default function Hero({ children }: Props) {
             display: 'flex', alignItems: 'center', gap: '0.8rem',
             fontFamily: 'var(--font-space-mono)',
             fontSize: '0.72rem', color: '#F5A623',
-            letterSpacing: '0.18em', textTransform: 'uppercase',
-            marginBottom: '1.2rem',
+            letterSpacing: '0.15em', textTransform: 'uppercase',
+            marginBottom: '1.2rem', whiteSpace: 'nowrap', flexWrap: 'nowrap',
           }}>
             <span style={{ display: 'block', width: 32, height: 1, background: '#F5A623', flexShrink: 0 }} />
-            Portland Metro Roofing Authority
+            PDX Roofing Authority
           </div>
 
           {/* Amber accent bar */}

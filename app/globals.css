@@ -180,3 +180,19 @@ img, video { display: block; max-width: 100%; }
   .section-pad       { padding: 3rem 1.2rem; }
   table              { font-size: .88rem; }
 }
+
+/* ─── HAMBURGER BUTTON ───────────────────────────────────────────────── */
+/* Hidden on desktop, visible on mobile */
+.hamburger-btn { display: none; }
+
+@media (max-width: 768px) {
+  .hamburger-btn { display: flex !important; }
+}
+
+/* ─── HERO MOBILE — form above text ─────────────────────────────────── */
+/* On mobile, show the form FIRST so "Get Quotes" scrolls directly to it */
+@media (max-width: 1024px) {
+  .hero-content > div:first-child { order: 2; }  /* text goes below */
+  .hero-content > div:last-child  { order: 1; }  /* form goes above  */
+}
+

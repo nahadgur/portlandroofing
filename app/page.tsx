@@ -56,7 +56,7 @@ export default function HomePage() {
       {/* ── W1-B HERO — floating form card inside full-bleed photo ── */}
       <section id="quote">
         <Hero>
-          <div className="form-float">
+          <div className="form-float" id="lead-form">
             <LeadForm />
           </div>
         </Hero>
