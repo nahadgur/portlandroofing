@@ -20,6 +20,7 @@ const footerLinks = {
   'For Contractors': [
     { label: 'Join the Network',  href: '/contractors/apply' },
     { label: 'Vetting Process',   href: '/contractors/vetting' },
+    { label: 'Contact Us',        href: '/contact' },
   ],
 }
 

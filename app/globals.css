@@ -107,15 +107,18 @@ h3{font-size:clamp(1.1rem,3vw,1.4rem);}
 @keyframes resultPop{0%{opacity:.4;transform:scale(.97)}100%{opacity:1;transform:scale(1)}}
 .calc-result-animate{animation:resultPop .25s ease-out;}
 
-/* ─── MOBILE STICKY CTA ──────────────────────────────────────────────── */
-.mobile-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--amber);}
-.mobile-cta-bar a{
-  display:flex;align-items:center;justify-content:center;gap:.6rem;
-  width:100%;padding:1.1rem 2rem;
-  color:#000;font-family:var(--font-barlow-cond),sans-serif;
-  font-weight:700;font-size:1.05rem;letter-spacing:.12em;
-  text-transform:uppercase;text-decoration:none;
+
+/* ─── STICKY MODAL CTA ───────────────────────────────────────────────── */
+/* Mobile bar: visible on mobile, hidden on desktop */
+.mobile-sticky-cta  { display:flex; }
+.desktop-sticky-cta { display:none; }
+
+@media(min-width:768px){
+  .mobile-sticky-cta  { display:none; }
+  .desktop-sticky-cta { display:flex !important; }
+  body { padding-bottom: 0; }
 }
+
 
 /* ─── BREAKPOINTS ────────────────────────────────────────────────────── */
 @media(max-width:1024px){

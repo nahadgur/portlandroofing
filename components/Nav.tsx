@@ -6,6 +6,7 @@ const links = [
   { label: 'Services',      href: '/services' },
   { label: 'Guides',        href: '/guides' },
   { label: 'Blog',          href: '/blog' },
+  { label: 'Contact',       href: '/contact' },
 ]
 
 export default function Nav() {
@@ -17,13 +18,13 @@ export default function Nav() {
       <ul className="nav-links-desktop" style={{ flexShrink:0 }}>
         {links.map(({ label, href }) => (
           <li key={href}>
-            <Link href={href} style={{ fontFamily:'var(--font-barlow-cond)', fontSize:'0.82rem', letterSpacing:'0.1em', textTransform:'uppercase', color:'var(--muted)', textDecoration:'none', whiteSpace:'nowrap' }}>
+            <Link href={href} style={{ fontFamily:'var(--font-barlow-cond)', fontSize:'0.78rem', letterSpacing:'0.1em', textTransform:'uppercase', color:'var(--muted)', textDecoration:'none', whiteSpace:'nowrap' }}>
               {label}
             </Link>
           </li>
         ))}
       </ul>
-      <Link href="/#quote" style={{ background:'var(--amber)', color:'#000', fontFamily:'var(--font-barlow-cond)', fontWeight:700, fontSize:'clamp(0.72rem,2.5vw,0.82rem)', letterSpacing:'0.08em', textTransform:'uppercase', padding:'0.5rem 1rem', textDecoration:'none', whiteSpace:'nowrap', flexShrink:0 }}>
+      <Link href="/#quote" style={{ background:'var(--amber)', color:'#000', fontFamily:'var(--font-barlow-cond)', fontWeight:700, fontSize:'clamp(0.68rem,2vw,0.8rem)', letterSpacing:'0.08em', textTransform:'uppercase', padding:'0.5rem 0.9rem', textDecoration:'none', whiteSpace:'nowrap', flexShrink:0 }}>
         Get Quotes →
       </Link>
     </nav>

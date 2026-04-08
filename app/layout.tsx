@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Bebas_Neue, Space_Mono, Barlow, Barlow_Condensed } from 'next/font/google'
 import { SITE }       from '@/lib/config'
-import MobileCTA      from '@/components/MobileCTA'
+import StickyModal    from '@/components/StickyModal'
 import StormBanner    from '@/components/StormBanner'
 import './globals.css'
 
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <StormBanner />
         {children}
-        <MobileCTA />
+        <StickyModal />
 
         {SITE.ga4 && SITE.ga4 !== 'G-XXXXXXXXXX' && (
           <>
