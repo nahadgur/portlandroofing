@@ -53,7 +53,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
               {g.sections.map((s,i)=>(
                 <li key={i} style={{...f,fontSize:'0.92rem',color:'var(--muted)',padding:'0.4rem 0',borderBottom:i<g.sections.length-1?'1px solid var(--bdr)':'none',display:'flex',gap:'1rem',alignItems:'baseline'}}>
                   <span style={{...m,fontSize:'0.68rem',color:'var(--amber)',flexShrink:0}}>{String(i+1).padStart(2,'0')}</span>
-                  {s.heading}
+                  {s.heading ?? s.title}
                 </li>
               ))}
             </ol>
@@ -61,7 +61,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
           {/* Sections */}
           {g.sections.map((s,i)=>(
             <div key={i} style={{marginBottom:'3.5rem'}}>
-              <h2 style={{...d,fontSize:'clamp(1.6rem,3vw,2.2rem)',color:'var(--text)',lineHeight:1,marginBottom:'1.4rem',paddingTop:'2rem',borderTop:'1px solid var(--bdr)'}}>{s.heading}</h2>
+              <h2 style={{...d,fontSize:'clamp(1.6rem,3vw,2.2rem)',color:'var(--text)',lineHeight:1,marginBottom:'1.4rem',paddingTop:'2rem',borderTop:'1px solid var(--bdr)'}}>{s.heading ?? s.title}</h2>
               {s.body.split('\n\n').map((para,j)=>(
                 <p key={j} style={{...f,fontSize:'clamp(0.95rem,1.8vw,1.05rem)',color:'var(--text)',lineHeight:1.8,marginBottom:'1.3rem',fontWeight:300}}>{para}</p>
               ))}
@@ -71,10 +71,10 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
           {g.faqs.length>0&&(
             <div style={{marginTop:'2rem',borderTop:'2px solid var(--bdr)',paddingTop:'2.5rem'}}>
               <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'1.5rem'}}>[ Frequently Asked ]</div>
-              {g.faqs.map(({q,a})=>(
-                <div key={q} style={{marginBottom:'2rem',paddingBottom:'2rem',borderBottom:'1px solid var(--bdr)'}}>
-                  <h3 style={{...c,fontSize:'1.1rem',fontWeight:700,color:'var(--text)',marginBottom:'0.7rem'}}>{q}</h3>
-                  <p style={{...f,fontSize:'0.97rem',color:'var(--muted)',lineHeight:1.75,fontWeight:300}}>{a}</p>
+              {g.faqs.map(({question,answer})=>(
+                <div key={question} style={{marginBottom:'2rem',paddingBottom:'2rem',borderBottom:'1px solid var(--bdr)'}}>
+                  <h3 style={{...c,fontSize:'1.1rem',fontWeight:700,color:'var(--text)',marginBottom:'0.7rem'}}>{question}</h3>
+                  <p style={{...f,fontSize:'0.97rem',color:'var(--muted)',lineHeight:1.75,fontWeight:300}}>{answer}</p>
                 </div>
               ))}
             </div>

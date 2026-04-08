@@ -1,5 +1,6 @@
 export interface GuideSection {
   title: string;
+  heading?: string;
   body: string;
 }
 
@@ -13,10 +14,13 @@ export type GuideCategory = 'hiring' | 'maintenance' | 'costs' | 'damage' | 'com
 export interface Guide {
   slug: string;
   title: string;
+  headline: string;
   description: string;
   heroDescription: string;
   category: GuideCategory;
   featured?: boolean;
+  published: string;
+  readTime: number;
   sections: GuideSection[];
   faqs: GuideFaq[];
 }
@@ -33,6 +37,9 @@ export const guides: Guide[] = [
   {
     slug: "how-to-choose-roofing-contractor-oregon",
     category: "hiring" as const,
+    headline: "How to Choose a Roofing Contractor",
+    published: "2024-03-01",
+    readTime: 9,
     title: "How to Choose a Roofing Contractor in Oregon",
     description:
       "Learn what to look for when hiring a roofing contractor in Oregon, from CCB licensing and insurance verification to evaluating bids, reading reviews, and avoiding common scams.",
@@ -99,6 +106,9 @@ export const guides: Guide[] = [
   {
     slug: "oregon-roof-maintenance-guide",
     category: "maintenance" as const,
+    headline: "Oregon Roof Maintenance Guide",
+    published: "2024-04-01",
+    readTime: 10,
     title: "Oregon Roof Maintenance Guide",
     description:
       "A comprehensive seasonal maintenance guide for Oregon homeowners covering gutter cleaning, moss prevention, inspection schedules, and proactive steps to extend your roof's lifespan.",
@@ -169,6 +179,9 @@ export const guides: Guide[] = [
   {
     slug: "understanding-oregon-roofing-costs",
     category: "costs" as const,
+    headline: "Understanding Oregon Roofing Costs",
+    published: "2024-04-15",
+    readTime: 11,
     title: "Understanding Oregon Roofing Costs",
     description:
       "A detailed breakdown of roofing costs in Oregon, including material prices, labor rates, regional pricing differences, and factors that influence your total project cost.",
@@ -236,10 +249,12 @@ export const guides: Guide[] = [
       },
     ],
   },
-,
   {
     slug: "oregon-moss-removal-roof-guide",
     category: "maintenance" as const,
+    headline: "Moss Removal & Prevention for Oregon Roofs",
+    published: "2024-05-01",
+    readTime: 10,
     title: "Moss Removal & Prevention for Oregon Roofs",
     description:
       "A complete guide to identifying, removing, and preventing moss and algae on Oregon roofs. Covers safe removal methods, zinc and copper treatments, and city-by-city risk levels across the state.",
@@ -306,6 +321,9 @@ export const guides: Guide[] = [
   {
     slug: "storm-damage-roof-insurance-oregon",
     category: "damage" as const,
+    headline: "Storm Damage & Insurance Claims",
+    published: "2024-05-15",
+    readTime: 12,
     title: "Storm Damage & Insurance Claims for Oregon Roofs",
     description:
       "Step-by-step guidance for Oregon homeowners on documenting storm damage, navigating insurance claims, understanding coverage limits, and hiring the right contractor for repairs.",
@@ -372,6 +390,9 @@ export const guides: Guide[] = [
   {
     slug: "commercial-flat-roof-maintenance-oregon",
     category: "commercial" as const,
+    headline: "Commercial & Flat Roof Maintenance",
+    published: "2024-06-01",
+    readTime: 13,
     title: "Commercial & Flat Roof Maintenance in Oregon",
     description:
       "A practical maintenance guide for Oregon commercial property owners and facility managers covering TPO, EPDM, and modified bitumen flat roofing systems, inspection schedules, drainage management, and finding qualified Oregon contractors.",
