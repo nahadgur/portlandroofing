@@ -158,3 +158,16 @@ img, video { display: block; max-width: 100%; }
   .section-pad       { padding: 3rem 1.2rem; }
   table              { font-size: .88rem; }
 }
+
+/* ─── STICKY CTA VISIBILITY ─────────────────────────────────────────────── */
+/* Mobile bar: only on mobile */
+.mobile-sticky-cta  { display: none !important; }
+@media (max-width: 768px) {
+  .mobile-sticky-cta { display: flex !important; }
+}
+
+/* Desktop floating button: only on desktop */
+@media (max-width: 768px) {
+  .desktop-sticky-cta { display: none !important; }
+}
+

@@ -12,6 +12,7 @@ import ComparisonEngine      from '@/components/ComparisonEngine'
 import TrustStrip            from '@/components/TrustStrip'
 import { services, getServiceBySlug } from '@/lib/services'
 import { neighborhoods, getNeighborhoodBySlug, permitLabels } from '@/lib/neighborhoods'
+import { getNearbyNeighborhoods } from '@/lib/neighborhoodUtils'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
 
