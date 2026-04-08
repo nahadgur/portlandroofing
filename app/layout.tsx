@@ -11,21 +11,44 @@ const spaceMono       = Space_Mono({ weight:['400','700'], subsets:['latin'], va
 const barlow          = Barlow({ weight:['300','400','500','600'], subsets:['latin'], variable:'--font-barlow', display:'swap' })
 const barlowCondensed = Barlow_Condensed({ weight:['400','600','700'], subsets:['latin'], variable:'--font-barlow-cond', display:'swap' })
 
-// ── Disable pinch-zoom / double-tap zoom on mobile ──────────────────────────
 export const viewport: Viewport = {
-  width:           'device-width',
-  initialScale:    1,
-  maximumScale:    1,
-  userScalable:    false,
+  width:        'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor:   '#0F172A',
 }
 
 export const metadata: Metadata = {
   title:        { default: SITE.defaultTitle, template: `%s | ${SITE.name}` },
   description:  SITE.defaultDescription,
   metadataBase: new URL(SITE.baseUrl),
-  openGraph:    { type:'website', siteName:SITE.name, title:SITE.defaultTitle, description:SITE.defaultDescription, url:SITE.baseUrl },
-  twitter:      { card:'summary_large_image', site:SITE.twitter, title:SITE.defaultTitle, description:SITE.defaultDescription },
-  robots:       { index:true, follow:true },
+  icons: {
+    icon: [
+      { url: '/favicon.ico',        sizes: 'any' },
+      { url: '/favicon-16x16.png',  sizes: '16x16',  type: 'image/png' },
+      { url: '/favicon-32x32.png',  sizes: '32x32',  type: 'image/png' },
+      { url: '/favicon-48x48.png',  sizes: '48x48',  type: 'image/png' },
+    ],
+    apple:     [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    other:     [{ rel: 'manifest', url: '/site.webmanifest' }],
+  },
+  openGraph: {
+    type:        'website',
+    siteName:    SITE.name,
+    title:       SITE.defaultTitle,
+    description: SITE.defaultDescription,
+    url:         SITE.baseUrl,
+    images: [{ url: '/og-logo.png', width: 512, height: 512, alt: SITE.name }],
+  },
+  twitter: {
+    card:        'summary_large_image',
+    site:        SITE.twitter,
+    title:       SITE.defaultTitle,
+    description: SITE.defaultDescription,
+    images:      ['/og-logo.png'],
+  },
+  robots: { index: true, follow: true },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -2,7 +2,7 @@ import { SITE } from './config'
 import type { Neighborhood } from './neighborhoods'
 
 // ─── Shared helpers ────────────────────────────────────────────────────────
-const logoUrl   = `${SITE.baseUrl}/favicon.svg`
+const logoUrl   = `${SITE.baseUrl}/android-chrome-512x512.png`
 const ogDefault = `${SITE.baseUrl}/images/hero-blog-hub.jpeg`
 
 /** Returns ISO date string for the last day of the current year */
