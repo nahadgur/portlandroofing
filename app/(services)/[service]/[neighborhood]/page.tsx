@@ -11,7 +11,7 @@ import NeighborhoodSwitcher from '@/components/NeighborhoodSwitcher'
 import ComparisonEngine      from '@/components/ComparisonEngine'
 import TrustStrip            from '@/components/TrustStrip'
 import { services, getServiceBySlug } from '@/lib/services'
-import { neighborhoods, getNeighborhoodBySlug, permitLabels } from '@/lib/neighborhoods'
+import { neighborhoods, getNeighborhoodBySlug, getNearbyNeighborhoods, permitLabels } from '@/lib/neighborhoods'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
 

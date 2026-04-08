@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import Link   from 'next/link'
 import Nav     from '@/components/Nav'
 import Footer  from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import { SITE } from '@/lib/config'
+import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
   title:`Our 47-Point Contractor Vetting Process | ${SITE.name}`,
@@ -42,6 +44,25 @@ export default function VettingPage() {
   const d={fontFamily:'var(--font-bebas)'}as const
   return (
     <>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([
+        { name: 'Home', url: SITE.baseUrl },
+        { name: 'For Contractors', url: `${SITE.baseUrl}/contractors/apply` },
+        { name: 'Our Vetting Process', url: `${SITE.baseUrl}/contractors/vetting` },
+      ]))}</Script>
+      <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'CheckAction',
+        name: 'Verify Oregon CCB Contractor Licence',
+        description: 'Search the Oregon Construction Contractors Board database to verify a contractor holds an active licence for residential roofing work.',
+        url: 'https://search.ccb.state.or.us',
+        actionStatus: 'https://schema.org/ActiveActionStatus',
+        object: {
+          '@type': 'Thing',
+          name: 'CCB licence number',
+          description: 'Oregon Construction Contractors Board licence number for the roofing contractor being verified.',
+        },
+        agent: { '@type': 'Organization', name: SITE.name, url: SITE.baseUrl },
+      })}</Script>
       <Nav />
       <PageHero
         imageUrl="/images/hero-vetting.jpeg"
