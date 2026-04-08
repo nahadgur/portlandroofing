@@ -16,6 +16,7 @@ export interface Guide {
   description: string;
   heroDescription: string;
   category: GuideCategory;
+  featured?: boolean;
   sections: GuideSection[];
   faqs: GuideFaq[];
 }
