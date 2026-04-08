@@ -44,9 +44,7 @@ export default function CostIndexPage() {
           {neighborhoods.map(n => {
             const diff = Math.round((n.avgCost / 9400 - 1) * 100)
             return (
-              <a key={n.slug} href={`/pdx-cost-index/${n.slug}`} style={{display:'block',padding:'1rem 1.2rem',background:'var(--bg2)',textDecoration:'none',transition:'background 0.15s'}}
-                onMouseEnter={e=>(e.currentTarget.style.background='var(--bg3)')}
-                onMouseLeave={e=>(e.currentTarget.style.background='var(--bg2)')}
+              <a key={n.slug} href={`/pdx-cost-index/${n.slug}`} className="nbhd-card-hover" style={{display:'block',padding:'1rem 1.2rem',background:'var(--bg2)',textDecoration:'none'}}
               >
                 <div style={{fontFamily:'var(--font-space-mono)',fontSize:'0.6rem',color:'var(--amber)',letterSpacing:'0.08em',textTransform:'uppercase',marginBottom:'0.3rem'}}>{n.zip}</div>
                 <div style={{fontFamily:'var(--font-barlow-cond)',fontSize:'0.95rem',fontWeight:700,color:'var(--text)',marginBottom:'0.25rem'}}>{n.name}</div>

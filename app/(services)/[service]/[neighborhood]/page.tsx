@@ -11,7 +11,7 @@ import NeighborhoodSwitcher from '@/components/NeighborhoodSwitcher'
 import ComparisonEngine      from '@/components/ComparisonEngine'
 import TrustStrip            from '@/components/TrustStrip'
 import { services, getServiceBySlug } from '@/lib/services'
-import { neighborhoods, getNeighborhoodBySlug, permitLabels, getNearbyNeighborhoods } from '@/lib/neighborhoods'
+import { neighborhoods, getNeighborhoodBySlug, permitLabels } from '@/lib/neighborhoods'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
 
@@ -69,16 +69,11 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
   return (
     <>
       <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({
-        '@context':'https://schema.org',
-        '@type':['Service','LocalBusiness'],
-        name:`${s.name} in ${n.name}, Portland OR`,
-        description:inject(s.description,n,s),
-        url,
+        '@context':'https://schema.org','@type':'Service',
+        name:`${s.name} in ${n.name}`,description:inject(s.description,n,s),url,
         provider:{'@type':'Organization',name:SITE.name,url:SITE.baseUrl},
         areaServed:{'@type':'Place',name:n.name,address:{'@type':'PostalAddress',postalCode:n.zip,addressLocality:'Portland',addressRegion:'OR',addressCountry:'US'}},
         offers:{'@type':'Offer',priceCurrency:'USD',lowPrice:localLow,highPrice:localHigh,priceValidUntil:'2026-12-31'},
-        hasOfferCatalog:{'@type':'OfferCatalog',name:'Other Roofing Services',itemListElement:services.filter(x=>x.slug!==s.slug).map(x=>({'@type':'Offer',itemOffered:{'@type':'Service',name:x.name,url:`${SITE.baseUrl}/${x.slug}/${n.slug}`}}))},
-        aggregateRating:{'@type':'AggregateRating',ratingValue:4.8,reviewCount:31,bestRating:5},
       })}</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([{name:'Home',url:SITE.baseUrl},{name:s.name,url:`${SITE.baseUrl}/services`},{name:n.name,url:`${SITE.baseUrl}/portland/${n.slug}`},{name:`${s.name} in ${n.name}`,url}]))}</Script>
       <Script id="s3" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(localFaqs))}</Script>
@@ -223,10 +218,13 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
             const localLow  = Math.round(s.avgLow  * (nb.indexPct / 71))
             const localHigh = Math.round(s.avgHigh * (nb.indexPct / 71))
             return (
-              <a key={nb.slug} href={`/${s.slug}/${nb.slug}`} className="svc-area-link" style={{
+              <a key={nb.slug} href={`/${s.slug}/${nb.slug}`} style={{
                 display:'block', padding:'1.2rem 1.4rem',
+                background:'rgba(255,255,255,0.03)',
                 textDecoration:'none',
-              }}>
+                transition:'background 0.15s',
+              }}
+              >
                 <div style={{...m,fontSize:'0.6rem',color:'rgba(255,255,255,0.3)',letterSpacing:'0.1em',textTransform:'uppercase',marginBottom:'0.35rem'}}>{nb.zip} · {nb.area}</div>
                 <div style={{...c,fontSize:'0.95rem',fontWeight:700,color:'#fff',marginBottom:'0.3rem'}}>{nb.name}</div>
                 <div style={{...m,fontSize:'0.68rem',color:'#F5A623'}}>
