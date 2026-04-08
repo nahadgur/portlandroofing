@@ -59,7 +59,7 @@ export default function HomePage() {
       <div style={{ background:'var(--bg2)', borderBottom:'1px solid var(--bdr)', padding:'1.5rem 3rem', display:'flex', gap:'0.5rem', flexWrap:'wrap', alignItems:'center' }}>
         <span style={{ fontFamily:'var(--font-space-mono)', fontSize:'0.65rem', color:'var(--muted)', letterSpacing:'0.1em', textTransform:'uppercase', marginRight:'0.5rem', flexShrink:0 }}>Services:</span>
         {services.map(s => (
-          <Link key={s.slug} href={`/services`} style={{ fontFamily:'var(--font-barlow-cond)', fontSize:'0.82rem', letterSpacing:'0.04em', color:'var(--amber)', padding:'0.35rem 0.85rem', border:'1px solid var(--bdr)', textDecoration:'none', background:'var(--bg)', whiteSpace:'nowrap' }}>
+          <Link key={s.slug} href={`/services#${s.slug}`} style={{ fontFamily:'var(--font-barlow-cond)', fontSize:'0.82rem', letterSpacing:'0.04em', color:'var(--amber)', padding:'0.35rem 0.85rem', border:'1px solid var(--bdr)', textDecoration:'none', background:'var(--bg)', whiteSpace:'nowrap' }}>
             {s.shortName}
           </Link>
         ))}

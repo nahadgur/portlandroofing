@@ -18,6 +18,13 @@ function formatDate(iso: string) {
 }
 
 export default function CCBBadge({ ccbNumber, ccbStatus, ccbLastVerified, compact = false }: Props) {
+
+  // ⚠️  BEFORE LAUNCH: Replace placeholder CCB numbers in lib/contractors.ts
+  // Any ccbNumber of '000000' is a placeholder — do not go live with these.
+  if (process.env.NODE_ENV === 'development' && ccbNumber === '000000') {
+    console.warn('[CCBBadge] Placeholder CCB number detected. Update lib/contractors.ts before launch.')
+  }
+
   const cfg = statusConfig[ccbStatus]
 
   if (compact) {

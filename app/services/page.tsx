@@ -44,7 +44,7 @@ export default function ServicesPage() {
       <section className="section-pad" style={{ background: 'var(--bg)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'var(--bdr)' }}>
           {services.map((s, i) => (
-            <div key={s.slug} style={{ background: i % 2 === 0 ? 'var(--bg2)' : 'var(--bg)', padding: '2.5rem 3rem' }}>
+            <div key={s.slug} id={s.slug} style={{ background: i % 2 === 0 ? 'var(--bg2)' : 'var(--bg)', padding: '2.5rem 3rem' }}>
               {/* Service header */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div>
