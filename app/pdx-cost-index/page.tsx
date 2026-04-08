@@ -6,6 +6,8 @@ import PriceIndex from '@/components/PriceIndex'
 import CostCalculator from '@/components/CostCalculator'
 import { SITE } from '@/lib/config'
 
+export const revalidate = 86400 // revalidate every 24 hours
+
 export const metadata: Metadata = {
   title:`Portland Roofing Cost Index 2026 | ${SITE.name}`,
   description:'Real Portland roofing costs by neighborhood. Updated quarterly from verified contractor quotes. Includes an interactive cost calculator.',

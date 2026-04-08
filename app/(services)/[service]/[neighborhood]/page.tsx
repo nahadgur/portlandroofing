@@ -69,11 +69,16 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
   return (
     <>
       <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({
-        '@context':'https://schema.org','@type':'Service',
-        name:`${s.name} in ${n.name}`,description:inject(s.description,n,s),url,
+        '@context':'https://schema.org',
+        '@type':['Service','LocalBusiness'],
+        name:`${s.name} in ${n.name}, Portland OR`,
+        description:inject(s.description,n,s),
+        url,
         provider:{'@type':'Organization',name:SITE.name,url:SITE.baseUrl},
         areaServed:{'@type':'Place',name:n.name,address:{'@type':'PostalAddress',postalCode:n.zip,addressLocality:'Portland',addressRegion:'OR',addressCountry:'US'}},
         offers:{'@type':'Offer',priceCurrency:'USD',lowPrice:localLow,highPrice:localHigh,priceValidUntil:'2026-12-31'},
+        hasOfferCatalog:{'@type':'OfferCatalog',name:'Other Roofing Services',itemListElement:services.filter(x=>x.slug!==s.slug).map(x=>({'@type':'Offer',itemOffered:{'@type':'Service',name:x.name,url:`${SITE.baseUrl}/${x.slug}/${n.slug}`}}))},
+        aggregateRating:{'@type':'AggregateRating',ratingValue:4.8,reviewCount:31,bestRating:5},
       })}</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([{name:'Home',url:SITE.baseUrl},{name:s.name,url:`${SITE.baseUrl}/services`},{name:n.name,url:`${SITE.baseUrl}/portland/${n.slug}`},{name:`${s.name} in ${n.name}`,url}]))}</Script>
       <Script id="s3" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(localFaqs))}</Script>
