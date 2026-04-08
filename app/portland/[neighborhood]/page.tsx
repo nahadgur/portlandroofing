@@ -111,7 +111,7 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
 
       {/* Cost bar */}
       <div style={{background:'var(--bg2)',borderBottom:'1px solid var(--bdr)',padding:'2rem 3rem'}}>
-        <div style={{display:'flex',alignItems:'center',gap:'2rem',flexWrap:'wrap'}}>
+        <div style={{maxWidth:'900px',margin:'0 auto',display:'flex',alignItems:'center',gap:'2rem',flexWrap:'wrap'}}>
           <div style={{...m,fontSize:'0.68rem',color:'var(--muted)',letterSpacing:'0.1em',textTransform:'uppercase'}}>{n.name} Cost Index</div>
           <div style={{flex:1,maxWidth:'300px'}}><div className="pi-bar"><div className="pi-bar-fill" style={{width:`${n.indexPct}%`}}/></div></div>
           <div style={{...d,fontSize:'1.8rem',color:'var(--amber)'}}>${n.avgCost.toLocaleString()}</div>
