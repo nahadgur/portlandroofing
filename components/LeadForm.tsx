@@ -31,7 +31,7 @@ const steps = [
   { n:4, label:'Contact' },
 ]
 
-export default function LeadForm() {
+export default function LeadForm({ source }: { source?: string }) {
   const [step,       setStep]       = useState<Step>(1)
   const [data,       setData]       = useState<FormData>({ zip:'', material:'', urgency:'', name:'', phone:'', email:'' })
   const [submitting, setSubmitting] = useState(false)

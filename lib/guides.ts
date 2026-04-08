@@ -8,18 +8,30 @@ export interface GuideFaq {
   answer: string;
 }
 
+export type GuideCategory = 'hiring' | 'maintenance' | 'costs' | 'damage' | 'commercial'
+
 export interface Guide {
   slug: string;
   title: string;
   description: string;
   heroDescription: string;
+  category: GuideCategory;
   sections: GuideSection[];
   faqs: GuideFaq[];
+}
+
+export const categoryLabels: Record<GuideCategory, string> = {
+  hiring:      'Hiring',
+  maintenance: 'Maintenance',
+  costs:       'Costs',
+  damage:      'Storm Damage',
+  commercial:  'Commercial',
 }
 
 export const guides: Guide[] = [
   {
     slug: "how-to-choose-roofing-contractor-oregon",
+    category: "hiring" as const,
     title: "How to Choose a Roofing Contractor in Oregon",
     description:
       "Learn what to look for when hiring a roofing contractor in Oregon, from CCB licensing and insurance verification to evaluating bids, reading reviews, and avoiding common scams.",
@@ -85,6 +97,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "oregon-roof-maintenance-guide",
+    category: "maintenance" as const,
     title: "Oregon Roof Maintenance Guide",
     description:
       "A comprehensive seasonal maintenance guide for Oregon homeowners covering gutter cleaning, moss prevention, inspection schedules, and proactive steps to extend your roof's lifespan.",
@@ -154,6 +167,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "understanding-oregon-roofing-costs",
+    category: "costs" as const,
     title: "Understanding Oregon Roofing Costs",
     description:
       "A detailed breakdown of roofing costs in Oregon, including material prices, labor rates, regional pricing differences, and factors that influence your total project cost.",
@@ -224,6 +238,7 @@ export const guides: Guide[] = [
 ,
   {
     slug: "oregon-moss-removal-roof-guide",
+    category: "maintenance" as const,
     title: "Moss Removal & Prevention for Oregon Roofs",
     description:
       "A complete guide to identifying, removing, and preventing moss and algae on Oregon roofs. Covers safe removal methods, zinc and copper treatments, and city-by-city risk levels across the state.",
@@ -289,6 +304,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "storm-damage-roof-insurance-oregon",
+    category: "damage" as const,
     title: "Storm Damage & Insurance Claims for Oregon Roofs",
     description:
       "Step-by-step guidance for Oregon homeowners on documenting storm damage, navigating insurance claims, understanding coverage limits, and hiring the right contractor for repairs.",
@@ -354,6 +370,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "commercial-flat-roof-maintenance-oregon",
+    category: "commercial" as const,
     title: "Commercial & Flat Roof Maintenance in Oregon",
     description:
       "A practical maintenance guide for Oregon commercial property owners and facility managers covering TPO, EPDM, and modified bitumen flat roofing systems, inspection schedules, drainage management, and finding qualified Oregon contractors.",
@@ -421,4 +438,8 @@ export const guides: Guide[] = [
 
 export function getGuideBySlug(slug: string): Guide | undefined {
   return guides.find((g) => g.slug === slug);
+}
+
+export function getStaticGuidePaths() {
+  return guides.map((g) => ({ slug: g.slug }));
 }
