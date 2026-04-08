@@ -16,7 +16,7 @@ export default function Hero({ children }: Props) {
     <div className="hero-wrap" style={{ minHeight: '88vh' }}>
 
       <Image
-        src="/images/hero-homepage.webp"
+        src="/images/hero-homepage.jpeg"
         alt="Portland craftsman home at golden hour"
         fill
         priority

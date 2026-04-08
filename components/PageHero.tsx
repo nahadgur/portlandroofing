@@ -17,7 +17,7 @@ interface PageHeroProps {
   priority?:   boolean
 }
 
-const DEFAULT_IMG = '/images/hero-homepage.webp'
+const DEFAULT_IMG = '/images/hero-homepage.jpeg'
 
 export default function PageHero({
   eyebrow, title, subtitle, stats, breadcrumb,
@@ -26,7 +26,7 @@ export default function PageHero({
 
   // ── The outer container MUST have an explicit height for <Image fill> ──
   const minH = tall ? 'clamp(520px, 72vh, 720px)' : 'clamp(340px, 46vh, 500px)'
-  const src  = (imageUrl ?? DEFAULT_IMG).replace('.jpeg', '.webp')
+  const src  = imageUrl ?? DEFAULT_IMG
 
   const gradient = right
     ? 'linear-gradient(105deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.75) 40%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.18) 100%)'
