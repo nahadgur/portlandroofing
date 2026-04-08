@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 import { Bebas_Neue, Space_Mono, Barlow, Barlow_Condensed } from 'next/font/google'
 import { SITE }       from '@/lib/config'
@@ -10,6 +10,14 @@ const bebasNeue       = Bebas_Neue({ weight:'400', subsets:['latin'], variable:'
 const spaceMono       = Space_Mono({ weight:['400','700'], subsets:['latin'], variable:'--font-space-mono', display:'swap' })
 const barlow          = Barlow({ weight:['300','400','500','600'], subsets:['latin'], variable:'--font-barlow', display:'swap' })
 const barlowCondensed = Barlow_Condensed({ weight:['400','600','700'], subsets:['latin'], variable:'--font-barlow-cond', display:'swap' })
+
+// ── Disable pinch-zoom / double-tap zoom on mobile ──────────────────────────
+export const viewport: Viewport = {
+  width:           'device-width',
+  initialScale:    1,
+  maximumScale:    1,
+  userScalable:    false,
+}
 
 export const metadata: Metadata = {
   title:        { default: SITE.defaultTitle, template: `%s | ${SITE.name}` },
