@@ -40,6 +40,8 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
 
   const permit   = permitLabels[n.permitScore]
 
+  const nearby = getNearbyNeighborhoods(n.slug, 6)
+
   const tabMap: Record<string, 'asphalt' | 'metal' | 'cedar' | 'flat'> = {
     'roof-replacement':    'asphalt',
     'roof-repair':         'asphalt',
@@ -198,6 +200,41 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
             <Link key={x.slug} href={`/${x.slug}/${n.slug}`} style={{...c,fontSize:'0.85rem',letterSpacing:'0.06em',color:'var(--amber)',padding:'0.5rem 1rem',border:'1px solid var(--bdr)',textDecoration:'none',background:'var(--bg2)',whiteSpace:'nowrap'}}>{x.name} →</Link>
           ))}
           <Link href={`/portland/${n.slug}`} style={{...c,fontSize:'0.85rem',letterSpacing:'0.06em',color:'var(--muted)',padding:'0.5rem 1rem',border:'1px solid var(--bdr)',textDecoration:'none',background:'var(--bg2)',whiteSpace:'nowrap'}}>{n.name} Overview →</Link>
+        </div>
+      </section>
+
+
+      {/* Same service — nearby areas mesh */}
+      <section className="section-pad" style={{background:'#0A0B0D'}}>
+        <div style={{...m,fontSize:'0.68rem',color:'rgba(255,255,255,0.35)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Same Service · Nearby Areas ]</div>
+        <h2 style={{...d,fontSize:'clamp(1.6rem,3vw,2.5rem)',color:'#fff',lineHeight:1,marginBottom:'0.4rem'}}>
+          {s.name.toUpperCase()} NEAR {n.name.toUpperCase()}
+        </h2>
+        <p style={{...f,fontSize:'0.88rem',color:'rgba(255,255,255,0.38)',maxWidth:'480px',lineHeight:1.65,fontWeight:300,marginBottom:'2rem'}}>
+          Vetted contractors serving these Portland-area neighborhoods for the same service.
+        </p>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(220px,1fr))',gap:'1px',background:'rgba(255,255,255,0.06)'}}>
+          {nearby.map(nb=>{
+            const localLow  = Math.round(s.avgLow  * (nb.indexPct / 71))
+            const localHigh = Math.round(s.avgHigh * (nb.indexPct / 71))
+            return (
+              <a key={nb.slug} href={`/${s.slug}/${nb.slug}`} style={{
+                display:'block', padding:'1.2rem 1.4rem',
+                background:'rgba(255,255,255,0.03)',
+                textDecoration:'none',
+                transition:'background 0.15s',
+              }}
+              onMouseEnter={e=>(e.currentTarget.style.background='rgba(255,255,255,0.07)')}
+              onMouseLeave={e=>(e.currentTarget.style.background='rgba(255,255,255,0.03)')}
+              >
+                <div style={{...m,fontSize:'0.6rem',color:'rgba(255,255,255,0.3)',letterSpacing:'0.1em',textTransform:'uppercase',marginBottom:'0.35rem'}}>{nb.zip} · {nb.area}</div>
+                <div style={{...c,fontSize:'0.95rem',fontWeight:700,color:'#fff',marginBottom:'0.3rem'}}>{nb.name}</div>
+                <div style={{...m,fontSize:'0.68rem',color:'#F5A623'}}>
+                  ${localLow.toLocaleString()}–${localHigh.toLocaleString()}
+                </div>
+              </a>
+            )
+          })}
         </div>
       </section>
 
