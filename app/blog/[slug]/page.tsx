@@ -8,7 +8,7 @@ import PageHero from '@/components/PageHero'
 import { getBlogImage } from '@/lib/neighborhoodImages'
 import { posts, getPostBySlug, getStaticPostPaths, postCategoryLabels, postCategoryColors } from '@/lib/posts'
 import { SITE } from '@/lib/config'
-import { breadcrumbSchema } from '@/lib/schema'
+import { breadcrumbSchema, articleSchema } from '@/lib/schema'
 import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 
 export function generateStaticParams() { return getStaticPostPaths() }
@@ -31,12 +31,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const catColor = postCategoryColors[p.category]
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({
-        '@context':'https://schema.org','@type':'BlogPosting',
-        headline:p.title,description:p.excerpt,datePublished:p.published,
-        author:{'@type':'Organization',name:SITE.name,url:SITE.baseUrl},
-        url:`${SITE.baseUrl}/blog/${p.slug}`,
-      })}</Script>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline:p.title, description:p.excerpt, url:`${SITE.baseUrl}/blog/${p.slug}`, datePublished:p.published }))}</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([{name:'Home',url:SITE.baseUrl},{name:'Blog',url:`${SITE.baseUrl}/blog`},{name:p.title,url:`${SITE.baseUrl}/blog/${p.slug}`}]))}</Script>
       <Nav />
       <PageHero

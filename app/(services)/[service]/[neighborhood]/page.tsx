@@ -13,7 +13,7 @@ import TrustStrip            from '@/components/TrustStrip'
 import { services, getServiceBySlug } from '@/lib/services'
 import { neighborhoods, getNeighborhoodBySlug, getNearbyNeighborhoods, permitLabels } from '@/lib/neighborhoods'
 import { SITE } from '@/lib/config'
-import { breadcrumbSchema, faqSchema } from '@/lib/schema'
+import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/schema'
 
 export function generateStaticParams() {
   return services.flatMap(s => neighborhoods.map(n => ({ service: s.slug, neighborhood: n.slug })))
@@ -68,13 +68,7 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
 
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({
-        '@context':'https://schema.org','@type':'Service',
-        name:`${s.name} in ${n.name}`,description:inject(s.description,n,s),url,
-        provider:{'@type':'Organization',name:SITE.name,url:SITE.baseUrl},
-        areaServed:{'@type':'Place',name:n.name,address:{'@type':'PostalAddress',postalCode:n.zip,addressLocality:'Portland',addressRegion:'OR',addressCountry:'US'}},
-        offers:{'@type':'Offer',priceCurrency:'USD',lowPrice:localLow,highPrice:localHigh,priceValidUntil:'2026-12-31'},
-      })}</Script>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(serviceSchema({ name:`${s.name} in ${n.name}`, description:inject(s.description,n,s), url, neighborhood:n.name, zip:n.zip, lowPrice:localLow, highPrice:localHigh }))}</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([{name:'Home',url:SITE.baseUrl},{name:s.name,url:`${SITE.baseUrl}/services`},{name:n.name,url:`${SITE.baseUrl}/portland/${n.slug}`},{name:`${s.name} in ${n.name}`,url}]))}</Script>
       <Script id="s3" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(localFaqs))}</Script>
 

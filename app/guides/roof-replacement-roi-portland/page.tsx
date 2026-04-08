@@ -5,7 +5,7 @@ import Nav     from '@/components/Nav'
 import Footer  from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import { SITE } from '@/lib/config'
-import { breadcrumbSchema, faqSchema } from '@/lib/schema'
+import { breadcrumbSchema, faqSchema, articleSchema } from '@/lib/schema'
 import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 
 const PAGE_URL = `${SITE.baseUrl}/guides/roof-replacement-roi-portland`
@@ -47,14 +47,7 @@ export default function RoofReplacementRoiPage() {
 
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({
-        '@context': 'https://schema.org', '@type': 'Article',
-        headline: 'Roof Replacement ROI in Portland — Does a New Roof Increase Home Value?',
-        description: metadata.description,
-        datePublished: '2026-04-08',
-        author: { '@type': 'Organization', name: SITE.name, url: SITE.baseUrl },
-        url: PAGE_URL,
-      })}</Script>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline: 'Roof Replacement ROI in Portland — Does a New Roof Increase Home Value?', description: metadata.description as string, url: `${SITE.baseUrl}/guides/roof-replacement-roi-portland`, datePublished: '2026-04-08', imageUrl: `${SITE.baseUrl}/images/hero-guide-metal-asphalt.jpeg` })) }</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([
         { name: 'Home', url: SITE.baseUrl },
         { name: 'Guides', url: `${SITE.baseUrl}/guides` },

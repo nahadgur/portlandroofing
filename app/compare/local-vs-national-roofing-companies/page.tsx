@@ -5,7 +5,7 @@ import Nav     from '@/components/Nav'
 import Footer  from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import { SITE } from '@/lib/config'
-import { breadcrumbSchema, faqSchema } from '@/lib/schema'
+import { breadcrumbSchema, faqSchema, articleSchema } from '@/lib/schema'
 import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 
 const PAGE_URL = `${SITE.baseUrl}/compare/local-vs-national-roofing-companies`
@@ -44,14 +44,7 @@ export default function LocalVsNationalPage() {
 
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({
-        '@context': 'https://schema.org', '@type': 'Article',
-        headline: 'Local vs National Roofing Companies in Portland',
-        description: metadata.description,
-        datePublished: '2026-04-08',
-        author: { '@type': 'Organization', name: SITE.name, url: SITE.baseUrl },
-        url: PAGE_URL,
-      })}</Script>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline: 'Local vs National Roofing Companies in Portland', description: metadata.description as string, url: `${SITE.baseUrl}/compare/local-vs-national-roofing-companies`, datePublished: '2026-04-08' })) }</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([
         { name: 'Home', url: SITE.baseUrl },
         { name: 'Compare', url: `${SITE.baseUrl}/compare` },

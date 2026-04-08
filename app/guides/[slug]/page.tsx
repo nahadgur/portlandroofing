@@ -8,7 +8,7 @@ import PageHero from '@/components/PageHero'
 import { getGuideImage } from '@/lib/neighborhoodImages'
 import { guides, getGuideBySlug, getStaticGuidePaths, categoryLabels } from '@/lib/guides'
 import { SITE } from '@/lib/config'
-import { breadcrumbSchema, faqSchema } from '@/lib/schema'
+import { breadcrumbSchema, faqSchema, articleSchema } from '@/lib/schema'
 import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 
 export function generateStaticParams() { return getStaticGuidePaths() }
@@ -29,12 +29,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
   const d={fontFamily:'var(--font-bebas)'}as const
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({
-        '@context':'https://schema.org','@type':'Article',
-        headline:g.title,description:g.description,datePublished:g.published,
-        author:{'@type':'Organization',name:SITE.name,url:SITE.baseUrl},
-        url:`${SITE.baseUrl}/guides/${g.slug}`,
-      })}</Script>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline:g.title, description:g.description, url:`${SITE.baseUrl}/guides/${g.slug}`, datePublished:g.published, imageUrl:getGuideImage(g.slug) }))}</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([{name:'Home',url:SITE.baseUrl},{name:'Guides',url:`${SITE.baseUrl}/guides`},{name:g.headline,url:`${SITE.baseUrl}/guides/${g.slug}`}]))}</Script>
       <Script id="s3" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(g.faqs))}</Script>
       <Nav />

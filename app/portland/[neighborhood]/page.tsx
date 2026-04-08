@@ -10,7 +10,7 @@ import { getNeighborhoodImage } from '@/lib/neighborhoodImages'
 import { neighborhoods, getNeighborhoodBySlug, getStaticNeighborhoodPaths, permitLabels } from '@/lib/neighborhoods'
 import { services } from '@/lib/services'
 import { SITE }  from '@/lib/config'
-import { breadcrumbSchema, faqSchema } from '@/lib/schema'
+import { breadcrumbSchema, faqSchema, neighborhoodBusinessSchema } from '@/lib/schema'
 
 export function generateStaticParams() { return getStaticNeighborhoodPaths() }
 
@@ -43,18 +43,7 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
 
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({
-        '@context':'https://schema.org',
-        '@type':['LocalBusiness','RoofingContractor'],
-        name:`Portland Roofings — ${n.name}`,
-        description:n.description,
-        url:`${SITE.baseUrl}/portland/${n.slug}`,
-        address:{'@type':'PostalAddress',addressLocality:'Portland',addressRegion:'OR',postalCode:n.zip,addressCountry:'US'},
-        areaServed:[{'@type':'Place',name:n.name,address:{'@type':'PostalAddress',addressLocality:'Portland',addressRegion:'OR',postalCode:n.zip,addressCountry:'US'}}],
-        priceRange:n.range,
-        aggregateRating:{'@type':'AggregateRating',ratingValue:4.8,reviewCount:47,bestRating:5},
-        sameAs:[SITE.baseUrl],
-      })}</Script>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(neighborhoodBusinessSchema(n))}</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([{name:'Home',url:SITE.baseUrl},{name:'Neighborhoods',url:`${SITE.baseUrl}/#neighborhoods`},{name:n.name,url:`${SITE.baseUrl}/portland/${n.slug}`}]))}</Script>
       <Script id="s3" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(localFaqs))}</Script>
 
