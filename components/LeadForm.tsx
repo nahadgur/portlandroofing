@@ -170,7 +170,7 @@ export default function LeadForm() {
             <input
               type="text" inputMode="numeric" placeholder="e.g. 97201" maxLength={5}
               value={data.zip} onChange={e => set('zip', e.target.value.replace(/\D/g,''))}
-              style={inputStyle} autoFocus
+              style={inputStyle}
               onFocus={e=>e.currentTarget.style.borderColor='var(--amber-btn)'}
               onBlur={e=>e.currentTarget.style.borderColor=data.zip.length>=5?'var(--amber-btn)':'var(--bdr)'}
             />
