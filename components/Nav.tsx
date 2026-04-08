@@ -3,7 +3,7 @@ import Link from 'next/link'
 const links = [
   { label: 'Cost Index',    href: '/pdx-cost-index' },
   { label: 'Neighborhoods', href: '/#neighborhoods' },
-  { label: 'Guides',        href: '/guides' },
+  { label: 'Services',      href: '/services' },
   { label: 'Blog',          href: '/blog' },
 ]
 
