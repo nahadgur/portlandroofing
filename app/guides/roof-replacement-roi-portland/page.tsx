@@ -6,6 +6,7 @@ import Footer  from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
+import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 
 const PAGE_URL = `${SITE.baseUrl}/guides/roof-replacement-roi-portland`
 
@@ -209,7 +210,7 @@ export default function RoofReplacementRoiPage() {
               <div style={{ ...m, fontSize: '0.65rem', color: 'var(--amber)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>Ready to Move Forward?</div>
               <p style={{ ...f, fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.6, fontWeight: 300 }}>Free quotes from vetted Portland contractors. 48-hour response guaranteed.</p>
             </div>
-            <Link href="/#quote" style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>Get Free Quotes →</Link>
+            <ModalTriggerBtn style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>Get Free Quotes →</ModalTriggerBtn>
           </div>
         </div>
       </section>

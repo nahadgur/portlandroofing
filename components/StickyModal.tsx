@@ -58,6 +58,13 @@ export default function StickyModal() {
     return () => window.removeEventListener('keydown', handler)
   }, [open])
 
+  /* Listen for global openModal trigger from CTA buttons */
+  useEffect(() => {
+    const handler = () => setOpen(true)
+    window.addEventListener('openModal', handler)
+    return () => window.removeEventListener('openModal', handler)
+  }, [])
+
   /* Lock body scroll when modal open */
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''

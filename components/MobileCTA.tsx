@@ -17,7 +17,7 @@ export default function MobileCTA() {
       className="mobile-cta-bar"
       style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.25s' }}
     >
-      <a href="/#quote">
+      <a href="/#quote" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openModal')) }}>
         <span>GET FREE ROOFING QUOTES</span>
         <span style={{ fontSize: '1.1rem' }}>→</span>
       </a>

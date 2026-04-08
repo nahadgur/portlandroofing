@@ -9,6 +9,7 @@ import { getGuideImage } from '@/lib/neighborhoodImages'
 import { guides, getGuideBySlug, getStaticGuidePaths, categoryLabels } from '@/lib/guides'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
+import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 
 export function generateStaticParams() { return getStaticGuidePaths() }
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
@@ -85,7 +86,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
               <div style={{...m,fontSize:'0.65rem',color:'var(--amber)',letterSpacing:'0.12em',textTransform:'uppercase',marginBottom:'0.4rem'}}>Ready to Move Forward?</div>
               <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.6,fontWeight:300}}>Free quotes from vetted Portland contractors. 48-hour response guaranteed.</p>
             </div>
-            <a href="/#quote" style={{display:'inline-block',background:'var(--amber-btn)',color:'#000',...c,fontWeight:700,fontSize:'0.9rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.8rem 2rem',textDecoration:'none',whiteSpace:'nowrap',flexShrink:0}}>Get Free Quotes →</a>
+            <ModalTriggerBtn style={{display:'inline-block',background:'var(--amber-btn)',color:'#000',...c,fontWeight:700,fontSize:'0.9rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.8rem 2rem',textDecoration:'none',whiteSpace:'nowrap',flexShrink:0}}>Get Free Quotes →</ModalTriggerBtn>
           </div>
         </article>
       </div>

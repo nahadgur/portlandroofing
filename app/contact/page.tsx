@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Award, BookOpen, Shield, ThumbsUp } from "lucide-react";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import PageHero from "@/components/PageHero";
 import LeadForm from "@/components/LeadForm";
 import { SITE } from "@/lib/config";
@@ -75,6 +77,7 @@ export default function ContactPage() {
 
   return (
     <>
+      <Nav />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -260,6 +263,7 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

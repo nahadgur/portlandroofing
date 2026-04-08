@@ -9,6 +9,7 @@ import { getBlogImage } from '@/lib/neighborhoodImages'
 import { posts, getPostBySlug, getStaticPostPaths, postCategoryLabels, postCategoryColors } from '@/lib/posts'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema } from '@/lib/schema'
+import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 
 export function generateStaticParams() { return getStaticPostPaths() }
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
@@ -60,7 +61,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               <div style={{...m,fontSize:'0.65rem',color:catColor,letterSpacing:'0.12em',textTransform:'uppercase',marginBottom:'0.4rem'}}>Get Matched with Vetted Portland Contractors</div>
               <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.6,fontWeight:300}}>Free quotes in your zip code. 48-hour response. No spam.</p>
             </div>
-            <a href="/#quote" style={{display:'inline-block',background:'var(--amber-btn)',color:'#000',...c,fontWeight:700,fontSize:'0.9rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.8rem 2rem',textDecoration:'none',whiteSpace:'nowrap',flexShrink:0}}>Get Free Quotes →</a>
+            <ModalTriggerBtn style={{display:'inline-block',background:'var(--amber-btn)',color:'#000',...c,fontWeight:700,fontSize:'0.9rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.8rem 2rem',textDecoration:'none',whiteSpace:'nowrap',flexShrink:0}}>Get Free Quotes →</ModalTriggerBtn>
           </div>
         </article>
       </div>

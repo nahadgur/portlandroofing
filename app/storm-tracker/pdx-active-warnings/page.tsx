@@ -7,6 +7,7 @@ import PageHero from '@/components/PageHero'
 import StormAlerts from '@/components/StormAlerts'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
+import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 
 export const revalidate = 3600
 
@@ -276,9 +277,9 @@ export default function StormTrackerPage() {
                 <strong style={{ color: 'var(--text)', fontWeight: 500 }}>48-hour response. Licensed Oregon CCB only.</strong>
               </p>
             </div>
-            <Link href="/#lead-form" style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
+            <ModalTriggerBtn style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
               Get Free Quotes →
-            </Link>
+            </ModalTriggerBtn>
           </div>
         </div>
       </section>

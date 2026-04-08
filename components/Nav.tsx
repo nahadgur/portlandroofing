@@ -69,7 +69,7 @@ export default function Nav() {
 
         {/* Right side: CTA + hamburger */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
-          <Link href="/#lead-form" style={{
+          <Link href="/#lead-form" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openModal')) }} style={{
             background: '#F5A623', color: '#000',
             fontFamily: 'var(--font-barlow-cond)', fontWeight: 700,
             fontSize: 'clamp(0.68rem, 2vw, 0.8rem)',
@@ -152,7 +152,7 @@ export default function Nav() {
         <div style={{ padding: '1.5rem' }}>
           <Link
             href="/#lead-form"
-            onClick={() => setOpen(false)}
+            onClick={(e) => { e.preventDefault(); setOpen(false); window.dispatchEvent(new CustomEvent('openModal')) }}
             style={{
               display: 'block', textAlign: 'center',
               background: '#F5A623', color: '#000',

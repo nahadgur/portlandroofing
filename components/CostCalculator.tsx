@@ -252,7 +252,7 @@ export default function CostCalculator() {
           </div>
 
           {/* CTA */}
-          <a href="/#quote" style={{
+          <a href="/#quote" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openModal')) }} style={{
             display: 'block',
             width: '100%', padding: '1rem',
             background: 'var(--amber)', color: '#000',
