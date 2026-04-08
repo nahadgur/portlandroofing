@@ -9,6 +9,7 @@ import PageHero from '@/components/PageHero'
 import { getServiceImage } from '@/lib/neighborhoodImages'
 import NeighborhoodSwitcher from '@/components/NeighborhoodSwitcher'
 import ComparisonEngine      from '@/components/ComparisonEngine'
+import TrustStrip            from '@/components/TrustStrip'
 import { services, getServiceBySlug } from '@/lib/services'
 import { neighborhoods, getNeighborhoodBySlug, permitLabels } from '@/lib/neighborhoods'
 import { SITE } from '@/lib/config'
@@ -93,6 +94,7 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
       />
 
       <NeighborhoodSwitcher currentSlug={n.slug} serviceSlug={s.slug} serviceName={s.name} />
+      <TrustStrip urgency={s.urgency === 'high' ? 'high' : 'standard'} />
 
       {/* Why section */}
       <section className="section-pad" style={{background:'#fff'}}>
