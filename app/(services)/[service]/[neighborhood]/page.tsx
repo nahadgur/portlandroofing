@@ -80,7 +80,7 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
         breadcrumb={[{label:'Home',href:'/'},{label:'Services',href:'/services'},{label:n.name,href:`/portland/${n.slug}`},{label:s.name}]}
         eyebrow={`${n.zip} · ${n.area}`}
         title={<>{s.headline.toUpperCase()}<br/><span style={{color:'#F5A623'}}>IN {n.name.toUpperCase()}</span></>}
-        subtitle={inject(s.intro,n,s).slice(0,160)+'…'}
+        subtitle={inject(s.intro,n,s).split(/(?<=[a-z]{3}[.!?])\s+(?=[A-Z])/)[0]}
         stats={[
           { label:'Local Est. Range',  value:`$${localLow.toLocaleString()}–$${localHigh.toLocaleString()}` },
           { label:'Typical Mid-Point', value:`$${localMid.toLocaleString()}` },
