@@ -11,7 +11,7 @@ import NeighborhoodSwitcher from '@/components/NeighborhoodSwitcher'
 import ComparisonEngine      from '@/components/ComparisonEngine'
 import TrustStrip            from '@/components/TrustStrip'
 import { services, getServiceBySlug } from '@/lib/services'
-import { neighborhoods, getNeighborhoodBySlug, getNearbyNeighborhoods, permitLabels } from '@/lib/neighborhoods'
+import { neighborhoods, getNeighborhoodBySlug, getNearbyNeighborhoods, permitLabels, type ServiceSlug } from '@/lib/neighborhoods'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema, faqSchema, serviceSchema } from '@/lib/schema'
 
@@ -117,6 +117,21 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
           )}
         </div>
       </section>
+
+      {/* Local Context — per-neighborhood × per-service bespoke paragraph */}
+      {n.serviceContext?.[s.slug as ServiceSlug] && (
+        <section className="section-pad" style={{background:'#fff',borderTop:'1px solid var(--bdr)'}}>
+          <div className="content-wrap">
+            <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ {s.shortName} in {n.name} ]</div>
+            <h2 style={{...d,fontSize:'clamp(1.6rem,3vw,2.3rem)',color:'var(--text)',lineHeight:1,marginBottom:'1.5rem'}}>
+              WHY {s.name.toUpperCase()} IN {n.name.toUpperCase()}
+            </h2>
+            <p style={{...f,fontSize:'1rem',color:'var(--text)',lineHeight:1.75,fontWeight:300}}>
+              {n.serviceContext[s.slug as ServiceSlug]}
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Process */}
       <section className="section-pad" style={{background:'var(--bg2)'}}>
