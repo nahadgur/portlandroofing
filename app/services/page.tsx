@@ -9,7 +9,7 @@ import { SITE } from '@/lib/config'
 
 export const metadata: Metadata = {
   title:`Portland Roofing Services — Replacement, Repair, Metal, Cedar & Flat | ${SITE.name}`,
-  description:'All Portland roofing services. Vetted contractors across 50 neighborhoods.',
+  description:'All Portland roofing services. Vetted contractors across 10 deep cost markets — Pearl District, Hawthorne, Sellwood-Moreland, Eastmoreland, Alberta Arts, Irvington, St. Johns, West Hills, Lake Oswego, and Beaverton.',
   alternates:{canonical:`${SITE.baseUrl}/services`},
 }
 
@@ -28,8 +28,8 @@ export default function ServicesPage() {
         breadcrumb={[{label:'Home',href:'/'},{label:'Services'}]}
         eyebrow="Portland Metro"
         title={<>PORTLAND ROOFING<br/><span style={{color:'#F5A623'}}>SERVICES</span></>}
-        subtitle="Five roofing service types across 50 Portland neighborhoods. Select a service, choose your location, see local pricing and available contractors."
-        stats={[{label:'Service Types',value:'5'},{label:'Neighborhoods',value:'50'},{label:'Avg. Response',value:'48h'}]}
+        subtitle="Five roofing service types across Portland's 10 deepest cost markets. Select a service, choose your location, see local pricing and available contractors."
+        stats={[{label:'Service Types',value:'5'},{label:'Cost Markets',value:'10'},{label:'Avg. Response',value:'48h'}]}
       />
       <section className="section-pad" style={{background:'#fff'}}>
         <div style={{display:'flex',flexDirection:'column',gap:'1px',background:'var(--bdr)'}}>

@@ -26,8 +26,8 @@ export default function ContractorsApplyPage() {
         breadcrumb={[{label:'Home',href:'/'},{label:'For Contractors'},{label:'Apply'}]}
         eyebrow="For Oregon CCB-Licensed Contractors"
         title={<>JOIN THE<br/><span style={{color:'#F5A623'}}>NETWORK</span></>}
-        subtitle="We already rank for roofing searches across 50 Portland neighborhoods. The leads are coming in. We're vetting contractors to fill the listed slots — and only the top 1% pass."
-        stats={[{label:'Vetting Points',value:'47'},{label:'Neighborhoods',value:'50'},{label:'Pass Rate',value:'<3%'}]}
+        subtitle="We rank for roofing searches across Portland's 10 deepest cost markets. The leads are coming in. We're vetting contractors to fill the listed slots — and only the top 1% pass."
+        stats={[{label:'Vetting Points',value:'47'},{label:'Cost Markets',value:'10'},{label:'Pass Rate',value:'<3%'}]}
       />
       <section className="section-pad" style={{background:'#fff'}}>
         <div className="content-wrap">

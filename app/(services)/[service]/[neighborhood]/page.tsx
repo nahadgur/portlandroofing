@@ -133,6 +133,34 @@ export default function ServiceNeighborhoodPage({ params }: { params: { service:
         </section>
       )}
 
+      {/* Cost Drivers bridge — pull top 4 local cost drivers */}
+      <section className="section-pad" style={{background:'#fff',borderTop:'1px solid var(--bdr)'}}>
+        <div className="content-wrap">
+          <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Local Cost Drivers ]</div>
+          <h2 style={{...d,fontSize:'clamp(1.6rem,3vw,2.3rem)',color:'var(--text)',lineHeight:1,marginBottom:'1rem'}}>
+            WHAT MOVES {s.shortName.toUpperCase()} QUOTES IN {n.name.toUpperCase()}
+          </h2>
+          <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',maxWidth:'640px',lineHeight:1.7,fontWeight:300,marginBottom:'1.5rem'}}>
+            {n.localCostTruth[0]}
+          </p>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:'1px',background:'var(--bdr)'}}>
+            {n.costDrivers.slice(0,4).map((cd,i)=>(
+              <div key={i} style={{background:'#fff',padding:'1.1rem 1.3rem'}}>
+                <div style={{...c,fontSize:'0.95rem',fontWeight:700,color:'var(--text)',marginBottom:'0.35rem'}}>{cd.factor}</div>
+                <div style={{...d,fontSize:'1.1rem',color:'var(--amber)',marginBottom:'0.5rem',lineHeight:1}}>{cd.impact}</div>
+                <p style={{...f,fontSize:'0.83rem',color:'var(--muted)',lineHeight:1.6,fontWeight:300}}>{cd.detail}</p>
+              </div>
+            ))}
+          </div>
+          <p style={{...f,fontSize:'0.9rem',color:'var(--muted)',marginTop:'1.5rem',fontWeight:300}}>
+            Full {n.name} cost detail with all drivers, three worked examples, and permit specifics on the{' '}
+            <Link href={`/portland/${n.slug}`} style={{color:'var(--amber)',fontWeight:600,textDecoration:'underline'}}>
+              {n.name} market page
+            </Link>.
+          </p>
+        </div>
+      </section>
+
       {/* Process */}
       <section className="section-pad" style={{background:'var(--bg2)'}}>
         <div className="content-wrap">
