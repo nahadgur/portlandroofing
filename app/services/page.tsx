@@ -42,16 +42,53 @@ export default function ServicesPage() {
                 </div>
                 {s.urgency==='high'&&<span style={{...m,fontSize:'0.65rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.3rem 0.7rem',background:'rgba(200,32,44,0.08)',color:'var(--red)',border:'1px solid rgba(200,32,44,0.2)'}}>Emergency Available</span>}
               </div>
-              <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.7,fontWeight:300,maxWidth:'680px',marginBottom:'1.8rem'}}>
+              <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.7,fontWeight:300,maxWidth:'680px',marginBottom:'1.5rem'}}>
                 {s.intro.replace(/\{neighborhood\}/g,'Portland').replace(/\{zip\}/g,'').replace(/\{avgMid\}/g,s.avgMid.toLocaleString())}
               </p>
+              <div style={{display:'flex',gap:'0.6rem',flexWrap:'wrap'}}>
+                <Link
+                  href="#markets"
+                  style={{
+                    ...c,
+                    fontSize:'0.85rem',
+                    fontWeight:700,
+                    letterSpacing:'0.06em',
+                    textTransform:'uppercase',
+                    color:'#000',
+                    background:'#F5A623',
+                    padding:'0.65rem 1.2rem',
+                    textDecoration:'none',
+                    whiteSpace:'nowrap',
+                  }}
+                >
+                  {s.shortName} pricing by market →
+                </Link>
+                <Link
+                  href="/contact"
+                  style={{
+                    ...c,
+                    fontSize:'0.85rem',
+                    fontWeight:700,
+                    letterSpacing:'0.06em',
+                    textTransform:'uppercase',
+                    color:'#F5A623',
+                    background:'transparent',
+                    padding:'0.65rem 1.2rem',
+                    border:'1px solid #F5A623',
+                    textDecoration:'none',
+                    whiteSpace:'nowrap',
+                  }}
+                >
+                  Get a free quote →
+                </Link>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
       {/* Cost-market navigation — link to neighborhood market pages */}
-      <section className="section-pad" style={{background:'var(--bg)'}}>
+      <section id="markets" className="section-pad" style={{background:'var(--bg)',scrollMarginTop:'4rem'}}>
         <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Local Pricing By Market ]</div>
         <h2 style={{...d,fontSize:'clamp(1.8rem,3vw,2.8rem)',color:'var(--text)',lineHeight:1,marginBottom:'1rem'}}>
           PICK YOUR PORTLAND MARKET
