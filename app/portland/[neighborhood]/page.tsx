@@ -216,7 +216,7 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
           </p>
           <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))',gap:'0.6rem'}}>
             {services.map(s=>(
-              <Link key={s.slug} href={`/services#${s.slug}`}
+              <Link key={s.slug} href={`/services/${s.slug}`}
                 style={{
                   display:'block',
                   background:'#fff',

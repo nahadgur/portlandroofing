@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { neighborhoods } from '@/lib/neighborhoods'
+import { services }      from '@/lib/services'
 import { guides }        from '@/lib/guides'
 import { posts }         from '@/lib/posts'
 import { SITE }          from '@/lib/config'
@@ -17,6 +18,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/contractors/vetting`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.7 },
   ]
 
+  const serviceRoutes: MetadataRoute.Sitemap = services.map(s => ({
+    url: `${base}/services/${s.slug}`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.85,
+  }))
+
   const neighborhoodRoutes: MetadataRoute.Sitemap = neighborhoods.map(n => ({
     url: `${base}/portland/${n.slug}`, lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8,
   }))
@@ -29,5 +34,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${base}/blog/${p.slug}`, lastModified: new Date(p.published), changeFrequency: 'weekly' as const, priority: 0.8,
   }))
 
-  return [...staticRoutes, ...neighborhoodRoutes, ...guideRoutes, ...postRoutes]
+  return [...staticRoutes, ...serviceRoutes, ...neighborhoodRoutes, ...guideRoutes, ...postRoutes]
 }

@@ -30,11 +30,21 @@ export default function ServicesPage() {
         stats={[{label:'Service Types',value:'5'},{label:'Cost Markets',value:'10'},{label:'Avg. Response',value:'48h'}]}
       />
 
-      {/* Services list */}
+      {/* Services list — each is a Link to the service hub */}
       <section className="section-pad" style={{background:'#fff'}}>
         <div style={{display:'flex',flexDirection:'column',gap:'1px',background:'var(--bdr)'}}>
           {services.map((s,i)=>(
-            <div key={s.slug} id={s.slug} style={{background:i%2===0?'#fff':'var(--bg2)',padding:'2.5rem 3rem'}}>
+            <Link
+              key={s.slug}
+              href={`/services/${s.slug}`}
+              style={{
+                background:i%2===0?'#fff':'var(--bg2)',
+                padding:'2.5rem 3rem',
+                textDecoration:'none',
+                display:'block',
+                transition:'background 0.15s',
+              }}
+            >
               <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',flexWrap:'wrap',gap:'1rem',marginBottom:'1rem'}}>
                 <div>
                   <div style={{...m,fontSize:'0.65rem',color:'var(--amber)',letterSpacing:'0.12em',textTransform:'uppercase',marginBottom:'0.5rem'}}>${s.avgLow.toLocaleString()} – ${s.avgHigh.toLocaleString()} · {s.unit}</div>
@@ -42,53 +52,19 @@ export default function ServicesPage() {
                 </div>
                 {s.urgency==='high'&&<span style={{...m,fontSize:'0.65rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.3rem 0.7rem',background:'rgba(200,32,44,0.08)',color:'var(--red)',border:'1px solid rgba(200,32,44,0.2)'}}>Emergency Available</span>}
               </div>
-              <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.7,fontWeight:300,maxWidth:'680px',marginBottom:'1.5rem'}}>
+              <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.7,fontWeight:300,maxWidth:'680px',marginBottom:'1.2rem'}}>
                 {s.intro.replace(/\{neighborhood\}/g,'Portland').replace(/\{zip\}/g,'').replace(/\{avgMid\}/g,s.avgMid.toLocaleString())}
               </p>
-              <div style={{display:'flex',gap:'0.6rem',flexWrap:'wrap'}}>
-                <Link
-                  href="#markets"
-                  style={{
-                    ...c,
-                    fontSize:'0.85rem',
-                    fontWeight:700,
-                    letterSpacing:'0.06em',
-                    textTransform:'uppercase',
-                    color:'#000',
-                    background:'#F5A623',
-                    padding:'0.65rem 1.2rem',
-                    textDecoration:'none',
-                    whiteSpace:'nowrap',
-                  }}
-                >
-                  {s.shortName} pricing by market →
-                </Link>
-                <Link
-                  href="/contact"
-                  style={{
-                    ...c,
-                    fontSize:'0.85rem',
-                    fontWeight:700,
-                    letterSpacing:'0.06em',
-                    textTransform:'uppercase',
-                    color:'#F5A623',
-                    background:'transparent',
-                    padding:'0.65rem 1.2rem',
-                    border:'1px solid #F5A623',
-                    textDecoration:'none',
-                    whiteSpace:'nowrap',
-                  }}
-                >
-                  Get a free quote →
-                </Link>
+              <div style={{...c,fontSize:'0.88rem',fontWeight:700,letterSpacing:'0.08em',textTransform:'uppercase',color:'var(--amber)'}}>
+                View {s.name} detail →
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
 
       {/* Cost-market navigation — link to neighborhood market pages */}
-      <section id="markets" className="section-pad" style={{background:'var(--bg)',scrollMarginTop:'4rem'}}>
+      <section className="section-pad" style={{background:'var(--bg)'}}>
         <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Local Pricing By Market ]</div>
         <h2 style={{...d,fontSize:'clamp(1.8rem,3vw,2.8rem)',color:'var(--text)',lineHeight:1,marginBottom:'1rem'}}>
           PICK YOUR PORTLAND MARKET
