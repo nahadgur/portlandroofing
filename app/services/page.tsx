@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Nav     from '@/components/Nav'
 import Footer  from '@/components/Footer'
 import PageHero from '@/components/PageHero'
-import ServiceLocationSelect from '@/components/ServiceLocationSelect'
 import { services } from '@/lib/services'
 import { neighborhoods } from '@/lib/neighborhoods'
 import { SITE } from '@/lib/config'
@@ -12,8 +12,6 @@ export const metadata: Metadata = {
   description:'All Portland roofing services. Vetted contractors across 10 deep cost markets — Pearl District, Hawthorne, Sellwood-Moreland, Eastmoreland, Alberta Arts, Irvington, St. Johns, West Hills, Lake Oswego, and Beaverton.',
   alternates:{canonical:`${SITE.baseUrl}/services`},
 }
-
-const featured = neighborhoods.filter(n=>n.avgCost>10000).slice(0,5)
 
 export default function ServicesPage() {
   const f = { fontFamily:'var(--font-barlow)' } as const
@@ -28,9 +26,11 @@ export default function ServicesPage() {
         breadcrumb={[{label:'Home',href:'/'},{label:'Services'}]}
         eyebrow="Portland Metro"
         title={<>PORTLAND ROOFING<br/><span style={{color:'#F5A623'}}>SERVICES</span></>}
-        subtitle="Five roofing service types across Portland's 10 deepest cost markets. Select a service, choose your location, see local pricing and available contractors."
+        subtitle="Five roofing service types across Portland's 10 deepest cost markets. Each market has its own bespoke pricing intelligence — local cost drivers, three worked examples, real permit detail."
         stats={[{label:'Service Types',value:'5'},{label:'Cost Markets',value:'10'},{label:'Avg. Response',value:'48h'}]}
       />
+
+      {/* Services list */}
       <section className="section-pad" style={{background:'#fff'}}>
         <div style={{display:'flex',flexDirection:'column',gap:'1px',background:'var(--bdr)'}}>
           {services.map((s,i)=>(
@@ -45,19 +45,42 @@ export default function ServicesPage() {
               <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.7,fontWeight:300,maxWidth:'680px',marginBottom:'1.8rem'}}>
                 {s.intro.replace(/\{neighborhood\}/g,'Portland').replace(/\{zip\}/g,'').replace(/\{avgMid\}/g,s.avgMid.toLocaleString())}
               </p>
-              <ServiceLocationSelect serviceSlug={s.slug} serviceName={s.name} />
-              <div style={{marginTop:'1.2rem'}}>
-                <div style={{...m,fontSize:'0.62rem',color:'var(--muted)',letterSpacing:'0.08em',textTransform:'uppercase',marginBottom:'0.6rem'}}>Popular areas</div>
-                <div style={{display:'flex',gap:'0.4rem',flexWrap:'wrap'}}>
-                  {featured.map(n=>(
-                    <a key={n.slug} href={`/${s.slug}/${n.slug}`} style={{...c,fontSize:'0.8rem',letterSpacing:'0.04em',color:'var(--amber)',padding:'0.35rem 0.8rem',border:'1px solid var(--bdr)',textDecoration:'none',background:i%2===0?'var(--bg2)':'#fff',whiteSpace:'nowrap'}}>{n.name}</a>
-                  ))}
-                </div>
-              </div>
             </div>
           ))}
         </div>
       </section>
+
+      {/* Cost-market navigation — link to neighborhood market pages */}
+      <section className="section-pad" style={{background:'var(--bg)'}}>
+        <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Local Pricing By Market ]</div>
+        <h2 style={{...d,fontSize:'clamp(1.8rem,3vw,2.8rem)',color:'var(--text)',lineHeight:1,marginBottom:'1rem'}}>
+          PICK YOUR PORTLAND MARKET
+        </h2>
+        <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',maxWidth:'640px',lineHeight:1.7,fontWeight:300,marginBottom:'2rem'}}>
+          Each market page covers all five services with bespoke local cost intelligence — what drives quotes locally, three worked examples, real permit detail, and 5–6 location-specific FAQs.
+        </p>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(240px,1fr))',gap:'0.6rem'}}>
+          {neighborhoods.map(n=>(
+            <Link
+              key={n.slug}
+              href={`/portland/${n.slug}`}
+              style={{
+                display:'block',
+                background:'var(--bg2)',
+                border:'1px solid var(--bdr)',
+                padding:'1.1rem 1.3rem',
+                textDecoration:'none',
+              }}
+            >
+              <div style={{...m,fontSize:'0.6rem',color:'var(--muted)',letterSpacing:'0.1em',textTransform:'uppercase',marginBottom:'0.35rem'}}>{n.zip} · {n.area}</div>
+              <div style={{...d,fontSize:'1.3rem',color:'var(--text)',lineHeight:1,marginBottom:'0.4rem'}}>{n.name.toUpperCase()}</div>
+              <div style={{...d,fontSize:'1.4rem',color:'var(--amber)',lineHeight:1}}>${n.avgCost.toLocaleString()}</div>
+              <div style={{...m,fontSize:'0.7rem',color:'var(--muted)',marginTop:'0.4rem'}}>avg replacement · range {n.range}</div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <Footer />
     </>
   )

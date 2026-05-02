@@ -6,7 +6,6 @@ import Nav      from '@/components/Nav'
 import Footer   from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import { neighborhoods, getNeighborhoodBySlug, getStaticNeighborhoodPaths, permitLabels } from '@/lib/neighborhoods'
-import { services } from '@/lib/services'
 import { SITE }     from '@/lib/config'
 import { breadcrumbSchema, faqSchema } from '@/lib/schema'
 import { getNeighborhoodImage } from '@/lib/neighborhoodImages'
@@ -281,11 +280,12 @@ export default function NeighborhoodCostPage({ params }: { params: { neighborhoo
           Vetted contractors serving {n.name} ({n.zip}). Free quotes, 48-hour response.
         </p>
         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-          {services.map(s => (
-            <Link key={s.slug} href={`/${s.slug}/${n.slug}`} style={{ ...c, fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#000', background: '#F5A623', padding: '0.6rem 1.2rem', textDecoration: 'none', whiteSpace: 'nowrap' }}>
-              {s.name} →
-            </Link>
-          ))}
+          <Link href={`/portland/${n.slug}`} style={{ ...c, fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#000', background: '#F5A623', padding: '0.6rem 1.2rem', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            {n.name} Market Detail →
+          </Link>
+          <Link href="/services" style={{ ...c, fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#F5A623', background: 'transparent', padding: '0.6rem 1.2rem', border: '1px solid #F5A623', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            All Services →
+          </Link>
         </div>
         <div style={{ marginTop: '1.5rem' }}>
           <Link href="/pdx-cost-index" style={{ ...m, fontSize: '0.65rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none' }}>

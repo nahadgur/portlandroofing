@@ -211,9 +211,12 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
           <h2 style={{...d,fontSize:'clamp(1.6rem,3vw,2.3rem)',color:'var(--text)',lineHeight:1,marginBottom:'1.5rem'}}>
             ROOFING SERVICES IN {n.name.toUpperCase()}
           </h2>
+          <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.7,fontWeight:300,marginBottom:'1.5rem',maxWidth:'640px'}}>
+            All five services covered by the same {n.name} crews. Local cost intelligence on this page applies to every service type — material choice shifts the absolute number, but the {n.name}-specific drivers (deck, canopy, permit, design review) apply across the board.
+          </p>
           <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))',gap:'0.6rem'}}>
             {services.map(s=>(
-              <Link key={s.slug} href={`/${s.slug}/${n.slug}`}
+              <Link key={s.slug} href={`/services#${s.slug}`}
                 style={{
                   display:'block',
                   background:'#fff',
@@ -223,10 +226,10 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
                 }}
               >
                 <div style={{...c,fontSize:'1rem',fontWeight:700,color:'var(--text)',marginBottom:'0.3rem'}}>
-                  {s.name} in {n.name}
+                  {s.name}
                 </div>
                 <div style={{...m,fontSize:'0.75rem',color:'var(--muted)'}}>${s.avgLow.toLocaleString()}–${s.avgHigh.toLocaleString()} {s.unit}</div>
-                <div style={{...c,fontSize:'0.78rem',color:'var(--amber)',marginTop:'0.4rem',letterSpacing:'0.04em'}}>View {n.name} pricing →</div>
+                <div style={{...c,fontSize:'0.78rem',color:'var(--amber)',marginTop:'0.4rem',letterSpacing:'0.04em'}}>Service detail →</div>
               </Link>
             ))}
           </div>
