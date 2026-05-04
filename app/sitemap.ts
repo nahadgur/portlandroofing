@@ -10,7 +10,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: base,                     lastModified: new Date(), changeFrequency: 'weekly',  priority: 1.0 },
+    { url: `${base}/tools`,          lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 },
+    { url: `${base}/tools/cost-calculator`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${base}/tools/permit-lookup`,   lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${base}/tools/lifecycle-cost`,  lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${base}/tools/wind-risk`,       lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${base}/tools/roi`,             lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
     { url: `${base}/pdx-cost-index`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${base}/storm-tracker/pdx-active-warnings`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.85 },
     { url: `${base}/guides`,         lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.85 },
     { url: `${base}/blog`,           lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.85 },
     { url: `${base}/services`,       lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },

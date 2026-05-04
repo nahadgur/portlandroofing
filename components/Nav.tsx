@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const links = [
+  { label: 'Tools',         href: '/tools' },
   { label: 'Cost Index',    href: '/pdx-cost-index' },
   { label: 'Storm Tracker', href: '/storm-tracker/pdx-active-warnings' },
   { label: 'Neighborhoods', href: '/#neighborhoods' },
@@ -172,7 +173,7 @@ export default function Nav() {
             fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem',
             color: 'rgba(255,255,255,0.25)', lineHeight: 1.6,
           }}>
-            Not a contractor. Lead referral platform serving 50+ Portland neighborhoods.
+            Not a contractor. Lead referral platform covering Portland&apos;s 10 deepest cost markets.
           </p>
         </div>
       </div>
