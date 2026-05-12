@@ -1,4 +1,4 @@
-# Portland Roofings — V1
+# Portland Roofing — V1
 
 PDX roofing authority / lead gen marketplace. Next.js 14 App Router + TypeScript + Tailwind CSS.
 
@@ -19,7 +19,7 @@ One place to update the domain:
 
 ```ts
 // lib/config.ts
-export const DOMAIN = 'portlandroofings.com' // ← swap here
+export const DOMAIN = 'portlandorroofing.com'
 ```
 
 Everything (metadata, canonical URLs, footer, OG tags) inherits from this.
@@ -30,7 +30,7 @@ Everything (metadata, canonical URLs, footer, OG tags) inherits from this.
 |---|---|
 | `NEXT_PUBLIC_GAS_WEBHOOK_URL` | Google Apps Script URL for lead capture → Google Sheets |
 | `NEXT_PUBLIC_GA4_ID` | Google Analytics 4 Measurement ID (e.g. `G-XXXXXXXXXX`) |
-| `NEXT_PUBLIC_BASE_URL` | Production URL (e.g. `https://portlandroofings.com`) |
+| `NEXT_PUBLIC_BASE_URL` | Production URL (e.g. `https://portlandorroofing.com`) |
 
 ## Google Apps Script Setup
 

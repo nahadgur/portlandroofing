@@ -35,7 +35,7 @@ export default function OGImage() {
             PORTLAND
           </span>
           <span style={{ fontSize: 28, fontWeight: 900, color: '#F5A623', letterSpacing: 2 }}>
-            ROOFINGS
+            ROOFING
           </span>
         </div>
 

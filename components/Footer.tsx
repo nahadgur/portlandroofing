@@ -38,7 +38,7 @@ export default function Footer() {
             letterSpacing: '0.04em', color: '#fff',
             textDecoration: 'none', display: 'block', marginBottom: '0.8rem',
           }}>
-            PORTLAND <span style={{ color: '#F5A623' }}>ROOFINGS</span>
+            PORTLAND <span style={{ color: '#F5A623' }}>ROOFING</span>
           </Link>
           <p style={{
             fontFamily: 'var(--font-barlow)', fontSize: '0.85rem',

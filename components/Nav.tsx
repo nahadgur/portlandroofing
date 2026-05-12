@@ -56,7 +56,7 @@ export default function Nav() {
           color: '#fff', textDecoration: 'none',
           whiteSpace: 'nowrap', flexShrink: 0,
         }}>
-          PORTLAND <span style={{ color: '#F5A623' }}>ROOFINGS</span>
+          PORTLAND <span style={{ color: '#F5A623' }}>ROOFING</span>
         </Link>
 
         {/* Desktop links */}
@@ -70,7 +70,7 @@ export default function Nav() {
 
         {/* Right side: CTA + hamburger */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
-          <Link href="/#lead-form" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openModal')) }} style={{
+          <Link href="/contact" style={{
             background: '#F5A623', color: '#000',
             fontFamily: 'var(--font-barlow-cond)', fontWeight: 700,
             fontSize: 'clamp(0.68rem, 2vw, 0.8rem)',
@@ -152,8 +152,8 @@ export default function Nav() {
         {/* CTA inside drawer */}
         <div style={{ padding: '1.5rem' }}>
           <Link
-            href="/#lead-form"
-            onClick={(e) => { e.preventDefault(); setOpen(false); window.dispatchEvent(new CustomEvent('openModal')) }}
+            href="/contact"
+            onClick={() => setOpen(false)}
             style={{
               display: 'block', textAlign: 'center',
               background: '#F5A623', color: '#000',

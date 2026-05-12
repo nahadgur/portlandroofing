@@ -47,7 +47,7 @@ export default function StormAlerts() {
     async function fetchAlerts() {
       try {
         const res = await fetch('https://api.weather.gov/alerts/active?area=OR', {
-          headers: { 'User-Agent': 'portlandroofings.com contact@portlandroofings.com' },
+          headers: { 'User-Agent': 'portlandorroofing.com contact@portlandorroofing.com' },
         })
         if (!res.ok) throw new Error('API error')
         const data = await res.json()
