@@ -265,7 +265,7 @@ export default function CostCalculatorDeep() {
             <Link href={`/portland/${neighborhood.slug}`} style={{ flex: 1, padding: '0.85rem 1rem', background: 'var(--amber)', color: '#000', ...c, fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', textAlign: 'center', whiteSpace: 'nowrap' }}>
               {neighborhood.name} Detail →
             </Link>
-            <a href="#quote" onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('openModal')) }} style={{ flex: 1, padding: '0.85rem 1rem', background: 'transparent', color: 'var(--amber)', border: '1px solid var(--amber)', ...c, fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', textAlign: 'center', whiteSpace: 'nowrap' }}>
+            <a href="/contact" style={{ flex: 1, padding: '0.85rem 1rem', background: 'transparent', color: 'var(--amber)', border: '1px solid var(--amber)', ...c, fontWeight: 700, fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', textAlign: 'center', whiteSpace: 'nowrap' }}>
               Get Real Quotes →
             </a>
           </div>

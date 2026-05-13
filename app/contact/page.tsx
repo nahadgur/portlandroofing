@@ -8,9 +8,9 @@ import { SITE } from "@/lib/config";
 import { localBusinessSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Contact Oregon Roofing | Get a Free Quote",
+  title: "Contact Portland Roofing | Get a Free Quote",
   description:
-    "Contact Oregon Roofing for free roofing quotes across 40 Oregon cities. Call, email, or fill out our form. CCB-licensed contractors, no-obligation estimates.",
+    "Contact Portland Roofing for free roofing quotes across the Portland metro. Email or fill out our form. CCB-licensed Oregon contractors, no-obligation estimates.",
   alternates: { canonical: `${SITE.baseUrl}/contact` },
 };
 
@@ -23,12 +23,12 @@ const CONTACT_FAQS = [
   {
     question: "Is the quote really free with no obligation?",
     answer:
-      "Yes. Every quote through Oregon Roofing is completely free with zero obligation. You are never pressured to commit, and your information is only shared with verified contractors in your area.",
+      "Yes. Every quote through Portland Roofing is completely free with zero obligation. You are never pressured to commit, and your information is only shared with verified contractors in your area.",
   },
   {
-    question: "What areas does Oregon Roofing serve?",
+    question: "What areas does Portland Roofing serve?",
     answer:
-      "Oregon Roofing connects homeowners with contractors across 40 cities statewide, from Portland and Eugene to Bend, Medford, Astoria, and everywhere in between.",
+      "Portland Roofing connects homeowners with CCB-licensed contractors across the Portland metro, from inner-NE and SE neighborhoods to Beaverton, Hillsboro, Lake Oswego, Tigard, Gresham, and the surrounding suburbs.",
   },
   {
     question: "How do I know the contractors are legitimate?",
@@ -47,19 +47,19 @@ const EEAT_CARDS = [
     icon: BookOpen,
     title: "Experience",
     description:
-      "10+ years connecting Oregon homeowners with quality roofers",
+      "10+ years connecting Portland homeowners with quality roofers",
   },
   {
     icon: Award,
     title: "Expertise",
     description:
-      "Deep knowledge of Oregon's climate, building codes, and materials",
+      "Deep knowledge of PDX climate, building codes, and roofing materials",
   },
   {
     icon: Shield,
     title: "Authoritativeness",
     description:
-      "CCB-verified contractor network across 40 cities",
+      "CCB-verified contractor network across 50+ Portland metro neighborhoods",
   },
   {
     icon: ThumbsUp,
@@ -108,10 +108,10 @@ export default function ContactPage() {
         title={
           <>
             Get in Touch with{" "}
-            <span style={{ color: "#0066CC" }}>Oregon Roofing</span>
+            <span style={{ color: "var(--amber-btn)" }}>Portland Roofing</span>
           </>
         }
-        subtitle="Serving homeowners across all 40 Oregon cities. Whether you need a free quote, have a question about your roof, or want to learn more about our contractor network -- we are here to help."
+        subtitle="Serving homeowners across the Portland metro. Whether you need a free quote, have a question about your roof, or want to learn more about our contractor network, we are here to help."
       />
 
       {/* Lead Form */}
@@ -119,7 +119,7 @@ export default function ContactPage() {
         <div className="content-wrap" style={{ maxWidth: 680, margin: "0 auto" }}>
           <h2
             className="text-2xl sm:text-3xl font-extrabold mb-3 text-center"
-            style={{ color: "#0F172A" }}
+            style={{ color: "var(--text)" }}
           >
             Request a Free Quote
           </h2>
@@ -142,7 +142,7 @@ export default function ContactPage() {
         <div className="content-wrap">
           <h2
             className="text-2xl sm:text-3xl font-extrabold mb-6 text-center"
-            style={{ color: "#0F172A" }}
+            style={{ color: "var(--text)" }}
           >
             Our Service Area
           </h2>
@@ -150,19 +150,20 @@ export default function ContactPage() {
             className="text-sm text-center mb-6"
             style={{ color: "var(--muted)", maxWidth: 600, margin: "0 auto 1.5rem" }}
           >
-            Oregon Roofing serves homeowners across the entire state of Oregon,
-            from the Pacific Coast to the high desert of Eastern Oregon.
+            Portland Roofing serves homeowners across the Portland metro,
+            from inner-city neighborhoods to Beaverton, Hillsboro, Lake Oswego,
+            Tigard, Gresham, and the surrounding suburbs.
           </p>
           <div className="rounded-lg overflow-hidden border" style={{ borderColor: "var(--bdr)" }}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2924974.1!2d-122.0!3d44.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950b0b7da97427%3A0x1c36b9e6f6d18591!2sOregon!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+              src="https://maps.google.com/maps?q=Portland%2C+OR&z=10&output=embed"
               width="100%"
               height="400"
               style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Oregon Roofing service area map"
+              title="Portland Roofing service area map"
             />
           </div>
         </div>
@@ -173,16 +174,16 @@ export default function ContactPage() {
         <div className="content-wrap">
           <h2
             className="text-2xl sm:text-3xl font-extrabold mb-3 text-center"
-            style={{ color: "#0F172A" }}
+            style={{ color: "var(--text)" }}
           >
-            Why Trust Oregon Roofing?
+            Why Trust Portland Roofing?
           </h2>
           <p
             className="text-sm text-center mb-8"
             style={{ color: "var(--muted)", maxWidth: 600, margin: "0 auto 2rem" }}
           >
             Our commitment to experience, expertise, authority, and trust sets
-            us apart in the Oregon roofing industry.
+            us apart in the PDX roofing industry.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {EEAT_CARDS.map((card) => {
@@ -193,20 +194,20 @@ export default function ContactPage() {
                   className="rounded-lg border p-6"
                   style={{
                     borderColor: "var(--bdr)",
-                    borderTop: "3px solid #0066CC",
+                    borderTop: "3px solid var(--amber-btn)",
                     background: "var(--bg2)",
                   }}
                 >
                   <div className="flex items-center gap-3 mb-3">
                     <div
                       className="flex h-10 w-10 items-center justify-center rounded-full"
-                      style={{ background: "#DBEAFE" }}
+                      style={{ background: "rgba(196,125,10,0.12)" }}
                     >
-                      <Icon className="h-5 w-5" style={{ color: "#0066CC" }} />
+                      <Icon className="h-5 w-5" style={{ color: "var(--amber-btn)" }} />
                     </div>
                     <h3
                       className="text-base font-bold"
-                      style={{ color: "#0F172A" }}
+                      style={{ color: "var(--text)" }}
                     >
                       {card.title}
                     </h3>
@@ -232,7 +233,7 @@ export default function ContactPage() {
         <div className="content-wrap">
           <h2
             className="text-2xl sm:text-3xl font-extrabold mb-8 text-center"
-            style={{ color: "#0F172A" }}
+            style={{ color: "var(--text)" }}
           >
             Frequently Asked Questions
           </h2>
@@ -248,7 +249,7 @@ export default function ContactPage() {
               >
                 <h3
                   className="text-sm font-bold mb-2"
-                  style={{ color: "#0F172A" }}
+                  style={{ color: "var(--text)" }}
                 >
                   {faq.question}
                 </h3>

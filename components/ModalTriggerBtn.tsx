@@ -1,5 +1,4 @@
-'use client'
-
+import Link from 'next/link'
 import { CSSProperties } from 'react'
 
 interface Props {
@@ -10,18 +9,16 @@ interface Props {
 
 export default function ModalTriggerBtn({ children, style, className }: Props) {
   return (
-    <button
+    <Link
+      href="/contact"
       className={className}
       style={{
         cursor: 'pointer',
-        border: 'none',
-        background: 'none',
-        padding: 0,
+        textDecoration: 'none',
         ...style,
       }}
-      onClick={() => window.dispatchEvent(new CustomEvent('openModal'))}
     >
       {children}
-    </button>
+    </Link>
   )
 }

@@ -84,7 +84,7 @@ export default function TrustStrip({ urgency = 'standard' }: TrustStripProps) {
         letterSpacing: '0.12em',
         textTransform: 'uppercase',
       }}>
-        Portland Roofings Contractor Standard
+        Portland Roofing Contractor Standard
       </div>
 
       {/* Badges row */}

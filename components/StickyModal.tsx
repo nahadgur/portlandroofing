@@ -1,13 +1,12 @@
 'use client'
 
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
-import { Zap, X } from 'lucide-react'
-import LeadForm     from '@/components/LeadForm'
+import Link from 'next/link'
+import { Zap } from 'lucide-react'
 import { neighborhoods } from '@/lib/neighborhoods'
 import { services }      from '@/lib/services'
 
-/* ─── Contextual label based on current page ─────────────────────────── */
 function getCtaLabel(pathname: string): string {
   if (pathname === '/pdx-cost-index')
     return 'Calculate My Exact Cost'
@@ -18,7 +17,6 @@ function getCtaLabel(pathname: string): string {
     return n ? `Find ${n.name} Roofers` : 'Get Free Quotes'
   }
 
-  // service×location: /roof-replacement/pearl-district
   const parts = pathname.split('/').filter(Boolean)
   if (parts.length === 2) {
     const s = services.find(s => s.slug === parts[0])
@@ -28,18 +26,17 @@ function getCtaLabel(pathname: string): string {
 
   if (pathname.startsWith('/guides/'))  return 'Get Free Quotes'
   if (pathname.startsWith('/blog/'))    return 'Get Free Quotes'
-  if (pathname === '/')                 return '' // hidden on homepage — form is in hero
+  if (pathname === '/')                 return ''
+  if (pathname === '/contact')          return ''
 
   return 'Get Free Portland Quotes'
 }
 
 export default function StickyModal() {
-  const pathname            = usePathname()
+  const pathname              = usePathname()
   const [visible, setVisible] = useState(false)
-  const [open,    setOpen]    = useState(false)
   const ctaLabel              = getCtaLabel(pathname)
 
-  /* Show after 25% scroll */
   const onScroll = useCallback(() => {
     const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)
     setVisible(pct > 0.25)
@@ -50,37 +47,12 @@ export default function StickyModal() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [onScroll])
 
-  /* Close on Escape */
-  useEffect(() => {
-    if (!open) return
-    const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [open])
-
-  /* Listen for global openModal trigger from CTA buttons */
-  useEffect(() => {
-    const handler = () => setOpen(true)
-    window.addEventListener('openModal', handler)
-    return () => window.removeEventListener('openModal', handler)
-  }, [])
-
-  /* Lock body scroll when modal open */
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
-  }, [open])
-
-  /* Don't render on homepage or if no label */
   if (!ctaLabel) return null
 
   return (
     <>
-      {/* ── STICKY TRIGGER ─────────────────────────────────────────── */}
       <div style={{
         position: 'fixed',
-        // Mobile: full-width bar at bottom
-        // Desktop: floating button bottom-right
         bottom: 0,
         left: 0,
         right: 0,
@@ -90,9 +62,8 @@ export default function StickyModal() {
         transform: visible ? 'translateY(0)' : 'translateY(100%)',
         transition: 'opacity 0.3s, transform 0.3s',
       }}>
-        {/* Mobile bar */}
-        <button
-          onClick={() => setOpen(true)}
+        <Link
+          href="/contact"
           className="mobile-sticky-cta"
           style={{
             display: 'flex',
@@ -110,16 +81,16 @@ export default function StickyModal() {
             fontSize: '1rem',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
+            textDecoration: 'none',
           }}
         >
           <Zap size={16} strokeWidth={2.5} />
           {ctaLabel}
-        </button>
+        </Link>
       </div>
 
-      {/* Desktop floating button — positioned bottom-right */}
-      <button
-        onClick={() => setOpen(true)}
+      <Link
+        href="/contact"
         className="desktop-sticky-cta"
         style={{
           position: 'fixed',
@@ -139,6 +110,7 @@ export default function StickyModal() {
           fontSize: '0.88rem',
           letterSpacing: '0.1em',
           textTransform: 'uppercase',
+          textDecoration: 'none',
           boxShadow: '0 4px 24px rgba(0,0,0,0.5)',
           pointerEvents: visible ? 'auto' : 'none',
           opacity: visible ? 1 : 0,
@@ -148,69 +120,7 @@ export default function StickyModal() {
       >
         <Zap size={15} strokeWidth={2.5} />
         {ctaLabel}
-      </button>
-
-      {/* ── MODAL ──────────────────────────────────────────────────── */}
-      {open && (
-        <div
-          onClick={(e) => { if (e.target === e.currentTarget) setOpen(false) }}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 500,
-            background: 'rgba(0,0,0,0.82)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '1rem',
-            backdropFilter: 'blur(4px)',
-          }}
-        >
-          <div style={{
-            background: 'var(--bg2)',
-            border: '1px solid var(--bdr)',
-            width: '100%',
-            maxWidth: '520px',
-            maxHeight: '90vh',
-            overflowY: 'auto',
-            position: 'relative',
-          }}>
-            {/* Close button */}
-            <button
-              onClick={() => setOpen(false)}
-              aria-label="Close"
-              style={{
-                position: 'absolute',
-                top: '1rem',
-                right: '1rem',
-                background: 'transparent',
-                border: 'none',
-                color: 'var(--muted)',
-                cursor: 'pointer',
-                padding: '0.3rem',
-                zIndex: 10,
-              }}
-            >
-              <X size={20} />
-            </button>
-
-            {/* Context label */}
-            <div style={{
-              padding: '1.2rem 2rem 0',
-              fontFamily: 'var(--font-space-mono)',
-              fontSize: '0.65rem',
-              color: 'var(--amber)',
-              letterSpacing: '0.15em',
-              textTransform: 'uppercase',
-            }}>
-              ▸ {ctaLabel}
-            </div>
-
-            {/* Lead form */}
-            <LeadForm />
-          </div>
-        </div>
-      )}
+      </Link>
     </>
   )
 }

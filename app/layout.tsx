@@ -16,7 +16,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor:   '#0F172A',
+  themeColor:   '#F5A623',
 }
 
 export const metadata: Metadata = {
@@ -55,8 +55,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={[bebasNeue.variable, spaceMono.variable, barlow.variable, barlowCondensed.variable].join(' ')}>
       <body>
+        <a href="#main" className="skip-link">Skip to content</a>
         <StormBanner />
-        {children}
+        <main id="main">{children}</main>
         <StickyModal />
 
         {SITE.ga4 && SITE.ga4 !== 'G-XXXXXXXXXX' && (

@@ -61,6 +61,20 @@ export function localBusinessSchema() {
   }
 }
 
+// ─── WebSite (site-name signal for Google SERP) ───────────────────────────
+export function webSiteSchema() {
+  return {
+    '@context':      'https://schema.org',
+    '@type':         'WebSite',
+    '@id':           `${SITE.baseUrl}/#website`,
+    name:            SITE.name,
+    alternateName:   'Portland Roofing',
+    url:             SITE.baseUrl,
+    inLanguage:      'en-US',
+    publisher:       { '@id': `${SITE.baseUrl}/#organization` },
+  }
+}
+
 // ─── Organization ─────────────────────────────────────────────────────────
 export function organizationSchema() {
   return {

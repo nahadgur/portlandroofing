@@ -9,7 +9,7 @@ import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
   title:`Our 47-Point Contractor Vetting Process | ${SITE.name}`,
-  description:'Every contractor listed on Portland Roofings passes 47 verification checkpoints covering CCB licensing, insurance, review authenticity, project history, and response time.',
+  description:'Every contractor listed on Portland Roofing passes 47 verification checkpoints covering CCB licensing, insurance, review authenticity, project history, and response time.',
   alternates:{canonical:`${SITE.baseUrl}/contractors/vetting`},
 }
 
@@ -69,7 +69,7 @@ export default function VettingPage() {
         breadcrumb={[{label:'Home',href:'/'},{label:'For Contractors',href:'/contractors/apply'},{label:'Our Vetting Process'}]}
         eyebrow="Our Standard"
         title={<>THE 47-POINT<br/><span style={{color:'#F5A623'}}>VETTING PROCESS</span></>}
-        subtitle="Every contractor listed on Portland Roofings passes 47 verification checkpoints. Here's exactly what we check — and why."
+        subtitle="Every contractor listed on Portland Roofing passes 47 verification checkpoints. Here's exactly what we check — and why."
         stats={[{label:'Verification Points',value:'47'},{label:'Check Categories',value:'6'},{label:'Est. Pass Rate',value:'<3%'}]}
       />
       {checkpoints.map((cat,ci)=>(

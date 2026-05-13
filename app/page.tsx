@@ -11,7 +11,7 @@ import PriceIndex       from '@/components/PriceIndex'
 import ComparisonEngine from '@/components/ComparisonEngine'
 import Footer           from '@/components/Footer'
 import { SITE }         from '@/lib/config'
-import { localBusinessSchema, faqSchema, organizationSchema } from '@/lib/schema'
+import { localBusinessSchema, faqSchema, organizationSchema, webSiteSchema } from '@/lib/schema'
 import { guides, categoryLabels } from '@/lib/guides'
 import { posts, postCategoryLabels, postCategoryColors } from '@/lib/posts'
 import { services } from '@/lib/services'
@@ -47,6 +47,7 @@ export default function HomePage() {
 
   return (
     <>
+      <Script id="schema-website" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(webSiteSchema())}</Script>
       <Script id="schema-lb"  type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(localBusinessSchema())}</Script>
       <Script id="schema-org" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(organizationSchema())}</Script>
       <Script id="schema-faq" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(faqs))}</Script>

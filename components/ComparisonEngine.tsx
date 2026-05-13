@@ -224,7 +224,7 @@ export default function ComparisonEngine({ defaultTab = 'asphalt', neighborhood,
 
       {/* Source note */}
       <div style={{ ...m, fontSize:'0.58rem', color:'var(--muted)', letterSpacing:'0.08em', padding:'0.6rem 1rem', background:'var(--bg2)', borderTop:'1px solid var(--bdr)' }}>
-        PDX MARKET DATA 2026 · Portland Roofings · Costs reflect Portland metro contractor quotes · Lifespans reflect Pacific Northwest climate conditions
+        PDX MARKET DATA 2026 · Portland Roofing · Costs reflect Portland metro contractor quotes · Lifespans reflect Pacific Northwest climate conditions
       </div>
     </div>
   )

@@ -7,7 +7,7 @@ import { posts, postCategoryLabels, postCategoryColors } from '@/lib/posts'
 import { SITE } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title:`Portland Roofings Blog — Local Roofing News & Data | ${SITE.name}`,
+  title:`Portland Roofing Blog — Local Roofing News & Data | ${SITE.name}`,
   description:'Portland roofing news, pricing data, storm damage updates, and contractor market reports.',
   alternates:{canonical:`${SITE.baseUrl}/blog`},
 }
@@ -25,7 +25,7 @@ export default function BlogPage() {
       <PageHero
         imageUrl="/images/hero-blog-hub.jpeg"
         breadcrumb={[{label:'Home',href:'/'},{label:'Blog'}]}
-        eyebrow="Portland Roofings"
+        eyebrow="Portland Roofing"
         title={<>FROM THE<br/><span style={{color:'#F5A623'}}>BLOG</span></>}
         subtitle="Portland roofing news, pricing data, storm updates, and contractor market reports."
       />

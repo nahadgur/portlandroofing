@@ -1,0 +1,24 @@
+# Portland Roofing
+
+> Portland Roofing connects Portland metro homeowners with CCB-licensed local roofing contractors. Real local pricing data, vetted contractors, and hyper-local guides for 50+ Portland neighborhoods.
+
+## Services
+- [Roof Replacement](/services/roof-replacement/): full tear-off and re-roof, asphalt / metal / cedar / flat
+- [Roof Repair](/services/roof-repair/): leak repair, storm damage, shingle replacement
+- [Metal Roofing](/services/metal-roofing/): standing-seam, corrugated, stone-coated steel
+- [Cedar Shake Roofing](/services/cedar-shake-roofing/): historic district installs, treated cedar
+- [Flat Roofing](/services/flat-roofing/): TPO, EPDM, modified bitumen for residential and commercial
+
+## Areas served
+- Portland metro — Pearl District, West Hills, Hawthorne, Sellwood, Alberta, St. Johns, Beaverton, Hillsboro, Lake Oswego, Tigard, Gresham, Oregon City, Milwaukie, Tualatin, Wilsonville, and 35+ additional neighborhoods.
+
+## Reference
+- [PDX Cost Index](/pdx-cost-index/): neighborhood-level roofing cost data
+- [Contractor Vetting](/contractors/vetting/): 47-point CCB / insurance / reference check
+- [Guides](/guides/): roofing maintenance, moss removal, storm claims, solar incentives, historic district codes
+- [Storm tracker / PDX active warnings](/storm-tracker/pdx-active-warnings/): NWS alerts affecting Portland metro roofs
+- [Tools](/tools/): cost calculator, ROI calculator
+
+## Editorial
+- Single author / owner site. Content reviewed by editorial team. CCB licence references verified at oregon.gov/ccb.
+- No fabricated testimonials. All cost figures sourced from Portland metro contractor field data and CCB public records.

@@ -7,7 +7,7 @@ import ContractorApplyForm from '@/components/ContractorApplyForm'
 import { SITE } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title:`Join the Portland Roofings Contractor Network | ${SITE.name}`,
+  title:`Join the Portland Roofing Contractor Network | ${SITE.name}`,
   description:"Apply to join Portland's most rigorous contractor vetting platform. CCB-licensed Oregon roofing contractors only.",
   alternates:{canonical:`${SITE.baseUrl}/contractors/apply`},
   robots:{index:false},

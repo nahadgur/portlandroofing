@@ -179,10 +179,10 @@ export const guides: Guide[] = [
   {
     slug: "understanding-oregon-roofing-costs",
     category: "costs" as const,
-    headline: "Understanding Oregon Roofing Costs",
+    headline: "Understanding Portland Roofing Costs",
     published: "2024-04-15",
     readTime: 11,
-    title: "Understanding Oregon Roofing Costs",
+    title: "Understanding Portland Roofing Costs",
     description:
       "A detailed breakdown of roofing costs in Oregon, including material prices, labor rates, regional pricing differences, and factors that influence your total project cost.",
     heroDescription:
