@@ -1,43 +1,54 @@
 'use client'
 
-import { useEffect, useState, FormEvent } from 'react'
+import { useState } from 'react'
 import { SITE } from '@/lib/config'
-import {
-  buildPartnerRedirect,
-  captureAttribution,
-  fireGenerateLeadEvent,
-} from '@/lib/attribution'
+import { fireGenerateLeadEvent } from '@/lib/attribution'
 
-/**
- * 1-step ZIP-only lead form. Submits to the Digipeak partner URL
- * (steps 2-7 of the funnel — material, timeline, ownership, address,
- * contact — run on the partner's white-labelled flow). We keep our own
- * lead copy via fire-and-forget GAS webhook for analytics.
- */
+type Step = 1 | 2 | 3 | 4
+
+interface FormData {
+  zip: string; material: string; urgency: string
+  name: string; phone: string; email: string
+}
+
+const materials = [
+  { id:'asphalt', label:'Asphalt Shingle', sub:'Most common in PDX' },
+  { id:'metal',   label:'Metal / Steel',   sub:'Best long-term ROI' },
+  { id:'cedar',   label:'Cedar Shake',     sub:'Historic districts' },
+  { id:'flat',    label:'Flat / TPO',      sub:'Commercial & modern' },
+]
+
+const urgencies = [
+  { id:'leak',   label:'Leaking Now',     sub:'Emergency needed',  icon:'⚡' },
+  { id:'soon',   label:'Next 1–2 Months', sub:'Planned replacement', icon:'📋' },
+  { id:'summer', label:'Summer Project',  sub:'Planning ahead',    icon:'☀' },
+  { id:'quote',  label:'Just Exploring',  sub:'Want a price guide', icon:'💬' },
+]
+
+const steps = [
+  { n:1, label:'Location' },
+  { n:2, label:'Material' },
+  { n:3, label:'Timeline' },
+  { n:4, label:'Contact' },
+]
+
 export default function LeadForm({ source }: { source?: string }) {
-  const [zip, setZip] = useState('')
+  const [step,       setStep]       = useState<Step>(1)
+  const [data,       setData]       = useState<FormData>({ zip:'', material:'', urgency:'', name:'', phone:'', email:'' })
   const [submitting, setSubmitting] = useState(false)
-  const [redirectingTo, setRedirectingTo] = useState<string | null>(null)
+  const [submitted,  setSubmitted]  = useState(false)
+  const [error,      setError]      = useState('')
 
-  useEffect(() => { captureAttribution() }, [])
+  const set = (f: keyof FormData, v: string) => setData(p => ({ ...p, [f]: v }))
 
-  const isValid = /^\d{5}$/.test(zip)
+  async function submit() {
+    setSubmitting(true); setError('')
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    if (!isValid || submitting) return
-    setSubmitting(true)
+    // Partner handoff UI isn't ready yet — collect the full lead, fire GA4,
+    // post to the GAS webhook, and show the in-queue confirmation. When the
+    // partner page goes live, restore buildPartnerRedirect() + window.location.
+    try { fireGenerateLeadEvent({ zip: data.zip, source }) } catch {}
 
-    const payload = { zip, source: source || 'homepage' }
-
-    let redirectUrl: string
-    try {
-      redirectUrl = buildPartnerRedirect(payload)
-    } catch {
-      redirectUrl = `${SITE.partnerOffer.base}?uid=${SITE.partnerOffer.uid}&source_id=${SITE.partnerOffer.sourceId}&sub1=search&sub2=${encodeURIComponent(SITE.partnerOffer.siteId)}&sub3=${encodeURIComponent(source || 'homepage')}&sub5=${encodeURIComponent(zip)}`
-    }
-
-    // Fire-and-forget GAS keepalive POST (independent ZIP count)
     if (SITE.gasWebhook) {
       try {
         fetch(SITE.gasWebhook, {
@@ -45,160 +56,215 @@ export default function LeadForm({ source }: { source?: string }) {
           mode: 'no-cors',
           keepalive: true,
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            zip,
-            source: source || SITE.domain,
-            timestamp: new Date().toISOString(),
-            attribution: captureAttribution(),
-          }),
+          body: JSON.stringify({ ...data, source: source || SITE.domain, timestamp: new Date().toISOString() }),
         }).catch(() => {})
       } catch {}
     }
 
-    try { fireGenerateLeadEvent(payload) } catch {}
-
-    setRedirectingTo(redirectUrl)
-
-    window.setTimeout(() => { window.location.href = redirectUrl }, 1500)
-    try { window.location.assign(redirectUrl) } catch { window.location.href = redirectUrl }
+    setSubmitted(true)
+    setSubmitting(false)
   }
 
-  /* Connecting / redirecting state */
-  if (redirectingTo) {
+  /* Submitted */
+  if (submitted) {
     return (
-      <div style={{ background: 'var(--bg2)', borderTop: '3px solid var(--amber-btn)', padding: '3rem 2rem', textAlign: 'center', animation: 'scaleIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both' }}>
-        <div
-          aria-hidden="true"
-          style={{
-            width: 44, height: 44,
-            borderRadius: '50%',
-            border: '3px solid rgba(196,125,10,0.18)',
-            borderTopColor: 'var(--amber-btn)',
-            margin: '4px auto 20px',
-            animation: 'spin 0.9s linear infinite',
-          }}
-        />
-        <h3 style={{ fontFamily: 'var(--font-bebas)', fontSize: '1.8rem', color: 'var(--text)', marginBottom: '0.5rem', letterSpacing: '0.02em' }}>
-          CHECKING YOUR AREA
-        </h3>
-        <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.9rem', color: 'var(--muted)', lineHeight: 1.55, marginBottom: '1.4rem', maxWidth: 320, margin: '0 auto 1.4rem' }}>
-          One moment while we look up available Portland-area roofing offers in <strong style={{ color: 'var(--amber)' }}>{zip}</strong>.
+      <div style={{ padding:'3rem 2rem', background:'var(--bg)', textAlign:'center', borderTop:'3px solid var(--green)' }}>
+        <div style={{ fontSize:'2.5rem', marginBottom:'0.5rem' }}>✓</div>
+        <div style={{ fontFamily:'var(--font-bebas)', fontSize:'2rem', color:'var(--green)', marginBottom:'0.5rem' }}>YOU'RE IN THE QUEUE</div>
+        <p style={{ fontFamily:'var(--font-barlow)', fontSize:'0.95rem', color:'var(--muted)', lineHeight:1.65, maxWidth:'320px', margin:'0 auto 1.5rem' }}>
+          Matched contractors for <strong style={{ color:'var(--amber)' }}>{data.zip}</strong> will reach out within <strong style={{ color:'var(--text)' }}>48 hours</strong>.
         </p>
-        <a
-          href={redirectingTo}
-          rel="noopener"
-          style={{
-            display: 'inline-block',
-            background: 'var(--amber-btn)',
-            color: '#000',
-            fontFamily: 'var(--font-barlow-cond)',
-            fontWeight: 700,
-            fontSize: '0.95rem',
-            textDecoration: 'none',
-            padding: '12px 24px',
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-          }}
-        >
-          Continue here →
-        </a>
-        <p style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem', color: 'var(--muted)', marginTop: '1rem', letterSpacing: '0.05em' }}>
-          Click the button if you are not redirected automatically.
-        </p>
-        <style jsx>{`
-          @keyframes spin { to { transform: rotate(360deg); } }
-        `}</style>
+        <div style={{ padding:'1rem', background:'var(--bg2)', border:'1px solid var(--bdr)', display:'inline-block', textAlign:'left', minWidth:'240px' }}>
+          <div style={{ fontFamily:'var(--font-space-mono)', fontSize:'0.6rem', color:'var(--muted)', marginBottom:'0.6rem', letterSpacing:'0.08em' }}>YOUR SUBMISSION</div>
+          {[{k:'Zip',v:data.zip},{k:'Material',v:data.material},{k:'Timeline',v:data.urgency}].map(({k,v})=>(
+            <div key={k} style={{ display:'flex', justifyContent:'space-between', gap:'1rem', padding:'0.3rem 0', borderBottom:'1px solid var(--bdr)' }}>
+              <span style={{ fontFamily:'var(--font-space-mono)', fontSize:'0.65rem', color:'var(--muted)' }}>{k}</span>
+              <span style={{ fontFamily:'var(--font-barlow-cond)', fontSize:'0.82rem', color:'var(--text)', fontWeight:600 }}>{v}</span>
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
 
-  /* Form (default state) */
+  /* Input styles, light theme */
+  const inputStyle: React.CSSProperties = {
+    width:'100%', padding:'1rem 1.1rem',
+    background:'var(--bg)',
+    border:'2px solid var(--bdr)',
+    color:'var(--text)',
+    fontFamily:'var(--font-barlow)', fontSize:'1.05rem',
+    outline:'none', transition:'border-color 0.2s',
+  }
+  const optionBase: React.CSSProperties = {
+    padding:'0.85rem 0.9rem',
+    background:'var(--bg)',
+    border:'2px solid var(--bdr)',
+    color:'var(--muted)',
+    fontFamily:'var(--font-barlow-cond)', fontSize:'0.88rem',
+    letterSpacing:'0.04em', cursor:'pointer',
+    textAlign:'left' as const, transition:'all 0.15s',
+  }
+  const optionSel: React.CSSProperties = {
+    ...optionBase,
+    border:'2px solid var(--amber)',
+    background:'rgba(196,125,10,0.06)',
+    color:'var(--amber)',
+  }
+  const nextBtn = (enabled: boolean): React.CSSProperties => ({
+    width:'100%', padding:'1.1rem', border:'none',
+    background: enabled ? 'var(--amber-btn)' : 'var(--bg3)',
+    color: enabled ? '#000' : 'var(--muted)',
+    fontFamily:'var(--font-barlow-cond)', fontWeight:700,
+    fontSize:'1.05rem', letterSpacing:'0.12em',
+    textTransform:'uppercase' as const,
+    cursor: enabled ? 'pointer' : 'not-allowed',
+    transition:'background 0.2s, color 0.2s', marginTop:'1.2rem',
+  })
+  const backBtn: React.CSSProperties = {
+    padding:'1.1rem 1.4rem', background:'transparent',
+    border:'2px solid var(--bdr)', color:'var(--muted)',
+    fontFamily:'var(--font-barlow-cond)', fontSize:'0.9rem',
+    cursor:'pointer', letterSpacing:'0.06em', flexShrink:0,
+  }
+
   return (
-    <div style={{ background: 'var(--bg2)', display: 'flex', flexDirection: 'column' }}>
-      {/* Top accent */}
-      <div style={{ borderTop: '3px solid var(--amber-btn)' }}>
-        <div style={{ padding: '1.8rem 2rem 0' }}>
+    <div style={{ background:'var(--bg2)', display:'flex', flexDirection:'column' }}>
+
+      {/* Top accent + header */}
+      <div style={{ borderTop:'3px solid var(--amber-btn)' }}>
+        <div style={{ padding:'1.8rem 2rem 0' }}>
+
           {/* Live signal */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-            <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: 'var(--green)', animation: 'blink 1.4s ease-in-out infinite' }} />
-            <span style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem', color: 'var(--green)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          <div style={{ display:'flex', alignItems:'center', gap:'0.5rem', marginBottom:'1rem' }}>
+            <span style={{ display:'inline-block', width:8, height:8, borderRadius:'50%', background:'var(--green)', animation:'blink 1.4s ease-in-out infinite' }}/>
+            <span style={{ fontFamily:'var(--font-space-mono)', fontSize:'0.62rem', color:'var(--green)', letterSpacing:'0.1em', textTransform:'uppercase' }}>
               Free · No Obligation · 48h Response
             </span>
           </div>
 
-          <h2 style={{ fontFamily: 'var(--font-bebas)', fontSize: 'clamp(1.8rem,3vw,2.4rem)', color: 'var(--text)', lineHeight: 0.95, marginBottom: '0.5rem' }}>
-            GET YOUR<br /><span style={{ color: 'var(--amber-btn)' }}>FREE QUOTES</span>
+          <h2 style={{ fontFamily:'var(--font-bebas)', fontSize:'clamp(1.8rem,3vw,2.4rem)', color:'var(--text)', lineHeight:0.95, marginBottom:'0.5rem' }}>
+            GET YOUR<br/><span style={{ color:'var(--amber-btn)' }}>FREE QUOTES</span>
           </h2>
-          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.9rem', color: 'var(--muted)', marginBottom: '1.5rem', fontWeight: 300 }}>
-            Enter your ZIP and we&apos;ll match you with vetted Portland-area roofing contractors.
+          <p style={{ fontFamily:'var(--font-barlow)', fontSize:'0.9rem', color:'var(--muted)', marginBottom:'1.5rem', fontWeight:300 }}>
+            3 questions. Matched with vetted Portland contractors in your zip code.
           </p>
+
+          {/* Step tabs */}
+          <div style={{ display:'flex', gap:0, marginBottom:'1.8rem', borderBottom:'1px solid var(--bdr)' }}>
+            {steps.map(({ n, label }) => (
+              <div key={n} style={{ flex:1, paddingBottom:'0.7rem', borderBottom:`2px solid ${step===n?'var(--amber-btn)':step>n?'var(--green)':'transparent'}`, marginBottom:'-1px' }}>
+                <div style={{ fontFamily:'var(--font-space-mono)', fontSize:'0.58rem', color:step>n?'var(--green)':step===n?'var(--amber)':'var(--bdr)', letterSpacing:'0.08em', textTransform:'uppercase' }}>
+                  {step>n?'✓':`0${n}`}
+                </div>
+                <div style={{ fontFamily:'var(--font-barlow-cond)', fontSize:'0.72rem', color:step===n?'var(--text)':step>n?'var(--green)':'var(--muted)', letterSpacing:'0.06em', marginTop:'0.1rem' }}>
+                  {label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} style={{ padding: '0 2rem 2rem' }}>
-        <label style={{ display: 'block', fontFamily: 'var(--font-space-mono)', fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.7rem' }}>
-          What&apos;s your ZIP code?
-        </label>
-        <input
-          type="text"
-          inputMode="numeric"
-          placeholder="e.g. 97201"
-          maxLength={5}
-          value={zip}
-          onChange={(e) => setZip(e.target.value.replace(/\D/g, ''))}
-          autoComplete="postal-code"
-          aria-label="ZIP code"
-          style={{
-            width: '100%',
-            padding: '1rem 1.1rem',
-            background: 'var(--bg)',
-            border: `2px solid ${isValid ? 'var(--amber-btn)' : 'var(--bdr)'}`,
-            color: 'var(--text)',
-            fontFamily: 'var(--font-barlow)',
-            fontSize: '1.35rem',
-            letterSpacing: '0.18em',
-            textAlign: 'center',
-            outline: 'none',
-            transition: 'border-color 0.2s',
-          }}
-        />
-        <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.78rem', color: 'var(--muted)', marginTop: '0.6rem' }}>
-          We match by ZIP so the contractor knows your local permit jurisdiction and conditions.
-        </p>
+      {/* Step content */}
+      <div style={{ padding:'0 2rem 2rem' }}>
 
-        <button
-          type="submit"
-          disabled={!isValid || submitting}
-          style={{
-            width: '100%',
-            padding: '1.1rem',
-            border: 'none',
-            background: isValid ? 'var(--amber-btn)' : 'var(--bg3)',
-            color: isValid ? '#000' : 'var(--muted)',
-            fontFamily: 'var(--font-barlow-cond)',
-            fontWeight: 700,
-            fontSize: '1.05rem',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            cursor: isValid && !submitting ? 'pointer' : 'not-allowed',
-            transition: 'background 0.2s, color 0.2s',
-            marginTop: '1.2rem',
-          }}
-        >
-          {submitting ? 'Connecting…' : 'Get My Free Quotes →'}
-        </button>
-      </form>
+        {step===1&&(
+          <div>
+            <label style={{ display:'block', fontFamily:'var(--font-space-mono)', fontSize:'0.68rem', color:'var(--amber)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:'0.7rem' }}>
+              What's your zip code?
+            </label>
+            <input
+              type="text" inputMode="numeric" placeholder="e.g. 97201" maxLength={5}
+              value={data.zip} onChange={e => set('zip', e.target.value.replace(/\D/g,''))}
+              style={inputStyle}
+              onFocus={e=>e.currentTarget.style.borderColor='var(--amber-btn)'}
+              onBlur={e=>e.currentTarget.style.borderColor=data.zip.length>=5?'var(--amber-btn)':'var(--bdr)'}
+            />
+            <p style={{ fontFamily:'var(--font-barlow)', fontSize:'0.78rem', color:'var(--muted)', marginTop:'0.6rem' }}>
+              We'll match you with contractors who actively serve your area.
+            </p>
+            <button onClick={()=>data.zip.length>=5&&setStep(2)} disabled={data.zip.length<5} style={nextBtn(data.zip.length>=5)}>
+              NEXT: CHOOSE MATERIAL →
+            </button>
+          </div>
+        )}
+
+        {step===2&&(
+          <div>
+            <label style={{ display:'block', fontFamily:'var(--font-space-mono)', fontSize:'0.68rem', color:'var(--amber)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:'0.7rem' }}>
+              What's your roof material?
+            </label>
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.6rem' }}>
+              {materials.map(mat=>(
+                <button key={mat.id} onClick={()=>set('material',mat.label)} style={data.material===mat.label?optionSel:optionBase}>
+                  <div style={{ fontWeight:700, marginBottom:'0.15rem' }}>{mat.label}</div>
+                  <div style={{ fontSize:'0.7rem', color:data.material===mat.label?'rgba(196,125,10,0.7)':'var(--muted)', fontFamily:'var(--font-barlow)' }}>{mat.sub}</div>
+                </button>
+              ))}
+            </div>
+            <div style={{ display:'flex', gap:'0.6rem' }}>
+              <button onClick={()=>setStep(1)} style={{ ...backBtn, marginTop:'1.2rem' }}>← Back</button>
+              <button onClick={()=>data.material&&setStep(3)} disabled={!data.material} style={{ ...nextBtn(!!data.material), flex:1 }}>NEXT: SET TIMELINE →</button>
+            </div>
+          </div>
+        )}
+
+        {step===3&&(
+          <div>
+            <label style={{ display:'block', fontFamily:'var(--font-space-mono)', fontSize:'0.68rem', color:'var(--amber)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:'0.7rem' }}>
+              How soon do you need it?
+            </label>
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.6rem' }}>
+              {urgencies.map(u=>(
+                <button key={u.id} onClick={()=>set('urgency',u.label)} style={data.urgency===u.label?optionSel:optionBase}>
+                  <div style={{ fontSize:'1.1rem', marginBottom:'0.3rem' }}>{u.icon}</div>
+                  <div style={{ fontWeight:700, marginBottom:'0.1rem' }}>{u.label}</div>
+                  <div style={{ fontSize:'0.68rem', color:data.urgency===u.label?'rgba(196,125,10,0.7)':'var(--muted)', fontFamily:'var(--font-barlow)' }}>{u.sub}</div>
+                </button>
+              ))}
+            </div>
+            <div style={{ display:'flex', gap:'0.6rem' }}>
+              <button onClick={()=>setStep(2)} style={{ ...backBtn, marginTop:'1.2rem' }}>← Back</button>
+              <button onClick={()=>data.urgency&&setStep(4)} disabled={!data.urgency} style={{ ...nextBtn(!!data.urgency), flex:1 }}>LAST STEP →</button>
+            </div>
+          </div>
+        )}
+
+        {step===4&&(
+          <div>
+            <label style={{ display:'block', fontFamily:'var(--font-space-mono)', fontSize:'0.68rem', color:'var(--amber)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:'0.7rem' }}>
+              Where do we send your quotes?
+            </label>
+            <div style={{ display:'flex', flexDirection:'column', gap:'0.6rem', marginBottom:'0.2rem' }}>
+              {(['name','phone','email'] as const).map(field=>(
+                <input key={field}
+                  type={field==='email'?'email':field==='phone'?'tel':'text'}
+                  placeholder={field==='name'?'Full name':field==='phone'?'Phone number':'Email address (optional)'}
+                  value={data[field]} onChange={e=>set(field,e.target.value)}
+                  style={inputStyle}
+                  onFocus={e=>e.currentTarget.style.borderColor='var(--amber-btn)'}
+                  onBlur={e=>e.currentTarget.style.borderColor='var(--bdr)'}
+                />
+              ))}
+            </div>
+            {error&&<p style={{ fontFamily:'var(--font-barlow)', fontSize:'0.82rem', color:'var(--red)', margin:'0.5rem 0' }}>{error}</p>}
+            <div style={{ display:'flex', gap:'0.6rem' }}>
+              <button onClick={()=>setStep(3)} style={{ ...backBtn, marginTop:'1.2rem' }}>← Back</button>
+              <button onClick={submit} disabled={submitting||!data.name||!data.phone} style={{ ...nextBtn(!submitting&&!!(data.name&&data.phone)), flex:1 }}>
+                {submitting?'SENDING...':'GET MY FREE QUOTES →'}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Trust footer */}
-      <div style={{ borderTop: '1px solid var(--bdr)', padding: '1rem 2rem', display: 'flex', gap: '1.2rem', flexWrap: 'wrap', background: 'var(--bg3)' }}>
-        {[
-          { icon: '🔒', text: '256-bit secure' },
-          { icon: '🚫', text: 'No spam, ever' },
-          { icon: '✓', text: 'CCB-verified contractors' },
-        ].map(({ icon, text }) => (
-          <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-            <span style={{ fontSize: '0.8rem' }}>{icon}</span>
-            <span style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.72rem', color: 'var(--muted)' }}>{text}</span>
+      <div style={{ borderTop:'1px solid var(--bdr)', padding:'1rem 2rem', display:'flex', gap:'1.2rem', flexWrap:'wrap', background:'var(--bg3)' }}>
+        {[{icon:'🔒',text:'256-bit secure'},{icon:'🚫',text:'No spam, ever'},{icon:'✓',text:'CCB-verified contractors'}].map(({icon,text})=>(
+          <div key={text} style={{ display:'flex', alignItems:'center', gap:'0.35rem' }}>
+            <span style={{ fontSize:'0.8rem' }}>{icon}</span>
+            <span style={{ fontFamily:'var(--font-barlow)', fontSize:'0.72rem', color:'var(--muted)' }}>{text}</span>
           </div>
         ))}
       </div>
