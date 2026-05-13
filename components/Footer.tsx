@@ -36,20 +36,33 @@ export default function Footer() {
         <div>
           <Link
             href="/"
-            aria-label="Portland Roofing home"
+            aria-label="Portland OR Roofing home"
             style={{
-              display: 'inline-block',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.7rem',
               marginBottom: '0.8rem',
               textDecoration: 'none',
             }}
           >
             <Image
               src="/logo.png"
-              alt="Portland Roofing"
+              alt="Portland OR Roofing"
               width={200}
               height={44}
               style={{ height: '40px', width: 'auto', display: 'block' }}
             />
+            <span
+              style={{
+                fontFamily: 'var(--font-bebas)',
+                fontSize: '1.7rem',
+                letterSpacing: '0.04em',
+                color: '#fff',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              PORTLAND <span style={{ color: '#F5A623' }}>OR</span> ROOFING
+            </span>
           </Link>
           <p style={{
             fontFamily: 'var(--font-barlow)', fontSize: '0.85rem',

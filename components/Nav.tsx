@@ -49,26 +49,38 @@ export default function Nav() {
         position: 'sticky', top: 0, zIndex: 200,
         borderBottom: '1px solid rgba(255,255,255,0.06)',
       }}>
-        {/* Logo */}
+        {/* Logo + wordmark */}
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          aria-label="Portland Roofing home"
+          aria-label="Portland OR Roofing home"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
+            gap: '0.6rem',
             textDecoration: 'none',
             flexShrink: 0,
           }}
         >
           <Image
             src="/logo.png"
-            alt="Portland Roofing"
+            alt="Portland OR Roofing"
             width={180}
             height={40}
             priority
             style={{ height: '36px', width: 'auto', display: 'block' }}
           />
+          <span
+            style={{
+              fontFamily: 'var(--font-bebas)',
+              fontSize: 'clamp(1.05rem, 3.5vw, 1.45rem)',
+              letterSpacing: '0.06em',
+              color: '#fff',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            PORTLAND <span style={{ color: '#F5A623' }}>OR</span> ROOFING
+          </span>
         </Link>
 
         {/* Desktop links */}
