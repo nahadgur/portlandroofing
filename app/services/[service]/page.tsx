@@ -19,7 +19,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { service: string } }): Metadata {
   const s = getServiceBySlug(params.service)
   if (!s) return {}
-  const title = `${s.name} in Portland — Cost Drivers, Worked Examples & Material Detail | ${SITE.name}`
+  const title = `${s.name} in Portland | Cost Drivers, Worked Examples & Material Detail`
   const description = s.description.replace(/\{neighborhood\}/g, 'Portland').replace(/\{zip\}/g, '').replace(/\{avgMid\}/g, s.avgMid.toLocaleString())
   const url = `${SITE.baseUrl}/services/${s.slug}`
   return { title, description, alternates: { canonical: url }, openGraph: { title, description, url, type: 'website' } }
@@ -71,7 +71,7 @@ export default function ServiceHubPage({ params }: { params: { service: string }
         right={<LeadForm />}
       />
 
-      {/* Cost Truth — long-form bespoke narrative */}
+      {/* Cost Truth, long-form bespoke narrative */}
       <section className="section-pad" style={{ background: '#fff' }}>
         <div className="content-wrap">
           <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.8rem' }}>[ Cost Truth ]</div>
@@ -94,7 +94,7 @@ export default function ServiceHubPage({ params }: { params: { service: string }
         </div>
       </section>
 
-      {/* Cost Drivers — itemized with quantified impact */}
+      {/* Cost Drivers, itemized with quantified impact */}
       <section className="section-pad" style={{ background: 'var(--bg2)' }}>
         <div className="content-wrap">
           <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.8rem' }}>[ Cost Drivers ]</div>
@@ -164,7 +164,7 @@ export default function ServiceHubPage({ params }: { params: { service: string }
         <div className="content-wrap">
           <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.8rem' }}>[ Material Deep Dive ]</div>
           <h2 style={{ ...d, fontSize: 'clamp(1.8rem,3vw,2.5rem)', color: 'var(--text)', lineHeight: 1, marginBottom: '1rem' }}>
-            {s.shortName.toUpperCase()} MATERIALS — PORTLAND-SPECIFIC GUIDANCE
+            {s.shortName.toUpperCase()} MATERIALS, PORTLAND-SPECIFIC GUIDANCE
           </h2>
           <p style={{ ...f, fontSize: '0.95rem', color: 'var(--muted)', maxWidth: '640px', lineHeight: 1.7, fontWeight: 300, marginBottom: '2rem' }}>
             Each material has a different cost-performance profile in Portland&apos;s climate. Pros and cons below reflect real-world PDX experience, not generic manufacturer marketing.
@@ -262,7 +262,7 @@ export default function ServiceHubPage({ params }: { params: { service: string }
           {s.shortName.toUpperCase()} BY PORTLAND MARKET
         </h2>
         <p style={{ ...f, fontSize: '0.95rem', color: 'var(--muted)', maxWidth: '640px', lineHeight: 1.7, fontWeight: 300, marginBottom: '2rem' }}>
-          {s.name} cost varies meaningfully across Portland&apos;s 10 cost markets. Pick your neighborhood for bespoke local intelligence — what drives quotes locally, three worked examples, real permit detail.
+          {s.name} cost varies meaningfully across Portland&apos;s 10 cost markets. Pick your neighborhood for bespoke local intelligence, what drives quotes locally, three worked examples, real permit detail.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(240px,1fr))', gap: '0.6rem' }}>
           {neighborhoods.map((n) => (

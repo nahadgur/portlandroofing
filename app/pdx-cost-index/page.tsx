@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Nav      from '@/components/Nav'
 import Footer   from '@/components/Footer'
 import PageHero from '@/components/PageHero'
@@ -8,7 +8,7 @@ import { neighborhoods } from '@/lib/neighborhoods'
 import { SITE } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title:`Portland Roofing Cost Index 2026 | ${SITE.name}`,
+  title:`Portland Roofing Cost Index 2026`,
   description:'Real Portland roofing costs by neighborhood. Updated quarterly from verified contractor quotes. Includes an interactive cost calculator.',
   alternates:{canonical:`${SITE.baseUrl}/pdx-cost-index`},
 }
@@ -20,9 +20,9 @@ export default function CostIndexPage() {
       <PageHero
         imageUrl="/images/hero-cost-index.jpeg"
         breadcrumb={[{label:'Home',href:'/'},{label:'PDX Cost Index'}]}
-        eyebrow="2026 Data · Updated Quarterly"
+        eyebrow="2026 Data Â· Updated Quarterly"
         title={<>PDX ROOFING<br/><span style={{color:'#F5A623'}}>COST INDEX</span></>}
-        subtitle="Real Portland pricing from verified contractor quotes — not national averages. Every zip code, every material."
+        subtitle="Real Portland pricing from verified contractor quotes â€” not national averages. Every zip code, every material."
         stats={[{label:'Data Points',value:'200+'},{label:'Neighborhoods',value:'50'},{label:'Updated',value:'Q2 2026'}]}
       />
       <PriceIndex />
@@ -38,7 +38,7 @@ export default function CostIndexPage() {
         <div style={{fontFamily:'var(--font-space-mono)',fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Cost Snapshots by Neighborhood ]</div>
         <h2 style={{fontFamily:'var(--font-bebas)',fontSize:'clamp(1.8rem,3vw,2.5rem)',color:'var(--text)',lineHeight:1,marginBottom:'0.5rem'}}>SELECT YOUR NEIGHBORHOOD</h2>
         <p style={{fontFamily:'var(--font-barlow)',fontSize:'0.9rem',color:'var(--muted)',maxWidth:'520px',lineHeight:1.65,fontWeight:300,marginBottom:'2rem'}}>
-          Each neighborhood page shows localised costs, material breakdown, permit difficulty, and area comparison — all from verified 2026 contractor quotes.
+          Each neighborhood page shows localised costs, material breakdown, permit difficulty, and area comparison â€” all from verified 2026 contractor quotes.
         </p>
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(200px,1fr))',gap:'1px',background:'var(--bdr)'}}>
           {neighborhoods.map(n => {

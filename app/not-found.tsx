@@ -44,7 +44,7 @@ export default function NotFound() {
           fontWeight: 300,
           marginBottom: '2.5rem',
         }}>
-          This neighborhood might not be in our coverage area yet — or the URL is wrong.
+          This neighborhood might not be in our coverage area yet, or the URL is wrong.
         </p>
         <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
           <Link href="/" style={{

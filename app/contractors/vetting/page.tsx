@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Script from 'next/script'
 import Link   from 'next/link'
 import Nav     from '@/components/Nav'
@@ -8,7 +8,7 @@ import { SITE } from '@/lib/config'
 import { breadcrumbSchema } from '@/lib/schema'
 
 export const metadata: Metadata = {
-  title:`Our 47-Point Contractor Vetting Process | ${SITE.name}`,
+  title:`Our 47-Point Contractor Vetting Process`,
   description:'Every contractor listed on Portland Roofing passes 47 verification checkpoints covering CCB licensing, insurance, review authenticity, project history, and response time.',
   alternates:{canonical:`${SITE.baseUrl}/contractors/vetting`},
 }
@@ -22,7 +22,7 @@ const checkpoints = [
     {n:'05',label:'No active judgements or liens',detail:'Public records check for roofing-related contractor liens or court judgements in Oregon.'},
   ]},
   {category:'Insurance',color:'var(--green)',items:[
-    {n:'06',label:'General liability minimum $1M',detail:'Certificate of insurance reviewed. We do not accept attestation — we require the actual COI.'},
+    {n:'06',label:'General liability minimum $1M',detail:'Certificate of insurance reviewed. We do not accept attestation â€” we require the actual COI.'},
     {n:'07',label:"Workers' compensation confirmed",detail:'Active policy or certified exempt status. No uncovered crews.'},
     {n:'08',label:'Insurance not expired at time of listing',detail:'COI expiry date checked. Contractors with policies expiring within 90 days flagged for renewal confirmation.'},
     {n:'09',label:'Insurer is AM Best rated',detail:'We check that the insuring carrier holds a minimum AM Best financial strength rating.'},
@@ -69,7 +69,7 @@ export default function VettingPage() {
         breadcrumb={[{label:'Home',href:'/'},{label:'For Contractors',href:'/contractors/apply'},{label:'Our Vetting Process'}]}
         eyebrow="Our Standard"
         title={<>THE 47-POINT<br/><span style={{color:'#F5A623'}}>VETTING PROCESS</span></>}
-        subtitle="Every contractor listed on Portland Roofing passes 47 verification checkpoints. Here's exactly what we check — and why."
+        subtitle="Every contractor listed on Portland Roofing passes 47 verification checkpoints. Here's exactly what we check â€” and why."
         stats={[{label:'Verification Points',value:'47'},{label:'Check Categories',value:'6'},{label:'Est. Pass Rate',value:'<3%'}]}
       />
       {checkpoints.map((cat,ci)=>(
@@ -97,7 +97,7 @@ export default function VettingPage() {
         <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Ready? ]</div>
         <h2 style={{...d,fontSize:'clamp(2rem,4vw,3rem)',color:'var(--text)',lineHeight:0.95,marginBottom:'1rem'}}>THINK YOU CAN PASS?</h2>
         <p style={{...f,fontSize:'1rem',color:'var(--muted)',maxWidth:'480px',lineHeight:1.7,fontWeight:300,marginBottom:'2rem'}}>If your operation is solid, our vetting should be straightforward. The contractors who struggle are the ones who've been cutting corners.</p>
-        <Link href="/contractors/apply" style={{display:'inline-block',background:'var(--amber-btn)',color:'#000',...c,fontWeight:700,fontSize:'1rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.9rem 2.5rem',textDecoration:'none'}}>Apply to Join the Network →</Link>
+        <Link href="/contractors/apply" style={{display:'inline-block',background:'var(--amber-btn)',color:'#000',...c,fontWeight:700,fontSize:'1rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.9rem 2.5rem',textDecoration:'none'}}>Apply to Join the Network â†’</Link>
       </section>
       <Footer />
     </>

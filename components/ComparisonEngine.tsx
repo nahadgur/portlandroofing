@@ -197,7 +197,7 @@ export default function ComparisonEngine({ defaultTab = 'asphalt', neighborhood,
         </table>
       </div>
 
-      {/* Break-even — ONLY shows when metal tab is active */}
+      {/* Break-even, ONLY shows when metal tab is active */}
       {active === 'metal' && (
         <div style={{
           marginTop: '1px',

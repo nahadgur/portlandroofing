@@ -257,7 +257,7 @@ export default function CostCalculatorDeep() {
 
           {/* Disclaimer */}
           <div style={{ ...m, fontSize: '0.6rem', color: 'var(--muted)', lineHeight: 1.6 }}>
-            Estimates based on Q2 2026 Portland metro contractor data including the April 2026 manufacturer price increases. Range reflects typical contractor variance — actual quotes depend on site access, deck condition (only knowable after tear-off), and crew availability.
+            Estimates based on Q2 2026 Portland metro contractor data including the April 2026 manufacturer price increases. Range reflects typical contractor variance, actual quotes depend on site access, deck condition (only knowable after tear-off), and crew availability.
           </div>
 
           {/* CTAs */}

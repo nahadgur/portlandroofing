@@ -40,19 +40,19 @@ export default function RoiCalculator() {
 
     if (lifeRemainingPct > 50) {
       roofCondAtSale = 'Excellent'
-      buyerConcern = 'None — roof is a positive selling point'
+      buyerConcern = 'None, roof is a positive selling point'
       recoveryPct = PORTLAND_RECOVERY_PCT.excellent
     } else if (lifeRemainingPct > 30) {
       roofCondAtSale = 'Good'
-      buyerConcern = 'Low — buyers may negotiate modest credit'
+      buyerConcern = 'Low, buyers may negotiate modest credit'
       recoveryPct = PORTLAND_RECOVERY_PCT.good
     } else if (lifeRemainingPct > 10) {
       roofCondAtSale = 'Fair (approaching end of life)'
-      buyerConcern = 'Moderate — 23% of PDX deals include roof contingency'
+      buyerConcern = 'Moderate, 23% of PDX deals include roof contingency'
       recoveryPct = PORTLAND_RECOVERY_PCT.fair
     } else {
       roofCondAtSale = 'Poor (at or past end of life)'
-      buyerConcern = 'High — buyers will demand replacement credit or back out'
+      buyerConcern = 'High, buyers will demand replacement credit or back out'
       recoveryPct = PORTLAND_RECOVERY_PCT.poor
     }
 
@@ -68,7 +68,7 @@ export default function RoiCalculator() {
 
     if (lifeRemainingPct > 40) {
       scenario = 'KEEP THE EXISTING ROOF'
-      scenarioDesc = `Your roof has ${Math.round(lifeRemaining)} years of useful life remaining at the time of sale — well above the 8-10 year buyer comfort threshold. Replacement before sale would not be recovered.`
+      scenarioDesc = `Your roof has ${Math.round(lifeRemaining)} years of useful life remaining at the time of sale, well above the 8-10 year buyer comfort threshold. Replacement before sale would not be recovered.`
       recommendation = 'Disclose roof age in MLS listing. Buyers will not request replacement.'
     } else if (lifeRemainingPct > 15) {
       scenario = 'OPTIONAL: REPLACE BEFORE LISTING'
@@ -77,7 +77,7 @@ export default function RoiCalculator() {
     } else if (lifeRemainingPct > 0) {
       scenario = 'STRONGLY CONSIDER REPLACING'
       scenarioDesc = `Your roof will be at end of life at sale. PDX buyer's inspectors will flag this; 23% of Portland deals include roofing contingencies that result in $4,000-$12,000 in negotiation credits.`
-      recommendation = `Replacement now recovers ~${Math.round(recoveryPct * 100)}% in resale plus avoids inspection-driven price reduction. Net impact ${fmt(netImpact)} understates the case — actual value preservation is higher when accounting for avoided contingency.`
+      recommendation = `Replacement now recovers ~${Math.round(recoveryPct * 100)}% in resale plus avoids inspection-driven price reduction. Net impact ${fmt(netImpact)} understates the case, actual value preservation is higher when accounting for avoided contingency.`
     } else {
       scenario = 'REPLACE BEFORE LISTING'
       scenarioDesc = `Your roof will be past end of life at sale. PDX buyers will either back out or demand full replacement credit ($${baseInstall.toLocaleString()}+) before closing. Some lenders will deny mortgages on past-end-of-life roofs.`
@@ -191,7 +191,7 @@ export default function RoiCalculator() {
 
           {/* Source note */}
           <div style={{ ...m, fontSize: '0.6rem', color: 'var(--muted)', lineHeight: 1.6 }}>
-            Recovery percentages drawn from National Association of Realtors regional cost-vs-value reports (58-72% for Portland metro) plus PDX-specific buyer inspection contingency data (23% of transactions include roofing contingencies, vs 14% national average). Replacement cost estimate is rough — use the cost calculator tool for accurate quote.
+            Recovery percentages drawn from National Association of Realtors regional cost-vs-value reports (58-72% for Portland metro) plus PDX-specific buyer inspection contingency data (23% of transactions include roofing contingencies, vs 14% national average). Replacement cost estimate is rough, use the cost calculator tool for accurate quote.
           </div>
 
           {/* CTAs */}

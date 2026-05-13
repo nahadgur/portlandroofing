@@ -18,8 +18,8 @@ export function generateStaticParams() { return getStaticNeighborhoodPaths() }
 export function generateMetadata({ params }: { params: { neighborhood: string } }): Metadata {
   const n = getNeighborhoodBySlug(params.neighborhood)
   if (!n) return {}
-  const title = `${n.name} Roofing Costs, Permits & Local Cost Drivers (${n.zip}) | ${SITE.name}`
-  const description = `Bespoke ${n.name} roofing intelligence — what drives quotes locally, three worked examples, real permit detail, location-specific FAQs. Avg cost $${n.avgCost.toLocaleString()}.`
+  const title = `${n.name} Roofing Costs, Permits & Local Cost Drivers (${n.zip})`
+  const description = `Bespoke ${n.name} roofing intelligence: what drives quotes locally, three worked examples, real permit detail, location-specific FAQs. Avg cost $${n.avgCost.toLocaleString()}.`
   const url = `${SITE.baseUrl}/portland/${n.slug}`
   return { title, description, alternates:{canonical:url}, openGraph:{title,description,url,type:'website'} }
 }
@@ -64,7 +64,7 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
         right={<LeadForm />}
       />
 
-      {/* Local Cost Truth — long-form bespoke narrative */}
+      {/* Local Cost Truth, long-form bespoke narrative */}
       <section className="section-pad" style={{background:'#fff'}}>
         <div className="content-wrap">
           <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Local Cost Truth ]</div>
@@ -81,7 +81,7 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
         </div>
       </section>
 
-      {/* Cost Drivers — itemized with quantified impact */}
+      {/* Cost Drivers, itemized with quantified impact */}
       <section className="section-pad" style={{background:'var(--bg2)'}}>
         <div className="content-wrap">
           <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Cost Drivers ]</div>
@@ -104,7 +104,7 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
         </div>
       </section>
 
-      {/* Worked Examples — concrete recent-job style */}
+      {/* Worked Examples, concrete recent-job style */}
       <section className="section-pad" style={{background:'#fff'}}>
         <div className="content-wrap">
           <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Worked Examples ]</div>
@@ -204,7 +204,7 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
         </div>
       </section>
 
-      {/* Services in this area — "[Service] in [Neighborhood]" */}
+      {/* Services in this area, "[Service] in [Neighborhood]" */}
       <section className="section-pad" style={{background:'var(--bg2)'}}>
         <div className="content-wrap">
           <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Services in {n.name} ]</div>
@@ -212,7 +212,7 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
             ROOFING SERVICES IN {n.name.toUpperCase()}
           </h2>
           <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.7,fontWeight:300,marginBottom:'1.5rem',maxWidth:'640px'}}>
-            All five services covered by the same {n.name} crews. Local cost intelligence on this page applies to every service type — material choice shifts the absolute number, but the {n.name}-specific drivers (deck, canopy, permit, design review) apply across the board.
+            All five services covered by the same {n.name} crews. Local cost intelligence on this page applies to every service type, material choice shifts the absolute number, but the {n.name}-specific drivers (deck, canopy, permit, design review) apply across the board.
           </p>
           <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(240px,1fr))',gap:'0.6rem'}}>
             {services.map(s=>(
@@ -250,7 +250,7 @@ export default function NeighborhoodPage({ params }: { params: { neighborhood: s
         </div>
       </div>
 
-      {/* FAQ — base + location-specific */}
+      {/* FAQ, base + location-specific */}
       <section className="section-pad" style={{background:'var(--bg2)'}}>
         <div className="content-wrap">
           <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ FAQ ]</div>

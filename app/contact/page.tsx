@@ -128,7 +128,7 @@ export default function ContactPage() {
             style={{ color: "var(--muted)" }}
           >
             Tell us about your project and we&apos;ll match you with a
-            CCB-licensed contractor in your area — no obligation, no spam.
+            CCB-licensed contractor in your area, no obligation, no spam.
           </p>
           <LeadForm source="contact" />
         </div>

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Script from 'next/script'
 import Link   from 'next/link'
 import Nav     from '@/components/Nav'
@@ -11,10 +11,10 @@ import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 const PAGE_URL = `${SITE.baseUrl}/guides/solar-ready-roofing-oregon-incentives`
 
 export const metadata: Metadata = {
-  title: `Solar-Ready Roofing in Oregon — Incentives, Tax Credits & Roof Requirements (2026) | ${SITE.name}`,
+  title: `Solar-Ready Roofing in Oregon â€” Incentives, Tax Credits & Roof Requirements (2026)`,
   description: 'Oregon solar incentives for 2026: RETC up to $6,000, Energy Trust rebates, federal ITC at 30%. Roof requirements solar installers need, timing strategies, and Portland-specific rules for cedar shake, HOAs, and historic districts.',
   alternates: { canonical: PAGE_URL },
-  openGraph: { title: 'Solar-Ready Roofing in Oregon — 2026 Incentives Guide', description: 'RETC, Energy Trust rebates, federal ITC, and the roof requirements solar installers actually need.', url: PAGE_URL, type: 'article' },
+  openGraph: { title: 'Solar-Ready Roofing in Oregon â€” 2026 Incentives Guide', description: 'RETC, Energy Trust rebates, federal ITC, and the roof requirements solar installers actually need.', url: PAGE_URL, type: 'article' },
 }
 
 const incentives = [
@@ -49,7 +49,7 @@ export default function SolarReadyRoofingPage() {
 
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline: 'Solar-Ready Roofing in Oregon — Incentives, Tax Credits & Roof Requirements (2026)', description: metadata.description as string, url: PAGE_URL, datePublished: '2026-04-08', imageUrl: `${SITE.baseUrl}/images/hero-cedar-roofing.jpeg` }))}</Script>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline: 'Solar-Ready Roofing in Oregon â€” Incentives, Tax Credits & Roof Requirements (2026)', description: metadata.description as string, url: PAGE_URL, datePublished: '2026-04-08', imageUrl: `${SITE.baseUrl}/images/hero-cedar-roofing.jpeg` }))}</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([
         { name: 'Home', url: SITE.baseUrl },
         { name: 'Guides', url: `${SITE.baseUrl}/guides` },
@@ -183,7 +183,7 @@ export default function SolarReadyRoofingPage() {
               <div style={{ ...m, fontSize: '0.65rem', color: 'var(--amber)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>Planning a Solar-Ready Roof?</div>
               <p style={{ ...f, fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.6, fontWeight: 300 }}>Get quotes from Portland contractors experienced with solar-ready installations.</p>
             </div>
-            <ModalTriggerBtn style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>Get Free Quotes →</ModalTriggerBtn>
+            <ModalTriggerBtn style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>Get Free Quotes â†’</ModalTriggerBtn>
           </div>
         </div>
       </section>

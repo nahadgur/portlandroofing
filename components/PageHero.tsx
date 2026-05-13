@@ -42,7 +42,7 @@ export default function PageHero({
       borderBottom: '1px solid var(--bdr)',
     }}>
 
-      {/* Hero photo — Next.js Image with fill */}
+      {/* Hero photo, Next.js Image with fill */}
       <Image
         src={src}
         alt=""
@@ -68,7 +68,7 @@ export default function PageHero({
         alignItems: 'center',
       }}>
 
-        {/* Left — text */}
+        {/* Left, text */}
         <div>
           {breadcrumb && breadcrumb.length > 0 && (
             <div style={{
@@ -143,7 +143,7 @@ export default function PageHero({
           )}
         </div>
 
-        {/* Right — floating card */}
+        {/* Right, floating card */}
         {right && (
           <div className="form-float">{right}</div>
         )}

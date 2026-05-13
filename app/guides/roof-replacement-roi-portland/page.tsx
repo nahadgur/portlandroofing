@@ -11,31 +11,31 @@ import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 const PAGE_URL = `${SITE.baseUrl}/guides/roof-replacement-roi-portland`
 
 export const metadata: Metadata = {
-  title: `Roof Replacement ROI in Portland — Does a New Roof Increase Home Value? | ${SITE.name}`,
-  description: 'Portland-specific data on roof replacement return on investment by neighborhood tier, material type, and inspection contingency impact. Honest assessment of when the ROI argument holds — and when it doesn\'t.',
+  title: `Roof Replacement ROI in Portland â€” Does a New Roof Increase Home Value?`,
+  description: 'Portland-specific data on roof replacement return on investment by neighborhood tier, material type, and inspection contingency impact. Honest assessment of when the ROI argument holds â€” and when it doesn\'t.',
   alternates: { canonical: PAGE_URL },
   openGraph: { title: 'Roof Replacement ROI in Portland', description: 'Neighborhood-tier ROI data, material comparisons, and the inspection contingency angle.', url: PAGE_URL, type: 'article' },
 }
 
 const roiByTier = [
-  { tier: 'Premium', neighborhoods: 'West Hills, Lake Oswego, Irvington', range: '68–74%', note: 'Buyers in this tier expect turnkey condition. A visibly aging roof triggers disproportionate price negotiation.' },
-  { tier: 'Inner SE / NE Core', neighborhoods: 'Hawthorne, Alberta, Division, Sellwood', range: '58–65%', note: 'Competitive market with informed buyers. New roof removes the most common inspection objection.' },
-  { tier: 'Outer Suburbs', neighborhoods: 'Gresham, Milwaukie, Tigard, Beaverton', range: '52–60%', note: 'Price-sensitive buyers. ROI is lower but still net-positive vs. the alternative of a price reduction at closing.' },
+  { tier: 'Premium', neighborhoods: 'West Hills, Lake Oswego, Irvington', range: '68â€“74%', note: 'Buyers in this tier expect turnkey condition. A visibly aging roof triggers disproportionate price negotiation.' },
+  { tier: 'Inner SE / NE Core', neighborhoods: 'Hawthorne, Alberta, Division, Sellwood', range: '58â€“65%', note: 'Competitive market with informed buyers. New roof removes the most common inspection objection.' },
+  { tier: 'Outer Suburbs', neighborhoods: 'Gresham, Milwaukie, Tigard, Beaverton', range: '52â€“60%', note: 'Price-sensitive buyers. ROI is lower but still net-positive vs. the alternative of a price reduction at closing.' },
 ]
 
 const materialRoi = [
-  { material: 'Architectural Asphalt (30-yr)', cost: '$12,000–$18,000', roi: '60–68%', note: 'Best ROI ceiling. Familiar to appraisers, no buyer objections.' },
-  { material: 'Standing Seam Metal', cost: '$22,000–$35,000', roi: '55–62%', note: 'Higher cost compresses ROI %, but absolute dollar recovery is strong in premium neighborhoods.' },
-  { material: '3-Tab Asphalt', cost: '$8,000–$12,000', roi: '50–58%', note: 'Lowest cost but perceived as builder-grade. Appraisers rarely assign premium.' },
-  { material: 'Cedar Shake', cost: '$25,000–$40,000', roi: '45–55%', note: 'Niche appeal. High maintenance perception limits buyer pool despite aesthetic value.' },
-  { material: 'Composite / Synthetic', cost: '$18,000–$28,000', roi: '52–60%', note: 'Growing acceptance but still unfamiliar to many Portland appraisers.' },
+  { material: 'Architectural Asphalt (30-yr)', cost: '$12,000â€“$18,000', roi: '60â€“68%', note: 'Best ROI ceiling. Familiar to appraisers, no buyer objections.' },
+  { material: 'Standing Seam Metal', cost: '$22,000â€“$35,000', roi: '55â€“62%', note: 'Higher cost compresses ROI %, but absolute dollar recovery is strong in premium neighborhoods.' },
+  { material: '3-Tab Asphalt', cost: '$8,000â€“$12,000', roi: '50â€“58%', note: 'Lowest cost but perceived as builder-grade. Appraisers rarely assign premium.' },
+  { material: 'Cedar Shake', cost: '$25,000â€“$40,000', roi: '45â€“55%', note: 'Niche appeal. High maintenance perception limits buyer pool despite aesthetic value.' },
+  { material: 'Composite / Synthetic', cost: '$18,000â€“$28,000', roi: '52â€“60%', note: 'Growing acceptance but still unfamiliar to many Portland appraisers.' },
 ]
 
 const faqs = [
-  { q: 'Does a new roof increase home value in Portland?', a: 'On average, yes. Portland homeowners recover 52–74% of roof replacement costs at resale, depending on neighborhood tier and material choice. Premium neighborhoods like West Hills and Lake Oswego see the highest returns because buyers in those markets expect move-in-ready condition.' },
-  { q: 'What is the average ROI for a roof replacement in Oregon?', a: 'National averages hover around 60%. Portland tracks slightly higher at 58–68% for architectural asphalt in competitive neighborhoods, driven by the inspection-contingency dynamic in our market — 23% of Portland transactions include a roofing contingency.' },
-  { q: 'Should I replace my roof before selling my house in Portland?', a: 'If your roof is within 5 years of end-of-life and you are selling in a competitive neighborhood, the math usually works. The key factor: buyer price reductions for roofing issues typically run 1.5–2x the actual repair cost, so replacing proactively often nets better than the raw ROI suggests.' },
-  { q: 'Which roofing material has the best ROI?', a: 'Architectural asphalt shingles (30-year rated) consistently deliver the highest ROI percentage in Portland — 60–68%. Standing seam metal recovers more absolute dollars in premium markets but the higher upfront cost compresses the percentage return.' },
+  { q: 'Does a new roof increase home value in Portland?', a: 'On average, yes. Portland homeowners recover 52â€“74% of roof replacement costs at resale, depending on neighborhood tier and material choice. Premium neighborhoods like West Hills and Lake Oswego see the highest returns because buyers in those markets expect move-in-ready condition.' },
+  { q: 'What is the average ROI for a roof replacement in Oregon?', a: 'National averages hover around 60%. Portland tracks slightly higher at 58â€“68% for architectural asphalt in competitive neighborhoods, driven by the inspection-contingency dynamic in our market â€” 23% of Portland transactions include a roofing contingency.' },
+  { q: 'Should I replace my roof before selling my house in Portland?', a: 'If your roof is within 5 years of end-of-life and you are selling in a competitive neighborhood, the math usually works. The key factor: buyer price reductions for roofing issues typically run 1.5â€“2x the actual repair cost, so replacing proactively often nets better than the raw ROI suggests.' },
+  { q: 'Which roofing material has the best ROI?', a: 'Architectural asphalt shingles (30-year rated) consistently deliver the highest ROI percentage in Portland â€” 60â€“68%. Standing seam metal recovers more absolute dollars in premium markets but the higher upfront cost compresses the percentage return.' },
   { q: 'When does a roof replacement NOT make financial sense before selling?', a: 'When the roof has 10+ years of functional life remaining, when you are in a buyer\'s market with low competition, when the neighborhood price ceiling limits recovery, or when you are selling as-is to investors who will discount regardless.' },
 ]
 
@@ -47,7 +47,7 @@ export default function RoofReplacementRoiPage() {
 
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline: 'Roof Replacement ROI in Portland — Does a New Roof Increase Home Value?', description: metadata.description as string, url: `${SITE.baseUrl}/guides/roof-replacement-roi-portland`, datePublished: '2026-04-08', imageUrl: `${SITE.baseUrl}/images/hero-guide-metal-asphalt.jpeg` })) }</Script>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline: 'Roof Replacement ROI in Portland â€” Does a New Roof Increase Home Value?', description: metadata.description as string, url: `${SITE.baseUrl}/guides/roof-replacement-roi-portland`, datePublished: '2026-04-08', imageUrl: `${SITE.baseUrl}/images/hero-guide-metal-asphalt.jpeg` })) }</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([
         { name: 'Home', url: SITE.baseUrl },
         { name: 'Guides', url: `${SITE.baseUrl}/guides` },
@@ -59,10 +59,10 @@ export default function RoofReplacementRoiPage() {
       <PageHero
         imageUrl="/images/hero-roof-replacement.jpeg"
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Guides', href: '/guides' }, { label: 'Roof Replacement ROI' }]}
-        eyebrow="Investment Guide · Portland Market Data"
+        eyebrow="Investment Guide Â· Portland Market Data"
         title={<>ROOF REPLACEMENT ROI<br /><span style={{ color: '#F5A623' }}>PORTLAND MARKET DATA</span></>}
         subtitle="Neighborhood-tier ROI data, material comparisons, and the inspection contingency angle. What the numbers actually say."
-        stats={[{ label: 'Avg. ROI Range', value: '52–74%' }, { label: 'Sales w/ Roof Contingency', value: '23%' }, { label: 'Price Reduction Multiplier', value: '1.5–2×' }]}
+        stats={[{ label: 'Avg. ROI Range', value: '52â€“74%' }, { label: 'Sales w/ Roof Contingency', value: '23%' }, { label: 'Price Reduction Multiplier', value: '1.5â€“2Ã, ' }]}
       />
 
       {/* ROI by Neighborhood Tier */}
@@ -136,7 +136,7 @@ export default function RoofReplacementRoiPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1px', background: 'var(--bdr)', marginBottom: '2.5rem' }}>
             {[
               { stat: '23%', label: 'of Portland home sales include a roofing contingency in the inspection report' },
-              { stat: '1.5–2\u00d7', label: 'the typical buyer price reduction vs. actual repair cost \u2014 buyers overweight roofing risk' },
+              { stat: '1.5â€“2\u00d7', label: 'the typical buyer price reduction vs. actual repair cost \u2014 buyers overweight roofing risk' },
               { stat: '$4,200', label: 'average negotiated reduction for a roof flagged as \u201cnear end of life\u201d in Portland metro' },
             ].map((item) => (
               <div key={item.stat} style={{ background: 'var(--bg2)', padding: '2rem' }}>
@@ -203,7 +203,7 @@ export default function RoofReplacementRoiPage() {
               <div style={{ ...m, fontSize: '0.65rem', color: 'var(--amber)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>Ready to Move Forward?</div>
               <p style={{ ...f, fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.6, fontWeight: 300 }}>Free quotes from vetted Portland contractors. 48-hour response guaranteed.</p>
             </div>
-            <ModalTriggerBtn style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>Get Free Quotes →</ModalTriggerBtn>
+            <ModalTriggerBtn style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>Get Free Quotes â†’</ModalTriggerBtn>
           </div>
         </div>
       </section>

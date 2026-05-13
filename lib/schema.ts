@@ -122,7 +122,7 @@ export function neighborhoodBusinessSchema(n: Neighborhood) {
     '@context': 'https://schema.org',
     '@type':    ['LocalBusiness', 'RoofingContractor'],
     '@id':      `${SITE.baseUrl}/portland/${n.slug}#localbusiness`,
-    name:       `${SITE.name} — ${n.name}`,
+    name:       `${SITE.name}, ${n.name}`,
     description: n.description,
     url:        `${SITE.baseUrl}/portland/${n.slug}`,
     telephone:  SITE.phone,

@@ -87,7 +87,7 @@ export function getNeighborhoodForZip(zip: string): string | null {
   return zipToNeighborhood[cleaned] ?? null
 }
 
-/** Wind exposure rating per kept neighborhood — used by storm-tracker and wind-risk calculator. */
+/** Wind exposure rating per kept neighborhood, used by storm-tracker and wind-risk calculator. */
 export const windExposureByNeighborhood: Record<string, {
   score: 1 | 2 | 3 | 4 | 5
   label: string

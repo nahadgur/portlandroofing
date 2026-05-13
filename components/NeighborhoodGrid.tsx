@@ -15,7 +15,7 @@ export default function NeighborhoodGrid() {
         <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.8rem' }}>[ Coverage Map ]</div>
         <h2 style={{ ...d, fontSize: 'clamp(2rem,3.5vw,3.5rem)', color: 'var(--text)', lineHeight: 1, marginBottom: '0.5rem' }}>10 PORTLAND COST MARKETS</h2>
         <p style={{ ...f, fontSize: '0.95rem', color: 'var(--muted)', maxWidth: '640px', fontWeight: 300, lineHeight: 1.7 }}>
-          Bespoke local cost intelligence for Portland&apos;s 10 most distinct roofing markets — what drives quotes locally, three worked examples per neighborhood, real permit detail. Smaller adjacent areas absorbed into each kept market&apos;s service area.
+          Bespoke local cost intelligence for Portland&apos;s 10 most distinct roofing markets, what drives quotes locally, three worked examples per neighborhood, real permit detail. Smaller adjacent areas absorbed into each kept market&apos;s service area.
         </p>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(280px,1fr))', gap: '1px', background: 'var(--bdr)' }}>

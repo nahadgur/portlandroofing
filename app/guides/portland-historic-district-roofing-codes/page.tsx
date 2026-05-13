@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Script from 'next/script'
 import Link   from 'next/link'
 import Nav     from '@/components/Nav'
@@ -11,7 +11,7 @@ import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 const PAGE_URL = `${SITE.baseUrl}/guides/portland-historic-district-roofing-codes`
 
 export const metadata: Metadata = {
-  title: `Portland Historic District Roofing Rules — Ladd's Addition, Irvington & More | ${SITE.name}`,
+  title: `Portland Historic District Roofing Rules â€” Ladd's Addition, Irvington & More`,
   description: 'Portland historic district roofing requirements by district: approved materials, review types, timelines, and fees. Covers all 5 Landmark Districts and 30+ Conservation Districts including Ladd\'s Addition, Irvington, Sellwood, and Alameda.',
   alternates: { canonical: PAGE_URL },
   openGraph: { title: 'Portland Historic District Roofing Rules', description: 'District-by-district rules table, Type I vs Type II review, and step-by-step application process.', url: PAGE_URL, type: 'article' },
@@ -68,7 +68,7 @@ export default function HistoricDistrictRoofingPage() {
 
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline: "Portland Historic District Roofing Rules — Ladd's Addition, Irvington & More", description: metadata.description as string, url: PAGE_URL, datePublished: '2026-04-08', imageUrl: `${SITE.baseUrl}/images/hero-guide-permits.jpeg` }))}</Script>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline: "Portland Historic District Roofing Rules â€” Ladd's Addition, Irvington & More", description: metadata.description as string, url: PAGE_URL, datePublished: '2026-04-08', imageUrl: `${SITE.baseUrl}/images/hero-guide-permits.jpeg` }))}</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([
         { name: 'Home', url: SITE.baseUrl },
         { name: 'Guides', url: `${SITE.baseUrl}/guides` },
@@ -228,7 +228,7 @@ export default function HistoricDistrictRoofingPage() {
               <div style={{ ...m, fontSize: '0.65rem', color: 'var(--amber)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>In a Historic District?</div>
               <p style={{ ...f, fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.6, fontWeight: 300 }}>Get quotes from Portland contractors experienced with historic district review and approved materials.</p>
             </div>
-            <ModalTriggerBtn style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>Get Free Quotes →</ModalTriggerBtn>
+            <ModalTriggerBtn style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>Get Free Quotes â†’</ModalTriggerBtn>
           </div>
         </div>
       </section>

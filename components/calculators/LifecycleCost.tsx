@@ -215,8 +215,8 @@ export default function LifecycleCost() {
             </div>
             <p style={{ ...f, fontSize: '0.83rem', color: 'var(--muted)', lineHeight: 1.6, fontWeight: 300 }}>
               {holdYears >= breakevenYear
-                ? `You're holding ${holdYears} years — past the breakeven. Metal is the rational call on lifecycle cost alone, before considering moss elimination or wind performance.`
-                : `You're holding ${holdYears} years — short of the ${breakevenYear}-year breakeven. Asphalt is rational on cost; metal would need a non-cost reason (moss elimination, wind exposure, solar plans, resale).`}
+                ? `You're holding ${holdYears} years, past the breakeven. Metal is the rational call on lifecycle cost alone, before considering moss elimination or wind performance.`
+                : `You're holding ${holdYears} years, short of the ${breakevenYear}-year breakeven. Asphalt is rational on cost; metal would need a non-cost reason (moss elimination, wind exposure, solar plans, resale).`}
             </p>
           </div>
         )}

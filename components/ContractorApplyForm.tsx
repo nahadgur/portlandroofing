@@ -8,20 +8,20 @@ import { SITE }          from '@/lib/config'
 type Step = 1 | 2 | 3 | 4
 
 interface FormData {
-  // Step 1 — Company
+  // Step 1, Company
   companyName:    string
   ccbNumber:      string
   yearsActive:    string
   website:        string
-  // Step 2 — Coverage & Speciality
+  // Step 2, Coverage & Speciality
   areas:          string[]
   specialities:   string[]
   avgJobValue:    string
-  // Step 3 — Insurance & Compliance
+  // Step 3, Insurance & Compliance
   liabilityAmount: string
   workersComp:    string
   googleProfile:  string
-  // Step 4 — Contact
+  // Step 4, Contact
   contactName:    string
   phone:          string
   email:          string
@@ -155,7 +155,7 @@ export default function ContractorApplyForm() {
           {[
             { label: 'Company',     value: data.companyName },
             { label: 'CCB #',       value: data.ccbNumber },
-            { label: 'Specialities', value: data.specialities.join(', ') || '—' },
+            { label: 'Specialities', value: data.specialities.join(', ') || ', ' },
             { label: 'Areas',       value: `${data.areas.length} neighborhood${data.areas.length !== 1 ? 's' : ''} selected` },
           ].map(({ label: l, value }) => (
             <div key={l} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.4rem 0', borderBottom: '1px solid var(--bdr)' }}>
@@ -172,11 +172,11 @@ export default function ContractorApplyForm() {
     <div style={{ maxWidth: '680px' }}>
       {progress}
 
-      {/* STEP 1 — Company Info */}
+      {/* STEP 1, Company Info */}
       {step === 1 && (
         <div>
           <h2 style={{ fontFamily: 'var(--font-bebas)', fontSize: '1.8rem', color: 'var(--text)', marginBottom: '0.3rem' }}>Company Details</h2>
-          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 1 of 4 — Basic company information.</p>
+          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 1 of 4, Basic company information.</p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
             <div>
@@ -217,11 +217,11 @@ export default function ContractorApplyForm() {
         </div>
       )}
 
-      {/* STEP 2 — Coverage & Speciality */}
+      {/* STEP 2, Coverage & Speciality */}
       {step === 2 && (
         <div>
           <h2 style={{ fontFamily: 'var(--font-bebas)', fontSize: '1.8rem', color: 'var(--text)', marginBottom: '0.3rem' }}>Coverage & Specialities</h2>
-          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 2 of 4 — Where you work and what you do.</p>
+          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 2 of 4, Where you work and what you do.</p>
 
           <div style={{ marginBottom: '1.5rem' }}>
             <label style={label}>Roofing Specialities * (select all that apply)</label>
@@ -244,7 +244,7 @@ export default function ContractorApplyForm() {
           </div>
 
           <div style={{ marginBottom: '1rem' }}>
-            <label style={label}>Portland Metro Coverage Areas * — select all neighborhoods you serve</label>
+            <label style={label}>Portland Metro Coverage Areas *, select all neighborhoods you serve</label>
             <div style={{ maxHeight: '220px', overflowY: 'auto', border: '1px solid var(--bdr)', background: 'var(--bg3)', padding: '0.75rem' }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.3rem' }}>
                 {neighborhoods.map(n => (
@@ -277,11 +277,11 @@ export default function ContractorApplyForm() {
         </div>
       )}
 
-      {/* STEP 3 — Insurance */}
+      {/* STEP 3, Insurance */}
       {step === 3 && (
         <div>
           <h2 style={{ fontFamily: 'var(--font-bebas)', fontSize: '1.8rem', color: 'var(--text)', marginBottom: '0.3rem' }}>Insurance & Compliance</h2>
-          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 3 of 4 — Minimum: $1M general liability + workers' comp.</p>
+          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 3 of 4, Minimum: $1M general liability + workers' comp.</p>
 
           <div style={{ marginBottom: '1.2rem' }}>
             <label style={label}>General Liability Coverage *</label>
@@ -304,7 +304,7 @@ export default function ContractorApplyForm() {
           </div>
 
           <div style={{ marginBottom: '1.2rem' }}>
-            <label style={label}>Google Business Profile URL (optional — helps vetting)</label>
+            <label style={label}>Google Business Profile URL (optional, helps vetting)</label>
             <input style={input} type="url" placeholder="https://g.co/maps/..." value={data.googleProfile} onChange={e => set('googleProfile', e.target.value)} />
           </div>
 
@@ -326,11 +326,11 @@ export default function ContractorApplyForm() {
         </div>
       )}
 
-      {/* STEP 4 — Contact */}
+      {/* STEP 4, Contact */}
       {step === 4 && (
         <div>
           <h2 style={{ fontFamily: 'var(--font-bebas)', fontSize: '1.8rem', color: 'var(--text)', marginBottom: '0.3rem' }}>Contact Details</h2>
-          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 4 of 4 — Who we contact with your vetting outcome.</p>
+          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 4 of 4, Who we contact with your vetting outcome.</p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
             <div>

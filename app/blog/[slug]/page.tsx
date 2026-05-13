@@ -16,7 +16,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const p = getPostBySlug(params.slug)
   if (!p) return {}
   const url = `${SITE.baseUrl}/blog/${p.slug}`
-  return { title:`${p.title} | ${SITE.name}`, description:p.excerpt, alternates:{canonical:url}, openGraph:{title:p.title,description:p.excerpt,url,type:'article',publishedTime:p.published} }
+  return { title:p.title, description:p.excerpt, alternates:{canonical:url}, openGraph:{title:p.title,description:p.excerpt,url,type:'article',publishedTime:p.published} }
 }
 function formatDate(iso:string){return new Date(iso).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}
 

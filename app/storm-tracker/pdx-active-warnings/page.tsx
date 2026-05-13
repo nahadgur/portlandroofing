@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Script from 'next/script'
 import Link   from 'next/link'
 import Nav     from '@/components/Nav'
@@ -15,27 +15,27 @@ export const revalidate = 1800
 const PAGE_URL = `${SITE.baseUrl}/storm-tracker/pdx-active-warnings`
 
 export const metadata: Metadata = {
-  title: `Portland Storm & Wind Advisories — Active Roofing Warnings | ${SITE.name}`,
+  title: `Portland Storm & Wind Advisories â€” Active Roofing Warnings`,
   description: 'Live Portland metro storm alerts and wind conditions filtered for roofing impact. NWS alerts (zones ORZ006, ORZ007, ORZ604) plus Open-Meteo live wind, gusts, and 24h gust forecast.',
   alternates: { canonical: PAGE_URL },
   openGraph: { title: 'Portland Storm & Wind Advisories for Roofing', description: 'Active NWS alerts plus live Open-Meteo wind conditions filtered for Portland metro roofing impact.', url: PAGE_URL, type: 'website' },
 }
 
 const faqs = [
-  { q: 'What wind speed damages roofs in Portland?', a: 'Sustained winds above 45 mph can lift shingles and damage flashing. Gusts above 60 mph can cause significant damage to any material. Portland\'s East Gorge wind events regularly produce gusts of 50–70 mph in east metro areas (Gresham, Troutdale, Fairview).' },
-  { q: 'Should I postpone roofing work during a wind advisory?', a: 'Yes. Wind advisories (sustained 31–39 mph, gusts to 57 mph) make roofing work unsafe and can compromise installation quality. High Wind Warnings (sustained 40+ mph, gusts 58+ mph) make rooftop work dangerous. Most reputable contractors will reschedule automatically — those who don\'t are a red flag.' },
-  { q: 'How do I check for storm damage on my roof?', a: 'Look for missing or lifted shingles, granules in gutters, damaged flashing around vents and chimneys, dented metal components, and debris impact marks. Do not climb on the roof — use binoculars from ground level or hire a professional inspector.' },
+  { q: 'What wind speed damages roofs in Portland?', a: 'Sustained winds above 45 mph can lift shingles and damage flashing. Gusts above 60 mph can cause significant damage to any material. Portland\'s East Gorge wind events regularly produce gusts of 50â€“70 mph in east metro areas (Gresham, Troutdale, Fairview).' },
+  { q: 'Should I postpone roofing work during a wind advisory?', a: 'Yes. Wind advisories (sustained 31â€“39 mph, gusts to 57 mph) make roofing work unsafe and can compromise installation quality. High Wind Warnings (sustained 40+ mph, gusts 58+ mph) make rooftop work dangerous. Most reputable contractors will reschedule automatically â€” those who don\'t are a red flag.' },
+  { q: 'How do I check for storm damage on my roof?', a: 'Look for missing or lifted shingles, granules in gutters, damaged flashing around vents and chimneys, dented metal components, and debris impact marks. Do not climb on the roof â€” use binoculars from ground level or hire a professional inspector.' },
   { q: 'Does homeowners insurance cover storm damage in Oregon?', a: 'Most Oregon policies cover sudden storm damage (wind, hail, fallen trees) but not gradual wear. File a claim promptly, document damage with photos before temporary repairs, and get at least two contractor estimates before accepting an adjuster\'s assessment.' },
   { q: 'What NWS zones cover Portland for roofing alerts?', a: 'Three zones: ORZ006 (Central Columbia River Gorge), ORZ007 (Portland Metro Area), and ORZ604 (Greater Portland Metro). Wind events typically originate from ORZ006 (Gorge winds) or ORZ007 (frontal systems).' },
-  { q: 'Why are East Wind events so much worse in east metro Portland?', a: 'The Columbia River Gorge funnels Pacific high-pressure air down through the Bonneville/Cascade Locks corridor. By the time east winds reach Troutdale, Gresham, and Fairview, they\'re accelerated — sustained 40-60 mph with 70+ mph gusts is normal during major events. West-side neighborhoods (Beaverton, Hillsboro) see the same fronts at half the velocity.' },
-  { q: 'How accurate is the live wind forecast above?', a: 'The Open-Meteo data above pulls from the same global numerical weather models (GFS, ECMWF, ICON) that NWS uses. Accuracy 6 hours out is high; 24 hours less so but still useful for planning. The peak gust forecast is conservative — actual gusts during Gorge events frequently exceed forecast.' },
-  { q: 'My roof is 20+ years old and there\'s a wind warning tomorrow. What should I do?', a: 'If your asphalt shingles are at end of life, even a moderate wind event can strip large sections. Pre-storm tarp deployment ($200-$500) over vulnerable areas is cheap insurance. After the event, document everything before any repair work — that\'s the difference between a covered insurance claim and a denied one.' },
+  { q: 'Why are East Wind events so much worse in east metro Portland?', a: 'The Columbia River Gorge funnels Pacific high-pressure air down through the Bonneville/Cascade Locks corridor. By the time east winds reach Troutdale, Gresham, and Fairview, they\'re accelerated â€” sustained 40-60 mph with 70+ mph gusts is normal during major events. West-side neighborhoods (Beaverton, Hillsboro) see the same fronts at half the velocity.' },
+  { q: 'How accurate is the live wind forecast above?', a: 'The Open-Meteo data above pulls from the same global numerical weather models (GFS, ECMWF, ICON) that NWS uses. Accuracy 6 hours out is high; 24 hours less so but still useful for planning. The peak gust forecast is conservative â€” actual gusts during Gorge events frequently exceed forecast.' },
+  { q: 'My roof is 20+ years old and there\'s a wind warning tomorrow. What should I do?', a: 'If your asphalt shingles are at end of life, even a moderate wind event can strip large sections. Pre-storm tarp deployment ($200-$500) over vulnerable areas is cheap insurance. After the event, document everything before any repair work â€” that\'s the difference between a covered insurance claim and a denied one.' },
 ]
 
 const alertLevels = [
   {
     level: 'Wind Advisory',
-    wind: '31–39',
+    wind: '31â€“39',
     gusts: 'to 57 mph',
     color: 'var(--amber)',
     bg: 'rgba(245,166,35,0.06)',
@@ -80,7 +80,7 @@ const alertLevels = [
     bg: 'rgba(200,32,44,0.06)',
     border: 'var(--red)',
     actions: [
-      'No roofing work — ice loading stresses structure',
+      'No roofing work â€” ice loading stresses structure',
       'Inspect for ice dam formation after event',
       'Check snow load on flat or low-pitch roofs',
     ],
@@ -97,13 +97,13 @@ const windScale = [
 
 const stormHistory = [
   {
-    date: 'January 13–17, 2024',
+    date: 'January 13â€“17, 2024',
     event: 'Ice & Wind Event',
     impact: 'Multi-day ice accumulation followed by 50+ mph wind gusts. Estimated $50M+ in residential roof damage across Multnomah, Clackamas, and Washington counties. Tree-fall damage was the dominant claim type.',
     lesson: 'Ice loading on already-stressed roofs amplified wind damage. Pre-storm tree trimming around homes is the highest-leverage prevention.',
   },
   {
-    date: 'February 12–13, 2021',
+    date: 'February 12â€“13, 2021',
     event: 'Ice Storm of 2021',
     impact: 'One of the most damaging storms in Portland metro history. Half-inch+ ice accumulation across Inner SE/NE, then sustained 30-50 mph winds. Tree damage to roofs in Sellwood-Moreland, Eastmoreland, and Alameda was widespread.',
     lesson: 'Heritage neighborhoods with mature canopy face the highest tree-fall roof damage risk. Cedar shake roofs were particularly vulnerable to combined ice+wind loading.',
@@ -112,7 +112,7 @@ const stormHistory = [
     date: 'November 13, 2021',
     event: 'East Wind Event',
     impact: 'Sustained 50-65 mph east winds through Gorge corridor. Shingle damage concentrated in Gresham, Troutdale, Fairview, and eastern Portland. Asphalt shingle tabs stripped on roofs 18+ years old.',
-    lesson: 'East Wind corridor exposure is real and ongoing — 110 mph rated shingles plus six-nail attachment is the practical minimum spec for this corridor.',
+    lesson: 'East Wind corridor exposure is real and ongoing â€” 110 mph rated shingles plus six-nail attachment is the practical minimum spec for this corridor.',
   },
   {
     date: 'September 7, 2020',
@@ -142,7 +142,7 @@ const insuranceSteps = [
   },
   {
     title: 'Get emergency tarp deployment if active leak',
-    detail: 'Most Oregon homeowner policies cover tarping as mitigation expense ($200-$500). Refusing to tarp because you fear it affects the claim is wrong — failing to mitigate further damage is what affects claims. Document tarp deployment with photos and contractor invoice.',
+    detail: 'Most Oregon homeowner policies cover tarping as mitigation expense ($200-$500). Refusing to tarp because you fear it affects the claim is wrong â€” failing to mitigate further damage is what affects claims. Document tarp deployment with photos and contractor invoice.',
   },
   {
     title: 'Get a contractor scope before adjuster visit',
@@ -150,11 +150,11 @@ const insuranceSteps = [
   },
   {
     title: 'File the claim within reasonable time',
-    detail: 'Oregon law requires timely notice. "Reasonable time" typically means within 30 days of damage discovery for most policies. Waiting months invites denial. File promptly even if you\'re not sure of the full scope — the adjuster will work with you to define it.',
+    detail: 'Oregon law requires timely notice. "Reasonable time" typically means within 30 days of damage discovery for most policies. Waiting months invites denial. File promptly even if you\'re not sure of the full scope â€” the adjuster will work with you to define it.',
   },
   {
     title: 'Reject "deductible waiver" offers',
-    detail: 'Storm chasers and some local contractors offer to waive your insurance deductible. This is illegal in Oregon — it\'s insurance fraud. Homeowners who participate face legal exposure plus claim denial. Pay your deductible directly.',
+    detail: 'Storm chasers and some local contractors offer to waive your insurance deductible. This is illegal in Oregon â€” it\'s insurance fraud. Homeowners who participate face legal exposure plus claim denial. Pay your deductible directly.',
   },
   {
     title: 'Request supplement if adjuster scope is short',
@@ -167,11 +167,11 @@ const insuranceSteps = [
 ]
 
 const checklist = [
-  { step: '01', title: 'Ground-level visual inspection', points: ['Walk the full perimeter','Use binoculars — don\'t climb','Look for missing shingles, damaged flashing, debris impact'] },
+  { step: '01', title: 'Ground-level visual inspection', points: ['Walk the full perimeter','Use binoculars â€” don\'t climb','Look for missing shingles, damaged flashing, debris impact'] },
   { step: '02', title: 'Check gutters and downspouts', points: ['Heavy granule accumulation = shingle damage','Bent or detached gutters = wind or ice impact','Clear any blockages before rain returns'] },
   { step: '03', title: 'Interior attic check', points: ['Look for daylight penetration or new damp spots','Check insulation for moisture','Top-floor ceilings: new water stains or bubbling paint?'] },
   { step: '04', title: 'Document before touching anything', points: ['Photo every visible damage point from multiple angles','Don\'t make repairs before your adjuster visits','Date-stamp all photos'] },
-  { step: '05', title: 'Contact your insurer', points: ['File promptly — Oregon law requires timely notice','Do not sign with storm chasers before adjuster visit','Request a written scope of damage from your adjuster'] },
+  { step: '05', title: 'Contact your insurer', points: ['File promptly â€” Oregon law requires timely notice','Do not sign with storm chasers before adjuster visit','Request a written scope of damage from your adjuster'] },
   { step: '06', title: 'Get a professional inspection', points: ['Licensed Oregon CCB contractor only','Get minimum two written estimates','Ask specifically about permit requirements for the repair scope'] },
 ]
 
@@ -201,37 +201,37 @@ export default function StormTrackerPage() {
       <PageHero
         imageUrl="/images/hero-guide-storm.jpeg"
         breadcrumb={[{ label: 'Home', href: '/' }, { label: 'Storm Tracker' }, { label: 'PDX Active Warnings' }]}
-        eyebrow="Live · NWS + Open-Meteo"
+        eyebrow="Live Â· NWS + Open-Meteo"
         title={<>PDX ACTIVE<br /><span style={{ color: '#F5A623' }}>STORM WARNINGS</span></>}
         subtitle="Real-time NWS alerts and live Open-Meteo wind conditions filtered for Portland metro roofing impact. Plus Portland storm history, neighborhood wind exposure data, and an insurance claim playbook."
         stats={[{ label: 'NWS Zones Monitored', value: '3' }, { label: 'Live Refresh', value: '30 min' }, { label: 'Neighborhood Profiles', value: '10' }]}
       />
 
-      {/* ── LIVE CONDITIONS (Open-Meteo) ─────────────────────────────── */}
+      {/* â”€â”€ LIVE CONDITIONS (Open-Meteo) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section-pad" style={{ background: '#fff' }}>
         <div className="content-wrap-wide">
-          <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>[ Live Wind Conditions · Open-Meteo ]</div>
+          <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>[ Live Wind Conditions Â· Open-Meteo ]</div>
           <h2 style={{ ...d, fontSize: 'clamp(1.6rem,3vw,2.4rem)', color: 'var(--text)', lineHeight: 1, marginBottom: '0.5rem' }}>CURRENT PORTLAND METRO CONDITIONS</h2>
           <p style={{ ...f, fontSize: '0.9rem', color: 'var(--muted)', maxWidth: '640px', lineHeight: 1.65, fontWeight: 300, marginBottom: '1.5rem' }}>
-            Live wind speed, peak gusts, temperature, and 24-hour gust forecast for Portland (45.52°N, 122.68°W). Updates every 30 minutes from Open-Meteo&apos;s free public weather API.
+            Live wind speed, peak gusts, temperature, and 24-hour gust forecast for Portland (45.52Â°N, 122.68Â°W). Updates every 30 minutes from Open-Meteo&apos;s free public weather API.
           </p>
           <LiveWindConditions />
         </div>
       </section>
 
-      {/* ── NWS ALERTS ───────────────────────────────────────────────── */}
+      {/* â”€â”€ NWS ALERTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section-pad" style={{ background: 'var(--bg2)' }}>
         <div className="content-wrap-wide">
           <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>[ Active NWS Alerts ]</div>
           <h2 style={{ ...d, fontSize: 'clamp(1.6rem,3vw,2.4rem)', color: 'var(--text)', lineHeight: 1, marginBottom: '0.5rem' }}>NATIONAL WEATHER SERVICE ALERTS</h2>
           <p style={{ ...f, fontSize: '0.9rem', color: 'var(--muted)', maxWidth: '640px', lineHeight: 1.65, fontWeight: 300, marginBottom: '1.5rem' }}>
-            Wind advisories, high wind warnings, winter storm warnings, ice storm warnings — all roofing-relevant alerts from the NWS Portland forecast office for zones ORZ006, ORZ007, and ORZ604.
+            Wind advisories, high wind warnings, winter storm warnings, ice storm warnings â€” all roofing-relevant alerts from the NWS Portland forecast office for zones ORZ006, ORZ007, and ORZ604.
           </p>
           <StormAlerts />
         </div>
       </section>
 
-      {/* ── ALERT LEVELS GRID ─────────────────────────────────────────── */}
+      {/* â”€â”€ ALERT LEVELS GRID â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section-pad" style={{ background: '#fff' }}>
         <div className="content-wrap-wide">
           <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>[ Alert Reference ]</div>
@@ -246,13 +246,13 @@ export default function StormTrackerPage() {
                   <div style={{ ...c, fontSize: '1rem', fontWeight: 700, color: a.color, lineHeight: 1.2 }}>{a.level}</div>
                   <div style={{ textAlign: 'right', flexShrink: 0 }}>
                     <div style={{ ...d, fontSize: '1.8rem', color: a.color, lineHeight: 1 }}>{a.wind}</div>
-                    <div style={{ ...m, fontSize: '0.55rem', color: 'var(--muted)', letterSpacing: '0.05em' }}>MPH · {a.gusts}</div>
+                    <div style={{ ...m, fontSize: '0.55rem', color: 'var(--muted)', letterSpacing: '0.05em' }}>MPH Â· {a.gusts}</div>
                   </div>
                 </div>
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {a.actions.map(act => (
                     <li key={act} style={{ ...f, fontSize: '0.85rem', color: 'var(--text)', fontWeight: 300, lineHeight: 1.5, display: 'flex', gap: '0.6rem' }}>
-                      <span style={{ color: a.color, flexShrink: 0 }}>▸</span>{act}
+                      <span style={{ color: a.color, flexShrink: 0 }}>â–¸</span>{act}
                     </li>
                   ))}
                 </ul>
@@ -262,7 +262,7 @@ export default function StormTrackerPage() {
         </div>
       </section>
 
-      {/* ── PORTLAND STORM HISTORY ───────────────────────────────────── */}
+      {/* â”€â”€ PORTLAND STORM HISTORY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section-pad" style={{ background: 'var(--bg2)' }}>
         <div className="content-wrap">
           <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>[ Storm History ]</div>
@@ -290,7 +290,7 @@ export default function StormTrackerPage() {
         </div>
       </section>
 
-      {/* ── NEIGHBORHOOD WIND EXPOSURE ───────────────────────────────── */}
+      {/* â”€â”€ NEIGHBORHOOD WIND EXPOSURE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section-pad" style={{ background: '#fff' }}>
         <div className="content-wrap-wide">
           <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>[ Neighborhood Exposure ]</div>
@@ -319,13 +319,13 @@ export default function StormTrackerPage() {
         </div>
       </section>
 
-      {/* ── WIND DAMAGE SCALE ─────────────────────────────────────────── */}
+      {/* â”€â”€ WIND DAMAGE SCALE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section-pad" style={{ background: 'var(--bg2)' }}>
         <div className="content-wrap">
           <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>[ Wind Damage Scale ]</div>
           <h2 style={{ ...d, fontSize: 'clamp(1.6rem,3vw,2.4rem)', color: 'var(--text)', lineHeight: 1, marginBottom: '0.5rem' }}>AT WHAT SPEED DOES WIND DAMAGE ROOFS?</h2>
           <p style={{ ...f, fontSize: '0.95rem', color: 'var(--muted)', fontWeight: 300, marginBottom: '2.5rem' }}>
-            Portland&apos;s Gorge wind events regularly push 50–70 mph in east metro areas. Know where the thresholds are.
+            Portland&apos;s Gorge wind events regularly push 50â€“70 mph in east metro areas. Know where the thresholds are.
           </p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             {windScale.map(w => (
@@ -350,11 +350,11 @@ export default function StormTrackerPage() {
         </div>
       </section>
 
-      {/* ── INSURANCE CLAIM PLAYBOOK ─────────────────────────────────── */}
+      {/* â”€â”€ INSURANCE CLAIM PLAYBOOK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section-pad" style={{ background: '#fff' }}>
         <div className="content-wrap">
           <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>[ Insurance Claim Playbook ]</div>
-          <h2 style={{ ...d, fontSize: 'clamp(1.6rem,3vw,2.4rem)', color: 'var(--text)', lineHeight: 1, marginBottom: '0.5rem' }}>AFTER A STORM — INSURANCE CLAIM STEPS</h2>
+          <h2 style={{ ...d, fontSize: 'clamp(1.6rem,3vw,2.4rem)', color: 'var(--text)', lineHeight: 1, marginBottom: '0.5rem' }}>AFTER A STORM â€” INSURANCE CLAIM STEPS</h2>
           <p style={{ ...f, fontSize: '0.95rem', color: 'var(--muted)', fontWeight: 300, marginBottom: '2rem', maxWidth: '640px' }}>
             Seven steps that determine whether your storm-damage claim gets paid in full or denied. Order matters.
           </p>
@@ -372,7 +372,7 @@ export default function StormTrackerPage() {
         </div>
       </section>
 
-      {/* ── POST-STORM CHECKLIST ──────────────────────────────────────── */}
+      {/* â”€â”€ POST-STORM CHECKLIST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section-pad" style={{ background: 'var(--bg2)' }}>
         <div className="content-wrap-wide">
           <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1rem' }}>[ Post-Storm Checklist ]</div>
@@ -390,7 +390,7 @@ export default function StormTrackerPage() {
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   {item.points.map(pt => (
                     <li key={pt} style={{ ...f, fontSize: '0.84rem', color: 'var(--muted)', fontWeight: 300, lineHeight: 1.5, display: 'flex', gap: '0.6rem' }}>
-                      <span style={{ color: 'var(--amber)', flexShrink: 0 }}>▸</span>{pt}
+                      <span style={{ color: 'var(--amber)', flexShrink: 0 }}>â–¸</span>{pt}
                     </li>
                   ))}
                 </ul>
@@ -400,12 +400,12 @@ export default function StormTrackerPage() {
         </div>
       </section>
 
-      {/* ── NWS ZONES CALLOUT ─────────────────────────────────────────── */}
+      {/* â”€â”€ NWS ZONES CALLOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section style={{ background: '#fff', borderBottom: '1px solid var(--bdr)', padding: '2rem 3rem' }}>
         <div className="content-wrap-wide">
           <div style={{ display: 'flex', gap: '1px', background: 'var(--bdr)', flexWrap: 'wrap' }}>
             {[
-              { zone: 'ORZ006', name: 'Central Columbia River Gorge', note: 'Source of east wind events — fastest onset' },
+              { zone: 'ORZ006', name: 'Central Columbia River Gorge', note: 'Source of east wind events â€” fastest onset' },
               { zone: 'ORZ007', name: 'Portland Metro Area', note: 'Primary residential coverage zone' },
               { zone: 'ORZ604', name: 'Greater Portland Metro', note: 'Extended metro and suburban coverage' },
             ].map(z => (
@@ -419,7 +419,7 @@ export default function StormTrackerPage() {
         </div>
       </section>
 
-      {/* ── FAQ ───────────────────────────────────────────────────────── */}
+      {/* â”€â”€ FAQ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section-pad" style={{ background: 'var(--bg2)' }}>
         <div className="content-wrap">
           <div style={{ ...m, fontSize: '0.68rem', color: 'var(--amber)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem' }}>[ FAQ ]</div>
@@ -433,7 +433,7 @@ export default function StormTrackerPage() {
         </div>
       </section>
 
-      {/* ── CTA ───────────────────────────────────────────────────────── */}
+      {/* â”€â”€ CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <section className="section-pad" style={{ background: '#fff' }}>
         <div className="content-wrap">
           <div style={{ padding: '2rem 2.5rem', background: 'var(--bg2)', border: '1px solid var(--bdr)', borderLeft: '4px solid var(--amber-btn)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
@@ -445,18 +445,18 @@ export default function StormTrackerPage() {
               </p>
             </div>
             <ModalTriggerBtn style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
-              Get Free Quotes →
+              Get Free Quotes â†’
             </ModalTriggerBtn>
           </div>
           <div style={{ marginTop: '1rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
             <Link href="/portland/west-hills" style={{ ...c, fontSize: '0.78rem', letterSpacing: '0.04em', color: 'var(--amber)', padding: '0.5rem 1rem', border: '1px solid var(--bdr)', textDecoration: 'none', background: 'var(--bg2)' }}>
-              West Hills wind-rated specs →
+              West Hills wind-rated specs â†’
             </Link>
             <Link href="/portland/irvington" style={{ ...c, fontSize: '0.78rem', letterSpacing: '0.04em', color: 'var(--amber)', padding: '0.5rem 1rem', border: '1px solid var(--bdr)', textDecoration: 'none', background: 'var(--bg2)' }}>
-              Alameda Ridge wind exposure →
+              Alameda Ridge wind exposure â†’
             </Link>
             <Link href="/portland/hawthorne" style={{ ...c, fontSize: '0.78rem', letterSpacing: '0.04em', color: 'var(--amber)', padding: '0.5rem 1rem', border: '1px solid var(--bdr)', textDecoration: 'none', background: 'var(--bg2)' }}>
-              Inner SE storm-damage scope →
+              Inner SE storm-damage scope â†’
             </Link>
           </div>
         </div>

@@ -17,7 +17,7 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { neighborhood: string } }): Metadata {
   const n = getNeighborhoodBySlug(params.neighborhood)
   if (!n) return {}
-  const title = `${n.name} Roofing Cost 2026: What Homeowners Are Paying | ${SITE.name}`
+  const title = `${n.name} Roofing Cost 2026: What Homeowners Are Paying`
   const description = `Real roofing replacement costs in ${n.name} (${n.zip}). Average: $${n.avgCost.toLocaleString()}. Range: ${n.range}. Most common material: ${n.commonMaterial}. Updated Q2 2026.`
   const url = `${SITE.baseUrl}/pdx-cost-index/${n.slug}`
   return {
@@ -69,7 +69,7 @@ export default function NeighborhoodCostPage({ params }: { params: { neighborhoo
     },
     {
       q: `What is the most common roofing material in ${n.name}?`,
-      a: `${n.commonMaterial} is the most common roofing material in ${n.name}. Material choice affects cost significantly — architectural asphalt averages $${costs.asphalt.low.toLocaleString()}–$${costs.asphalt.high.toLocaleString()} while metal runs $${costs.metal.low.toLocaleString()}–$${costs.metal.high.toLocaleString()} for the same home.`,
+      a: `${n.commonMaterial} is the most common roofing material in ${n.name}. Material choice affects cost significantly, architectural asphalt averages $${costs.asphalt.low.toLocaleString()}–$${costs.asphalt.high.toLocaleString()} while metal runs $${costs.metal.low.toLocaleString()}–$${costs.metal.high.toLocaleString()} for the same home.`,
     },
     {
       q: `How difficult is the permit process for roofing in ${n.name}?`,

@@ -104,7 +104,7 @@ export default function Nav() {
             Get Quotes →
           </Link>
 
-          {/* Hamburger — mobile only */}
+          {/* Hamburger, mobile only */}
           <button
             onClick={() => setOpen(o => !o)}
             aria-label="Menu"

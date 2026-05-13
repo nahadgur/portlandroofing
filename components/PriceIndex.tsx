@@ -1,6 +1,6 @@
 import { neighborhoods } from '@/lib/neighborhoods'
 
-// Pull 7 representative zones sorted by avg cost — stays in sync with lib/neighborhoods.ts
+// Pull 7 representative zones sorted by avg cost, stays in sync with lib/neighborhoods.ts
 const ZONES = [
   'west-hills',
   'lake-oswego',

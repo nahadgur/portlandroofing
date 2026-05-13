@@ -64,7 +64,7 @@ const WMO_CODE: Record<number, string> = {
 
 function compass(deg: number): string {
   const dirs = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW']
-  return dirs[Math.round(deg / 22.5) % 16] ?? '—'
+  return dirs[Math.round(deg / 22.5) % 16] ?? ', '
 }
 
 function riskBand(gust: number): { label: string; color: string; pct: number } {

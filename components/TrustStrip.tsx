@@ -29,7 +29,7 @@ const BADGES: Badge[] = [
   {
     icon:   Users,
     label:  'Portland-Based',
-    detail: '100% local crews — no out-of-state storm chasers',
+    detail: '100% local crews, no out-of-state storm chasers',
   },
   {
     icon:   Clock,

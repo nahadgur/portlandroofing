@@ -12,7 +12,7 @@ interface Props { children?: ReactNode }
 export default function Hero({ children }: Props) {
   return (
     /* hero-wrap class has min-height: 88vh + position: relative in globals.css
-       — both required for <Image fill> to render */
+      , both required for <Image fill> to render */
     <div className="hero-wrap" style={{ minHeight: '88vh' }}>
 
       <Image
@@ -68,7 +68,7 @@ export default function Hero({ children }: Props) {
             fontWeight: 300, marginBottom: '2.5rem',
           }}>
             We vet, rank, and connect Portland homeowners with the top 1% of roofing
-            contractors — with real pricing data across 50+ neighborhoods.
+            contractors, with real pricing data across 50+ neighborhoods.
           </p>
 
           <div style={{

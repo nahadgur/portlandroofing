@@ -16,7 +16,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const g = getGuideBySlug(params.slug)
   if (!g) return {}
   const url = `${SITE.baseUrl}/guides/${g.slug}`
-  return { title:`${g.title} | ${SITE.name}`, description:g.description, alternates:{canonical:url}, openGraph:{title:g.title,description:g.description,url,type:'article'} }
+  return { title:g.title, description:g.description, alternates:{canonical:url}, openGraph:{title:g.title,description:g.description,url,type:'article'} }
 }
 
 export default function GuidePage({ params }: { params: { slug: string } }) {

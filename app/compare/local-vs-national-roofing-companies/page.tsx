@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Script from 'next/script'
 import Link   from 'next/link'
 import Nav     from '@/components/Nav'
@@ -11,7 +11,7 @@ import ModalTriggerBtn from '@/components/ModalTriggerBtn'
 const PAGE_URL = `${SITE.baseUrl}/compare/local-vs-national-roofing-companies`
 
 export const metadata: Metadata = {
-  title: `Local vs National Roofing Companies in Portland — Storm Chasers, Warranties & CCB Data | ${SITE.name}`,
+  title: `Local vs National Roofing Companies in Portland â€” Storm Chasers, Warranties & CCB Data`,
   description: 'Side-by-side comparison of local vs national roofing companies in Portland: CCB verification, storm-chaser risk, warranty enforcement, permit familiarity, and what local weather knowledge actually means for your roof.',
   alternates: { canonical: PAGE_URL },
   openGraph: { title: 'Local vs National Roofing Companies in Portland', description: 'Static comparison table, storm chaser data, and what local knowledge means in Portland.', url: PAGE_URL, type: 'article' },
@@ -175,7 +175,7 @@ export default function LocalVsNationalPage() {
               <div style={{ ...m, fontSize: '0.65rem', color: 'var(--amber)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>Skip the Guesswork</div>
               <p style={{ ...f, fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.6, fontWeight: 300 }}>Every contractor on Portland Roofing passes a 47-point vetting process. All local. All verified.</p>
             </div>
-            <ModalTriggerBtn style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>Get Free Quotes →</ModalTriggerBtn>
+            <ModalTriggerBtn style={{ display: 'inline-block', background: 'var(--amber-btn)', color: '#000', ...c, fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.8rem 2rem', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>Get Free Quotes â†’</ModalTriggerBtn>
           </div>
         </div>
       </section>

@@ -23,12 +23,12 @@ export const metadata: Metadata = {
 }
 
 const faqs = [
-  { q:'How much does a new roof cost in Portland, Oregon?', a:'The average roof replacement in Portland costs $9,400, ranging from $6,500 for basic asphalt shingle to $24,000+ for standing-seam metal on larger homes. Costs vary significantly by neighborhood — West Hills and Lake Oswego average $12,000–$13,000+ while North Portland averages $7,500–$8,000.' },
+  { q:'How much does a new roof cost in Portland, Oregon?', a:'The average roof replacement in Portland costs $9,400, ranging from $6,500 for basic asphalt shingle to $24,000+ for standing-seam metal on larger homes. Costs vary significantly by neighborhood, West Hills and Lake Oswego average $12,000–$13,000+ while North Portland averages $7,500–$8,000.' },
   { q:"What roofing materials are best for Portland's rainy climate?", a:"For Portland's 144+ annual rain days, architectural asphalt shingles (30-year rated), standing-seam metal, and Class 4 impact-resistant shingles all perform well. Metal roofing offers the best long-term ROI for most Portland homeowners who plan to stay 15+ years." },
   { q:'Do I need a permit to replace my roof in Portland?', a:"Yes. Portland's Bureau of Development Services requires a permit for full replacements. Historic districts (Ladd's Addition, Irvington, Alameda) have additional review requirements. Check our neighborhood pages for your specific area's permit difficulty score (1–5)." },
   { q:'How do I vet a roofing contractor in Oregon?', a:'All Oregon roofing contractors must hold a valid CCB licence. Verify at oregon.gov/ccb, confirm they carry at least $1M general liability insurance, and check reviews on Google and the BBB. Our platform runs all 47 checks before any contractor is listed.' },
-  { q:'How long does a roof replacement take in Portland?', a:"A standard residential roof replacement in Portland takes 1–3 days for the actual installation work. The bigger variable is lead time — in peak season (April through September), vetted Portland contractors book out 4–8 weeks. Add permit approval time on top: 1–2 weeks for standard zones, 4–6 weeks in historic districts." },
-  { q:'What is the best time of year to replace a roof in Portland?', a:"Late summer through early fall — August through October — is the optimal window. Rain is minimal, temperatures are stable for proper asphalt adhesion, and daylight hours allow full working days. Spring (April–May) is the second-best option. Avoid scheduling full replacements in November through February unless there's an emergency." },
+  { q:'How long does a roof replacement take in Portland?', a:"A standard residential roof replacement in Portland takes 1–3 days for the actual installation work. The bigger variable is lead time, in peak season (April through September), vetted Portland contractors book out 4–8 weeks. Add permit approval time on top: 1–2 weeks for standard zones, 4–6 weeks in historic districts." },
+  { q:'What is the best time of year to replace a roof in Portland?', a:"Late summer through early fall, August through October, is the optimal window. Rain is minimal, temperatures are stable for proper asphalt adhesion, and daylight hours allow full working days. Spring (April–May) is the second-best option. Avoid scheduling full replacements in November through February unless there's an emergency." },
 ]
 
 function formatDate(iso: string) {
@@ -55,7 +55,7 @@ export default function HomePage() {
       <Nav />
       <Ticker />
 
-      {/* ── W1-B HERO — floating form card inside full-bleed photo ── */}
+      {/* ── W1-B HERO, floating form card inside full-bleed photo ── */}
       <section id="quote">
         <Hero>
           <div className="form-float" id="lead-form">

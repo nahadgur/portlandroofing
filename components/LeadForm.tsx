@@ -80,7 +80,7 @@ export default function LeadForm({ source }: { source?: string }) {
     )
   }
 
-  /* Input styles — light theme */
+  /* Input styles, light theme */
   const inputStyle: React.CSSProperties = {
     width:'100%', padding:'1rem 1.1rem',
     background:'var(--bg)',

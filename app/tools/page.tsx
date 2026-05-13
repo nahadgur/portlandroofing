@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Script from 'next/script'
 import Link from 'next/link'
 import Nav     from '@/components/Nav'
@@ -10,7 +10,7 @@ import { breadcrumbSchema } from '@/lib/schema'
 const PAGE_URL = `${SITE.baseUrl}/tools`
 
 export const metadata: Metadata = {
-  title: `Portland Roofing Tools — Cost Calculator, Permit Lookup, Wind Risk, ROI | ${SITE.name}`,
+  title: `Portland Roofing Tools â€” Cost Calculator, Permit Lookup, Wind Risk, ROI`,
   description: 'Five free Portland roofing calculators: cost estimator with neighborhood-specific cost drivers, BDS permit difficulty lookup, material lifecycle cost comparison, wind damage risk score, and ROI / resale calculator.',
   alternates: { canonical: PAGE_URL },
   openGraph: { title: 'Portland Roofing Tools', description: 'Five free Portland-specific roofing calculators powered by 10-market PDX cost intelligence.', url: PAGE_URL, type: 'website' },
@@ -27,7 +27,7 @@ const tools = [
   {
     slug: 'permit-lookup',
     title: 'Permit Difficulty Lookup',
-    description: 'Identify permit class, design review status, fee range, and special requirements for your Portland address before you sign a contract. Knowing this saves 4–8 weeks of timeline surprises in historic districts.',
+    description: 'Identify permit class, design review status, fee range, and special requirements for your Portland address before you sign a contract. Knowing this saves 4â€“8 weeks of timeline surprises in historic districts.',
     inputs: ['Address or ZIP'],
     output: 'Permit complexity score + design review status + fees + special requirements',
   },
@@ -41,7 +41,7 @@ const tools = [
   {
     slug: 'wind-risk',
     title: 'Wind Damage Risk Score',
-    description: '1–5 wind exposure rating for your Portland address based on Gorge corridor proximity, ridge-line exposure, and historical major-event data. Recommends material wind rating spec.',
+    description: '1â€“5 wind exposure rating for your Portland address based on Gorge corridor proximity, ridge-line exposure, and historical major-event data. Recommends material wind rating spec.',
     inputs: ['ZIP code'],
     output: 'Risk score 1-5 + recommended material spec',
   },
@@ -97,13 +97,13 @@ export default function ToolsHubPage() {
                     <div style={{ ...m, fontSize: '0.6rem', color: 'var(--amber)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.3rem' }}>Tool {String(i + 1).padStart(2, '0')}</div>
                     <h2 style={{ ...d, fontSize: 'clamp(1.6rem,3vw,2.2rem)', color: 'var(--text)', lineHeight: 1 }}>{tool.title.toUpperCase()}</h2>
                   </div>
-                  <span style={{ ...c, fontSize: '0.85rem', fontWeight: 700, color: 'var(--amber)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Open tool →</span>
+                  <span style={{ ...c, fontSize: '0.85rem', fontWeight: 700, color: 'var(--amber)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Open tool â†’</span>
                 </div>
                 <p style={{ ...f, fontSize: '0.95rem', color: 'var(--muted)', lineHeight: 1.7, fontWeight: 300, marginBottom: '0.9rem', maxWidth: '700px' }}>{tool.description}</p>
                 <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
                   <div>
                     <div style={{ ...m, fontSize: '0.55rem', color: 'var(--muted)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem' }}>Inputs</div>
-                    <div style={{ ...c, fontSize: '0.78rem', color: 'var(--text)', fontWeight: 600 }}>{tool.inputs.join(' · ')}</div>
+                    <div style={{ ...c, fontSize: '0.78rem', color: 'var(--text)', fontWeight: 600 }}>{tool.inputs.join(' Â· ')}</div>
                   </div>
                   <div>
                     <div style={{ ...m, fontSize: '0.55rem', color: 'var(--muted)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem' }}>Output</div>
@@ -122,13 +122,13 @@ export default function ToolsHubPage() {
           <h2 style={{ ...d, fontSize: 'clamp(1.6rem,3vw,2.4rem)', color: 'var(--text)', lineHeight: 1, marginBottom: '1.5rem' }}>WHY THESE NUMBERS ARE BETTER THAN GENERIC CALCULATORS</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <p style={{ ...f, fontSize: '0.95rem', color: 'var(--text)', lineHeight: 1.75, fontWeight: 300 }}>
-              Generic roofing calculators apply national averages to a Portland property. That misses the variables that move PDX quotes most: skip-sheathed deck overlay on pre-1925 stock ($2,500–$5,000), Portland BDS ventilation enforcement ($400–$1,200), historic district design review timeline (4–6 weeks), East Wind corridor specification ($200–$500), and the 18–22 year asphalt life that PDX moss compresses from the manufacturer-advertised 25–30.
+              Generic roofing calculators apply national averages to a Portland property. That misses the variables that move PDX quotes most: skip-sheathed deck overlay on pre-1925 stock ($2,500â€“$5,000), Portland BDS ventilation enforcement ($400â€“$1,200), historic district design review timeline (4â€“6 weeks), East Wind corridor specification ($200â€“$500), and the 18â€“22 year asphalt life that PDX moss compresses from the manufacturer-advertised 25â€“30.
             </p>
             <p style={{ ...f, fontSize: '0.95rem', color: 'var(--text)', lineHeight: 1.75, fontWeight: 300 }}>
               Our calculators pull from the same 10-market PDX cost intelligence as the rest of our site. The cost calculator routes your ZIP to the closest kept market and applies that market&apos;s specific cost drivers and permit fee structure. The permit lookup pulls the actual BDS / Washington County / Clackamas County permit requirements for your area, including design review triggers. The wind risk score uses neighborhood-specific exposure data with material spec recommendations matched to local conditions.
             </p>
             <p style={{ ...f, fontSize: '0.95rem', color: 'var(--text)', lineHeight: 1.75, fontWeight: 300 }}>
-              All five tools are free, no sign-up, no data harvesting. They&apos;re free because the same intelligence powers our paid contractor matching service — better tools mean better matches.
+              All five tools are free, no sign-up, no data harvesting. They&apos;re free because the same intelligence powers our paid contractor matching service â€” better tools mean better matches.
             </p>
           </div>
         </div>

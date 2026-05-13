@@ -69,7 +69,7 @@ export default function Footer() {
             color: 'rgba(255,255,255,0.4)', lineHeight: 1.7,
             fontWeight: 300, maxWidth: '300px',
           }}>
-            The Portland metro's definitive roofing platform. Connecting homeowners with vetted contractors. Not a contractor — a marketplace.
+            The Portland metro's definitive roofing platform. Connecting homeowners with vetted contractors. Not a contractor, a marketplace.
           </p>
           <a href={`tel:${SITE.phone.replace(/\D/g, '')}`} style={{
             display: 'block', marginTop: '1.2rem',

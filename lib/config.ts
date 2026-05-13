@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// SITE CONFIG — update DOMAIN here once decided, everything else inherits it
+// SITE CONFIG, update DOMAIN here once decided, everything else inherits it
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const DOMAIN = 'portlandorroofing.com'
@@ -7,7 +7,7 @@ export const DOMAIN = 'portlandorroofing.com'
 export const SITE = {
   domain:     DOMAIN,
   // SERP / schema brand (matches URL: portlandorroofing.com). The visible
-  // logo / hero copy can still read "Portland Roofing" — only the SERP
+  // logo / hero copy can still read "Portland Roofing", only the SERP
   // site-name signal needs to reflect the registered domain.
   name:       'Portland OR Roofing',
   tagline:    'The Only Roofing Platform PDX Trusts.',
