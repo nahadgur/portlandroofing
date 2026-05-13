@@ -21,4 +21,14 @@ export const SITE = {
   // Default OG/SEO
   defaultTitle:       'Portland OR Roofing | The PDX Roofing Authority',
   defaultDescription: 'Portland\'s definitive roofing platform. Real local pricing data, vetted contractors, and hyper-local guides for 50+ Portland metro neighborhoods.',
+  // Digipeak partner network handoff (live as of 2026-05-13).
+  // sub2 carries the site identifier so the partner can attribute traffic
+  // back to the originating domain; sub5 carries the ZIP code (dynamic).
+  partnerOffer: {
+    base: process.env.NEXT_PUBLIC_PARTNER_OFFER_URL || 'https://www.fui4j3kd.com/98BZMH/XCQZJ/',
+    uid: process.env.NEXT_PUBLIC_PARTNER_UID || '760',
+    sourceId: process.env.NEXT_PUBLIC_PARTNER_SOURCE_ID || 'google',
+    /** Site identifier passed as sub2 for partner attribution. */
+    siteId: process.env.NEXT_PUBLIC_PARTNER_SITE_ID || 'portlandorroofing',
+  },
 }

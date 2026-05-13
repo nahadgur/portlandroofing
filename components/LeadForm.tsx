@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { SITE } from '@/lib/config'
+import { buildPartnerRedirect, fireGenerateLeadEvent } from '@/lib/attribution'
 
 type Step = 1 | 2 | 3 | 4
 
@@ -42,20 +43,36 @@ export default function LeadForm({ source }: { source?: string }) {
 
   async function submit() {
     setSubmitting(true); setError('')
-    try {
-      if (SITE.gasWebhook) {
-        await fetch(SITE.gasWebhook, {
-          method:'POST', mode:'no-cors',
-          headers:{ 'Content-Type':'application/json' },
-          body: JSON.stringify({ ...data, source:SITE.domain, timestamp:new Date().toISOString() }),
-        })
-      }
-      setSubmitted(true)
-    } catch {
-      setError('Something went wrong. Call us at ' + SITE.phone)
-    } finally {
-      setSubmitting(false)
+
+    // Build Digipeak partner redirect with form context
+    const partnerUrl = buildPartnerRedirect({
+      zip: data.zip,
+      source: source || 'homepage',
+      material: data.material,
+      urgency: data.urgency,
+    })
+
+    // Fire GA4 generate_lead event
+    try { fireGenerateLeadEvent({ zip: data.zip, source, material: data.material, urgency: data.urgency }) } catch {}
+
+    // Fire-and-forget GAS webhook (we keep our own copy of the lead alongside the partner handoff)
+    if (SITE.gasWebhook) {
+      try {
+        fetch(SITE.gasWebhook, {
+          method: 'POST',
+          mode: 'no-cors',
+          keepalive: true,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...data, source: source || SITE.domain, timestamp: new Date().toISOString() }),
+        }).catch(() => {})
+      } catch {}
     }
+
+    // Redirect to partner. Mark submitted briefly so the UI doesn't show error.
+    setSubmitted(true)
+    setSubmitting(false)
+    window.setTimeout(() => { window.location.href = partnerUrl }, 600)
+    try { window.location.assign(partnerUrl) } catch {}
   }
 
   /* Submitted */
