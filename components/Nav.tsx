@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 const links = [
@@ -49,14 +50,25 @@ export default function Nav() {
         borderBottom: '1px solid rgba(255,255,255,0.06)',
       }}>
         {/* Logo */}
-        <Link href="/" onClick={() => setOpen(false)} style={{
-          fontFamily: 'var(--font-bebas)',
-          fontSize: 'clamp(1.1rem, 4vw, 1.55rem)',
-          letterSpacing: '0.06em',
-          color: '#fff', textDecoration: 'none',
-          whiteSpace: 'nowrap', flexShrink: 0,
-        }}>
-          PORTLAND <span style={{ color: '#F5A623' }}>ROOFING</span>
+        <Link
+          href="/"
+          onClick={() => setOpen(false)}
+          aria-label="Portland Roofing home"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            textDecoration: 'none',
+            flexShrink: 0,
+          }}
+        >
+          <Image
+            src="/logo.png"
+            alt="Portland Roofing"
+            width={180}
+            height={40}
+            priority
+            style={{ height: '36px', width: 'auto', display: 'block' }}
+          />
         </Link>
 
         {/* Desktop links */}

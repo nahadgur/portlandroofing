@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { SITE } from '@/lib/config'
 
 const cols = {
@@ -33,12 +34,22 @@ export default function Footer() {
 
         {/* Brand */}
         <div>
-          <Link href="/" style={{
-            fontFamily: 'var(--font-bebas)', fontSize: '1.7rem',
-            letterSpacing: '0.04em', color: '#fff',
-            textDecoration: 'none', display: 'block', marginBottom: '0.8rem',
-          }}>
-            PORTLAND <span style={{ color: '#F5A623' }}>ROOFING</span>
+          <Link
+            href="/"
+            aria-label="Portland Roofing home"
+            style={{
+              display: 'inline-block',
+              marginBottom: '0.8rem',
+              textDecoration: 'none',
+            }}
+          >
+            <Image
+              src="/logo.png"
+              alt="Portland Roofing"
+              width={200}
+              height={44}
+              style={{ height: '40px', width: 'auto', display: 'block' }}
+            />
           </Link>
           <p style={{
             fontFamily: 'var(--font-barlow)', fontSize: '0.85rem',
