@@ -68,7 +68,7 @@ export function webSiteSchema() {
     '@type':         'WebSite',
     '@id':           `${SITE.baseUrl}/#website`,
     name:            SITE.name,
-    alternateName:   'Portland Roofing',
+    alternateName:   ['Portland Roofing', 'PortlandORRoofing'],
     url:             SITE.baseUrl,
     inLanguage:      'en-US',
     publisher:       { '@id': `${SITE.baseUrl}/#organization` },
