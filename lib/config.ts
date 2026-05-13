@@ -16,7 +16,7 @@ export const SITE = {
   baseUrl:    process.env.NEXT_PUBLIC_BASE_URL || `https://${DOMAIN}`,
   ga4:        process.env.NEXT_PUBLIC_GA4_ID   || 'G-10H8J1J51J',
   googleSiteVerification: 'tYShE7VyrtEp3xwHQyBNdCiOH-U6hhvKOsv0-fD9qT0',
-  gasWebhook: process.env.NEXT_PUBLIC_GAS_WEBHOOK_URL || '',
+  gasWebhook: process.env.NEXT_PUBLIC_GAS_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbwiGA04KJDfMJD6-1nP9G-UP-u1MTvthLv1NYeOVHX_iDF1qo4NJQcRNrXpMsvVwWcn/exec',
   twitter:    '@pdxroofing',
   // Default OG/SEO
   defaultTitle:       'Portland OR Roofing | The PDX Roofing Authority',
