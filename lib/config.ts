@@ -14,7 +14,8 @@ export const SITE = {
   phone:      '(503) 555-0100',
   email:      `hello@${DOMAIN}`,
   baseUrl:    process.env.NEXT_PUBLIC_BASE_URL || `https://${DOMAIN}`,
-  ga4:        process.env.NEXT_PUBLIC_GA4_ID   || 'G-XXXXXXXXXX',
+  ga4:        process.env.NEXT_PUBLIC_GA4_ID   || 'G-10H8J1J51J',
+  googleSiteVerification: 'tYShE7VyrtEp3xwHQyBNdCiOH-U6hhvKOsv0-fD9qT0',
   gasWebhook: process.env.NEXT_PUBLIC_GAS_WEBHOOK_URL || '',
   twitter:    '@pdxroofing',
   // Default OG/SEO
