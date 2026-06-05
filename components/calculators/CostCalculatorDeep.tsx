@@ -84,7 +84,7 @@ export default function CostCalculatorDeep() {
   const lineItems = [
     { label: `Tear-off & disposal${age.twoLayer ? ' (2-layer)' : ''}`, amount: tearOffCost },
     { label: `${mat.label} material`, amount: materialCost },
-    { label: `Labour & install (${pitch.label} pitch ${pitch.multiplier > 1 ? `+${Math.round((pitch.multiplier - 1) * 100)}%` : ''})`, amount: labourCost },
+    { label: `Labor & install (${pitch.label} pitch ${pitch.multiplier > 1 ? `+${Math.round((pitch.multiplier - 1) * 100)}%` : ''})`, amount: labourCost },
     ...(deckRepair > 0 ? [{ label: 'Deck repair allowance (age-based)', amount: deckRepair }] : []),
     ...(ventilationCost > 0 ? [{ label: 'Attic ventilation upgrade', amount: ventilationCost }] : []),
     { label: `Permit (${neighborhood.name})`, amount: permitFee },

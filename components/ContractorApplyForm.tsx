@@ -204,7 +204,7 @@ export default function ContractorApplyForm() {
 
           <div style={{ padding: '1rem', background: 'rgba(245,166,35,0.05)', border: '1px solid rgba(245,166,35,0.15)', marginTop: '1.5rem', marginBottom: '1rem' }}>
             <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
-              We verify all CCB numbers at <strong style={{ color: 'var(--text)' }}>oregon.gov/ccb</strong> before proceeding. Expired or invalid licences will result in automatic disqualification.
+              We verify all CCB numbers at <strong style={{ color: 'var(--text)' }}>oregon.gov/ccb</strong> before proceeding. Expired or invalid licenses will result in automatic disqualification.
             </p>
           </div>
 
@@ -350,7 +350,7 @@ export default function ContractorApplyForm() {
             <label style={label}>Anything else we should know? (optional)</label>
             <textarea
               style={{ ...input, minHeight: '80px', resize: 'vertical' }}
-              placeholder="Historic district experience, certifications, specialised equipment…"
+              placeholder="Historic district experience, certifications, specialized equipment…"
               value={data.message}
               onChange={e => set('message', e.target.value)}
             />

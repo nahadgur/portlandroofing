@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 }
 
 const comparisonRows = [
-  { factor: 'CCB Verification', local: 'Oregon CCB licence verifiable at search.ccb.state.or.us. Local contractors maintain active licences because their business depends on it.', national: 'May hold CCB licence but often through a local subsidiary. Verify the entity on the contract matches the CCB record \u2014 parent company names frequently differ.', edge: 'local' },
+  { factor: 'CCB Verification', local: 'Oregon CCB license verifiable at search.ccb.state.or.us. Local contractors maintain active licenses because their business depends on it.', national: 'May hold CCB license but often through a local subsidiary. Verify the entity on the contract matches the CCB record \u2014 parent company names frequently differ.', edge: 'local' },
   { factor: 'Local Weather Knowledge', local: 'Understands Portland\u2019s moss zones, rain-driven wear patterns, wind corridors (East Gorge winds, West Hills exposure), and seasonal timing for installation.', national: 'Applies standardized regional playbook. May not account for micro-climate differences between inner SE and outer East Portland, or the specific moss pressure in NW neighborhoods.', edge: 'local' },
   { factor: 'Storm-Chaser Risk', local: 'Established local presence with permanent address, warehouse, and crew. Not going anywhere after the job.', national: 'Low risk from established nationals (e.g., Tecta America). High risk from storm-chaser operations that set up temporary offices after major weather events and leave within months.', edge: 'local' },
   { factor: 'Warranty Enforcement', local: 'Workmanship warranty backed by a business you can physically visit. If they\u2019re still in business in 10 years, you can walk in.', national: 'Manufacturer warranty is strong (GAF, Owens Corning). Workmanship warranty depends on the national company\u2019s continued presence in the Portland market \u2014 not guaranteed.', edge: 'neutral' },
@@ -31,7 +31,7 @@ const comparisonRows = [
 const faqs = [
   { q: 'Are local roofing companies better than national companies in Portland?', a: 'For most residential projects in Portland, local companies have structural advantages: deeper knowledge of Portland\u2019s climate, BDS permit process, and historic district requirements. National companies can be a good choice for commercial projects or when manufacturer certification (GAF Master Elite, Owens Corning Platinum) is important for warranty purposes.' },
   { q: 'What is a storm chaser roofing company?', a: 'Storm chasers are roofing companies (or individuals) that set up temporary operations in areas hit by severe weather. They canvass neighborhoods door-to-door, often offering to handle insurance claims. They typically lack long-term local presence, may not hold proper Oregon CCB licensing, and are difficult to reach for warranty claims after they leave the market.' },
-  { q: 'How do I verify an Oregon roofing contractor\u2019s licence?', a: 'Search the Oregon CCB database at search.ccb.state.or.us. Enter the contractor\u2019s name or CCB number. Verify: active status, correct licence class for residential roofing, insurance coverage dates, and complaint history. The entity name on the CCB record should match the name on your contract.' },
+  { q: 'How do I verify an Oregon roofing contractor\u2019s license?', a: 'Search the Oregon CCB database at search.ccb.state.or.us. Enter the contractor\u2019s name or CCB number. Verify: active status, correct license class for residential roofing, insurance coverage dates, and complaint history. The entity name on the CCB record should match the name on your contract.' },
   { q: 'Do national roofing companies have better warranties?', a: 'National companies often offer manufacturer-backed extended warranties (e.g., GAF Golden Pledge, Owens Corning Platinum Protection). These warranties are backed by the manufacturer, not the installer, so they survive even if the company leaves the market. However, workmanship warranties are only as reliable as the installing company\u2019s continued presence.' },
   { q: 'How common are storm chaser complaints in Oregon?', a: 'Oregon CCB data shows a consistent spike in roofing complaints following major storm events. Complaints against out-of-state or newly registered contractors increase 3\u20135x in the 6 months following significant wind or ice storms in the Portland metro area.' },
 ]
@@ -115,7 +115,7 @@ export default function LocalVsNationalPage() {
             {[
               'Door-to-door solicitation within days of a storm event',
               'Out-of-state vehicle plates on work trucks',
-              'CCB licence issued within the past 12 months (check issue date at search.ccb.state.or.us)',
+              'CCB license issued within the past 12 months (check issue date at search.ccb.state.or.us)',
               'No verifiable Portland-area physical address (P.O. boxes and virtual offices are red flags)',
               'Pressure to sign immediately or before your insurance adjuster visits',
               'Offers to cover your insurance deductible (this is insurance fraud in Oregon)',

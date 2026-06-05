@@ -217,7 +217,7 @@ export default function CostCalculator() {
             <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.62rem', color: 'var(--amber)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.8rem' }}>Breakdown</div>
             {[
               { label: 'Material cost',  low: Math.round(sqft * selMat.lowPsf * 0.5), high: Math.round(sqft * selMat.highPsf * 0.5) },
-              { label: 'Labour & install', low: Math.round(sqft * selMat.lowPsf * 0.5 * selPitch.multiplier), high: Math.round(sqft * selMat.highPsf * 0.5 * selPitch.multiplier) },
+              { label: 'Labor & install', low: Math.round(sqft * selMat.lowPsf * 0.5 * selPitch.multiplier), high: Math.round(sqft * selMat.highPsf * 0.5 * selPitch.multiplier) },
               ...(tearOff ? [{ label: 'Tear-off & disposal', low: Math.round(sqft * 1.0), high: Math.round(sqft * 1.5) }] : []),
             ].map(row => (
               <div key={row.label} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.45rem 0', borderBottom: '1px solid var(--bdr)' }}>
@@ -232,7 +232,7 @@ export default function CostCalculator() {
             <div style={{ padding: '0.8rem 1rem', background: 'rgba(245,166,35,0.05)', border: '1px solid rgba(245,166,35,0.15)' }}>
               <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.65rem', color: 'var(--amber)', marginBottom: '0.2rem' }}>▸ PITCH PREMIUM</div>
               <div style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.78rem', color: 'var(--muted)' }}>
-                {selPitch.label} pitch adds a {Math.round((selPitch.multiplier - 1) * 100)}% labour premium due to safety rigging and slower installation speed.
+                {selPitch.label} pitch adds a {Math.round((selPitch.multiplier - 1) * 100)}% labor premium due to safety rigging and slower installation speed.
               </div>
             </div>
           )}

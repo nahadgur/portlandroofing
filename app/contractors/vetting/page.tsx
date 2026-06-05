@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 
 const checkpoints = [
   {category:'Licensing & Legal',color:'var(--amber)',items:[
-    {n:'01',label:'Active Oregon CCB licence confirmed',detail:"Verified directly at oregon.gov/ccb. Expired, suspended, or revoked licences result in automatic disqualification."},
-    {n:'02',label:'CCB licence class matches work scope',detail:'Oregon CCB has multiple licence classes. We confirm the contractor holds the correct class for residential roofing.'},
+    {n:'01',label:'Active Oregon CCB license confirmed',detail:"Verified directly at oregon.gov/ccb. Expired, suspended, or revoked licenses result in automatic disqualification."},
+    {n:'02',label:'CCB license class matches work scope',detail:'Oregon CCB has multiple license classes. We confirm the contractor holds the correct class for residential roofing.'},
     {n:'03',label:'No active CCB complaints',detail:"We review the contractor's CCB complaint history. Active or unresolved complaints trigger additional review."},
     {n:'04',label:'Business entity registration confirmed',detail:'Oregon Secretary of State business registry checked to confirm active status.'},
     {n:'05',label:'No active judgements or liens',detail:'Public records check for roofing-related contractor liens or court judgements in Oregon.'},
@@ -29,7 +29,7 @@ const checkpoints = [
     {n:'10',label:'Umbrella or excess coverage noted',detail:'Higher-value projects in premium zones require contractors with umbrella policies.'},
   ]},
   {category:'Review Authenticity',color:'var(--amber)',items:[
-    {n:'11',label:'Google review velocity analysis',detail:'Review clusters (sudden spikes of 5-star reviews) are a fraud signal. We analyse review velocity over 24 months.'},
+    {n:'11',label:'Google review velocity analysis',detail:'Review clusters (sudden spikes of 5-star reviews) are a fraud signal. We analyze review velocity over 24 months.'},
     {n:'12',label:'Reviewer profile authenticity check',detail:'We scan for single-review accounts, accounts reviewing multiple businesses in a single day, and other bot signals.'},
     {n:'13',label:'BBB status confirmed',detail:'BBB accreditation status and complaint history reviewed.'},
     {n:'14',label:'Response to negative reviews assessed',detail:'How a contractor handles negative reviews reveals as much as the reviews themselves.'},
@@ -52,14 +52,14 @@ export default function VettingPage() {
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'CheckAction',
-        name: 'Verify Oregon CCB Contractor Licence',
-        description: 'Search the Oregon Construction Contractors Board database to verify a contractor holds an active licence for residential roofing work.',
+        name: 'Verify Oregon CCB Contractor License',
+        description: 'Search the Oregon Construction Contractors Board database to verify a contractor holds an active license for residential roofing work.',
         url: 'https://search.ccb.state.or.us',
         actionStatus: 'https://schema.org/ActiveActionStatus',
         object: {
           '@type': 'Thing',
-          name: 'CCB licence number',
-          description: 'Oregon Construction Contractors Board licence number for the roofing contractor being verified.',
+          name: 'CCB license number',
+          description: 'Oregon Construction Contractors Board license number for the roofing contractor being verified.',
         },
         agent: { '@type': 'Organization', name: SITE.name, url: SITE.baseUrl },
       })}</Script>

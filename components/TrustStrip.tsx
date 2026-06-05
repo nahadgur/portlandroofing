@@ -14,7 +14,7 @@ const BADGES: Badge[] = [
   {
     icon:   ShieldCheck,
     label:  'CCB Verified',
-    detail: 'Oregon Construction Contractors Board licence checked',
+    detail: 'Oregon Construction Contractors Board license checked',
   },
   {
     icon:   FileCheck,

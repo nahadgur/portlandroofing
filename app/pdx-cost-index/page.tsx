@@ -38,7 +38,7 @@ export default function CostIndexPage() {
         <div style={{fontFamily:'var(--font-space-mono)',fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'0.8rem'}}>[ Cost Snapshots by Neighborhood ]</div>
         <h2 style={{fontFamily:'var(--font-bebas)',fontSize:'clamp(1.8rem,3vw,2.5rem)',color:'var(--text)',lineHeight:1,marginBottom:'0.5rem'}}>SELECT YOUR NEIGHBORHOOD</h2>
         <p style={{fontFamily:'var(--font-barlow)',fontSize:'0.9rem',color:'var(--muted)',maxWidth:'520px',lineHeight:1.65,fontWeight:300,marginBottom:'2rem'}}>
-          Each neighborhood page shows localised costs, material breakdown, permit difficulty, and area comparison â€” all from verified 2026 contractor quotes.
+          Each neighborhood page shows localized costs, material breakdown, permit difficulty, and area comparison â€” all from verified 2026 contractor quotes.
         </p>
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(200px,1fr))',gap:'1px',background:'var(--bdr)'}}>
           {neighborhoods.map(n => {

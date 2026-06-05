@@ -84,7 +84,7 @@ export const neighborhoods: Neighborhood[] = [
       {
         factor:"TPO membrane on 1990s–2010s residential build",
         impact:"+$35,000 to $120,000 full replacement",
-        detail:"Spans single townhouse to 6-story residential tower scope. Per-square TPO labour is meaningfully higher than residential pitched roofing, specialist crews command premium rates.",
+        detail:"Spans single townhouse to 6-story residential tower scope. Per-square TPO labor is meaningfully higher than residential pitched roofing, specialist crews command premium rates.",
       },
       {
         factor:"Central City design review",
@@ -247,8 +247,8 @@ export const neighborhoods: Neighborhood[] = [
         detail:"On homes that already had cedar replaced once before, deck condition is variable. Per-sheet replacement rate is essential pre-bid spec.",
       },
       {
-        factor:"Two-story foursquare labour premium",
-        impact:"+15% to 25% on labour",
+        factor:"Two-story foursquare labor premium",
+        impact:"+15% to 25% on labor",
         detail:"Foursquare housing stock (more common on numbered streets between SE 20th and SE 40th) requires more scaffolding and slower install pace than single-story bungalows.",
       },
     ],
@@ -271,20 +271,20 @@ export const neighborhoods: Neighborhood[] = [
         note:"Solid Hawthorne replacement. Two-layer tear-off (original cedar plus 1990s asphalt re-roof), full deck overlay, and ventilation upgrade are standard for 1912 stock. Adding zinc ridge strip at install is the cleanest cost-effective add for any Hawthorne home with mature tree canopy, $280 buys 3–5 years of additional roof life through deferred moss colonization.",
       },
       {
-        scenario:"1,950 sq ft 1924 foursquare on SE Belmont, architectural replacement, sound deck after spot repair, two-story labour",
+        scenario:"1,950 sq ft 1924 foursquare on SE Belmont, architectural replacement, sound deck after spot repair, two-story labor",
         lineItems:[
           { label:"Tear-off existing single layer", amount:"$1,800" },
           { label:"Deck spot repair (5 sheets)", amount:"$650" },
           { label:"Synthetic underlayment + ice-and-water at eaves", amount:"$540" },
           { label:"Architectural shingles, CertainTeed Landmark Pro", amount:"$5,800" },
           { label:"Ridge vent + soffit baffle upgrade", amount:"$680" },
-          { label:"Two-story labour premium", amount:", " },
+          { label:"Two-story labor premium", amount:", " },
           { label:"Pipe boots and step flashing", amount:"$420" },
           { label:"Permit + BDS inspection", amount:"$320" },
           { label:"Cleanup and disposal", amount:"$380" },
         ],
         total:"$10,590",
-        note:"Foursquare came in lower than the bungalow despite being slightly larger because the deck was sound (homeowner had previous re-roof in 2002 with deck overlay already done). Two-story labour is built into the per-sq pricing of established Hawthorne contractors.",
+        note:"Foursquare came in lower than the bungalow despite being slightly larger because the deck was sound (homeowner had previous re-roof in 2002 with deck overlay already done). Two-story labor is built into the per-sq pricing of established Hawthorne contractors.",
       },
       {
         scenario:"2,100 sq ft 1908 Craftsman with Ladd's Addition adjacency, cedar shake retrofit-in-kind, Type II Historic Resource Review",
@@ -320,7 +320,7 @@ export const neighborhoods: Neighborhood[] = [
       },
       {
         question:"How much should I budget for skip-sheathed deck overlay?",
-        answer:"On a typical 1,650–2,000 sq ft Hawthorne Craftsman or foursquare, plan for $2,500–$4,500 in plywood overlay material and labour. Per-sheet rate runs $90–$140 installed. The overlay is required because pre-1925 skip-sheathed decking (1×4 boards with gaps) cannot support modern asphalt shingle attachment patterns. Get the per-sheet rate in writing before signing, quotes that don't include deck overlay are either incomplete or assume a deck condition the contractor hasn't actually verified.",
+        answer:"On a typical 1,650–2,000 sq ft Hawthorne Craftsman or foursquare, plan for $2,500–$4,500 in plywood overlay material and labor. Per-sheet rate runs $90–$140 installed. The overlay is required because pre-1925 skip-sheathed decking (1×4 boards with gaps) cannot support modern asphalt shingle attachment patterns. Get the per-sheet rate in writing before signing, quotes that don't include deck overlay are either incomplete or assume a deck condition the contractor hasn't actually verified.",
       },
       {
         question:"Should I install zinc ridge strip if I'm re-roofing in Hawthorne?",
@@ -392,8 +392,8 @@ export const neighborhoods: Neighborhood[] = [
         detail:"Sellwood homes that still have original cedar shake roofs (more common than in Hawthorne) face significant tear-off disposal cost.",
       },
       {
-        factor:"Two-story labour on northern Sellwood",
-        impact:"+15% to 20% on labour",
+        factor:"Two-story labor on northern Sellwood",
+        impact:"+15% to 20% on labor",
         detail:"The northern edge of Sellwood (between SE Holgate and SE Bybee) has a higher concentration of two-story foursquares than the southern Westmoreland section.",
       },
     ],
@@ -530,8 +530,8 @@ export const neighborhoods: Neighborhood[] = [
         detail:"Copper is the architectural match for cedar's heritage character and design review favored on most landmark properties. Galvanized acceptable on standard properties.",
       },
       {
-        factor:"Multi-gable Tudor / Colonial Revival roofline labour",
-        impact:"+25% to 35% on labour",
+        factor:"Multi-gable Tudor / Colonial Revival roofline labor",
+        impact:"+25% to 35% on labor",
         detail:"Larger Eastmoreland Tudors and Colonial Revivals have multi-gable rooflines with significant valley intersection complexity vs. simpler bungalow geometry.",
       },
       {
@@ -589,7 +589,7 @@ export const neighborhoods: Neighborhood[] = [
           { label:"Cleanup, disposal, premium-property cleanup standards", amount:"$880" },
         ],
         total:"$37,080",
-        note:"Premium upper-tier Eastmoreland project. The Colonial Revival multi-gable roofline added roughly $4,000 in trim and detail labour over a simpler Tudor equivalent. Hand-split #1 grade and copper throughout are standard for landmark properties, design review pushes back on cost-saving substitutions on contributing properties.",
+        note:"Premium upper-tier Eastmoreland project. The Colonial Revival multi-gable roofline added roughly $4,000 in trim and detail labor over a simpler Tudor equivalent. Hand-split #1 grade and copper throughout are standard for landmark properties, design review pushes back on cost-saving substitutions on contributing properties.",
       },
     ],
     permitDetail:{
@@ -752,7 +752,7 @@ export const neighborhoods: Neighborhood[] = [
       },
       {
         question:"Should I expect skip-sheathed deck overlay on my Alberta Craftsman?",
-        answer:"Almost certainly yes if your home is pre-1925. Skip-sheathed decking (1×4 boards with gaps) was code-compliant for cedar shake but cannot support modern asphalt shingle attachment patterns. Plan for $2,200–$4,200 in plywood overlay material and labour. Per-sheet rate runs $90–$130 installed. Get the rate in writing before signing, quotes that don't include the overlay are either incomplete or assume a deck condition the contractor hasn't actually verified.",
+        answer:"Almost certainly yes if your home is pre-1925. Skip-sheathed decking (1×4 boards with gaps) was code-compliant for cedar shake but cannot support modern asphalt shingle attachment patterns. Plan for $2,200–$4,200 in plywood overlay material and labor. Per-sheet rate runs $90–$130 installed. Get the rate in writing before signing, quotes that don't include the overlay are either incomplete or assume a deck condition the contractor hasn't actually verified.",
       },
       {
         question:"Is metal worth specifying in Alberta?",
@@ -793,15 +793,15 @@ export const neighborhoods: Neighborhood[] = [
     permitNotes:"Irvington Historic District design review applies citywide to visible roofing changes. Alameda Ridge properties may also face wind-rating documentation requirements. Type II review for material changes typically takes 4–6 weeks.",
     localCostTruth:[
       "Irvington is NE Portland's premier listed historic district and one of Portland's most architecturally diverse, Tudor, Colonial Revival, foursquare, and the occasional Craftsman or bungalow all coexist within the district boundaries. Unlike Eastmoreland's strong cedar shake bias, Irvington's design review accommodates a wider material range, with architectural asphalt, premium designer shingles, standing seam metal, and slate-substitute products all approvable depending on the specific property and proposal.",
-      "The dominant Irvington housing stock is the 2,200–3,200 sq ft 1900–1930 home on a generous lot between Broadway and Knott. Many of these homes have multi-gable, hip, or complex Tudor rooflines that consume material and add labour beyond simpler bungalow geometry. Replacement costs at the mid-tier ($10,000–$13,000) reflect quality architectural asphalt with proper detail work; premium projects on multi-gable Tudor or Colonial Revival ($15,000–$20,000) involve premium designer shingles, copper flashing, and complex valley intersection work.",
+      "The dominant Irvington housing stock is the 2,200–3,200 sq ft 1900–1930 home on a generous lot between Broadway and Knott. Many of these homes have multi-gable, hip, or complex Tudor rooflines that consume material and add labor beyond simpler bungalow geometry. Replacement costs at the mid-tier ($10,000–$13,000) reflect quality architectural asphalt with proper detail work; premium projects on multi-gable Tudor or Colonial Revival ($15,000–$20,000) involve premium designer shingles, copper flashing, and complex valley intersection work.",
       "Alameda Ridge, the eastern edge of Irvington along NE Alameda, introduces two distinct cost variables. First, hillside positioning means meaningful wind exposure (sustained 30–50 mph during seasonal events) that demands 110+ mph wind ratings rather than the 90 mph Oregon code minimum. Second, view-corridor design review considerations on visible-from-street roofing decisions can extend timeline by 2–4 weeks. Properties on the ridge proper command premium pricing because the homeowner profile expects premium specs.",
       "Irvington Historic District design review is meaningfully less restrictive than Eastmoreland's but more rigorous than Ladd's Addition. The review applies to visible material changes on contributing properties and typically clears in 3–4 weeks for standard architectural asphalt in approved colors. Standing seam metal in heritage colors (charcoal, slate, weathered copper) clears in 4–5 weeks. Non-traditional colors or unusual material substitutions trigger Type II Historic Resource Review with longer timeline.",
     ],
     costDrivers:[
       {
-        factor:"Multi-gable Tudor / Colonial Revival roofline labour",
-        impact:"+25% to 35% on labour",
-        detail:"Larger Irvington homes with multi-gable rooflines consume material and add labour vs. simpler bungalow geometry. Material consumption can run 15–20% above flat-lot equivalent.",
+        factor:"Multi-gable Tudor / Colonial Revival roofline labor",
+        impact:"+25% to 35% on labor",
+        detail:"Larger Irvington homes with multi-gable rooflines consume material and add labor vs. simpler bungalow geometry. Material consumption can run 15–20% above flat-lot equivalent.",
       },
       {
         factor:"Irvington Historic District design review",
@@ -836,7 +836,7 @@ export const neighborhoods: Neighborhood[] = [
           { label:"Tear-off and disposal (single-layer architectural)", amount:"$2,200" },
           { label:"Synthetic underlayment + ice-and-water at eaves and valleys", amount:"$680" },
           { label:"Premium architectural, CertainTeed Landmark Pro Class A", amount:"$7,200" },
-          { label:"Multi-gable trim and valley intersection labour", amount:"$1,800" },
+          { label:"Multi-gable trim and valley intersection labor", amount:"$1,800" },
           { label:"Ridge cap + ridge vent + soffit upgrade", amount:"$880" },
           { label:"Copper step + counter flashing at chimney", amount:"$1,400" },
           { label:"Pipe boots, drip edge, and detail work", amount:"$540" },
@@ -902,7 +902,7 @@ export const neighborhoods: Neighborhood[] = [
       },
       {
         question:"Should I consider slate-substitute synthetic shingles for my Irvington Tudor?",
-        answer:"Worth considering for Tudor or Colonial Revival properties where slate would be the heritage material. DaVinci Slate and EcoStar synthetic slate cost roughly $4,000–$6,000 less than real slate, install with standard roofing labour rather than slate specialists, and clear Irvington design review on contributing properties. Premium over architectural asphalt is $2,000–$4,500, worthwhile for the heritage character on appropriate housing stock.",
+        answer:"Worth considering for Tudor or Colonial Revival properties where slate would be the heritage material. DaVinci Slate and EcoStar synthetic slate cost roughly $4,000–$6,000 less than real slate, install with standard roofing labor rather than slate specialists, and clear Irvington design review on contributing properties. Premium over architectural asphalt is $2,000–$4,500, worthwhile for the heritage character on appropriate housing stock.",
       },
       {
         question:"How long does Irvington design review take in practice?",
@@ -940,7 +940,7 @@ export const neighborhoods: Neighborhood[] = [
     localCostTruth:[
       "St. Johns is N Portland's affordable bracket and a meaningful re-roofing market because of two converging dynamics. The 1900–1925 bungalow housing stock that lines the streets between N Lombard and N Willamette is in active replacement cycles for original or first-replacement asphalt roofs. And the 1940s–1960s ranch housing wave that infilled large parts of St. Johns east of N Lombard is also reaching end-of-life on the original or 1980s-era second-roof asphalt.",
       "Average replacement cost in St. Johns runs $8,400, roughly 14% below the Hawthorne average and 25% below the Eastmoreland average, and the spread is tight because the housing stock is more uniform and simpler than the architectural diversity of Inner SE or NE Portland. A typical St. Johns bungalow re-roofs at $7,200–$9,500 with architectural asphalt and a sound deck; the upper end of the range ($11,000–$12,500) reflects two-layer tear-off, deck damage, or larger 1960s ranch homes with more complex hip rooflines.",
-      "The dominant cost driver in St. Johns is the bungalow skip-sheathed deck variable, identical to Hawthorne and Sellwood-Moreland, $1,800–$3,400 in plywood overlay material and labour on pre-1925 stock. The ranch stock east of N Lombard typically has modern plywood decking that doesn't require overlay, which is why mid-century St. Johns ranches re-roof at the cheapest end of any Portland neighborhood. Per-sheet rate must still be specified pre-bid for unexpected sheet replacement.",
+      "The dominant cost driver in St. Johns is the bungalow skip-sheathed deck variable, identical to Hawthorne and Sellwood-Moreland, $1,800–$3,400 in plywood overlay material and labor on pre-1925 stock. The ranch stock east of N Lombard typically has modern plywood decking that doesn't require overlay, which is why mid-century St. Johns ranches re-roof at the cheapest end of any Portland neighborhood. Per-sheet rate must still be specified pre-bid for unexpected sheet replacement.",
       "St. Johns sees less tree canopy than the upper Inner SE neighborhoods, which translates to longer real-world asphalt life, 24–28 years on most St. Johns properties vs. 20–24 in canopied Sellwood or upper Hawthorne. Moss management is still recommended (zinc ridge strip plus chemical treatment every 3–4 years) but the maintenance frequency is lower than the Inner SE standard. AR-granule shingles are reasonable spec but not as essential as in heavily canopied neighborhoods.",
     ],
     costDrivers:[
@@ -984,7 +984,7 @@ export const neighborhoods: Neighborhood[] = [
           { label:"Cleanup and disposal", amount:"$280" },
         ],
         total:"$8,920",
-        note:"Solid mid-tier St. Johns bungalow replacement. Smaller footprint and simpler hip roofline kept material and labour costs meaningfully below equivalent Hawthorne or Sellwood project. Plywood overlay was unavoidable but per-sheet rate stayed at $110, competitive for the St. Johns market.",
+        note:"Solid mid-tier St. Johns bungalow replacement. Smaller footprint and simpler hip roofline kept material and labor costs meaningfully below equivalent Hawthorne or Sellwood project. Plywood overlay was unavoidable but per-sheet rate stayed at $110, competitive for the St. Johns market.",
       },
       {
         scenario:"1,750 sq ft 1962 ranch east of N Lombard, architectural replacement, sound modern deck, simple gable",
@@ -1034,7 +1034,7 @@ export const neighborhoods: Neighborhood[] = [
       },
       {
         question:"Should I expect skip-sheathed deck overlay on my St. Johns bungalow?",
-        answer:"On pre-1925 stock, almost certainly yes. Plan for $1,800–$3,400 in plywood overlay material and labour on a typical 1,200–1,500 sq ft St. Johns bungalow. On 1940s+ ranch stock east of N Lombard, modern plywood decking is standard and overlay is not needed. The variable depends entirely on year built. Get the per-sheet rate in writing in the contract regardless, unexpected sheet replacement at $90–$130 each can add up.",
+        answer:"On pre-1925 stock, almost certainly yes. Plan for $1,800–$3,400 in plywood overlay material and labor on a typical 1,200–1,500 sq ft St. Johns bungalow. On 1940s+ ranch stock east of N Lombard, modern plywood decking is standard and overlay is not needed. The variable depends entirely on year built. Get the per-sheet rate in writing in the contract regardless, unexpected sheet replacement at $90–$130 each can add up.",
       },
       {
         question:"Does light canopy in St. Johns mean I can skip moss management?",
@@ -1069,21 +1069,21 @@ export const neighborhoods: Neighborhood[] = [
     description:"Portland's luxury hillside corridor, Council Crest, Forest Park, Sylvan-Highlands, and the steep contemporary builds along the SW Patton corridor. Pitches above 10:12, mature canopy, wind exposure, and frequently crane staging push average replacement cost into the upper Portland tier.",
     highlights:[
       "Luxury hillside corridor, Council Crest, Forest Park, Sylvan-Highlands, Patton corridor",
-      "Steep pitches (10:12+) and complex contemporary rooflines drive labour premium",
+      "Steep pitches (10:12+) and complex contemporary rooflines drive labor premium",
       "Wind exposure on ridge properties, 110+ mph rating with concealed-fastener systems standard",
     ],
     permitScore:4,
     permitNotes:"Portland BDS permit standard. Hillside positioning frequently triggers fall-protection inspection requirements and wind-rating documentation. Crane day permits required on most projects.",
     localCostTruth:[
-      "West Hills roofing economics are unlike any other Portland market because of housing complexity and access. The dominant housing stock is the 2,800–4,500 sq ft 1980s–2000s contemporary or modern build on a steep hillside lot, with pitches frequently above 10:12 and rooflines that include multiple gables, hips, valleys, and complex skylight or window-wall intersections. Labour premium runs 25–40% above flat-lot equivalent before any material upgrade is factored in.",
+      "West Hills roofing economics are unlike any other Portland market because of housing complexity and access. The dominant housing stock is the 2,800–4,500 sq ft 1980s–2000s contemporary or modern build on a steep hillside lot, with pitches frequently above 10:12 and rooflines that include multiple gables, hips, valleys, and complex skylight or window-wall intersections. Labor premium runs 25–40% above flat-lot equivalent before any material upgrade is factored in.",
       "Standing seam metal is the dominant West Hills replacement spec, roughly 55% of replacements in this corridor specify metal vs. roughly 15% Portland-wide. Three factors drive the preference: West Hills homeowners run lifecycle economics (50+ year metal life eliminates one or two future asphalt cycles), wind exposure on ridge properties favors concealed-fastener systems that move with thermal expansion rather than asphalt that lifts at high gusts, and metal sheds the heavy moss pressure created by mature canopy on north-facing slopes that would compress asphalt life to 18–22 years here.",
-      "Crane access is the access constraint that defines most West Hills projects. Steep hillside lots frequently have driveway access on one side of the home only, with the upper roof area inaccessible from ground-level material staging. Crane day adds $1,400–$3,500 to a project but is meaningfully cheaper than the alternative, manually carrying 24-gauge metal panels or cedar shake bundles up steep slopes adds days of labour and creates fall risk that drives both insurance and OSHA compliance scrutiny.",
+      "Crane access is the access constraint that defines most West Hills projects. Steep hillside lots frequently have driveway access on one side of the home only, with the upper roof area inaccessible from ground-level material staging. Crane day adds $1,400–$3,500 to a project but is meaningfully cheaper than the alternative, manually carrying 24-gauge metal panels or cedar shake bundles up steep slopes adds days of labor and creates fall risk that drives both insurance and OSHA compliance scrutiny.",
       "Wind rating is non-negotiable on ridge properties. Council Crest, Forest Park ridge addresses, and Sylvan-Highlands properties along the SW Patton corridor face sustained 30–50 mph wind events multiple times per year, with occasional 70+ mph peaks during major weather events. The Oregon Residential Specialty Code minimum of 90 mph wind rating is inadequate; 110+ mph is the practical West Hills standard, with concealed-fastener metal systems strongly preferred over exposed-fastener products that strip during high-wind events.",
     ],
     costDrivers:[
       {
-        factor:"Hillside / steep-pitch labour premium",
-        impact:"+25% to 40% on labour",
+        factor:"Hillside / steep-pitch labor premium",
+        impact:"+25% to 40% on labor",
         detail:"10:12+ pitches throughout Council Crest, Forest Park, Sylvan-Highlands. Harness systems, slower pace, frequently crane staging required.",
       },
       {
@@ -1102,7 +1102,7 @@ export const neighborhoods: Neighborhood[] = [
         detail:"Ridge-property exposure demands beyond 90 mph code minimum. Concealed-fastener systems strongly preferred.",
       },
       {
-        factor:"Complex contemporary roofline labour",
+        factor:"Complex contemporary roofline labor",
         impact:"+15% to 25%",
         detail:"Multiple gables, hips, valleys, and skylight or window-wall intersections common in 1980s–2000s West Hills builds.",
       },
@@ -1123,7 +1123,7 @@ export const neighborhoods: Neighborhood[] = [
           { label:"Snow guard system across south + west slopes", amount:"$3,400" },
           { label:"Six-nail high-wind attachment (110 mph)", amount:"$420" },
           { label:"Crane day for upper-roof material staging", amount:"$2,400" },
-          { label:"Steep-pitch fall-protection equipment and labour premium", amount:", " },
+          { label:"Steep-pitch fall-protection equipment and labor premium", amount:", " },
           { label:"Permit + BDS structural review for panel weight", amount:"$680" },
           { label:"Cleanup and disposal", amount:"$680" },
         ],
@@ -1177,11 +1177,11 @@ export const neighborhoods: Neighborhood[] = [
     locationFaqs:[
       {
         question:"Why is metal so dominant in West Hills compared to other Portland neighborhoods?",
-        answer:"Three reasons that compound. First, lifecycle economics, West Hills homeowner profile runs the math, and metal's 50+ year life eliminates one or two future replacement cycles in a corridor where steep-pitch labour and crane staging make every replacement expensive. Second, wind exposure on ridge properties, concealed-fastener metal systems flex with thermal expansion and don't strip tabs the way asphalt does at 50+ mph gusts. Third, mature canopy and resulting moss pressure compress asphalt life to 18–22 years here vs. 25+ for metal.",
+        answer:"Three reasons that compound. First, lifecycle economics, West Hills homeowner profile runs the math, and metal's 50+ year life eliminates one or two future replacement cycles in a corridor where steep-pitch labor and crane staging make every replacement expensive. Second, wind exposure on ridge properties, concealed-fastener metal systems flex with thermal expansion and don't strip tabs the way asphalt does at 50+ mph gusts. Third, mature canopy and resulting moss pressure compress asphalt life to 18–22 years here vs. 25+ for metal.",
       },
       {
         question:"Do I really need crane day for my West Hills project?",
-        answer:"Almost always yes for hillside lots above 10:12 pitch with limited driveway access to the upper roof. Crane day adds $1,400–$3,500 to a project but is meaningfully cheaper than the alternative, manually carrying 24-gauge metal panels or cedar shake bundles up steep slopes adds 2–4 days of labour and creates fall risk that triggers OSHA compliance issues. A reputable West Hills contractor will assess access during pre-bid and quote crane requirement explicitly.",
+        answer:"Almost always yes for hillside lots above 10:12 pitch with limited driveway access to the upper roof. Crane day adds $1,400–$3,500 to a project but is meaningfully cheaper than the alternative, manually carrying 24-gauge metal panels or cedar shake bundles up steep slopes adds 2–4 days of labor and creates fall risk that triggers OSHA compliance issues. A reputable West Hills contractor will assess access during pre-bid and quote crane requirement explicitly.",
       },
       {
         question:"What's the right wind rating for my Council Crest home?",
@@ -1227,9 +1227,9 @@ export const neighborhoods: Neighborhood[] = [
     permitScore:5,
     permitNotes:"Lake Oswego permits + design review can extend to 4–8 weeks for cedar restoration or non-standard materials. Strict HOA overlays apply citywide.",
     localCostTruth:[
-      "Lake Oswego roofing economics are unlike any other Portland-area suburb. Average cost runs $14,500, roughly 35% above the Portland metro average, driven by three structural factors: housing complexity (steep-pitch hillside homes around the lake demand specialized labour and crane staging), material premium (cedar shake retrofit-in-kind, premium designer asphalt, and standing seam metal dominate the spec mix vs. base architectural elsewhere), and design review overhead (HOA approval is required citywide and adds 2–6 weeks to project timeline before permit issues).",
+      "Lake Oswego roofing economics are unlike any other Portland-area suburb. Average cost runs $14,500, roughly 35% above the Portland metro average, driven by three structural factors: housing complexity (steep-pitch hillside homes around the lake demand specialized labor and crane staging), material premium (cedar shake retrofit-in-kind, premium designer asphalt, and standing seam metal dominate the spec mix vs. base architectural elsewhere), and design review overhead (HOA approval is required citywide and adds 2–6 weeks to project timeline before permit issues).",
       "Cedar shake retrofit-in-kind is the signature Lake Oswego replacement project and runs $20,000–$35,000 on a typical Country Club or Lake Forest home. Cedar is mandated by HOA in many of the older subdivisions, performs well in Lake Oswego's relatively benign moisture climate (shaded but not coastal-wet), and is integral to the architectural character of the city. The retrofit involves pressure-applied fire retardant treatment, premium cedar (Western red cedar #1 grade Resawn or hand-split), copper flashing throughout, and ridge ventilation upgrades.",
-      "Hillside homes around the lake and on the Mountain Park and Forest Highlands ridges introduce significant labour and access premiums. Pitches of 10:12 to 14:12 are common, requiring harness systems, slower crew pace, and frequently crane staging for material delivery to the steep-side eaves. The labour premium runs 25–40% over flat-lot equivalent. Material consumption is also higher, steeper pitches use more underlayment, more flashing, and more ridge cap per square foot of footprint.",
+      "Hillside homes around the lake and on the Mountain Park and Forest Highlands ridges introduce significant labor and access premiums. Pitches of 10:12 to 14:12 are common, requiring harness systems, slower crew pace, and frequently crane staging for material delivery to the steep-side eaves. The labor premium runs 25–40% over flat-lot equivalent. Material consumption is also higher, steeper pitches use more underlayment, more flashing, and more ridge cap per square foot of footprint.",
       "Lake Oswego's permit and design-review process is the most rigorous in the Portland suburbs. Standard re-roof permits run $400–$580 in fees but the binding constraint is design review, material, color, and profile must be approved by either the HOA architectural committee or the city's design review board before the city will issue the building permit. Cedar shake retrofit-in-kind typically clears in 2–3 weeks; standing seam metal in non-traditional colors can take 6–8 weeks; designer asphalt in standard colors clears fastest at 1–2 weeks.",
     ],
     costDrivers:[
@@ -1239,8 +1239,8 @@ export const neighborhoods: Neighborhood[] = [
         detail:"Country Club, Lake Forest, First Addition HOAs frequently mandate cedar in kind. Premium Western red cedar #1 grade plus copper flashing plus fire retardant treatment.",
       },
       {
-        factor:"Hillside / steep-pitch labour",
-        impact:"+25% to 40% on labour",
+        factor:"Hillside / steep-pitch labor",
+        impact:"+25% to 40% on labor",
         detail:"10:12+ pitches around the lake, Mountain Park, Forest Highlands. Harness systems, slower pace, frequently crane staging required.",
       },
       {
@@ -1327,7 +1327,7 @@ export const neighborhoods: Neighborhood[] = [
     locationFaqs:[
       {
         question:"Why is Lake Oswego so much more expensive than the Portland metro average?",
-        answer:"Three structural factors. First, housing complexity, steep-pitch hillside homes around the lake demand specialized labour and frequently crane staging, adding 25–40% to labour cost. Second, material premium, base architectural asphalt is rare here; the spec norms are designer asphalt, cedar shake retrofit-in-kind, or standing seam metal. Third, design review overhead, HOA approval citywide adds 2–6 weeks before permit issues, and cedar/copper requirements in many subdivisions are non-negotiable.",
+        answer:"Three structural factors. First, housing complexity, steep-pitch hillside homes around the lake demand specialized labor and frequently crane staging, adding 25–40% to labor cost. Second, material premium, base architectural asphalt is rare here; the spec norms are designer asphalt, cedar shake retrofit-in-kind, or standing seam metal. Third, design review overhead, HOA approval citywide adds 2–6 weeks before permit issues, and cedar/copper requirements in many subdivisions are non-negotiable.",
       },
       {
         question:"Can I replace my Country Club cedar shake with architectural asphalt?",
@@ -1347,7 +1347,7 @@ export const neighborhoods: Neighborhood[] = [
       },
       {
         question:"Do I need crane day for my Mountain Park or Forest Highlands hillside home?",
-        answer:"Often yes for hillside lots above 10:12 pitch where the upper roof areas can't be accessed from the driveway. Crane staging adds $1,000–$2,500 to a project but is meaningfully cheaper than the alternative, manually carrying cedar shake bundles or 24-gauge metal panels up steep slopes adds days of labour and creates fall risk. A reputable Lake Oswego contractor will assess access during pre-bid and quote crane requirement explicitly.",
+        answer:"Often yes for hillside lots above 10:12 pitch where the upper roof areas can't be accessed from the driveway. Crane staging adds $1,000–$2,500 to a project but is meaningfully cheaper than the alternative, manually carrying cedar shake bundles or 24-gauge metal panels up steep slopes adds days of labor and creates fall risk. A reputable Lake Oswego contractor will assess access during pre-bid and quote crane requirement explicitly.",
       },
     ],
     serviceAreas:[
@@ -1402,9 +1402,9 @@ export const neighborhoods: Neighborhood[] = [
         detail:"Washington County actively enforces 1:300 balanced ratio. Older Beaverton ranches frequently have only gable-end vents inadequate to current standard.",
       },
       {
-        factor:"Complex roofline labour premium on 1990s+ builds",
-        impact:"+10% to 20% on labour",
-        detail:"Murrayhill and West Slope subdivisions feature multiple gables and hip intersections. Material consumption and labour both higher than ranch geometry.",
+        factor:"Complex roofline labor premium on 1990s+ builds",
+        impact:"+10% to 20% on labor",
+        detail:"Murrayhill and West Slope subdivisions feature multiple gables and hip intersections. Material consumption and labor both higher than ranch geometry.",
       },
       {
         factor:"Premium shingle uptake in Bethany / upper West Slope",
@@ -1419,7 +1419,7 @@ export const neighborhoods: Neighborhood[] = [
       {
         factor:"Hillsboro / Tigard / Sherwood / Wilsonville catchment",
         impact:"Same pricing as Beaverton proper",
-        detail:"Beaverton crews work the entire west metro. Absorbed suburbs see identical labour rates and material pricing, service area not a quality or cost differentiator.",
+        detail:"Beaverton crews work the entire west metro. Absorbed suburbs see identical labor rates and material pricing, service area not a quality or cost differentiator.",
       },
     ],
     workedExamples:[
@@ -1495,7 +1495,7 @@ export const neighborhoods: Neighborhood[] = [
       },
       {
         question:"Do you serve Hillsboro / Tigard / Tualatin / Sherwood / Wilsonville from Beaverton?",
-        answer:"Yes, all five suburbs are part of the absorbed Beaverton catchment. Same crews, same Washington County permit process (or Clackamas for Wilsonville), same labour rates and material pricing. Hillsboro Silicon Forest builds, Tigard Bull Mountain homes, Tualatin family subdivisions, Sherwood new construction, and Wilsonville Charbonneau projects are all routine work for the established Beaverton-based contractor pool.",
+        answer:"Yes, all five suburbs are part of the absorbed Beaverton catchment. Same crews, same Washington County permit process (or Clackamas for Wilsonville), same labor rates and material pricing. Hillsboro Silicon Forest builds, Tigard Bull Mountain homes, Tualatin family subdivisions, Sherwood new construction, and Wilsonville Charbonneau projects are all routine work for the established Beaverton-based contractor pool.",
       },
       {
         question:"Is metal worth the premium on a 2,500 sq ft Beaverton subdivision home?",
