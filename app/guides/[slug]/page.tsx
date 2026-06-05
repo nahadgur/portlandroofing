@@ -7,6 +7,7 @@ import Footer  from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import { getGuideImage } from '@/lib/neighborhoodImages'
 import { guides, getGuideBySlug, getStaticGuidePaths, categoryLabels } from '@/lib/guides'
+import { getSpokesByHub, postCategoryLabels, postCategoryColors } from '@/lib/posts'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema, faqSchema, articleSchema } from '@/lib/schema'
 import ModalTriggerBtn from '@/components/ModalTriggerBtn'
@@ -23,6 +24,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
   const g = getGuideBySlug(params.slug)
   if (!g) notFound()
   const related = guides.filter(x=>x.slug!==g.slug&&(x.category===g.category||x.featured)).slice(0,2)
+  const spokes = getSpokesByHub(g.slug)
   const f={fontFamily:'var(--font-barlow)'}as const
   const m={fontFamily:'var(--font-space-mono)'}as const
   const c={fontFamily:'var(--font-barlow-cond)'}as const
@@ -73,6 +75,21 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
                   <p style={{...f,fontSize:'0.97rem',color:'var(--muted)',lineHeight:1.75,fontWeight:300}}>{answer}</p>
                 </div>
               ))}
+            </div>
+          )}
+          {/* Spokes in this silo */}
+          {spokes.length>0&&(
+            <div style={{marginTop:'2rem',borderTop:'2px solid var(--bdr)',paddingTop:'2.5rem'}}>
+              <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'1.5rem'}}>[ Go Deeper ]</div>
+              <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(260px,1fr))',gap:'1px',background:'var(--bdr)',border:'1px solid var(--bdr)'}}>
+                {spokes.map(s=>(
+                  <Link key={s.slug} href={`/blog/${s.slug}`} className="nbhd-card-hover" style={{background:'#fff',padding:'1.8rem',textDecoration:'none',display:'block'}}>
+                    <div style={{...m,fontSize:'0.62rem',color:postCategoryColors[s.category],letterSpacing:'0.1em',textTransform:'uppercase',marginBottom:'0.6rem'}}>{postCategoryLabels[s.category]}</div>
+                    <div style={{...c,fontSize:'1.05rem',fontWeight:700,color:'var(--text)',lineHeight:1.3,marginBottom:'0.5rem'}}>{s.title}</div>
+                    <div style={{...c,fontSize:'0.82rem',color:'var(--amber)'}}>Read →</div>
+                  </Link>
+                ))}
+              </div>
             </div>
           )}
           {/* CTA */}

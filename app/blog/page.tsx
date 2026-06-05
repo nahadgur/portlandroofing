@@ -18,7 +18,7 @@ export default function BlogPage() {
   const f={fontFamily:'var(--font-barlow)'}as const
   const m={fontFamily:'var(--font-space-mono)'}as const
   const c={fontFamily:'var(--font-barlow-cond)'}as const
-  const sorted=[...posts].sort((a,b)=>new Date(b.published).getTime()-new Date(a.published).getTime())
+  const sorted=posts.filter(p=>!p.draft).sort((a,b)=>new Date(b.published).getTime()-new Date(a.published).getTime())
   return(
     <>
       <Nav />
