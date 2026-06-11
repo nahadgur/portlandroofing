@@ -11,7 +11,7 @@ export const post: Post = {
     featured:  false,
     hub:           'how-to-choose-roofing-contractor-oregon',
     draft:         true,
-    relatedSpokes: ['7-red-flags-of-a-bad-roofing-contractor', 'how-to-spot-a-storm-chaser-roofer-in-portland', 'what-to-ask-before-you-sign-a-roofing-contract'],
+    relatedSpokes: [],
     faqs: [
       { q: 'Do roofers really need a CCB license in Oregon?', a: `Yes. There is no exemption for roofing and no minimum job size below which a contractor can skip it.` },
       { q: 'Is a CCB license the same as a Portland business license?', a: `No. The CCB license is a state requirement from the Construction Contractors Board. A City of Portland business license and the building permit your job may need are separate, and a good contractor should be able to speak to all of them.` },
