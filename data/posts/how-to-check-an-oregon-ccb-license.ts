@@ -6,11 +6,11 @@ export const post: Post = {
     excerpt:   `Check any Portland roofer's Oregon CCB license in under a minute. What the search shows, what bonded and insured really means, and the one-year complaint deadline if a job goes wrong.`,
     category:  'contractor',
     tags:      ['ccb', 'licensing', 'hiring', 'oregon', 'portland'],
-    published: '2026-06-05',
+    published: '2026-06-22',
     readTime:  6,
     featured:  false,
     hub:           'how-to-choose-roofing-contractor-oregon',
-    draft:         true,
+    draft:         false,
     relatedSpokes: [],
     faqs: [
       { q: 'Do roofers really need a CCB license in Oregon?', a: `Yes. There is no exemption for roofing and no minimum job size below which a contractor can skip it.` },
