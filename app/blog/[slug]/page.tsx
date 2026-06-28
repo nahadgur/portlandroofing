@@ -6,7 +6,7 @@ import Nav     from '@/components/Nav'
 import Footer  from '@/components/Footer'
 import PageHero from '@/components/PageHero'
 import { getBlogImage } from '@/lib/neighborhoodImages'
-import { posts, getPostBySlug, getStaticPostPaths, postCategoryLabels, postCategoryColors, type Post } from '@/lib/posts'
+import { getPostBySlug, getStaticPostPaths, postCategoryLabels, postCategoryColors } from '@/lib/posts'
 import { getGuideBySlug } from '@/lib/guides'
 import { SITE } from '@/lib/config'
 import { breadcrumbSchema, articleSchema } from '@/lib/schema'
@@ -56,14 +56,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   if (!p || p.draft) notFound()
   // Parent hub (if this post is a silo spoke) drives the breadcrumb + backlink.
   const hub = p.hub ? getGuideBySlug(p.hub) : undefined
-  // Prefer the post's declared sibling spokes (non-draft, in-site); otherwise
-  // fall back to the most recent non-draft posts. Never link a draft.
-  const relatedSpokes = (p.relatedSpokes ?? [])
-    .map(s => getPostBySlug(s))
-    .filter((x): x is Post => !!x && !x.draft)
-  const related = relatedSpokes.length
-    ? relatedSpokes.slice(0,3)
-    : posts.filter(x=>x.slug!==p.slug && !x.draft).sort((a,b)=>new Date(b.published).getTime()-new Date(a.published).getTime()).slice(0,2)
   const crumbs = hub
     ? [{name:'Home',url:SITE.baseUrl},{name:'Guides',url:`${SITE.baseUrl}/guides`},{name:hub.headline,url:`${SITE.baseUrl}/guides/${hub.slug}`},{name:p.title,url:`${SITE.baseUrl}/blog/${p.slug}`}]
     : [{name:'Home',url:SITE.baseUrl},{name:'Blog',url:`${SITE.baseUrl}/blog`},{name:p.title,url:`${SITE.baseUrl}/blog/${p.slug}`}]
@@ -128,20 +120,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </div>
         </article>
       </div>
-      {related.length>0&&(
-        <section className="section-pad" style={{background:'var(--bg2)'}}>
-          <div style={{...m,fontSize:'0.68rem',color:'var(--amber)',letterSpacing:'0.15em',textTransform:'uppercase',marginBottom:'1.5rem'}}>[ More From The Blog ]</div>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:'1px',background:'var(--bdr)'}}>
-            {related.map(r=>(
-              <Link key={r.slug} href={`/blog/${r.slug}`} className="nbhd-card-hover" style={{background:'#fff',padding:'1.8rem',textDecoration:'none',display:'block'}}>
-                <div style={{...m,fontSize:'0.62rem',color:postCategoryColors[r.category],letterSpacing:'0.1em',textTransform:'uppercase',marginBottom:'0.6rem'}}>{postCategoryLabels[r.category]}</div>
-                <div style={{...c,fontSize:'1.05rem',fontWeight:700,color:'var(--text)',lineHeight:1.3,marginBottom:'0.5rem'}}>{r.title}</div>
-                <div style={{...c,fontSize:'0.82rem',color:'var(--amber)'}}>Read →</div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
       <Footer />
     </>
   )
