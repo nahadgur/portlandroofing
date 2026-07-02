@@ -63,6 +63,8 @@ export function getBlogImage(slug: string): string {
     'portland-roofing-quote-data-2026':             '/images/hero-blog-quote-data.jpeg',
     'west-hills-storm-damage-april-2026':           '/images/hero-guide-storm.jpeg',
     'portland-neighborhoods-most-roof-replacements-2026': '/images/hero-cost-index.jpeg',
+    'how-to-spot-a-storm-chaser-roofer-in-portland': '/images/hero-guide-storm.jpeg',
+    'why-gaf-owens-corning-certification-matters':   '/images/hero-vetting.jpeg',
   }
   return map[slug] ?? '/images/hero-blog-hub.jpeg'
 }
