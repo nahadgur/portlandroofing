@@ -10,7 +10,7 @@ export const post: Post = {
     readTime:  8,
     featured:  false,
     hub:           'how-to-choose-roofing-contractor-oregon',
-    draft:         true,
+    draft:         false,
     relatedSpokes: [],
     faqs: [
       { q: 'Does GAF or Owens Corning certification replace an Oregon CCB license?', a: `No. A manufacturer badge is a private program, not a legal credential. Every roofer working in Oregon still needs an active Construction Contractors Board license first, and you should [confirm the CCB number](/blog/how-to-check-an-oregon-ccb-license/) before you weigh any certification on top of it.` },
