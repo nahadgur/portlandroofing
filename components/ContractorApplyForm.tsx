@@ -100,7 +100,7 @@ export default function ContractorApplyForm() {
   const input: React.CSSProperties = {
     width: '100%', padding: '0.85rem 1rem',
     background: 'var(--bg3)', border: '1px solid var(--bdr)',
-    color: 'var(--text)', fontFamily: 'var(--font-barlow)', fontSize: '0.95rem',
+    color: 'var(--text)', fontFamily: 'var(--font-barlow)', fontSize: '1rem',
     outline: 'none',
   }
   const selectStyle: React.CSSProperties = { ...input, cursor: 'pointer' }
