@@ -13,7 +13,9 @@ export const SITE = {
   tagline:    'The Only Roofing Platform PDX Trusts.',
   phone:      '(503) 555-0100',
   email:      `hello@${DOMAIN}`,
-  baseUrl:    process.env.NEXT_PUBLIC_BASE_URL || `https://${DOMAIN}`,
+  // www, because that is the host the deploy serves; the apex redirects to it.
+  // DOMAIN itself stays bare, it also builds the contact address.
+  baseUrl:    process.env.NEXT_PUBLIC_BASE_URL || `https://www.${DOMAIN}`,
   ga4:        process.env.NEXT_PUBLIC_GA4_ID   || 'G-10H8J1J51J',
   googleSiteVerification: 'tYShE7VyrtEp3xwHQyBNdCiOH-U6hhvKOsv0-fD9qT0',
   gasWebhook: process.env.NEXT_PUBLIC_GAS_WEBHOOK_URL || 'https://script.google.com/macros/s/AKfycbw3NUhKsrhgSIcr3SaOTRRS1S2Vg0aUKXD3Z9lsoomCk_z6x9kl0p3lpEC-HRRUghaEBg/exec',
