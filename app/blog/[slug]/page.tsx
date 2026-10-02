@@ -56,6 +56,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   if (!p || p.draft) notFound()
   // Parent hub (if this post is a silo spoke) drives the breadcrumb + backlink.
   const hub = p.hub ? getGuideBySlug(p.hub) : undefined
+  const hasContextualHubLink = hub && [...p.body.map(section => section.body), ...(p.faqs ?? []).map(faq => faq.a)]
+    .some(text => text.includes(`](/guides/${hub.slug}/)`) || text.includes(`](/guides/${hub.slug})`))
   const crumbs = hub
     ? [{name:'Home',url:SITE.baseUrl},{name:'Guides',url:`${SITE.baseUrl}/guides`},{name:hub.headline,url:`${SITE.baseUrl}/guides/${hub.slug}`},{name:p.title,url:`${SITE.baseUrl}/blog/${p.slug}`}]
     : [{name:'Home',url:SITE.baseUrl},{name:'Blog',url:`${SITE.baseUrl}/blog`},{name:p.title,url:`${SITE.baseUrl}/blog/${p.slug}`}]
@@ -109,7 +111,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               </dl>
             </div>
           )}
-          {hub&&(
+          {hub && !hasContextualHubLink && (
             <p style={{...f,fontSize:'1rem',lineHeight:1.6,marginTop:'2rem'}}>
               More guidance: <Link href={`/guides/${hub.slug}/`} style={{color:'var(--amber)',textDecoration:'underline'}}>{hub.headline}</Link>.
             </p>
