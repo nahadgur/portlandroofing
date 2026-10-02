@@ -245,7 +245,7 @@ export const guides: Guide[] = [
       {
         question: "Are permits required for roofing work in Oregon?",
         answer:
-          "Oregon requires permits for full roof replacements in most jurisdictions. Some areas also require permits for significant repairs. Permit fees typically range from $150 to $500. Your roofing contractor should handle the permit application and any required inspections as part of the project. Always confirm permit responsibility is included in your contract.",
+          "Confirm requirements for the address, building type, and proposed scope with the local permitting office. Do not assume every full reroof requires a permit. Ask your contractor to document any exemption and include responsibility for applications, fees, and inspections in the contract.",
       },
     ],
   },

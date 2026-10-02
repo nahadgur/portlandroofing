@@ -102,7 +102,7 @@ export default function PageHero({
             </div>
           )}
 
-          <div style={{ width:40, height:3, background:'#F5A623', marginBottom:'1.2rem' }} />
+          {!eyebrow && <div style={{ width:40, height:3, background:'#F5A623', marginBottom:'1.2rem' }} />}
 
           <h1 style={{
             fontFamily: 'var(--font-bebas)',

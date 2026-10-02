@@ -6,24 +6,24 @@ import { SITE } from '@/lib/config'
 
 const cols = {
   Neighborhoods: [
-    { label: 'Pearl District',    href: '/portland/pearl-district' },
-    { label: 'Lake Oswego',       href: '/portland/lake-oswego' },
-    { label: 'Irvington',         href: '/portland/irvington' },
-    { label: 'West Hills',        href: '/portland/west-hills' },
-    { label: 'All 50 Areas →',    href: '/#neighborhoods' },
+    { label: 'Pearl District',    href: '/portland/pearl-district/' },
+    { label: 'Lake Oswego',       href: '/portland/lake-oswego/' },
+    { label: 'Irvington',         href: '/portland/irvington/' },
+    { label: 'West Hills',        href: '/portland/west-hills/' },
+    { label: 'All Areas →',    href: '/#neighborhoods' },
   ],
   Resources: [
-    { label: 'PDX Cost Index',              href: '/pdx-cost-index' },
-    { label: 'Local vs National Roofers',   href: '/compare/local-vs-national-roofing-companies' },
-    { label: 'Metal vs. Asphalt',           href: '/guides/metal-vs-asphalt-portland' },
-    { label: 'Storm Damage Guide',          href: '/guides/storm-damage-roofing-portland' },
-    { label: 'Permits Guide',               href: '/guides/portland-roofing-permits-guide' },
-    { label: 'All Guides →',               href: '/guides' },
+    { label: 'PDX Cost Index',              href: '/pdx-cost-index/' },
+    { label: 'Local vs National Roofers',   href: '/compare/local-vs-national-roofing-companies/' },
+    { label: 'Material Lifecycle Costs',           href: '/tools/lifecycle-cost/' },
+    { label: 'Storm Damage Guide',          href: '/guides/storm-damage-roof-insurance-oregon/' },
+    { label: 'Permits Guide',               href: '/blog/do-you-need-a-permit-to-replace-a-roof-in-portland/' },
+    { label: 'All Guides →',               href: '/guides/' },
   ],
   'For Contractors': [
-    { label: 'Join the Network', href: '/contractors/apply' },
-    { label: 'Vetting Process',  href: '/contractors/vetting' },
-    { label: 'Contact Us',       href: '/contact' },
+    { label: 'Join the Network', href: '/contractors/apply/' },
+    { label: 'Vetting Process',  href: '/contractors/vetting/' },
+    { label: 'Contact Us',       href: '/contact/' },
   ],
 }
 
@@ -69,7 +69,7 @@ export default function Footer() {
             color: 'rgba(255,255,255,0.4)', lineHeight: 1.7,
             fontWeight: 300, maxWidth: '300px',
           }}>
-            The Portland metro's definitive roofing platform. Connecting homeowners with vetted contractors. Not a contractor, a marketplace.
+            The Portland metro&apos;s definitive roofing platform. Connecting homeowners with vetted contractors. Not a contractor, a marketplace.
           </p>
           <a href={`tel:${SITE.phone.replace(/\D/g, '')}`} style={{
             display: 'block', marginTop: '1.2rem',

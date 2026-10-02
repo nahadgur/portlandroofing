@@ -45,11 +45,11 @@ export function generateStaticParams() { return getStaticPostPaths() }
 export const dynamicParams = false
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const p = getPostBySlug(params.slug)
-  if (!p) return {}
-  const url = `${SITE.baseUrl}/blog/${p.slug}`
-  return { title:p.title, description:p.excerpt, alternates:{canonical:url}, openGraph:{title:p.title,description:p.excerpt,url,type:'article',publishedTime:p.published} }
+  if (!p || p.draft) return {}
+  const url = `${SITE.baseUrl}/blog/${p.slug}/`
+  return { title:p.title, description:p.excerpt, alternates:{canonical:url}, openGraph:{title:p.title,description:p.excerpt,url,type:'article',publishedTime:p.published,modifiedTime:p.updated} }
 }
-function formatDate(iso:string){return new Date(iso).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}
+function formatDate(iso:string){return new Date(iso).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric',timeZone:'UTC'})}
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const p = getPostBySlug(params.slug)
@@ -66,24 +66,22 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const catColor = postCategoryColors[p.category]
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline:p.title, description:p.excerpt, url:`${SITE.baseUrl}/blog/${p.slug}`, datePublished:p.published }))}</Script>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline:p.title, description:p.excerpt, url:`${SITE.baseUrl}/blog/${p.slug}/`, datePublished:p.published, dateModified:p.updated }))}</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema(crumbs))}</Script>
       {p.faqs&&p.faqs.length>0&&<Script id="s3" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:p.faqs.map(qa=>({'@type':'Question',name:qa.q,acceptedAnswer:{'@type':'Answer',text:qa.a}}))})}</Script>}
       <Nav />
       <PageHero
         imageUrl={getBlogImage(p.slug)}
-        breadcrumb={[{label:'Home',href:'/'},{label:'Blog',href:'/blog'},{label:p.title}]}
-        eyebrow={`${postCategoryLabels[p.category]} · ${formatDate(p.published)} · ${p.readTime} min read`}
+        breadcrumb={[{label:'Home',href:'/'},{label:'Blog',href:'/blog/'}]}
+        eyebrow={postCategoryLabels[p.category]}
         title={p.title.toUpperCase()}
         subtitle={p.excerpt}
       />
       <div style={{background:'#fff',borderBottom:'1px solid var(--bdr)'}}>
         <article style={{maxWidth:'900px',margin:'0 auto',padding:'clamp(2.5rem,5vw,4rem) clamp(1.5rem,4vw,3rem)'}}>
-          {hub&&(
-            <div style={{...m,fontSize:'0.7rem',letterSpacing:'0.08em',marginBottom:'2.2rem'}}>
-              <Link href={`/guides/${hub.slug}`} style={{color:'var(--amber)',textDecoration:'none'}}>← Part of: {hub.headline}</Link>
-            </div>
-          )}
+          <p style={{...f,fontSize:'0.9rem',color:'var(--muted)',lineHeight:1.6,marginBottom:'2rem'}}>
+            {`Published ${formatDate(p.published)}${p.updated ? ` · Updated ${formatDate(p.updated)}` : ''} · ${p.readTime} min read`}
+          </p>
           {p.body.map((section,i)=>(
             <div key={i} style={{marginBottom:'2.8rem'}}>
               {section.heading&&<h2 style={{...d,fontSize:'clamp(1.6rem,3vw,2.2rem)',color:'var(--text)',lineHeight:1,marginBottom:'1.4rem',paddingTop:i>0?'2rem':0,borderTop:i>0?'1px solid var(--bdr)':'none'}}>{section.heading}</h2>}
@@ -110,6 +108,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 ))}
               </dl>
             </div>
+          )}
+          {hub&&(
+            <p style={{...f,fontSize:'1rem',lineHeight:1.6,marginTop:'2rem'}}>
+              More guidance: <Link href={`/guides/${hub.slug}/`} style={{color:'var(--amber)',textDecoration:'underline'}}>{hub.headline}</Link>.
+            </p>
           )}
           <div style={{marginTop:'3rem',padding:'2rem 2.5rem',background:'var(--bg2)',border:'1px solid var(--bdr)',borderLeft:`4px solid ${catColor}`,display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:'1.5rem'}}>
             <div>

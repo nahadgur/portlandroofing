@@ -25,9 +25,9 @@ export const metadata: Metadata = {
 const faqs = [
   { q:'How much does a new roof cost in Portland, Oregon?', a:'The average roof replacement in Portland costs $9,400, ranging from $6,500 for basic asphalt shingle to $24,000+ for standing-seam metal on larger homes. Costs vary significantly by neighborhood, West Hills and Lake Oswego average $12,000–$13,000+ while North Portland averages $7,500–$8,000.' },
   { q:"What roofing materials are best for Portland's rainy climate?", a:"For Portland's 144+ annual rain days, architectural asphalt shingles (30-year rated), standing-seam metal, and Class 4 impact-resistant shingles all perform well. Metal roofing offers the best long-term ROI for most Portland homeowners who plan to stay 15+ years." },
-  { q:'Do I need a permit to replace my roof in Portland?', a:"Yes. Portland's Bureau of Development Services requires a permit for full replacements. Historic districts (Ladd's Addition, Irvington, Alameda) have additional review requirements. Check our neighborhood pages for your specific area's permit difficulty score (1–5)." },
+  { q:'Do I need a permit to replace my roof in Portland?', a:"Portland exempts similar-weight reroofing on one- and two-family homes, including sheathing replacement. Exceptions include townhouses, wildfire-zone dwellings, and photovoltaic roof coverings. Confirm your project with Portland Permitting and Development; zoning requirements can also apply." },
   { q:'How do I vet a roofing contractor in Oregon?', a:'All Oregon roofing contractors must hold a valid CCB license. Verify at oregon.gov/ccb, confirm they carry at least $1M general liability insurance, and check reviews on Google and the BBB. Our platform runs all 47 checks before any contractor is listed.' },
-  { q:'How long does a roof replacement take in Portland?', a:"A standard residential roof replacement in Portland takes 1–3 days for the actual installation work. The bigger variable is lead time, in peak season (April through September), vetted Portland contractors book out 4–8 weeks. Add permit approval time on top: 1–2 weeks for standard zones, 4–6 weeks in historic districts." },
+  { q:'How long does a roof replacement take in Portland?', a:"Ask your roofer for a schedule based on your roof size, access, materials, and repair scope. Separate installation time from the wait for materials, crew availability, weather, and any required approvals. Agree how the crew will protect the home if rain interrupts the work." },
   { q:'What is the best time of year to replace a roof in Portland?', a:"Late summer through early fall, August through October, is the optimal window. Rain is minimal, temperatures are stable for proper asphalt adhesion, and daylight hours allow full working days. Spring (April–May) is the second-best option. Avoid scheduling full replacements in November through February unless there's an emergency." },
 ]
 
@@ -43,7 +43,7 @@ const disp = m('bebas')
 
 export default function HomePage() {
   const featuredGuides = guides.filter(g => g.featured).slice(0, 3)
-  const featuredPosts  = posts.slice().sort((a,b) => new Date(b.published).getTime() - new Date(a.published).getTime()).slice(0, 3)
+  const featuredPosts  = posts.filter(p => !p.draft).slice(0, 3)
 
   return (
     <>
@@ -70,7 +70,7 @@ export default function HomePage() {
       <div style={{ background:'#fff', borderBottom:'1px solid var(--bdr)', padding:'1.2rem 3rem', display:'flex', gap:'0.5rem', flexWrap:'wrap', alignItems:'center' }}>
         <span style={{ ...mono, fontSize:'0.62rem', color:'var(--muted)', letterSpacing:'0.1em', textTransform:'uppercase', marginRight:'0.5rem', flexShrink:0 }}>Services:</span>
         {services.map(s=>(
-          <Link key={s.slug} href={`/services#${s.slug}`} style={{ ...cond, fontSize:'0.82rem', letterSpacing:'0.04em', color:'var(--amber)', padding:'0.3rem 0.8rem', border:'1px solid var(--bdr)', textDecoration:'none', background:'#fff', whiteSpace:'nowrap' }}>
+          <Link key={s.slug} href={`/services/${s.slug}/`} style={{ ...cond, fontSize:'0.82rem', letterSpacing:'0.04em', color:'var(--amber)', padding:'0.3rem 0.8rem', border:'1px solid var(--bdr)', textDecoration:'none', background:'#fff', whiteSpace:'nowrap' }}>
             {s.shortName}
           </Link>
         ))}
@@ -160,7 +160,7 @@ export default function HomePage() {
       <div style={{ background:'#0A0B0D', padding:'2rem 3rem', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:'1rem' }}>
         <div>
           <div style={{ ...disp, fontSize:'1.4rem', color:'#fff', lineHeight:1 }}>ARE YOU A PORTLAND ROOFING CONTRACTOR?</div>
-          <div style={{ ...f, fontSize:'0.88rem', color:'rgba(255,255,255,0.45)', marginTop:'0.3rem' }}>We're vetting contractors across the metro. 47-point process. Top 1% only.</div>
+          <div style={{ ...f, fontSize:'0.88rem', color:'rgba(255,255,255,0.45)', marginTop:'0.3rem' }}>We&apos;re vetting contractors across the metro. 47-point process. Top 1% only.</div>
         </div>
         <Link href="/contractors/apply" style={{ background:'transparent', border:'1px solid #F5A623', color:'#F5A623', ...cond, fontWeight:700, fontSize:'0.85rem', letterSpacing:'0.1em', textTransform:'uppercase', padding:'0.75rem 1.8rem', textDecoration:'none', whiteSpace:'nowrap' }}>
           Apply to Join →

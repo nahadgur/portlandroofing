@@ -5,6 +5,7 @@ export interface Post {
   category:   'data' | 'market' | 'storm' | 'contractor' | 'neighbourhood'
   tags:       string[]
   published:  string   // ISO date
+  updated?:   string   // ISO date of a substantive revision, not a build timestamp
   readTime:   number
   featured:   boolean
   body:       PostSection[]

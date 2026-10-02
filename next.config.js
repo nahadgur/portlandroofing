@@ -4,12 +4,22 @@ const nextConfig = {
   trailingSlash: true,
   async redirects() {
     return [
+      {
+        source: '/guides/portland-roofing-permits-guide',
+        destination: '/blog/do-you-need-a-permit-to-replace-a-roof-in-portland/',
+        permanent: true,
+      },
+      {
+        source: '/guides/storm-damage-roofing-portland',
+        destination: '/guides/storm-damage-roof-insurance-oregon/',
+        permanent: true,
+      },
       // Cull-and-deepen: combo /service/neighborhood routes are gone.
       // Redirect to the neighborhood market page (which covers all 5 services
       // with bespoke local cost intelligence).
       {
         source: '/:service(roof-replacement|roof-repair|metal-roofing|cedar-shake-roofing|flat-roofing)/:slug',
-        destination: '/portland/:slug',
+        destination: '/portland/:slug/',
         permanent: true,
       },
     ]
