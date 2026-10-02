@@ -118,8 +118,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           )}
           <div style={{marginTop:'3rem',padding:'2rem 2.5rem',background:'var(--bg2)',border:'1px solid var(--bdr)',borderLeft:`4px solid ${catColor}`,display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:'1.5rem'}}>
             <div>
-              <div style={{...m,fontSize:'0.65rem',color:catColor,letterSpacing:'0.12em',textTransform:'uppercase',marginBottom:'0.4rem'}}>Get Matched with Vetted Portland Contractors</div>
-              <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.6,fontWeight:300}}>Free quotes in your zip code. 48-hour response. No spam.</p>
+              <div style={{...m,fontSize:'0.65rem',color:catColor,letterSpacing:'0.12em',textTransform:'uppercase',marginBottom:'0.4rem'}}>Request a roofing referral</div>
+              <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.6,fontWeight:300}}>Request a roofing referral. Availability and response times vary.</p>
             </div>
             <ModalTriggerBtn style={{display:'inline-block',background:'var(--amber-btn)',color:'#000',...c,fontWeight:700,fontSize:'0.9rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.8rem 2rem',textDecoration:'none',whiteSpace:'nowrap',flexShrink:0}}>Get Free Quotes →</ModalTriggerBtn>
           </div>

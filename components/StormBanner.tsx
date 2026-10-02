@@ -3,9 +3,8 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
-const PORTLAND_ZONES   = ['ORZ006', 'ORZ007', 'ORZ604']
 const ROOFING_EVENTS   = ['Wind Advisory','High Wind Warning','High Wind Watch','Winter Storm Warning','Winter Storm Watch','Ice Storm Warning','Blizzard Warning']
-const CACHE_KEY        = 'pdx_storm_banner'
+const CACHE_KEY        = 'pdx_storm_banner_point_v2'
 const CACHE_TTL_MS     = 30 * 60 * 1000
 
 interface CachedResult {
@@ -36,17 +35,17 @@ export default function StormBanner() {
       } catch { /* ignore */ }
 
       try {
-        const res = await fetch('https://api.weather.gov/alerts/active?area=OR', {
+        const res = await fetch('https://api.weather.gov/alerts/active?point=45.5152,-122.6784', {
           headers: { 'User-Agent': 'portlandorroofing.com contact@portlandorroofing.com' },
         })
         if (!res.ok) return
         const data = await res.json()
+        if (!Array.isArray(data.features)) throw new Error('Incomplete alerts response')
 
         const filtered = (data.features ?? [])
           .filter((f: any) => {
-            const zones: string[] = f.properties?.geocode?.UGC ?? []
             const event: string   = f.properties?.event ?? ''
-            return zones.some(z => PORTLAND_ZONES.includes(z)) && ROOFING_EVENTS.includes(event)
+            return ROOFING_EVENTS.includes(event)
           })
           .map((f: any) => ({
             event:    f.properties.event    ?? 'Unknown',
@@ -81,7 +80,7 @@ export default function StormBanner() {
           <span style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.65rem', letterSpacing: '0.12em', color, textTransform: 'uppercase' as const }}>NWS Alert</span>
         </div>
         <span style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: '#fff' }}>
-          <strong style={{ color }}>{label}</strong>{' '}in effect for Portland metro.{' '}
+          <strong style={{ color }}>{label}</strong>{' '}returned for central Portland.{' '}
           <span style={{ color: 'rgba(255,255,255,0.5)' }}>Roofing work may be affected.</span>
         </span>
       </div>

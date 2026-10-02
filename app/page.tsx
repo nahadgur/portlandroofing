@@ -2,16 +2,14 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import Link   from 'next/link'
 import Nav              from '@/components/Nav'
-import Ticker           from '@/components/Ticker'
 import Hero             from '@/components/Hero'
 import LeadForm         from '@/components/LeadForm'
-import DataBar          from '@/components/DataBar'
 import NeighborhoodGrid from '@/components/NeighborhoodGrid'
 import PriceIndex       from '@/components/PriceIndex'
 import ComparisonEngine from '@/components/ComparisonEngine'
 import Footer           from '@/components/Footer'
 import { SITE }         from '@/lib/config'
-import { localBusinessSchema, faqSchema, organizationSchema, webSiteSchema } from '@/lib/schema'
+import { faqSchema, organizationSchema, webSiteSchema } from '@/lib/schema'
 import { guides, categoryLabels } from '@/lib/guides'
 import { posts, postCategoryLabels, postCategoryColors } from '@/lib/posts'
 import { services } from '@/lib/services'
@@ -23,12 +21,30 @@ export const metadata: Metadata = {
 }
 
 const faqs = [
-  { q:'How much does a new roof cost in Portland, Oregon?', a:'The average roof replacement in Portland costs $9,400, ranging from $6,500 for basic asphalt shingle to $24,000+ for standing-seam metal on larger homes. Costs vary significantly by neighborhood, West Hills and Lake Oswego average $12,000–$13,000+ while North Portland averages $7,500–$8,000.' },
-  { q:"What roofing materials are best for Portland's rainy climate?", a:"For Portland's 144+ annual rain days, architectural asphalt shingles (30-year rated), standing-seam metal, and Class 4 impact-resistant shingles all perform well. Metal roofing offers the best long-term ROI for most Portland homeowners who plan to stay 15+ years." },
-  { q:'Do I need a permit to replace my roof in Portland?', a:"Portland exempts similar-weight reroofing on one- and two-family homes, including sheathing replacement. Exceptions include townhouses, wildfire-zone dwellings, and photovoltaic roof coverings. Confirm your project with Portland Permitting and Development; zoning requirements can also apply." },
-  { q:'How do I vet a roofing contractor in Oregon?', a:'All Oregon roofing contractors must hold a valid CCB license. Verify at oregon.gov/ccb, confirm they carry at least $1M general liability insurance, and check reviews on Google and the BBB. Our platform runs all 47 checks before any contractor is listed.' },
-  { q:'How long does a roof replacement take in Portland?', a:"Ask your roofer for a schedule based on your roof size, access, materials, and repair scope. Separate installation time from the wait for materials, crew availability, weather, and any required approvals. Agree how the crew will protect the home if rain interrupts the work." },
-  { q:'What is the best time of year to replace a roof in Portland?', a:"Late summer through early fall, August through October, is the optimal window. Rain is minimal, temperatures are stable for proper asphalt adhesion, and daylight hours allow full working days. Spring (April–May) is the second-best option. Avoid scheduling full replacements in November through February unless there's an emergency." },
+  {
+    "q": "How much does a new roof cost in Portland, Oregon?",
+    "a": "A useful estimate starts with the measured roof area, assembly, access, removal scope, and any repairs beneath the covering. Compare written bids with the same scope. Our calculators illustrate assumptions; they are not a survey of local prices."
+  },
+  {
+    "q": "Which roofing material should I choose?",
+    "a": "Ask an installer to compare materials that suit the roof slope and assembly. Consider the complete installed scope, maintenance, appearance, warranty conditions, and budget. There is no single best material for every Portland property."
+  },
+  {
+    "q": "Do I need a permit to replace my roof in Portland?",
+    "a": "Portland exempts similar-weight reroofing on one- and two-family homes, including sheathing replacement. Exceptions include townhouses, wildfire-zone dwellings, and photovoltaic roof coverings. Confirm your project with Portland Permitting and Development; zoning requirements can also apply."
+  },
+  {
+    "q": "How do I check an Oregon roofing contractor?",
+    "a": "Look up the exact business and license number in the Oregon CCB records. Check current status, review the available history, and ask for insurance and written contract details. A referral from this site is not a substitute for those checks."
+  },
+  {
+    "q": "How long will a roof replacement take?",
+    "a": "Ask for a schedule based on the roof, access, materials, and repair scope. Separate installation time from the wait for materials, crew availability, weather, and required approvals. Agree how the home will be protected if rain interrupts work."
+  },
+  {
+    "q": "When should I schedule roofing work?",
+    "a": "Plan with the installer around current weather, product installation requirements, and material availability. An active leak may need temporary protection before permanent repairs can be scheduled."
+  }
 ]
 
 function formatDate(iso: string) {
@@ -48,12 +64,10 @@ export default function HomePage() {
   return (
     <>
       <Script id="schema-website" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(webSiteSchema())}</Script>
-      <Script id="schema-lb"  type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(localBusinessSchema())}</Script>
       <Script id="schema-org" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(organizationSchema())}</Script>
       <Script id="schema-faq" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(faqs))}</Script>
 
       <Nav />
-      <Ticker />
 
       {/* ── W1-B HERO, floating form card inside full-bleed photo ── */}
       <section id="quote">
@@ -64,7 +78,6 @@ export default function HomePage() {
         </Hero>
       </section>
 
-      <DataBar />
 
       {/* ── SERVICES STRIP ── */}
       <div style={{ background:'#fff', borderBottom:'1px solid var(--bdr)', padding:'1.2rem 3rem', display:'flex', gap:'0.5rem', flexWrap:'wrap', alignItems:'center' }}>
@@ -89,9 +102,9 @@ export default function HomePage() {
 
       {/* ── COMPARISON ENGINE ── */}
       <section className="section-pad" style={{ background:'var(--bg2)' }}>
-        <div style={{ ...mono, fontSize:'0.68rem', color:'var(--amber)', letterSpacing:'0.15em', textTransform:'uppercase', marginBottom:'0.8rem' }}>[ Material Intelligence ]</div>
+        <div style={{ ...mono, fontSize:'0.68rem', color:'var(--amber)', letterSpacing:'0.15em', textTransform:'uppercase', marginBottom:'0.8rem' }}>[ Materials ]</div>
         <h2 style={{ ...disp, fontSize:'clamp(2rem,4vw,3.2rem)', color:'var(--text)', lineHeight:1, marginBottom:'0.5rem' }}>METAL VS ASPHALT</h2>
-        <p style={{ ...f, fontSize:'1rem', color:'var(--muted)', maxWidth:'520px', fontWeight:300, marginBottom:'2.5rem' }}>Portland gets 144 rain days a year. Toggle between materials to see how that changes the real numbers.</p>
+        <p style={{ ...f, fontSize:'1rem', color:'var(--muted)', maxWidth:'520px', fontWeight:300, marginBottom:'2.5rem' }}>Compare the installation scope, maintenance needs, and warranty terms before choosing a material.</p>
         <ComparisonEngine />
       </section>
 
@@ -160,7 +173,7 @@ export default function HomePage() {
       <div style={{ background:'#0A0B0D', padding:'2rem 3rem', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:'1rem' }}>
         <div>
           <div style={{ ...disp, fontSize:'1.4rem', color:'#fff', lineHeight:1 }}>ARE YOU A PORTLAND ROOFING CONTRACTOR?</div>
-          <div style={{ ...f, fontSize:'0.88rem', color:'rgba(255,255,255,0.45)', marginTop:'0.3rem' }}>We&apos;re vetting contractors across the metro. 47-point process. Top 1% only.</div>
+          <div style={{ ...f, fontSize:'0.88rem', color:'rgba(255,255,255,0.45)', marginTop:'0.3rem' }}>Share your business details and service area to enquire about referrals.</div>
         </div>
         <Link href="/contractors/apply" style={{ background:'transparent', border:'1px solid #F5A623', color:'#F5A623', ...cond, fontWeight:700, fontSize:'0.85rem', letterSpacing:'0.1em', textTransform:'uppercase', padding:'0.75rem 1.8rem', textDecoration:'none', whiteSpace:'nowrap' }}>
           Apply to Join →

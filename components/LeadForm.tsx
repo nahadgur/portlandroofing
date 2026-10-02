@@ -12,9 +12,9 @@ interface FormData {
 }
 
 const materials = [
-  { id:'asphalt', label:'Asphalt Shingle', sub:'Most common in PDX' },
-  { id:'metal',   label:'Metal / Steel',   sub:'Best long-term ROI' },
-  { id:'cedar',   label:'Cedar Shake',     sub:'Historic districts' },
+  { id:'asphalt', label:'Asphalt Shingle', sub:'Shingle roof' },
+  { id:'metal',   label:'Metal / Steel',   sub:'Panel roofing' },
+  { id:'cedar',   label:'Cedar Shake',     sub:'Wood roofing' },
   { id:'flat',    label:'Flat / TPO',      sub:'Commercial & modern' },
 ]
 
@@ -45,7 +45,7 @@ export default function LeadForm({ source }: { source?: string }) {
     setSubmitting(true); setError('')
 
     // Partner handoff UI isn't ready yet — collect the full lead, fire GA4,
-    // post to the GAS webhook, and show the in-queue confirmation. When the
+    // post to the GAS webhook, and show the request details. When the
     // partner page goes live, restore buildPartnerRedirect() + window.location.
     try { fireGenerateLeadEvent({ zip: data.zip, source }) } catch {}
 
@@ -69,10 +69,9 @@ export default function LeadForm({ source }: { source?: string }) {
   if (submitted) {
     return (
       <div style={{ padding:'3rem 2rem', background:'var(--bg)', textAlign:'center', borderTop:'3px solid var(--green)' }}>
-        <div style={{ fontSize:'2.5rem', marginBottom:'0.5rem' }}>✓</div>
-        <div style={{ fontFamily:'var(--font-bebas)', fontSize:'2rem', color:'var(--green)', marginBottom:'0.5rem' }}>YOU'RE IN THE QUEUE</div>
+        <div style={{ fontFamily:'var(--font-bebas)', fontSize:'2rem', color:'var(--green)', marginBottom:'0.5rem' }}>REQUEST DETAILS</div>
         <p style={{ fontFamily:'var(--font-barlow)', fontSize:'0.95rem', color:'var(--muted)', lineHeight:1.65, maxWidth:'320px', margin:'0 auto 1.5rem' }}>
-          Matched contractors for <strong style={{ color:'var(--amber)' }}>{data.zip}</strong> will reach out within <strong style={{ color:'var(--text)' }}>48 hours</strong>.
+          Delivery has not been confirmed. Contractor availability and response times vary. If your roof is leaking, contact a contractor directly about urgent help.
         </p>
         <div style={{ padding:'1rem', background:'var(--bg2)', border:'1px solid var(--bdr)', display:'inline-block', textAlign:'left', minWidth:'240px' }}>
           <div style={{ fontFamily:'var(--font-space-mono)', fontSize:'0.6rem', color:'var(--muted)', marginBottom:'0.6rem', letterSpacing:'0.08em' }}>YOUR SUBMISSION</div>
@@ -139,7 +138,7 @@ export default function LeadForm({ source }: { source?: string }) {
           <div style={{ display:'flex', alignItems:'center', gap:'0.5rem', marginBottom:'1rem' }}>
             <span style={{ display:'inline-block', width:8, height:8, borderRadius:'50%', background:'var(--green)', animation:'blink 1.4s ease-in-out infinite' }}/>
             <span style={{ fontFamily:'var(--font-space-mono)', fontSize:'0.62rem', color:'var(--green)', letterSpacing:'0.1em', textTransform:'uppercase' }}>
-              Free · No Obligation · 48h Response
+              Roofing referral request
             </span>
           </div>
 
@@ -147,7 +146,7 @@ export default function LeadForm({ source }: { source?: string }) {
             GET YOUR<br/><span style={{ color:'var(--amber-btn)' }}>FREE QUOTES</span>
           </h2>
           <p style={{ fontFamily:'var(--font-barlow)', fontSize:'0.9rem', color:'var(--muted)', marginBottom:'1.5rem', fontWeight:300 }}>
-            3 questions. Matched with vetted Portland contractors in your zip code.
+            Tell us about your project to request a roofing referral.
           </p>
 
           {/* Step tabs */}
@@ -172,7 +171,7 @@ export default function LeadForm({ source }: { source?: string }) {
         {step===1&&(
           <div>
             <label style={{ display:'block', fontFamily:'var(--font-space-mono)', fontSize:'0.68rem', color:'var(--amber)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:'0.7rem' }}>
-              What's your zip code?
+              What is your ZIP code?
             </label>
             <input
               type="text" inputMode="numeric" placeholder="e.g. 97201" maxLength={5}
@@ -182,7 +181,7 @@ export default function LeadForm({ source }: { source?: string }) {
               onBlur={e=>e.currentTarget.style.borderColor=data.zip.length>=5?'var(--amber-btn)':'var(--bdr)'}
             />
             <p style={{ fontFamily:'var(--font-barlow)', fontSize:'0.78rem', color:'var(--muted)', marginTop:'0.6rem' }}>
-              We'll match you with contractors who actively serve your area.
+              We use your ZIP code to identify the requested service area.
             </p>
             <button onClick={()=>data.zip.length>=5&&setStep(2)} disabled={data.zip.length<5} style={nextBtn(data.zip.length>=5)}>
               NEXT: CHOOSE MATERIAL →
@@ -193,7 +192,7 @@ export default function LeadForm({ source }: { source?: string }) {
         {step===2&&(
           <div>
             <label style={{ display:'block', fontFamily:'var(--font-space-mono)', fontSize:'0.68rem', color:'var(--amber)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:'0.7rem' }}>
-              What's your roof material?
+              What is your roof material?
             </label>
             <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0.6rem' }}>
               {materials.map(mat=>(
@@ -234,7 +233,7 @@ export default function LeadForm({ source }: { source?: string }) {
         {step===4&&(
           <div>
             <label style={{ display:'block', fontFamily:'var(--font-space-mono)', fontSize:'0.68rem', color:'var(--amber)', letterSpacing:'0.12em', textTransform:'uppercase', marginBottom:'0.7rem' }}>
-              Where do we send your quotes?
+              How can a contractor contact you?
             </label>
             <div style={{ display:'flex', flexDirection:'column', gap:'0.6rem', marginBottom:'0.2rem' }}>
               {(['name','phone','email'] as const).map(field=>(
@@ -248,11 +247,12 @@ export default function LeadForm({ source }: { source?: string }) {
                 />
               ))}
             </div>
+            <p style={{fontFamily:'var(--font-barlow)',fontSize:'.8rem',lineHeight:1.5,margin:'.8rem 0'}}>By requesting a referral, you agree that your project and contact details may be shared with referral partners or contractors who may contact you about the work.</p>
             {error&&<p style={{ fontFamily:'var(--font-barlow)', fontSize:'0.82rem', color:'var(--red)', margin:'0.5rem 0' }}>{error}</p>}
             <div style={{ display:'flex', gap:'0.6rem' }}>
               <button onClick={()=>setStep(3)} style={{ ...backBtn, marginTop:'1.2rem' }}>← Back</button>
               <button onClick={submit} disabled={submitting||!data.name||!data.phone} style={{ ...nextBtn(!submitting&&!!(data.name&&data.phone)), flex:1 }}>
-                {submitting?'SENDING...':'GET MY FREE QUOTES →'}
+                {submitting?'SENDING...':'REQUEST A REFERRAL →'}
               </button>
             </div>
           </div>
@@ -261,7 +261,7 @@ export default function LeadForm({ source }: { source?: string }) {
 
       {/* Trust footer */}
       <div style={{ borderTop:'1px solid var(--bdr)', padding:'1rem 2rem', display:'flex', gap:'1.2rem', flexWrap:'wrap', background:'var(--bg3)' }}>
-        {[{icon:'🔒',text:'256-bit secure'},{icon:'🚫',text:'No spam, ever'},{icon:'✓',text:'CCB-verified contractors'}].map(({icon,text})=>(
+        {[{icon:'',text:'Check contractor licensing before hiring'}].map(({icon,text})=>(
           <div key={text} style={{ display:'flex', alignItems:'center', gap:'0.35rem' }}>
             <span style={{ fontSize:'0.8rem' }}>{icon}</span>
             <span style={{ fontFamily:'var(--font-barlow)', fontSize:'0.72rem', color:'var(--muted)' }}>{text}</span>

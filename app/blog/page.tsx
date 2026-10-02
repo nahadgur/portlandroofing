@@ -7,8 +7,8 @@ import { posts, postCategoryLabels, postCategoryColors } from '@/lib/posts'
 import { SITE } from '@/lib/config'
 
 export const metadata: Metadata = {
-  title:`Portland Roofing Blog â€” Local Roofing News & Data`,
-  description:'Portland roofing news, pricing data, storm damage updates, and contractor market reports.',
+  title:`Portland Roofing Blog | Homeowner Questions`,
+  description:'Portland roofing questions about permits, quotes, contractor checks, and storm preparation.',
   alternates:{canonical:`${SITE.baseUrl}/blog`},
 }
 
@@ -27,7 +27,7 @@ export default function BlogPage() {
         breadcrumb={[{label:'Home',href:'/'},{label:'Blog'}]}
         eyebrow="Portland Roofing"
         title={<>FROM THE<br/><span style={{color:'#F5A623'}}>BLOG</span></>}
-        subtitle="Portland roofing news, pricing data, storm updates, and contractor market reports."
+        subtitle="Answers to homeowner questions about roofing quotes, permits, contractor checks, and storm preparation."
       />
       <section className="section-pad" style={{background:'#fff'}}>
         <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:'1px',background:'var(--bdr)'}}>
@@ -35,10 +35,10 @@ export default function BlogPage() {
             <Link key={p.slug} href={`/blog/${p.slug}`} className="nbhd-card-hover" style={{background:'var(--bg2)',padding:'2rem',textDecoration:'none',display:'flex',flexDirection:'column',gap:'0.7rem'}}>
               <div style={{display:'inline-block',...m,fontSize:'0.6rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.15rem 0.45rem',background:`${postCategoryColors[p.category]}15`,color:postCategoryColors[p.category],border:`1px solid ${postCategoryColors[p.category]}33`,width:'fit-content'}}>{postCategoryLabels[p.category]}</div>
               <div style={{...c,fontSize:'1.05rem',fontWeight:700,color:'var(--text)',lineHeight:1.25}}>{p.title}</div>
-              <div style={{...f,fontSize:'0.85rem',color:'var(--muted)',lineHeight:1.6,flex:1,fontWeight:300}}>{p.excerpt.slice(0,120)}â€¦</div>
+              <div style={{...f,fontSize:'0.85rem',color:'var(--muted)',lineHeight:1.6,flex:1,fontWeight:300}}>{p.excerpt.slice(0,120)}…</div>
               <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
                 <span style={{...m,fontSize:'0.62rem',color:'var(--muted)'}}>{formatDate(p.published)}</span>
-                <span style={{...c,fontSize:'0.82rem',color:'var(--amber)'}}>Read â†’</span>
+                <span style={{...c,fontSize:'0.82rem',color:'var(--amber)'}}>Read →</span>
               </div>
             </Link>
           ))}

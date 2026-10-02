@@ -146,9 +146,9 @@ export default function ContractorApplyForm() {
   if (submitted) {
     return (
       <div style={{ padding: '4rem 2rem', textAlign: 'center' }}>
-        <div style={{ fontFamily: 'var(--font-bebas)', fontSize: '3rem', color: 'var(--green)', marginBottom: '0.5rem' }}>✓ APPLICATION RECEIVED</div>
+        <div style={{ fontFamily: 'var(--font-bebas)', fontSize: '3rem', color: 'var(--green)', marginBottom: '0.5rem' }}>APPLICATION DETAILS</div>
         <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '1rem', color: 'var(--muted)', lineHeight: 1.7, maxWidth: '480px', margin: '0 auto 2rem' }}>
-          We review all applications within 5 business days. If your CCB status, insurance, and coverage area are a match, we'll be in touch to begin the 47-point vetting process.
+          Delivery has not been confirmed. Submitting business details does not guarantee a listing, referrals, or a response within a particular timeframe.
         </p>
         <div style={{ padding: '1.5rem', background: 'var(--bg2)', border: '1px solid var(--bdr)', maxWidth: '400px', margin: '0 auto', textAlign: 'left' }}>
           <div style={{ fontFamily: 'var(--font-space-mono)', fontSize: '0.65rem', color: 'var(--amber)', marginBottom: '0.8rem' }}>Your application summary</div>
@@ -281,7 +281,7 @@ export default function ContractorApplyForm() {
       {step === 3 && (
         <div>
           <h2 style={{ fontFamily: 'var(--font-bebas)', fontSize: '1.8rem', color: 'var(--text)', marginBottom: '0.3rem' }}>Insurance & Compliance</h2>
-          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 3 of 4, Minimum: $1M general liability + workers' comp.</p>
+          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 3 of 4, Your current insurance information.</p>
 
           <div style={{ marginBottom: '1.2rem' }}>
             <label style={label}>General Liability Coverage *</label>
@@ -294,7 +294,7 @@ export default function ContractorApplyForm() {
           </div>
 
           <div style={{ marginBottom: '1.2rem' }}>
-            <label style={label}>Workers' Compensation *</label>
+            <label style={label}>Workers’ Compensation *</label>
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               {['Active policy','Exempt (sole proprietor, no employees)'].map(o => (
                 <button key={o} onClick={() => set('workersComp', o)}
@@ -304,13 +304,13 @@ export default function ContractorApplyForm() {
           </div>
 
           <div style={{ marginBottom: '1.2rem' }}>
-            <label style={label}>Google Business Profile URL (optional, helps vetting)</label>
+            <label style={label}>Google Business Profile URL (optional)</label>
             <input style={input} type="url" placeholder="https://g.co/maps/..." value={data.googleProfile} onChange={e => set('googleProfile', e.target.value)} />
           </div>
 
           <div style={{ padding: '1rem', background: 'rgba(245,166,35,0.05)', border: '1px solid rgba(245,166,35,0.15)', marginBottom: '1rem' }}>
             <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>
-              We require a certificate of insurance as part of final vetting. You'll be asked to provide this if your application proceeds past the initial review.
+              Keep current licensing and insurance documents available for any follow-up about your business.
             </p>
           </div>
 
@@ -330,7 +330,7 @@ export default function ContractorApplyForm() {
       {step === 4 && (
         <div>
           <h2 style={{ fontFamily: 'var(--font-bebas)', fontSize: '1.8rem', color: 'var(--text)', marginBottom: '0.3rem' }}>Contact Details</h2>
-          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 4 of 4, Who we contact with your vetting outcome.</p>
+          <p style={{ fontFamily: 'var(--font-barlow)', fontSize: '0.88rem', color: 'var(--muted)', marginBottom: '2rem' }}>Step 4 of 4, Contact details for follow-up questions.</p>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
             <div>

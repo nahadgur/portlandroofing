@@ -1,3 +1,4 @@
+import InlineText from '@/components/InlineText'
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import { notFound } from 'next/navigation'
@@ -31,9 +32,9 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
   const d={fontFamily:'var(--font-bebas)'}as const
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline:g.title, description:g.description, url:`${SITE.baseUrl}/guides/${g.slug}`, datePublished:g.published, imageUrl:getGuideImage(g.slug) }))}</Script>
+      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline:g.title, description:g.description, url:`${SITE.baseUrl}/guides/${g.slug}`, datePublished:g.published, dateModified:g.updated, imageUrl:getGuideImage(g.slug) }))}</Script>
       <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([{name:'Home',url:SITE.baseUrl},{name:'Guides',url:`${SITE.baseUrl}/guides`},{name:g.headline,url:`${SITE.baseUrl}/guides/${g.slug}`}]))}</Script>
-      <Script id="s3" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(g.faqs))}</Script>
+      {g.faqs.length > 0 && <Script id="s3" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(g.faqs))}</Script>}
       <Nav />
       <PageHero
         imageUrl={getGuideImage(g.slug)}
@@ -61,7 +62,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
             <div key={i} style={{marginBottom:'3.5rem'}}>
               <h2 style={{...d,fontSize:'clamp(1.6rem,3vw,2.2rem)',color:'var(--text)',lineHeight:1,marginBottom:'1.4rem',paddingTop:'2rem',borderTop:'1px solid var(--bdr)'}}>{s.heading ?? s.title}</h2>
               {s.body.split('\n\n').map((para,j)=>(
-                <p key={j} style={{...f,fontSize:'clamp(0.95rem,1.8vw,1.05rem)',color:'var(--text)',lineHeight:1.8,marginBottom:'1.3rem',fontWeight:300}}>{para}</p>
+                <p key={j} style={{...f,fontSize:'clamp(0.95rem,1.8vw,1.05rem)',color:'var(--text)',lineHeight:1.8,marginBottom:'1.3rem',fontWeight:300}}><InlineText text={para} /></p>
               ))}
             </div>
           ))}
@@ -72,7 +73,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
               {g.faqs.map(({question,answer})=>(
                 <div key={question} style={{marginBottom:'2rem',paddingBottom:'2rem',borderBottom:'1px solid var(--bdr)'}}>
                   <h3 style={{...c,fontSize:'1.1rem',fontWeight:700,color:'var(--text)',marginBottom:'0.7rem'}}>{question}</h3>
-                  <p style={{...f,fontSize:'0.97rem',color:'var(--muted)',lineHeight:1.75,fontWeight:300}}>{answer}</p>
+                  <p style={{...f,fontSize:'0.97rem',color:'var(--muted)',lineHeight:1.75,fontWeight:300}}><InlineText text={answer} /></p>
                 </div>
               ))}
             </div>
@@ -96,7 +97,7 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
           <div style={{marginTop:'3rem',padding:'2rem 2.5rem',background:'var(--bg2)',border:'1px solid var(--bdr)',borderLeft:'4px solid var(--amber-btn)',display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:'1.5rem'}}>
             <div>
               <div style={{...m,fontSize:'0.65rem',color:'var(--amber)',letterSpacing:'0.12em',textTransform:'uppercase',marginBottom:'0.4rem'}}>Ready to Move Forward?</div>
-              <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.6,fontWeight:300}}>Free quotes from vetted Portland contractors. 48-hour response guaranteed.</p>
+              <p style={{...f,fontSize:'0.95rem',color:'var(--muted)',lineHeight:1.6,fontWeight:300}}>Request a roofing referral. Availability and response times vary.</p>
             </div>
             <ModalTriggerBtn style={{display:'inline-block',background:'var(--amber-btn)',color:'#000',...c,fontWeight:700,fontSize:'0.9rem',letterSpacing:'0.1em',textTransform:'uppercase',padding:'0.8rem 2rem',textDecoration:'none',whiteSpace:'nowrap',flexShrink:0}}>Get Free Quotes →</ModalTriggerBtn>
           </div>

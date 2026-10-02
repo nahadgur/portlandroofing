@@ -25,6 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/contractors/vetting`, changeFrequency: 'monthly', priority: 0.7 },
   ]
 
+  staticRoutes.push(...[
+    'guides/portland-historic-district-roofing-codes',
+    'guides/roof-replacement-roi-portland',
+    'guides/solar-ready-roofing-oregon-incentives',
+  ].map(path => ({url:`${base}/${path}`,lastModified:new Date('2026-10-02')})))
+
   const serviceRoutes: MetadataRoute.Sitemap = services.map(s => ({
     url: `${base}/services/${s.slug}`, changeFrequency: 'monthly' as const, priority: 0.85,
   }))
@@ -34,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   const guideRoutes: MetadataRoute.Sitemap = guides.map(g => ({
-    url: `${base}/guides/${g.slug}`, lastModified: new Date(g.published), changeFrequency: 'monthly' as const, priority: 0.85,
+    url: `${base}/guides/${g.slug}`, lastModified: new Date(g.updated ?? g.published), changeFrequency: 'monthly' as const, priority: 0.85,
   }))
 
   const postRoutes: MetadataRoute.Sitemap = posts.filter(p => !p.draft).map(p => ({

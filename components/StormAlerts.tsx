@@ -14,7 +14,6 @@ interface Alert {
   senderName: string
 }
 
-const PORTLAND_ZONES = ['ORZ006', 'ORZ007', 'ORZ604']
 const ROOFING_EVENTS = ['Wind Advisory', 'High Wind Warning', 'High Wind Watch', 'Winter Storm Warning', 'Winter Storm Watch', 'Ice Storm Warning', 'Blizzard Warning']
 
 const severityColor: Record<string, { bg: string; border: string; text: string }> = {
@@ -46,19 +45,18 @@ export default function StormAlerts() {
   useEffect(() => {
     async function fetchAlerts() {
       try {
-        const res = await fetch('https://api.weather.gov/alerts/active?area=OR', {
+        const res = await fetch('https://api.weather.gov/alerts/active?point=45.5152,-122.6784', {
           headers: { 'User-Agent': 'portlandorroofing.com contact@portlandorroofing.com' },
         })
         if (!res.ok) throw new Error('API error')
         const data = await res.json()
+        if (!Array.isArray(data.features)) throw new Error('Incomplete alerts response')
 
         const filtered: Alert[] = (data.features ?? [])
           .filter((f: { properties: { geocode?: { UGC?: string[] }; event?: string } }) => {
-            const zones: string[] = f.properties?.geocode?.UGC ?? []
             const event = f.properties?.event ?? ''
-            const inPortland = zones.some((z: string) => PORTLAND_ZONES.includes(z))
             const isRoofingRelevant = ROOFING_EVENTS.includes(event)
-            return inPortland && isRoofingRelevant
+            return isRoofingRelevant
           })
           .map((f: { properties: { id?: string; event?: string; headline?: string; description?: string; severity?: string; urgency?: string; onset?: string; expires?: string; senderName?: string } }) => ({
             id: f.properties.id ?? crypto.randomUUID(),
@@ -94,7 +92,7 @@ export default function StormAlerts() {
     return (
       <div style={{ padding: '2rem', background: 'rgba(200,32,44,.05)', border: '1px solid rgba(200,32,44,.15)' }}>
         <div style={{ ...c, fontSize: '1rem', fontWeight: 700, color: 'var(--red)', marginBottom: '0.3rem' }}>Unable to load alerts</div>
-        <div style={{ ...f, fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.6, fontWeight: 300 }}>The National Weather Service API is temporarily unavailable. Check weather.gov/portland for current alerts.</div>
+        <div style={{ ...f, fontSize: '0.88rem', color: 'var(--muted)', lineHeight: 1.6, fontWeight: 300 }}>The National Weather Service API is temporarily unavailable. Check weather.gov/pqr/ for current alerts.</div>
       </div>
     )
   }
@@ -104,9 +102,9 @@ export default function StormAlerts() {
       <div style={{ padding: '2.5rem', background: 'rgba(26,138,69,.05)', border: '1px solid rgba(26,138,69,.15)', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
         <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--green)', flexShrink: 0 }} />
         <div>
-          <div style={{ ...d, fontSize: '1.6rem', color: 'var(--green)', lineHeight: 1, marginBottom: '0.3rem' }}>ALL CLEAR</div>
-          <div style={{ ...f, fontSize: '0.92rem', color: 'var(--muted)', lineHeight: 1.6, fontWeight: 300 }}>No active wind or winter storm advisories for the Portland metro area. Good conditions for roofing work.</div>
-          <div style={{ ...m, fontSize: '0.62rem', color: 'var(--muted)', marginTop: '0.5rem' }}>Source: National Weather Service \u00b7 Zones ORZ006, ORZ007, ORZ604</div>
+          <div style={{ ...d, fontSize: '1.6rem', color: 'var(--green)', lineHeight: 1, marginBottom: '0.3rem' }}>NO MATCHING ALERTS RETURNED</div>
+          <div style={{ ...f, fontSize: '0.92rem', color: 'var(--muted)', lineHeight: 1.6, fontWeight: 300 }}>No matching wind or winter storm alerts were returned for the central Portland point when this page loaded. This does not establish safe working conditions. Check the official forecast for your address.</div>
+          <div style={{ ...m, fontSize: '0.62rem', color: 'var(--muted)', marginTop: '0.5rem' }}>Source: National Weather Service \u00b7 Point 45.5152, −122.6784</div>
         </div>
       </div>
     )
@@ -133,7 +131,7 @@ export default function StormAlerts() {
         )
       })}
       <div style={{ background: 'var(--bg2)', padding: '0.8rem 1.5rem' }}>
-        <div style={{ ...m, fontSize: '0.6rem', color: 'var(--muted)' }}>Data from api.weather.gov \u00b7 Zones: ORZ006, ORZ007, ORZ604 \u00b7 Filtered for roofing-relevant events</div>
+        <div style={{ ...m, fontSize: '0.6rem', color: 'var(--muted)' }}>Data from api.weather.gov \u00b7 Point: 45.5152, −122.6784 \u00b7 Filtered for roofing-relevant events</div>
       </div>
     </div>
   )

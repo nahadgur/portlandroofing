@@ -53,11 +53,11 @@ export function getSpokesByHub(hubSlug: string): Post[] {
 }
 
 export const postCategoryLabels: Record<Post['category'], string> = {
-  data:         'Data & Research',
-  market:       'Market Insight',
-  storm:        'Storm Report',
-  contractor:   'Contractor News',
-  neighbourhood:'Neighborhood Report',
+  data:         'Cost Planning',
+  market:       'Project Planning',
+  storm:        'Storm Preparation',
+  contractor:   'Hiring',
+  neighbourhood:'Local Planning',
 }
 
 export const postCategoryColors: Record<Post['category'], string> = {

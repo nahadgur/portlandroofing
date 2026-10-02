@@ -13,7 +13,7 @@ const cols = {
     { label: 'All Areas →',    href: '/#neighborhoods' },
   ],
   Resources: [
-    { label: 'PDX Cost Index',              href: '/pdx-cost-index/' },
+    { label: 'Roof Cost Planning',              href: '/pdx-cost-index/' },
     { label: 'Local vs National Roofers',   href: '/compare/local-vs-national-roofing-companies/' },
     { label: 'Material Lifecycle Costs',           href: '/tools/lifecycle-cost/' },
     { label: 'Storm Damage Guide',          href: '/guides/storm-damage-roof-insurance-oregon/' },
@@ -22,7 +22,7 @@ const cols = {
   ],
   'For Contractors': [
     { label: 'Join the Network', href: '/contractors/apply/' },
-    { label: 'Vetting Process',  href: '/contractors/vetting/' },
+    { label: 'Contractor Checks',  href: '/contractors/vetting/' },
     { label: 'Contact Us',       href: '/contact/' },
   ],
 }
@@ -69,15 +69,9 @@ export default function Footer() {
             color: 'rgba(255,255,255,0.4)', lineHeight: 1.7,
             fontWeight: 300, maxWidth: '300px',
           }}>
-            The Portland metro&apos;s definitive roofing platform. Connecting homeowners with vetted contractors. Not a contractor, a marketplace.
+            Roofing information and referrals for Portland-area homeowners. Compare the work and check credentials before hiring.
           </p>
-          <a href={`tel:${SITE.phone.replace(/\D/g, '')}`} style={{
-            display: 'block', marginTop: '1.2rem',
-            fontFamily: 'var(--font-space-mono)', fontSize: '0.8rem',
-            color: '#F5A623', textDecoration: 'none',
-          }}>
-            {SITE.phone}
-          </a>
+
         </div>
 
         {/* Link columns */}

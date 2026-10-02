@@ -1,12 +1,6 @@
 import Image    from 'next/image'
 import type { ReactNode } from 'react'
 
-const stats = [
-  { num: '50+',   label: 'Neighborhoods Covered' },
-  { num: '$9.4K', label: 'Avg. Project Value' },
-  { num: '48h',   label: 'Quote Response Time' },
-]
-
 interface Props { children?: ReactNode }
 
 export default function Hero({ children }: Props) {
@@ -43,10 +37,9 @@ export default function Hero({ children }: Props) {
             marginBottom: '1.2rem', whiteSpace: 'nowrap',
           }}>
             <span style={{ display:'block', width:32, height:1, background:'#F5A623', flexShrink:0 }} />
-            PDX Roofing Authority
+            Portland roofing planning
           </div>
 
-          <div style={{ width:48, height:3, background:'#F5A623', marginBottom:'1.5rem' }} />
 
           <h1 style={{
             fontFamily: 'var(--font-bebas)',
@@ -54,10 +47,9 @@ export default function Hero({ children }: Props) {
             lineHeight: 0.87, color: '#fff',
             letterSpacing: '0.02em', marginBottom: '1.5rem',
           }}>
-            THE ONLY<br />
+            PLAN YOUR<br />
             ROOFING<br />
-            PLATFORM<br />
-            <span style={{ color:'#F5A623' }}>PDX TRUSTS.</span>
+            <span style={{ color:'#F5A623' }}>PROJECT.</span>
           </h1>
 
           <p style={{
@@ -67,22 +59,10 @@ export default function Hero({ children }: Props) {
             maxWidth: '440px', lineHeight: 1.75,
             fontWeight: 300, marginBottom: '2.5rem',
           }}>
-            We vet, rank, and connect Portland homeowners with the top 1% of roofing
-            contractors, with real pricing data across 50+ neighborhoods.
+            Compare roof repairs, replacement options, and contractor questions for your Portland-area home. Roofing information and referrals, with project decisions in your hands.
           </p>
 
-          <div style={{
-            display: 'flex', gap: '2.5rem',
-            paddingTop: '2rem',
-            borderTop: '1px solid rgba(255,255,255,0.15)',
-          }}>
-            {stats.map(({ num, label }) => (
-              <div key={label}>
-                <div style={{ fontFamily:'var(--font-bebas)', fontSize:'clamp(2rem,3.5vw,2.5rem)', color:'#F5A623', lineHeight:1 }}>{num}</div>
-                <div style={{ fontFamily:'var(--font-barlow-cond)', fontSize:'0.68rem', letterSpacing:'0.12em', textTransform:'uppercase', color:'rgba(255,255,255,0.42)', marginTop:'0.25rem' }}>{label}</div>
-              </div>
-            ))}
-          </div>
+
         </div>
 
         {children}
