@@ -1,6 +1,5 @@
 import InlineText from '@/components/InlineText'
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import { notFound } from 'next/navigation'
 import Link   from 'next/link'
 import Nav     from '@/components/Nav'
@@ -32,9 +31,9 @@ export default function GuidePage({ params }: { params: { slug: string } }) {
   const d={fontFamily:'var(--font-bebas)'}as const
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline:g.title, description:g.description, url:`${SITE.baseUrl}/guides/${g.slug}`, datePublished:g.published, dateModified:g.updated, imageUrl:getGuideImage(g.slug) }))}</Script>
-      <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema([{name:'Home',url:SITE.baseUrl},{name:'Guides',url:`${SITE.baseUrl}/guides`},{name:g.headline,url:`${SITE.baseUrl}/guides/${g.slug}`}]))}</Script>
-      {g.faqs.length > 0 && <Script id="s3" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(g.faqs))}</Script>}
+      <script id="s1" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema({ headline:g.title, description:g.description, url:`${SITE.baseUrl}/guides/${g.slug}`, datePublished:g.published, dateModified:g.updated, imageUrl:getGuideImage(g.slug) })) }} />
+      <script id="s2" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{name:'Home',url:SITE.baseUrl},{name:'Guides',url:`${SITE.baseUrl}/guides`},{name:g.headline,url:`${SITE.baseUrl}/guides/${g.slug}`}])) }} />
+      {g.faqs.length > 0 && <script id="s3" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(g.faqs)) }} />}
       <Nav />
       <PageHero
         imageUrl={getGuideImage(g.slug)}

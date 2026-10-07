@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import Link   from 'next/link'
 import Nav              from '@/components/Nav'
 import Hero             from '@/components/Hero'
@@ -63,9 +62,9 @@ export default function HomePage() {
 
   return (
     <>
-      <Script id="schema-website" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(webSiteSchema())}</Script>
-      <Script id="schema-org" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(organizationSchema())}</Script>
-      <Script id="schema-faq" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(faqSchema(faqs))}</Script>
+      <script id="schema-website" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema()) }} />
+      <script id="schema-org" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }} />
+      <script id="schema-faq" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqs)) }} />
 
       <Nav />
 

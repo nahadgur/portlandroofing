@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Script from 'next/script'
 import { notFound } from 'next/navigation'
 import Link   from 'next/link'
 import Nav     from '@/components/Nav'
@@ -68,9 +67,9 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   const catColor = postCategoryColors[p.category]
   return (
     <>
-      <Script id="s1" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(articleSchema({ headline:p.title, description:p.excerpt, url:`${SITE.baseUrl}/blog/${p.slug}/`, datePublished:p.published, dateModified:p.updated }))}</Script>
-      <Script id="s2" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify(breadcrumbSchema(crumbs))}</Script>
-      {p.faqs&&p.faqs.length>0&&<Script id="s3" type="application/ld+json" strategy="beforeInteractive">{JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:p.faqs.map(qa=>({'@type':'Question',name:qa.q,acceptedAnswer:{'@type':'Answer',text:qa.a}}))})}</Script>}
+      <script id="s1" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema({ headline:p.title, description:p.excerpt, url:`${SITE.baseUrl}/blog/${p.slug}/`, datePublished:p.published, dateModified:p.updated })) }} />
+      <script id="s2" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(crumbs)) }} />
+      {p.faqs&&p.faqs.length>0&&<script id="s3" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:p.faqs.map(qa=>({'@type':'Question',name:qa.q,acceptedAnswer:{'@type':'Answer',text:qa.a}}))}) }} />}
       <Nav />
       <PageHero
         imageUrl={getBlogImage(p.slug)}
